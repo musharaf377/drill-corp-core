@@ -1,0 +1,12 @@
+/*------------------------------
+    >>>Css Indexing
+    ------------------
+    01.Global Css
+*/
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
