@@ -25,83 +25,166 @@
   Hero Slider
  ======================= */
 .hero-slider-area {
-    position: relative;
+  position: relative;
+}
+
+.hero-slider-area .swiper.hero-slider {
+  height: 100vh;
 }
 
 .hero-slider .swiper-slide {
-    padding: 60px 0;
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  height: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper.hero-slider video {
+  border: none;
+  line-height: 1;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  z-index: 9999;
+  height: 100vh;
+  object-fit: cover;
 }
 
 .slider-left-content {
-    max-width: 600px;
+  max-width: 700px;
+}
+
+.hero-slider-absoulet-content {
+  position: absolute;
+  bottom: 8%;
+  z-index: 99;
+  width: 100%;
+}
+
+.slider-left-content .hero-slider-subtitle {
+  background-color: rgba(205, 255, 225, 0.16);
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  color: #fff;
 }
 
 .hero-slider-content {
-    height: 100%;
-    position: relative;
-    z-index: 33;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding-bottom: 32px;
+  height: 100%;
+  position: relative;
+  z-index: 33;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-bottom: 32px;
 }
 
 .hero-slider .swiper-slide .container {
-    height: 100%;
+  height: 100%;
 }
 
 .slider-left-content p {
-    color: #fff;
-    font-weight: 500;
-    font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .slider-left-content h2 {
-    color: #fff;
-    font-size: 88px;
-    font-weight: 400;
-    margin: 24px 0 40px;
+  color: #fff;
+  font-size: 88px;
+  font-weight: 400;
+  margin: 24px 0 40px;
 }
 
 .hero-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(0deg, #00000024 10%, transparent);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(1, 8, 26, 0) 38.15%, rgba(1, 6, 19, 0.3) 61.14%, rgba(1, 4, 13, 0.5) 100%);
+  top: 0;
+  left: 0;
 }
 
+
+
+
+
+
+
+/* .show-reels-video {
+    z-index: 99999;
+} */
+
+.hero-slider-content .hero-video-button {
+  bottom: 115px;
+}
 
 .hero-slider-thumb-wrapper {
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    left: 0;
-    max-width: 1255px;
-    padding: 0 15px;
-    width: 100%;
-    margin: auto;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 32px;
+  padding-bottom: 40px;
 }
 
-.hero-slider-thumb .swiper-wrapper {
-    justify-content: flex-end;
+.hero-slider-content {
+  padding-bottom: 23px;
 }
 
-.hero-slider-thumb-wrapper .swiper-slide {
-    max-width: 100px;
-    height: 60px;
+.hero-video-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: auto;
 }
 
-.hero-slider-thumb .swiper-slide-thumb-active {
-    border: 1px solid #fff;
+.hero-slider-area .show-reels-video iframe {
+  width: 60%;
+  height: 85%;
 }
 
-.swiper.hero-slider-thumb {
-    max-width: 225px;
-    margin-right: 0;
+.video-close-icon {
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 3%;
+  right: 1%;
+  z-index: 99;
+  cursor: pointer;
+}
+
+/* slider progress css */
+.hero-progress-wrapper {
+  position: absolute;
+  bottom: 40px;
+  z-index: 15;
+  width: 100%;
+}
+
+.progress-bars-container {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+
+}
+
+.progress-container {
+  width: 100%;
+  background: rgba(178, 178, 178, 1);
+}
+
+.progress-bar {
+  background-color: rgba(255, 255, 255, 1) !important;
+  height: 2px;
+}
+
+/* Change position */
+.progress-bars-container {
+  bottom: 40px;
+  /* move higher/lower */
 }

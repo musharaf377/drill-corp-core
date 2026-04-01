@@ -8,7 +8,7 @@
 
 namespace Elementor;
 
-class DrilllCorp_Button_Widget extends Widget_Base
+class Primary_Button_Widget extends Widget_Base
 {
 
     /**
@@ -23,7 +23,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'drilllcorp-button-widget';
+        return 'primary-button-widget';
     }
 
     /**
@@ -38,7 +38,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('DrilllCorp Button', 'drilllcorp-core');
+        return esc_html__('Primary Button', 'drilllcorp-core');
     }
 
     /**
@@ -115,7 +115,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'show_icon',
             [
                 'label' => esc_html__('Show Icon', 'drilllcorp-core'),
@@ -127,7 +127,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_icon',
             [
                 'label' => esc_html__('Button Icon', 'drilllcorp-core'),
@@ -158,7 +158,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'icon_spacing',
             [
                 'label' => esc_html__('Icon Spacing', 'drilllcorp-core'),
@@ -253,7 +253,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_text_color',
             [
                 'label' => esc_html__('Text Color', 'drilllcorp-core'),
@@ -270,7 +270,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_icon_color',
             [
                 'label' => esc_html__('Icon Color', 'drilllcorp-core'),
@@ -289,7 +289,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_svg_stroke_color',
             [
                 'label' => esc_html__('SVG Stroke Color', 'drilllcorp-core'),
@@ -318,28 +318,18 @@ class DrilllCorp_Button_Widget extends Widget_Base
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'button_border',
-                'label' => esc_html__('Border', 'drilllcorp-core'),
-                'selector' => '{{WRAPPER}} .primary-btn',
-            ]
-        );
-
         $this->add_control(
-            'button_border_radius',
+            'button_border_color',
             [
-                'label' => esc_html__('Border Radius', 'drilllcorp-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
+                'label' => esc_html__('Border Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .primary-btn' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
                 ],
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_padding',
             [
                 'label' => esc_html__('Padding', 'drilllcorp-core'),
@@ -404,7 +394,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'icon_size',
             [
                 'label' => esc_html__('Icon Size', 'drilllcorp-core'),
@@ -520,7 +510,7 @@ class DrilllCorp_Button_Widget extends Widget_Base
                 'label' => esc_html__('Border Color', 'drilllcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .primary-btn:hover' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
                 ],
             ]
         );
@@ -615,4 +605,4 @@ class DrilllCorp_Button_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new DrilllCorp_Button_Widget());
+Plugin::instance()->widgets_manager->register_widget_type(new Primary_Button_Widget());
