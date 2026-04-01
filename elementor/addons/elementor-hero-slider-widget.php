@@ -178,6 +178,25 @@ class Hero_Slider_Item_Widget extends Widget_Base
             ]
         );
 
+        $repeater->add_control(
+            'progress_icon',
+            [
+                'label' => esc_html__('Progress Icon', 'musemind-core'),
+                'type' => Controls_Manager::MEDIA,
+                'description' => esc_html__('Select icon for progress content.', 'musemind-core'),
+            ]
+        );
+
+        $repeater->add_control(
+            'progress_title',
+            [
+                'label' => esc_html__('Progress Title', 'musemind-core'),
+                'type' => Controls_Manager::TEXTAREA,
+                'description' => esc_html__('Enter title for progress content.', 'musemind-core'),
+                'default' => esc_html__('Progress Title', 'musemind-core'),
+            ]
+        );
+
         $this->add_control('hero_slider_items', [
             'label' => esc_html__('Hero Slider Item', 'musemind-core'),
             'type' => Controls_Manager::REPEATER,
@@ -229,6 +248,20 @@ class Hero_Slider_Item_Widget extends Widget_Base
                     'unit' => 'px',
                     'size' => 3000,
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'effect',
+            [
+                'label' => esc_html__('Effect', 'musemind-core'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'slide' => esc_html__('Slide', 'musemind-core'),
+                    'fade' => esc_html__('Fade', 'musemind-core'),
+                ],
+                'default' => 'slide',
+                'description' => esc_html__('Note: Fade effect works best with 2-3 slides. For more slides, use Slide effect.', 'musemind-core'),
             ]
         );
 
@@ -459,7 +492,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -471,7 +504,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#0d1623',
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn svg path' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn svg path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -481,30 +514,20 @@ class Hero_Slider_Item_Widget extends Widget_Base
             [
                 'label' => esc_html__('Button Background Color', 'musemind-core'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#ff6b6b',
+                'default' => 'transparent',
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
+        $this->add_control(
+            'button_border_color',
             [
-                'name' => 'button_border',
-                'label' => esc_html__('Button Border', 'musemind-core'),
-                'selector' => '{{WRAPPER}} .primary-btn',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'button_border_radius',
-            [
-                'label' => esc_html__('Button Border Radius', 'musemind-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
+                'label' => esc_html__('Border Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
                 ],
             ]
         );
@@ -516,7 +539,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -526,7 +549,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
             [
                 'name' => 'button_typography',
                 'label' => esc_html__('Button Typography', 'musemind-core'),
-                'selector' => '{{WRAPPER}} .primary-btn',
+                'selector' => '{{WRAPPER}} .hero-slider-content .hero-slider-btn',
             ]
         );
 
@@ -546,7 +569,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -558,7 +581,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn:hover svg path' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn:hover svg path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -570,18 +593,18 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ff5252',
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
 
         $this->add_control(
-            'button_border_color_hover',
+            'button_hover_border_color',
             [
-                'label' => esc_html__('Button Border Color Hover', 'musemind-core'),
+                'label' => esc_html__('Border Color', 'drilllcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn:hover' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
                 ],
             ]
         );
@@ -598,7 +621,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn' => 'transition: all {{SIZE}}s ease-in-out;',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn' => 'transition: all {{SIZE}}s ease-in-out;',
                 ],
             ]
         );
@@ -614,7 +637,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .primary-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .hero-slider-content .hero-slider-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1083,6 +1106,128 @@ class Hero_Slider_Item_Widget extends Widget_Base
             ]
         );
 
+        // Progress Content Style
+        $this->add_control(
+            'progress_content_heading',
+            [
+                'label' => esc_html__('Progress Content', 'musemind-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'progress_content_padding',
+            [
+                'label' => esc_html__('Padding', 'musemind-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-progress-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'progress_content_margin',
+            [
+                'label' => esc_html__('Margin', 'musemind-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-progress-conetnt-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Progress Icon Style
+        $this->add_control(
+            'progress_icon_style_heading',
+            [
+                'label' => esc_html__('Progress Icon', 'musemind-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'progress_icon_size',
+            [
+                'label' => esc_html__('Icon Size', 'musemind-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 24,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-progress-content img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'progress_icon_margin',
+            [
+                'label' => esc_html__('Icon Margin', 'musemind-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-progress-content img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Progress Title Style
+        $this->add_control(
+            'progress_title_style_heading',
+            [
+                'label' => esc_html__('Progress Title', 'musemind-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'progress_title_color',
+            [
+                'label' => esc_html__('Title Color', 'musemind-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .slider-progress-content p' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'progress_title_typography',
+                'label' => esc_html__('Title Typography', 'musemind-core'),
+                'selector' => '{{WRAPPER}} .slider-progress-content p',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'progress_title_margin',
+            [
+                'label' => esc_html__('Title Margin', 'musemind-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-progress-content p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_control(
             'progress_container_heading',
             [
@@ -1145,6 +1290,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
             "loop" => esc_attr($settings['loop']),
             "autoplay" => esc_attr($settings['autoplay']),
             "speed" => esc_attr($settings['speed']['size'] ?? 500),
+            "effect" => esc_attr($settings['effect'] ?? 'slide'),
         ]
 ?>
         <div class="hero-slider-area">
@@ -1177,9 +1323,9 @@ class Hero_Slider_Item_Widget extends Widget_Base
                                                 echo $item['subtitle'];
                                                 ?>
                                             </p>
-                                            <h2 class="hero-slide-title"><?php echo $item['title'] ?></h2>
+                                            <h1 class="hero-slide-title"><?php echo $item['title'] ?></h1>
                                             <p class="hero-slide-description"><?php echo $item['hero_description'] ?></p>
-                                            <a href="<?php echo $item['button_url'] ?>" class="primary-btn"><?php echo $item['button_text'] ?> <?php echo drilllcorp_get_svg_icon('right_arrow') ?></a>
+                                            <a href="<?php echo $item['button_url'] ?>" class="hero-slider-btn"><?php echo $item['button_text'] ?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -1198,6 +1344,12 @@ class Hero_Slider_Item_Widget extends Widget_Base
                         <?php foreach ($all_hero_slider_items as $index => $item): ?>
                             <div class="progress-container">
                                 <div class="progress-bar" data-slide-index="<?php echo $index; ?>"></div>
+                                <div class="slider-progress-conetnt-wrap">
+                                    <div class="slider-progress-content">
+                                        <img src="<?php echo $item['progress_icon']['url']; ?>" alt="">
+                                        <p><?php echo $item['progress_title']; ?></p>
+                                    </div>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>

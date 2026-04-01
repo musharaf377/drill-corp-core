@@ -16,6 +16,12 @@
     let autoplay = sliderSettings.autoplay !== undefined ? sliderSettings.autoplay : true;
     let autoplayDelay = sliderSettings.speed !== undefined ? sliderSettings.speed : 3000;
     let transitionSpeed = 500;
+    let effect = sliderSettings.effect !== undefined ? sliderSettings.effect : 'slide';
+    
+    // Fade effect with loop can cause autoplay issues - disable loop for fade effect
+    if (effect === 'fade' && loop) {
+      console.warn('Fade effect with loop enabled may cause autoplay issues. Consider using slide effect for more than 3 slides.');
+    }
 
     // Get all progress bars
     const progressBars = $(".progress-bar");
@@ -54,24 +60,19 @@
       });
     }
 
-    // Initialize thumbnail slider
-    var thumb = new Swiper(".hero-slider-thumb", {
-      loop: loop,
-      spaceBetween: 10,
-      slidesPerView: 2,
-      freeMode: true,
-      watchSlidesProgress: true,
-    });
-
+ 
     // Initialize main hero slider
     var heroSlider = new Swiper(".hero-slider", {
-      loop: loop,
+      loop: effect === 'fade' ? false : loop, // Disable loop for fade effect to prevent autoplay issues
       spaceBetween: 0,
       autoplay: autoplay ? {
         delay: autoplayDelay,
         disableOnInteraction: false,
       } : false,
-
+      effect: effect,
+      fadeEffect: effect === 'fade' ? {
+        crossFade: true
+      } : undefined,
       speed: transitionSpeed,
 
       on: {
