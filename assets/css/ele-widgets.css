@@ -1,10 +1,32 @@
+/* =====================
+  Primary Button
+=========================*/
+.primary-btn {
+    font-size: 18px;
+    font-weight: 600;
+    background: transparent;
+    padding: 12px 16px;
+    border: 2.5px solid;
+    clip-path: inset(-1px round 9px);
+    line-height: normal;
+    display: inline-block;
+    text-align: center;
+    color: #1B3746;
+    border-image: linear-gradient(135deg, #0D1A21, #0D1A21) 1 stretch;
+    transition: .3s ease-in-out all;
+}
+
+.primary-btn:hover {
+    background: #0D1A21;
+    color: #fff;
+}
 
 /*=====================
   Hero Slider
  ======================= */
- .hero-slider-area{
+.hero-slider-area {
     position: relative;
- }
+}
 
 .hero-slider .swiper-slide {
     padding: 60px 0;
@@ -25,7 +47,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-      padding-bottom: 32px;
+    padding-bottom: 32px;
 }
 
 .hero-slider .swiper-slide .container {
@@ -62,7 +84,7 @@
     padding: 0 15px;
     width: 100%;
     margin: auto;
-        border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     padding-bottom: 32px;
 }
 
@@ -83,5 +105,3 @@
     max-width: 225px;
     margin-right: 0;
 }
-
-
