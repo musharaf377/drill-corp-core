@@ -21,15 +21,39 @@
     color: #fff;
 }
 
+/* ===========================
+  All slider common nav styles
+============================== */
+.slider-nav-wrapper .slider-nav-arrow {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(226, 239, 244, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease-in-out all;
+}
+
+.slider-nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+.slider-nav-wrapper .slider-nav-arrow svg {
+    stroke: rgba(13, 26, 33, 1);
+}
+
+.slider-nav-wrapper .slider-nav-arrow:hover {
+    background: rgba(172, 255, 47, 1);
+}
+
 /*=====================
   Hero Slider
  ======================= */
 .hero-slider-area {
   position: relative;
-}
-
-.hero-slider-area .swiper.hero-slider {
-  /* height: 100vh; */
 }
 
 .hero-slider .swiper-slide {
@@ -181,4 +205,30 @@
 
 video.hero-mobile-video {
     display: none;
+}
+
+
+/*=====================
+  Testimonial Slider
+ ======================= */
+.testimonial-slider-content {
+    background: rgba(241, 247, 249, 1);
+    padding: 30px;
+    display: flex;
+    gap: 130px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.testimonial-slider-content-wrap h3 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: rgba(13, 26, 33, 1);
+}
+
+.testimonial-slider-content-wrap p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
 }

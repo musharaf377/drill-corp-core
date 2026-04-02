@@ -98,33 +98,33 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
 
         $repeater = new Repeater();
         $repeater->add_control(
-            'client_image',
+            'client_logo',
             [
-                'label' => esc_html__('Client Image', 'drilllcorp-core'),
+                'label' => esc_html__('Client Logo', 'drilllcorp-core'),
                 'type' => Controls_Manager::MEDIA,
             ]
         );
 
         $repeater->add_control(
-            'client_name',
+            'client_title',
             [
-                'label' => esc_html__('Client Name', 'drilllcorp-core'),
+                'label' => esc_html__('Client Title', 'drilllcorp-core'),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('What We Do', 'drilllcorp-core'),
+                'default' => esc_html__('Industry-Leading Fleet Strength', 'drilllcorp-core'),
             ]
         );
 
         $repeater->add_control(
-            'client_designation',
+            'client_description',
             [
-                'label' => esc_html__('Client Designation', 'drilllcorp-core'),
+                'label' => esc_html__('Client Description', 'drilllcorp-core'),
                 'type' => Controls_Manager::TEXT,
-                'description' => esc_html__('enter client designation.', 'drilllcorp-core'),
-                'default' => esc_html__('Top Packages', 'drilllcorp-core'),
+                'description' => esc_html__('enter client description.', 'drilllcorp-core'),
+                'default' => esc_html__('DCS maintains industry-leading fleet strength through 43 owned rigs, high-capacity platforms, and scalable drilling capability nationwide.', 'drilllcorp-core'),
             ]
         );
 
-        $this->add_control('hero_slider_items', [
+        $this->add_control('testimonial_slider_items', [
             'label' => esc_html__('Testimonial Slider Item', 'drilllcorp-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
@@ -200,7 +200,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $all_hero_slider_items = $settings['hero_slider_items'];
+        $all_hero_slider_items = $settings['testimonial_slider_items'];
         $rand_numb = rand(333, 999999999);
         //slider settings
 
@@ -209,8 +209,6 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
             "items" => esc_attr($settings['items'] ?? 1),
             "autoplay" => esc_attr($settings['autoplay']),
             "speed" => esc_attr($settings['speed']['size'] ?? 500)
-
-
         ]
       ?>
         <div class="testimonial-slider-area">
@@ -219,10 +217,10 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
                     <?php foreach ($all_hero_slider_items as $item): ?>
                         <div class="swiper-slide">
                             <div class="testimonial-slider-content">
-                                <img src="<?php echo $item['client_image']['url']; ?>" alt="">
+                                <img src="<?php echo $item['client_logo']['url']; ?>" alt="">
                                 <div class="testimonial-slider-content-wrap">
-                                    <h3><?php echo $item['client_name'] ?></h3>
-                                    <p><?php echo $item['client_designation'] ?></p>
+                                    <h3><?php echo $item['client_title'] ?></h3>
+                                    <p><?php echo $item['client_description'] ?></p>
                                 </div>
                             </div>
                         </div>

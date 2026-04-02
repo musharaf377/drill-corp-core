@@ -104,7 +104,6 @@
     let testimonialSliderSetting = testimonialSliderWrapper.attr('data-settings');
     let testimonialSettings = testimonialSliderSetting ? JSON.parse(testimonialSliderSetting) : {};
     
-
     // Extract settings
     let testimonialLoop = testimonialSettings.loop !== undefined ? testimonialSettings.loop : true;
     let testimonialAutoplay = testimonialSettings.autoplay !== undefined ? testimonialSettings.autoplay : true;
@@ -115,7 +114,7 @@
     // Initialize main hero slider
     var testimonialSlider = new Swiper(".testimonial-slider", {
       loop: testimonialLoop,
-      spaceBetween: 0,
+      spaceBetween: 24,
       slidePerView: 1,
       autoplay: testimonialAutoplay ? {
         delay: testimonialAutoplayDelay,
