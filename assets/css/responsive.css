@@ -41,10 +41,6 @@
         max-height: 600px;
     }
 
-    .hero-slider-absoulet-content {
-        bottom: 0% !important;
-    }
-
     .hero-slider-thumb .swiper-slide {
         height: 60px;
     }
@@ -81,11 +77,12 @@
         padding-bottom: 10px;
     }
 
-    .hero-slider-absoulet-content {
-        bottom: 0 !important;
-    }
 
     .hero-slider-thumb-wrapper {
         bottom: 0px;
+    }
+
+    .slider-progress-content {
+        display: none;
     }
 }

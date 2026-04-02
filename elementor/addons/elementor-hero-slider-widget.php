@@ -277,12 +277,12 @@ class Hero_Slider_Item_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'slider_height',
             [
                 'label' => esc_html__('Slider Height', 'musemind-core'),
                 'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', 'vh'],
+                'size_units' => ['px', 'vh', '%'],
                 'range' => [
                     'px' => [
                         'min' => 100,
@@ -292,6 +292,12 @@ class Hero_Slider_Item_Widget extends Widget_Base
                     'vh' => [
                         'min' => 10,
                         'max' => 100,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                        'step' => 1,
                     ],
                 ],
                 'default' => [
@@ -356,6 +362,18 @@ class Hero_Slider_Item_Widget extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'hero_slider_main_padding',
+            [
+                'label' => esc_html__('Slider Padding', 'musemind-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .hero-slider-area .swiper-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Content Style
@@ -378,6 +396,74 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 ],
             ]
         );
+
+        // Subtitle Style
+        $this->add_control(
+            'subtitle_style_heading',
+            [
+                'label' => esc_html__('Subtitle Style', 'musemind-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'subtitle_color',
+            [
+                'label' => esc_html__('Subtitle Color', 'musemind-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .hero-slider-subtitle' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'subtitle_typography',
+                'label' => esc_html__('Subtitle Typography', 'musemind-core'),
+                'selector' => '{{WRAPPER}} .hero-slider-subtitle',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'subtitle_padding',
+            [
+                'label' => esc_html__('Subtitle padding', 'musemind-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .hero-slider-subtitle' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'subtitle_icon_size',
+            [
+                'label' => esc_html__('Subtitle Icon Size', 'musemind-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .hero-slider-subtitle img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        
 
 
         // Title Style
@@ -644,350 +730,6 @@ class Hero_Slider_Item_Widget extends Widget_Base
 
         $this->end_controls_section();
 
-        // Thumbnail Slider Style
-        $this->start_controls_section(
-            'thumbnail_style_section',
-            [
-                'label' => esc_html__('Thumbnail Slider Style', 'musemind-core'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'thumbnail_width',
-            [
-                'label' => esc_html__('Thumbnail Width', 'musemind-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 50,
-                        'max' => 300,
-                        'step' => 5,
-                    ],
-                    '%' => [
-                        'min' => 5,
-                        'max' => 30,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 150,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .hero-slider-thumb .swiper-slide' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'thumbnail_height',
-            [
-                'label' => esc_html__('Thumbnail Height', 'musemind-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 50,
-                        'max' => 300,
-                        'step' => 5,
-                    ],
-                    '%' => [
-                        'min' => 5,
-                        'max' => 30,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 100,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .hero-slider-thumb .swiper-slide' => 'height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'thumbnail_border_radius',
-            [
-                'label' => esc_html__('Thumbnail Border Radius', 'musemind-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .hero-slider-thumb .swiper-slide' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'thumbnail_border',
-                'label' => esc_html__('Thumbnail Border', 'musemind-core'),
-                'selector' => '{{WRAPPER}} .hero-slider-thumb .swiper-slide',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'thumbnail_margin',
-            [
-                'label' => esc_html__('Thumbnail Margin', 'musemind-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .hero-slider-thumb .swiper-slide' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'active_thumbnail_border_color',
-            [
-                'label' => esc_html__('Active Thumbnail Border Color', 'musemind-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#ff6b6b',
-                'selectors' => [
-                    '{{WRAPPER}} .hero-slider-thumb .swiper-slide-thumb-active' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // Video Button Style
-        $this->start_controls_section(
-            'video_button_style_section',
-            [
-                'label' => esc_html__('Video Button Style', 'musemind-core'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-
-
-        $this->add_responsive_control(
-            'video_button_size',
-            [
-                'label' => esc_html__('Video Button Size', 'musemind-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 50,
-                        'max' => 200,
-                        'step' => 5,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 100,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .hero-video-button' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'video_icon_size',
-            [
-                'label' => esc_html__('Video Icon Size', 'musemind-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 10,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 30,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .video-play-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'video_button_margin',
-            [
-                'label' => esc_html__('Video Button Margin', 'musemind-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .hero-video-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // Video Popup Style
-        $this->start_controls_section(
-            'video_popup_style_section',
-            [
-                'label' => esc_html__('Video Popup Style', 'musemind-core'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'popup_overlay_color',
-            [
-                'label' => esc_html__('Popup Overlay Color', 'musemind-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => 'rgba(0,0,0,0.8)',
-                'selectors' => [
-                    '{{WRAPPER}} .show-reels-video' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'popup_video_width',
-            [
-                'label' => esc_html__('Popup Video Width', 'musemind-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 300,
-                        'max' => 1400,
-                        'step' => 10,
-                    ],
-                    '%' => [
-                        'min' => 30,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 80,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .hero-video-wrapper' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'popup_video_height',
-            [
-                'label' => esc_html__('Popup Video Height', 'musemind-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', 'vh'],
-                'range' => [
-                    'px' => [
-                        'min' => 200,
-                        'max' => 900,
-                        'step' => 10,
-                    ],
-                    'vh' => [
-                        'min' => 20,
-                        'max' => 80,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'vh',
-                    'size' => 60,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .hero-video-wrapper iframe' => 'height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'popup_close_button_color',
-            [
-                'label' => esc_html__('Close Button Color', 'musemind-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#ffffff',
-                'selectors' => [
-                    '{{WRAPPER}} .video-close-icon' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'popup_close_button_bg_color',
-            [
-                'label' => esc_html__('Close Button Background Color', 'musemind-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#ff6b6b',
-                'selectors' => [
-                    '{{WRAPPER}} .video-close-icon' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'popup_close_button_size',
-            [
-                'label' => esc_html__('Close Button Size', 'musemind-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 20,
-                        'max' => 80,
-                        'step' => 1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 40,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .video-close-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'popup_close_button_border_radius',
-            [
-                'label' => esc_html__('Close Button Border Radius', 'musemind-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 50,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 50,
-                    ],
-                ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 50,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .video-close-icon' => 'border-radius: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'popup_close_button_position',
-            [
-                'label' => esc_html__('Close Button Position', 'musemind-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .video-close-icon' => 'top: {{TOP}}{{UNIT}}; right: {{RIGHT}}{{UNIT}}; bottom: {{BOTTOM}}{{UNIT}}; left: {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
         // Progress Style
         $this->start_controls_section(
             'progress_style_section',
@@ -1128,18 +870,6 @@ class Hero_Slider_Item_Widget extends Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
-            'progress_content_margin',
-            [
-                'label' => esc_html__('Margin', 'musemind-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .slider-progress-conetnt-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
         // Progress Icon Style
         $this->add_control(
             'progress_icon_style_heading',
@@ -1173,18 +903,6 @@ class Hero_Slider_Item_Widget extends Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
-            'progress_icon_margin',
-            [
-                'label' => esc_html__('Icon Margin', 'musemind-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .slider-progress-content img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
         // Progress Title Style
         $this->add_control(
             'progress_title_style_heading',
@@ -1213,18 +931,6 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 'name' => 'progress_title_typography',
                 'label' => esc_html__('Title Typography', 'musemind-core'),
                 'selector' => '{{WRAPPER}} .slider-progress-content p',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'progress_title_margin',
-            [
-                'label' => esc_html__('Title Margin', 'musemind-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .slider-progress-content p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
             ]
         );
 

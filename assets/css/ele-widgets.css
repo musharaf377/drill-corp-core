@@ -29,7 +29,7 @@
 }
 
 .hero-slider-area .swiper.hero-slider {
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .hero-slider .swiper-slide {
@@ -60,7 +60,7 @@
 
 .hero-slider-absoulet-content {
   position: absolute;
-  bottom: 8%;
+  top: 0;
   z-index: 99;
   width: 100%;
 }
@@ -121,8 +121,6 @@
     color: #0D1A21;
 }
 
-
-
 .hero-overlay {
   position: absolute;
   width: 100%;
@@ -159,4 +157,28 @@
 
 .progress-bars-container {
   bottom: 40px;
+}
+
+.slider-progress-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.slider-progress-conetnt-wrap {
+    position: relative;
+}
+
+.slider-progress-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.slider-progress-content img {
+    margin-top: 2px;
+}
+
+video.hero-mobile-video {
+    display: none;
 }
