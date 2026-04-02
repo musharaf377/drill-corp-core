@@ -2,15 +2,15 @@
 
 return array(
     array(
-        'taxonomy' => 'case_study_cat',
-        'object_type' => 'case_study',
+        'taxonomy' => 'services_cat',
+        'object_type' => 'services',
         'args' => array(
             "labels" => array(
-                "name" => esc_html__("Case Study Category", 'drilllcorp-core'),
-                "singular_name" => esc_html__("Case Study Category", 'drilllcorp-core'),
-                "menu_name" => esc_html__("Case Study Category", 'drilllcorp-core'),
-                "all_items" => esc_html__("All Case Study Category", 'drilllcorp-core'),
-                "add_new_item" => esc_html__("Add New Case Study Category", 'drilllcorp-core')
+                "name" => esc_html__("Services Category", 'drilllcorp-core'),
+                "singular_name" => esc_html__("Services Category", 'drilllcorp-core'),
+                "menu_name" => esc_html__("Services Category", 'drilllcorp-core'),
+                "all_items" => esc_html__("All Services Category", 'drilllcorp-core'),
+                "add_new_item" => esc_html__("Add New Services Category", 'drilllcorp-core')
             ),
             "public" => true,
             "hierarchical" => true,
@@ -18,7 +18,7 @@ return array(
             "show_in_menu" => true,
             "show_in_nav_menus" => true,
             "query_var" => true,
-            "rewrite" => array('slug' => 'case_study_cat', 'with_front' => true),
+            "rewrite" => array('slug' => 'services_cat', 'with_front' => true),
             "show_admin_column" => true,
             "show_in_rest" => true,
             "show_in_quick_edit" => true,

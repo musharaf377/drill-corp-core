@@ -12,14 +12,14 @@
     let sliderSettings = heroSliderSetting ? JSON.parse(heroSliderSetting) : {};
 
     // Extract settings
-    let loop = sliderSettings.loop !== undefined ? sliderSettings.loop : true;
-    let autoplay = sliderSettings.autoplay !== undefined ? sliderSettings.autoplay : true;
-    let autoplayDelay = sliderSettings.speed !== undefined ? sliderSettings.speed : 3000;
-    let transitionSpeed = 500;
-    let effect = sliderSettings.effect !== undefined ? sliderSettings.effect : 'slide';
+    let heroSliderLoop = sliderSettings.loop !== undefined ? sliderSettings.loop : true;
+    let heroSliderAutoplay = sliderSettings.autoplay !== undefined ? sliderSettings.autoplay : true;
+    let heroSliderAutoplayDelay = sliderSettings.speed !== undefined ? sliderSettings.speed : 3000;
+    let heroSliderTransitionSpeed = 500;
+    let heroSliderEffect = sliderSettings.effect !== undefined ? sliderSettings.effect : 'slide';
     
     // Fade effect with loop can cause autoplay issues - disable loop for fade effect
-    if (effect === 'fade' && loop) {
+    if (heroSliderEffect === 'fade' && heroSliderLoop) {
       console.warn('Fade effect with loop enabled may cause autoplay issues. Consider using slide effect for more than 3 slides.');
     }
 
@@ -51,7 +51,7 @@
             // Animate the active progress bar
             setTimeout(function () {
               bar.css({
-                'transition': 'width ' + autoplayDelay + 'ms linear',
+                'transition': 'width ' + heroSliderAutoplayDelay + 'ms linear',
                 'width': '100%'
               });
             }, 50);
@@ -63,25 +63,25 @@
  
     // Initialize main hero slider
     var heroSlider = new Swiper(".hero-slider", {
-      loop: effect === 'fade' ? false : loop, // Disable loop for fade effect to prevent autoplay issues
+      loop: heroSliderEffect === 'fade' ? false : heroSliderLoop, // Disable loop for fade effect to prevent autoplay issues
       spaceBetween: 0,
-      autoplay: autoplay ? {
-        delay: autoplayDelay,
+      autoplay: heroSliderAutoplay ? {
+        delay: heroSliderAutoplayDelay,
         disableOnInteraction: false,
       } : false,
-      effect: effect,
-      fadeEffect: effect === 'fade' ? {
+      effect: heroSliderEffect,
+      fadeEffect: heroSliderEffect === 'fade' ? {
         crossFade: true
       } : undefined,
-      speed: transitionSpeed,
+      speed: heroSliderTransitionSpeed,
 
       on: {
         init: function () {
-          updateProgressBars(this.realIndex, autoplay);
+          updateProgressBars(this.realIndex, heroSliderAutoplay);
         },
 
         slideChange: function () {
-          updateProgressBars(this.realIndex, autoplay && this.autoplay.running);
+          updateProgressBars(this.realIndex, heroSliderAutoplay && this.autoplay.running);
         },
 
         autoplayStart: function () {
@@ -94,6 +94,47 @@
           });
         }
       }
+    });
+    
+    
+   /* ========================
+    *  Testimonial Slider
+    =========================*/
+    let testimonialSliderWrapper = $('.testimonial-slider');
+    let testimonialSliderSetting = testimonialSliderWrapper.attr('data-settings');
+    let testimonialSettings = testimonialSliderSetting ? JSON.parse(testimonialSliderSetting) : {};
+    
+
+    // Extract settings
+    let testimonialLoop = testimonialSettings.loop !== undefined ? testimonialSettings.loop : true;
+    let testimonialAutoplay = testimonialSettings.autoplay !== undefined ? testimonialSettings.autoplay : true;
+    let testimonialAutoplayDelay = testimonialSettings.speed !== undefined ? testimonialSettings.speed : 3000;
+    let testimonialTransitionSpeed = 500;
+    
+    
+    // Initialize main hero slider
+    var testimonialSlider = new Swiper(".testimonial-slider", {
+      loop: testimonialLoop,
+      spaceBetween: 0,
+      slidePerView: 1,
+      autoplay: testimonialAutoplay ? {
+        delay: testimonialAutoplayDelay,
+        disableOnInteraction: false,
+      } : false,
+      navigation: {
+        nextEl: '.testimonial-nav-next',
+        prevEl: '.testimonial-nav-prev',
+      },
+      speed: testimonialTransitionSpeed,
+      
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+         },
+         992: {
+            slidesPerView: 2.3,
+         }
+       }
     });
 
 

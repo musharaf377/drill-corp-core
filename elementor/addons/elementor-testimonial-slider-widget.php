@@ -8,7 +8,7 @@
 
 namespace Elementor;
 
-class DrilllCorp_Testimonial_Slider_Item_Widget extends Widget_Base
+class Testimonial_Slider_Item_Widget extends Widget_Base
 {
 
     /**
@@ -212,7 +212,7 @@ class DrilllCorp_Testimonial_Slider_Item_Widget extends Widget_Base
 
 
         ]
-?>
+      ?>
         <div class="testimonial-slider-area">
             <div class="swiper testimonial-slider" data-settings='<?php echo json_encode($slider_settings); ?>'>
                 <div class="swiper-wrapper">
@@ -220,18 +220,20 @@ class DrilllCorp_Testimonial_Slider_Item_Widget extends Widget_Base
                         <div class="swiper-slide">
                             <div class="testimonial-slider-content">
                                 <img src="<?php echo $item['client_image']['url']; ?>" alt="">
-                                <h3><?php echo $item['client_name'] ?></h3>
-                                <p><?php echo $item['client_designation'] ?></p>
+                                <div class="testimonial-slider-content-wrap">
+                                    <h3><?php echo $item['client_name'] ?></h3>
+                                    <p><?php echo $item['client_designation'] ?></p>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
 
                 <div class="slider-nav-wrapper">
-                    <div class="swiper-button-prev slider-nav-arrow nav-prev">
+                    <div class="swiper-button-prev slider-nav-arrow testimonial-nav-prev">
                         <?php echo drilllcorp_get_svg_icon('left_arrow'); ?>
                     </div>
-                    <div class="swiper-button-next slider-nav-arrow nav-next">
+                    <div class="swiper-button-next slider-nav-arrow testimonial-nav-next">
                         <?php echo drilllcorp_get_svg_icon('right_arrow'); ?>
                     </div>
                 </div>
@@ -244,4 +246,4 @@ class DrilllCorp_Testimonial_Slider_Item_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new DrilllCorp_Testimonial_Slider_Item_Widget());
+Plugin::instance()->widgets_manager->register_widget_type(new Testimonial_Slider_Item_Widget());
