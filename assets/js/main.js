@@ -114,7 +114,7 @@
     // Initialize main hero slider
     var testimonialSlider = new Swiper(".testimonial-slider", {
       loop: testimonialLoop,
-      spaceBetween: 24,
+      spaceBetween: 16,
       slidePerView: 1,
       autoplay: testimonialAutoplay ? {
         delay: testimonialAutoplayDelay,
@@ -129,8 +129,10 @@
       breakpoints: {
         768: {
           slidesPerView: 2,
+          spaceBetween: 20,
          },
          992: {
+          spaceBetween: 24,
             slidesPerView: 2.3,
          }
        }

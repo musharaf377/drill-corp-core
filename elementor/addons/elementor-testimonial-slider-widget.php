@@ -187,6 +187,555 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         );
 
         $this->end_controls_section();
+
+        // Style Controls
+        $this->start_controls_section(
+            'slider_style_section',
+            [
+                'label' => esc_html__('Slider Style', 'drilllcorp-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'slider_gap',
+            [
+                'label' => esc_html__('Gap Between Slides', 'drilllcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-area .swiper-slide' => 'padding-right: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'slider_padding',
+            [
+                'label' => esc_html__('Slider Padding', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Logo Style
+        $this->start_controls_section(
+            'logo_style_section',
+            [
+                'label' => esc_html__('Logo Style', 'drilllcorp-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'logo_width',
+            [
+                'label' => esc_html__('Logo Width', 'drilllcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 50,
+                        'max' => 400,
+                        'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 150,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'logo_height',
+            [
+                'label' => esc_html__('Logo Height', 'drilllcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 30,
+                        'max' => 300,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 80,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'logo_margin',
+            [
+                'label' => esc_html__('Logo Margin', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Card Style
+        $this->start_controls_section(
+            'card_style_section',
+            [
+                'label' => esc_html__('Card Style', 'drilllcorp-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_height',
+            [
+                'label' => esc_html__('Card Height', 'drilllcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'vh', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 800,
+                        'step' => 10,
+                    ],
+                    'vh' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 300,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_content_space',
+            [
+                'label' => esc_html__('Content Space', 'drilllcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 500,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 150,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_background_color',
+            [
+                'label' => esc_html__('Background Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'card_background',
+                'label' => esc_html__('Background', 'drilllcorp-core'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .testimonial-slider-content',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_padding',
+            [
+                'label' => esc_html__('Card Padding', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_border_radius',
+            [
+                'label' => esc_html__('Card Border Radius', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'card_border',
+                'label' => esc_html__('Card Border', 'drilllcorp-core'),
+                'selector' => '{{WRAPPER}} .testimonial-slider-content',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Content Style
+        $this->start_controls_section(
+            'content_style_section',
+            [
+                'label' => esc_html__('Content Style', 'drilllcorp-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'content_padding',
+            [
+                'label' => esc_html__('Content Padding', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'content_alignment',
+            [
+                'label' => esc_html__('Alignment', 'drilllcorp-core'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'drilllcorp-core'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'drilllcorp-core'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'drilllcorp-core'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'left',
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content-wrap' => 'text-align: {{VALUE}};',
+                ],
+            ]
+        );
+
+        // Title Style
+        $this->add_control(
+            'title_style_heading',
+            [
+                'label' => esc_html__('Title Style', 'drilllcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => esc_html__('Title Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#333333',
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content-wrap h3' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'label' => esc_html__('Title Typography', 'drilllcorp-core'),
+                'selector' => '{{WRAPPER}} .testimonial-slider-content-wrap h3',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'title_margin',
+            [
+                'label' => esc_html__('Title Margin', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content-wrap h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Description Style
+        $this->add_control(
+            'description_style_heading',
+            [
+                'label' => esc_html__('Description Style', 'drilllcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'description_color',
+            [
+                'label' => esc_html__('Description Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#666666',
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content-wrap p' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'description_typography',
+                'label' => esc_html__('Description Typography', 'drilllcorp-core'),
+                'selector' => '{{WRAPPER}} .testimonial-slider-content-wrap p',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'description_margin',
+            [
+                'label' => esc_html__('Description Margin', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .testimonial-slider-content-wrap p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Navigation Style
+        $this->start_controls_section(
+            'navigation_style_section',
+            [
+                'label' => esc_html__('Navigation Style', 'drilllcorp-core'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'nav_size',
+            [
+                'label' => esc_html__('Navigation Size', 'drilllcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 20,
+                        'max' => 100,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 40,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-nav-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .slider-nav-arrow svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'nav_padding',
+            [
+                'label' => esc_html__('Navigation Padding', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-nav-arrow' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'nav_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'drilllcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 50,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-nav-arrow' => 'border-radius: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('nav_style_tabs');
+
+        // Normal Tab
+        $this->start_controls_tab(
+            'nav_normal',
+            [
+                'label' => esc_html__('Normal', 'drilllcorp-core'),
+            ]
+        );
+
+        $this->add_control(
+            'nav_icon_color',
+            [
+                'label' => esc_html__('Icon Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#333333',
+                'selectors' => [
+                    '{{WRAPPER}} .slider-nav-arrow svg path' => 'stroke: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'nav_bg_color',
+            [
+                'label' => esc_html__('Background Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#f5f5f5',
+                'selectors' => [
+                    '{{WRAPPER}} .slider-nav-arrow' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'nav_border',
+                'label' => esc_html__('Border', 'drilllcorp-core'),
+                'selector' => '{{WRAPPER}} .slider-nav-arrow',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // Hover Tab
+        $this->start_controls_tab(
+            'nav_hover',
+            [
+                'label' => esc_html__('Hover', 'drilllcorp-core'),
+            ]
+        );
+
+        $this->add_control(
+            'nav_icon_hover_color',
+            [
+                'label' => esc_html__('Icon Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .slider-nav-arrow:hover svg path' => 'stroke: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'nav_bg_hover_color',
+            [
+                'label' => esc_html__('Background Hover Color', 'drilllcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#333333',
+                'selectors' => [
+                    '{{WRAPPER}} .slider-nav-arrow:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'nav_border_hover',
+                'label' => esc_html__('Border', 'drilllcorp-core'),
+                'selector' => '{{WRAPPER}} .slider-nav-arrow:hover',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_responsive_control(
+            'nav_margin',
+            [
+                'label' => esc_html__('Navigation Margin', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .slider-nav-arrow' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**

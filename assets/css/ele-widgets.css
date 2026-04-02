@@ -24,6 +24,7 @@
 /* ===========================
   All slider common nav styles
 ============================== */
+
 .slider-nav-wrapper .slider-nav-arrow {
     width: 56px;
     height: 56px;
@@ -231,4 +232,8 @@ video.hero-mobile-video {
     font-size: 18px;
     font-weight: 500;
     line-height: 1.4;
+}
+
+.swiper.testimonial-slider {
+  overflow: visible;
 }
