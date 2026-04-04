@@ -237,3 +237,35 @@ video.hero-mobile-video {
 .swiper.testimonial-slider {
   overflow: visible;
 }
+
+/*=======================
+   Services Slider 
+ ======================= */
+ .services-slider .swiper-slide{
+   background-color: #E2EFF4;
+   padding: 40px;
+ }
+ 
+ .services-slider-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+.services-slider-content .service-card-thumb {
+    width: 100%;
+    height: 100%;
+}
+
+.services-slider-content h3 {
+    font-size: 62px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: rgba(13, 26, 33, 1);
+}
+
+.services-slider-content p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+}
