@@ -9,6 +9,7 @@ Version: 1.0.0
 Text Domain: drilllcorp-core
 */
 
+
 /**
  * If this file is called directly, abort.
  * @package drilllcorp
