@@ -7,4 +7,5 @@ return array(
     'services-slider',
     'faq',
     'blog-feature-with-list',
+    'projects',
 );

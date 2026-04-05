@@ -404,3 +404,29 @@ article.feature-blog-item {
 img.feature-blog-thumb {
   width: 100%;
 }
+
+
+/* ============================
+  Projects Widget
+ ============================== */
+ 
+ .projects-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+}
+
+.project-thumbnail {
+    max-height: 390px;
+    overflow: hidden;
+}
+
+.project-thumbnail img {
+    height: 100%;
+    width: 100%;
+}
+
+.project-item {
+    background: #fff;
+    padding: 20px;
+}
