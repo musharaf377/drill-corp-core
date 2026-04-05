@@ -269,3 +269,7 @@ video.hero-mobile-video {
     font-weight: 500;
     line-height: 1.4;
 }
+
+.services-slider.swiper{
+  overflow: visible;
+}

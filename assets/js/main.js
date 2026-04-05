@@ -152,15 +152,14 @@
          let servicesLoop = servicesSettings.loop !== undefined ? servicesSettings.loop : true;
          let servicesAutoplay = servicesSettings.autoplay !== undefined ? servicesSettings.autoplay : true;
          let servicesAutoplayDelay = servicesSettings.speed !== undefined ? servicesSettings.speed : 3000;
-         let servicesTransitionSpeed = servicesSettings.speed !== undefined ? servicesSettings.speed : 500;
-         let servicesSlidesPerView = servicesSettings.items !== undefined ? servicesSettings.items : 1;
-         let servicesSpaceBetween = servicesSettings.spaceBetween !== undefined ? servicesSettings.spaceBetween : 16;
+         let servicesTransitionSpeed = 500;
+         
 
          // Initialize slider
          new Swiper($slider[0], {
             loop: servicesLoop,
-            spaceBetween: servicesSpaceBetween,
-            slidesPerView: servicesSlidesPerView,
+            spaceBetween: 16,
+            slidesPerView: 1,
             autoplay: servicesAutoplay ? {
                delay: servicesAutoplayDelay,
                disableOnInteraction: false,

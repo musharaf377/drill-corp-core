@@ -293,19 +293,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                     'size' => 150,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content' => 'gap: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'card_background_color',
-            [
-                'label' => esc_html__('Background Color', 'drilllcorp-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#ffffff',
-                'selectors' => [
-                    '{{WRAPPER}} .services-slider .swiper-slide' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .services-slider-content' => 'gap: {{SIZE}}{{UNIT}}  ;',
                 ],
             ]
         );
@@ -313,12 +301,13 @@ class Services_Slider_Item_Widget extends Widget_Base
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
-                'name' => 'card_background',
+                'name' => 'card_background_color_element',
                 'label' => esc_html__('Background', 'drilllcorp-core'),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .services-slider-content',
+                'selector' => '{{WRAPPER}} .services-slider .swiper-slide',
             ]
         );
+       
 
         $this->add_responsive_control(
             'card_padding',
@@ -327,7 +316,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .services-slider .swiper-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -339,7 +328,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .services-slider .swiper-slide' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -349,7 +338,7 @@ class Services_Slider_Item_Widget extends Widget_Base
             [
                 'name' => 'card_border',
                 'label' => esc_html__('Card Border', 'drilllcorp-core'),
-                'selector' => '{{WRAPPER}} .services-slider-content',
+                'selector' => '{{WRAPPER}} .services-slider .swiper-slide',
             ]
         );
 
@@ -374,17 +363,17 @@ class Services_Slider_Item_Widget extends Widget_Base
                     'px' => [
                         'min' => 50,
                         'max' => 400,
-                        'step' => 5,
+                        'step' => 1,
                     ],
                     '%' => [
                         'min' => 10,
                         'max' => 100,
-                        'step' => 5,
+                        'step' => 1,
                     ],
                 ],
                 'default' => [
-                    'unit' => 'px',
-                    'size' => 150,
+                    'unit' => '%',
+                    'size' => '100',
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .services-slider-content img' => 'width: {{SIZE}}{{UNIT}};',
@@ -397,17 +386,27 @@ class Services_Slider_Item_Widget extends Widget_Base
             [
                 'label' => esc_html__('Image Height', 'drilllcorp-core'),
                 'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
+                'size_units' => ['px', '%', 'em'],
                 'range' => [
                     'px' => [
                         'min' => 30,
-                        'max' => 300,
+                        'max' => 500,
                         'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 10,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min' => 1,
+                        'max' => 10,
+                        'step' => 0.1,
                     ],
                 ],
                 'default' => [
-                    'unit' => 'px',
-                    'size' => 80,
+                    'unit' => '%',
+                    'size' => 100,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .services-slider-content img' => 'height: {{SIZE}}{{UNIT}};',
@@ -471,7 +470,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .services-slider-content-wrap' => 'text-align: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -493,7 +492,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap h3' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .services-slider-content-wrap h3' => 'color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -536,7 +535,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#666666',
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .services-slider-content-wrap p' => 'color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -589,7 +588,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn' => 'color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -601,7 +600,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#0073e6',
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn' => 'background-color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -612,7 +611,28 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'label' => esc_html__('Border Color', 'drilllcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn' => 'border-image: linear-gradient(135deg, {{VALUE}}',
+                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'button_typography',
+                'label' => esc_html__('Typography', 'drilllcorp-core'),
+                'selector' => '{{WRAPPER}} .services-slider-content-wrap .primary-btn',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_padding',
+            [
+                'label' => esc_html__('Padding', 'drilllcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -634,7 +654,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn:hover' => 'color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -646,7 +666,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#005bb5',
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn:hover' => 'background-color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -657,7 +677,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'label' => esc_html__('Border Color', 'drilllcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn:hover' => 'border-image: linear-gradient(135deg, {{VALUE}}',
+                    '{{WRAPPER}} .services-slider-content-wrap .primary-btn:hover' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
                 ],
             ]
         );
@@ -696,8 +716,8 @@ class Services_Slider_Item_Widget extends Widget_Base
                     'size' => 40,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .slider-nav-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .slider-nav-arrow svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .slider-nav-arrow' => 'width: {{SIZE}}{{UNIT}}  ; height: {{SIZE}}{{UNIT}}  ;',
+                    '{{WRAPPER}} .slider-nav-arrow svg' => 'width: {{SIZE}}{{UNIT}}  ; height: {{SIZE}}{{UNIT}}  ;',
                 ],
             ]
         );
@@ -754,7 +774,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .slider-nav-arrow svg path' => 'stroke: {{VALUE}};',
+                    '{{WRAPPER}} .slider-nav-arrow svg path' => 'stroke: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -766,7 +786,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#f5f5f5',
                 'selectors' => [
-                    '{{WRAPPER}} .slider-nav-arrow' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .slider-nav-arrow' => 'background-color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -797,7 +817,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .slider-nav-arrow:hover svg path' => 'stroke: {{VALUE}};',
+                    '{{WRAPPER}} .slider-nav-arrow:hover svg path' => 'stroke: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -809,7 +829,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .slider-nav-arrow:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .slider-nav-arrow:hover' => 'background-color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -860,7 +880,8 @@ class Services_Slider_Item_Widget extends Widget_Base
             "loop" => esc_attr($settings['loop']),
             "items" => esc_attr($settings['items'] ?? 1),
             "autoplay" => esc_attr($settings['autoplay']),
-            "speed" => esc_attr($settings['speed']['size'] ?? 500)
+            "speed" => esc_attr($settings['speed']['size'] ?? 500),
+            "spaceBetween" => esc_attr($settings['slider_gap']['size'] ?? 20)
         ];
 
         // Query services from CPT
@@ -894,7 +915,7 @@ class Services_Slider_Item_Widget extends Widget_Base
             return;
         }
       ?>
-        <div class="services-slider-area">
+        <div class="services-slider-area" id="services-slider-<?php echo esc_attr($rand_numb); ?>">
             <div class="swiper services-slider" data-settings='<?php echo json_encode($slider_settings); ?>'>
                 <div class="swiper-wrapper">
                     <?php foreach ($services_data as $service): ?>

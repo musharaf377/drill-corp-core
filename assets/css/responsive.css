@@ -52,4 +52,9 @@
     .slider-progress-content {
         display: none;
     }
+
+    /* Service Slider*/
+     .services-slider-content {
+        grid-template-columns: 1fr;
+    }
 }
