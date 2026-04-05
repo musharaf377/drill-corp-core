@@ -183,6 +183,49 @@
       });
 
 
+      /* ========================
+       *  FAQ Accordion
+       =========================*/
+      $(document).on('click', '.faq-card-header', function(e) {
+         e.preventDefault();
+         e.stopPropagation();
+         
+         var $card = $(this).closest('.faq-card');
+         var $wrapper = $card.closest('.faq-accordion-wrapper');
+         var $body = $card.find('.faq-card-body');
+         var isActive = $card.hasClass('active');
+         
+         // Close all other cards in this wrapper
+         $wrapper.find('.faq-card').each(function() {
+            var $thisCard = $(this);
+            if ($thisCard[0] !== $card[0]) {
+               $thisCard.removeClass('active');
+               $thisCard.find('.faq-card-header').attr('aria-expanded', 'false');
+               $thisCard.find('.faq-card-body').slideUp(300);
+            }
+         });
+         
+         // Toggle current card
+         if (isActive) {
+            $card.removeClass('active');
+            $(this).attr('aria-expanded', 'false');
+            $body.slideUp(300);
+         } else {
+            $card.addClass('active');
+            $(this).attr('aria-expanded', 'true');
+            $body.slideDown(300);
+         }
+      });
+      
+      // Keyboard support - Enter and Space keys
+      $(document).on('keydown', '.faq-card-header', function(e) {
+         if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            $(this).trigger('click');
+         }
+      });
+
+
    });
 
 

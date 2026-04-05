@@ -23,12 +23,16 @@
     .hero-mobile-video{
         display: block;
     }
+
+    /* Faq Area */
+    .faq-arrow-wrap {
+        margin-top: 8px;
+    }
 }
 
 @media (max-width: 480px) {
 
     /* Hero area */
-
     .hero-slider-area .swiper.hero-slider {
         max-height: 600px;
     }
@@ -57,4 +61,19 @@
      .services-slider-content {
         grid-template-columns: 1fr;
     }
+
+    /* Feature Blog with list Widget */
+    
+    .feature-blog-item .feature-blog-item-thumb img {
+        width: 108px;
+        height: 84px;
+        object-fit: cover;
+    }
+
+    /* Faq Area */
+    .faq-arrow-wrap {
+        margin-top: 4px;
+    }
+
+
 }

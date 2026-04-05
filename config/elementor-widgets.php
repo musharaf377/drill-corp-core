@@ -5,4 +5,6 @@ return array(
     'hero-slider',
     'testimonial-slider',
     'services-slider',
+    'faq',
+    'blog-feature-with-list',
 );
