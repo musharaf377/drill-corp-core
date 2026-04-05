@@ -1,4 +1,3 @@
-
 (function ($) {
    'use strict'
 
@@ -111,11 +110,11 @@
       let testimonialTransitionSpeed = 500;
 
 
-      // Initialize main hero slider
+      // Initialize testimonial slider
       var testimonialSlider = new Swiper(".testimonial-slider", {
          loop: testimonialLoop,
          spaceBetween: 16,
-         slidePerView: 1,
+         slidesPerView: 1,
          autoplay: testimonialAutoplay ? {
             delay: testimonialAutoplayDelay,
             disableOnInteraction: false,
@@ -153,7 +152,7 @@
          let servicesAutoplay = servicesSettings.autoplay !== undefined ? servicesSettings.autoplay : true;
          let servicesAutoplayDelay = servicesSettings.speed !== undefined ? servicesSettings.speed : 3000;
          let servicesTransitionSpeed = 500;
-         
+
 
          // Initialize slider
          new Swiper($slider[0], {
@@ -189,12 +188,12 @@
       $(document).on('click', '.faq-card-header', function(e) {
          e.preventDefault();
          e.stopPropagation();
-         
+
          var $card = $(this).closest('.faq-card');
          var $wrapper = $card.closest('.faq-accordion-wrapper');
          var $body = $card.find('.faq-card-body');
          var isActive = $card.hasClass('active');
-         
+
          // Close all other cards in this wrapper
          $wrapper.find('.faq-card').each(function() {
             var $thisCard = $(this);
@@ -204,7 +203,7 @@
                $thisCard.find('.faq-card-body').slideUp(300);
             }
          });
-         
+
          // Toggle current card
          if (isActive) {
             $card.removeClass('active');
@@ -216,7 +215,7 @@
             $body.slideDown(300);
          }
       });
-      
+
       // Keyboard support - Enter and Space keys
       $(document).on('keydown', '.faq-card-header', function(e) {
          if (e.key === 'Enter' || e.key === ' ') {
@@ -224,7 +223,6 @@
             $(this).trigger('click');
          }
       });
-
 
    });
 

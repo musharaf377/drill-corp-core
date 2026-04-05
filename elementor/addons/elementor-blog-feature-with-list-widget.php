@@ -93,13 +93,6 @@ class Musemind_Blog_Feature_With_List extends Widget_Base {
             ],
         ]);
 
-        $this->add_control('only_featured', [
-            'label'        => esc_html__('Filter By Meta Field', 'musemind-core'),
-            'type'         => Controls_Manager::SWITCHER,
-            'return_value' => 'yes',
-            'default'      => '',
-        ]);
-
         $this->add_control('show_category', [
             'label'        => esc_html__('Show Category', 'musemind-core'),
             'type'         => Controls_Manager::SWITCHER,
@@ -246,6 +239,92 @@ class Musemind_Blog_Feature_With_List extends Widget_Base {
         $this->end_controls_section();
 
         // -------------------------
+        // Style: Featured Card
+        // -------------------------
+        $this->start_controls_section('section_featured_card_style', [
+            'label' => esc_html__('Featured Card Style', 'musemind-core'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]);
+
+        $this->add_control('featured_card_bg_color', [
+            'label' => esc_html__('Background Color', 'musemind-core'),
+            'type'  => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .feature-blog-featured' => 'background-color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('featured_card_padding', [
+            'label'      => esc_html__('Content Padding', 'musemind-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem'],
+            'default'    => ['top' => 30, 'right' => 30, 'bottom' => 30, 'left' => 30, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-featured .feature-blog-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('featured_card_radius', [
+            'label'      => esc_html__('Border Radius', 'musemind-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-featured' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_group_control(Group_Control_Border::get_type(), [
+            'name'     => 'featured_card_border',
+            'label'    => esc_html__('Border', 'musemind-core'),
+            'selector' => '{{WRAPPER}} .feature-blog-featured',
+        ]);
+
+        $this->end_controls_section();
+
+        // -------------------------
+        // Style: List Card
+        // -------------------------
+        $this->start_controls_section('section_list_card_style', [
+            'label' => esc_html__('List Card Style', 'musemind-core'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]);
+
+        $this->add_control('list_card_bg_color', [
+            'label' => esc_html__('Background Color', 'musemind-core'),
+            'type'  => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .feature-blog-item' => 'background-color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('list_card_padding', [
+            'label'      => esc_html__('Card Padding', 'musemind-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem'],
+            'default'    => ['top' => 20, 'right' => 20, 'bottom' => 20, 'left' => 20, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('list_card_radius', [
+            'label'      => esc_html__('Border Radius', 'musemind-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_group_control(Group_Control_Border::get_type(), [
+            'name'     => 'list_card_border',
+            'label'    => esc_html__('Border', 'musemind-core'),
+            'selector' => '{{WRAPPER}} .feature-blog-item',
+        ]);
+
+        $this->end_controls_section();
+
+        // -------------------------
         // Style: Images
         // -------------------------
         $this->start_controls_section('section_style_images', [
@@ -266,9 +345,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base {
         $this->end_controls_section();
     }
 
+    
+
     protected function render() {
         $settings = $this->get_settings_for_display();
 
+        // Base query arguments - get ALL posts
         $args = [
             'post_type'           => 'post',
             'posts_per_page'      => (int) ($settings['posts_per_page'] ?? 6),
@@ -281,19 +363,40 @@ class Musemind_Blog_Feature_With_List extends Widget_Base {
             $args['cat'] = (int) $settings['category'];
         }
 
-        if ( ! empty($settings['only_featured']) && $settings['only_featured'] === 'yes' ) {
-            $args['meta_query'] = [
-                [
-                    'key'     => 'musemind_blog_options',
-                    'value'   => '"editor-picks"',
-                    'compare' => 'LIKE',
-                ],
-            ];
+        $query = new \WP_Query($args);
+
+        if ( ! $query->have_posts() ) {
+            echo '<p>' . esc_html__('No blog posts found.', 'musemind-core') . '</p>';
+            return;
         }
 
-        $q = new \WP_Query($args);
+        // Separate featured and non-featured posts
+        $featured_posts = [];
+        $list_posts = [];
 
-        if ( ! $q->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            
+            // Check if this post has the feature checkbox
+            $meta = get_post_meta(get_the_ID(), 'drilllcorp_blog_options', true);
+            $is_featured = false;
+            
+            if ( is_array($meta) && isset($meta['blog_filter_key']) && is_array($meta['blog_filter_key']) ) {
+                if ( in_array('feature', $meta['blog_filter_key']) ) {
+                    $is_featured = true;
+                }
+            }
+            
+            if ( $is_featured ) {
+                $featured_posts[] = get_post();
+            } else {
+                $list_posts[] = get_post();
+            }
+        }
+
+        wp_reset_postdata();
+
+        if ( empty($featured_posts) && empty($list_posts) ) {
             echo '<p>' . esc_html__('No blog posts found.', 'musemind-core') . '</p>';
             return;
         }
@@ -301,69 +404,101 @@ class Musemind_Blog_Feature_With_List extends Widget_Base {
         <div class="feature-blog-wrapper">
             <div class="feature-blog-grid">
                 <?php
-                $index = 0;
+                // Display FIRST featured post in the featured section
+                if ( ! empty($featured_posts) ) {
+                    $featured_post = $featured_posts[0];
+                    setup_postdata($featured_post);
+                    ?>
+                    <article class="feature-blog-featured">
+                        <?php if ( has_post_thumbnail($featured_post->ID) ) : ?>
+                            <a class="feature-blog-thumb-link" href="<?php echo esc_url(get_permalink($featured_post->ID)); ?>">
+                                <img class="feature-blog-thumb"
+                                     src="<?php echo esc_url(get_the_post_thumbnail_url($featured_post->ID, 'large')); ?>"
+                                     alt="<?php echo esc_attr(get_the_title($featured_post->ID)); ?>">
+                            </a>
+                        <?php endif; ?>
 
-                while ( $q->have_posts() ) {
-                    $q->the_post();
-
-                    if ( $index === 0 ) { ?>
-                        <article class="feature-blog-featured">
-                            <?php if ( has_post_thumbnail() ) : ?>
-                                <a class="feature-blog-thumb-link" href="<?php echo esc_url(get_permalink()); ?>">
-                                    <img class="feature-blog-thumb"
-                                         src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'large')); ?>"
-                                         alt="<?php echo esc_attr(get_the_title()); ?>">
-                                </a>
+                        <div class="feature-blog-content feature-blog-card-content">
+                            <?php if ( ! empty($settings['show_category']) && $settings['show_category'] === 'yes' ) : ?>
+                                <div class="feature-blog-cats">
+                                    <?php echo wp_kses_post(get_the_category_list(' ', '', $featured_post->ID)); ?>
+                                </div>
                             <?php endif; ?>
 
-                            <div class="feature-blog-content">
-                                <?php if ( ! empty($settings['show_category']) && $settings['show_category'] === 'yes' ) : ?>
-                                    <div class="feature-blog-cats">
-                                        <?php echo wp_kses_post(get_the_category_list(' ')); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <h2 class="feature-blog-title">
-                                    <a href="<?php echo esc_url(get_permalink()); ?>">
-                                        <?php echo esc_html(get_the_title()); ?>
-                                    </a>
-                                </h2>
-                            </div>
-                        </article>
-
-                        <div class="feature-blog-list">
-                    <?php } else { ?>
-                        <article class="feature-blog-item">
-                            <?php if ( ! empty($settings['show_list_thumb']) && $settings['show_list_thumb'] === 'yes' && has_post_thumbnail() ) : ?>
-                                <a class="feature-blog-item-thumb" href="<?php echo esc_url(get_permalink()); ?>">
-                                    <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'thumbnail')); ?>"
-                                         alt="<?php echo esc_attr(get_the_title()); ?>">
-                                </a>
+                            <?php if ( ! empty($settings['show_excerpt']) && $settings['show_excerpt'] === 'yes' ) : ?>
+                                <div class="feature-blog-excerpt">
+                                    <?php echo wp_trim_words(get_the_excerpt($featured_post->ID), (int) ($settings['excerpt_length'] ?? 18)); ?>
+                                </div>
                             <?php endif; ?>
 
-                            <div class="feature-blog-item-content">
-                                <?php if ( ! empty($settings['show_category']) && $settings['show_category'] === 'yes' ) : ?>
-                                    <div class="feature-blog-cats">
-                                        <?php echo wp_kses_post(get_the_category_list(' ')); ?>
-                                    </div>
-                                <?php endif; ?>
-                                <h3 class="feature-blog-item-title">
-                                    <a href="<?php echo esc_url(get_permalink()); ?>">
-                                        <?php echo esc_html(get_the_title()); ?>
-                                    </a>
-                                </h3>
+                            <h2 class="feature-blog-title">
+                                <a href="<?php echo esc_url(get_permalink($featured_post->ID)); ?>">
+                                    <?php echo esc_html(get_the_title($featured_post->ID)); ?>
+                                </a>
+                            </h2>
+
+                            <div class="blog-meta">
+                                <div class="feature-blog-date">
+                                    <?php echo get_the_date('', $featured_post->ID); ?>
+                                </div>
+                                <div class="blog-read-time"><?php //echo $this->render_read_time( $featured_post->ID ); ?></div>
                             </div>
-                        </article>
-                    <?php }
-                    $index++;
+                         
+                        </div>
+                    </article>
+                    <?php
+                    wp_reset_postdata();
                 }
+                ?>
+            </div>
+
+            <div class="feature-blog-list">
+                <?php
+                // Display ALL other posts (non-featured + remaining featured posts)
+                $display_posts = array_merge($list_posts, array_slice($featured_posts, 1)); // Skip first featured post
+
+                foreach ( $display_posts as $post_item ) {
+                    setup_postdata($post_item);
+                    ?>
+                    <article class="feature-blog-item feature-blog-card">
+                        <?php if ( ! empty($settings['show_list_thumb']) && $settings['show_list_thumb'] === 'yes' && has_post_thumbnail($post_item->ID) ) : ?>
+                            <a class="feature-blog-item-thumb" href="<?php echo esc_url(get_permalink($post_item->ID)); ?>">
+                                <img src="<?php echo esc_url(get_the_post_thumbnail_url($post_item->ID, 'thumbnail')); ?>"
+                                     alt="<?php echo esc_attr(get_the_title($post_item->ID)); ?>">
+                            </a>
+                        <?php endif; ?>
+
+                        <div class="feature-blog-item-content feature-blog-card-content">
+                            <?php if ( ! empty($settings['show_category']) && $settings['show_category'] === 'yes' ) : ?>
+                                <div class="feature-blog-cats">
+                                    <?php echo wp_kses_post(get_the_category_list(' ', '', $post_item->ID)); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( ! empty($settings['show_date']) && $settings['show_date'] === 'yes' ) : ?>
+                                <div class="feature-blog-item-date">
+                                    <?php echo get_the_date('', $post_item->ID); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <h3 class="feature-blog-item-title">
+                                <a href="<?php echo esc_url(get_permalink($post_item->ID)); ?>">
+                                    <?php echo esc_html(get_the_title($post_item->ID)); ?>
+                                </a>
+                            </h3>
+                            <div class="blog-meta">
+                                <div class="feature-blog-date">
+                                    <?php echo get_the_date('', $post_item->ID); ?>
+                                </div>
+                                <div class="blog-read-time"><?php //echo $this->render_read_time( $post_item->ID ); ?></div>
+                            </div>
+                        </div>
+                    </article>
+                    <?php
+                }
+
 
                 wp_reset_postdata();
-
-                // close list only if it was opened
-                if ( $index > 0 ) {
-                    echo '</div>';
-                }
                 ?>
             </div>
         </div>
