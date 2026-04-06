@@ -523,7 +523,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                                     <?php echo get_the_date('', $featured_post->ID); ?>
                                 </div>
                                 <div class="blog-meta-dot"></div>
-                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($featured_post->ID); ?> Min Read</div>
+                                <div class="blog-read-time"><?php //echo drillcorp()->get_reading_time($featured_post->ID); ?> Min Read</div>
                             </div>
                         </div>
                     </article>
@@ -571,8 +571,8 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                                     </div>
                                 <?php endif; ?>
                                 <div class="blog-meta-dot"></div>
-                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($featured_post->ID); ?> Min Read</div>
-                                ?>
+                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($post_item->ID); ?> Min Read</div>
+                              
                             </div>
                         </div>
 
