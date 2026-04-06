@@ -165,18 +165,18 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_control('title_color', [
-            'label' => esc_html__('Color', 'musemind-core'),
+            'label' => esc_html__('Featured Title Color', 'musemind-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .feature-blog-title a, {{WRAPPER}} .feature-blog-item-title a' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .feature-blog-title a' => 'color: {{VALUE}};',
             ],
         ]);
 
         $this->add_control('title_hover_color', [
-            'label' => esc_html__('Hover Color', 'musemind-core'),
+            'label' => esc_html__('Featured Title Hover Color', 'musemind-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .feature-blog-title a:hover, {{WRAPPER}} .feature-blog-item-title a:hover' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .feature-blog-title a:hover' => 'color: {{VALUE}};',
             ],
         ]);
 
@@ -186,86 +186,52 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             'selector' => '{{WRAPPER}} .feature-blog-title a',
         ]);
 
-        $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name'     => 'list_title_typography',
-            'label'    => esc_html__('List Title Typography', 'musemind-core'),
-            'selector' => '{{WRAPPER}} .feature-blog-item-title a',
-        ]);
-
-        $this->add_responsive_control('featured_title_margin', [
-            'label'      => esc_html__('Featured Title Margin', 'musemind-core'),
-            'type'       => Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%', 'em', 'rem'],
-            'default'    => ['top' => 0, 'right' => 0, 'bottom' => 15, 'left' => 0, 'unit' => 'px'],
-            'selectors'  => [
-                '{{WRAPPER}} .feature-blog-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]);
-
-        $this->add_responsive_control('featured_title_padding', [
-            'label'      => esc_html__('Featured Title Padding', 'musemind-core'),
-            'type'       => Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%', 'em', 'rem'],
-            'selectors'  => [
-                '{{WRAPPER}} .feature-blog-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]);
-
-        $this->add_responsive_control('list_title_margin', [
-            'label'      => esc_html__('List Title Margin', 'musemind-core'),
-            'type'       => Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%', 'em', 'rem'],
-            'default'    => ['top' => 0, 'right' => 0, 'bottom' => 10, 'left' => 0, 'unit' => 'px'],
-            'selectors'  => [
-                '{{WRAPPER}} .feature-blog-item-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]);
-
-        $this->add_responsive_control('list_title_padding', [
-            'label'      => esc_html__('List Title Padding', 'musemind-core'),
-            'type'       => Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%', 'em', 'rem'],
-            'selectors'  => [
-                '{{WRAPPER}} .feature-blog-item-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]);
-
         $this->end_controls_section();
 
         // -------------------------
         // Style: Meta + Excerpt
         // -------------------------
         $this->start_controls_section('section_style_meta', [
-            'label' => esc_html__('Meta & Excerpt', 'musemind-core'),
+            'label' => esc_html__('Meta', 'musemind-core'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('meta_color', [
-            'label' => esc_html__('Meta Color', 'musemind-core'),
+            'label' => esc_html__('Category Color', 'musemind-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .feature-blog-cats, {{WRAPPER}} .feature-blog-item-date' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .feature-blog-cats a' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .feature-blog-cat-dot' => 'background-color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('category_background', [
+            'label'      => esc_html__('Category Background', 'musemind-core'),
+            'type'       => Controls_Manager::COLOR,
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-cats' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name'     => 'meta_typography',
-            'label'    => esc_html__('Meta Typography', 'musemind-core'),
-            'selector' => '{{WRAPPER}} .feature-blog-cats, {{WRAPPER}} .feature-blog-item-date',
+            'name'     => 'category_typography',
+            'label'    => esc_html__('Category Typography', 'musemind-core'),
+            'selector' => '{{WRAPPER}} .feature-blog-cats a',
         ]);
 
-        $this->add_control('excerpt_color', [
-            'label' => esc_html__('Excerpt Color', 'musemind-core'),
+        $this->add_control('meta_text_color', [
+            'label' => esc_html__('Date & Read Time Color', 'musemind-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .feature-blog-excerpt' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .feature-blog-date, {{WRAPPER}} .blog-read-time' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .blog-meta-dot' => 'background-color: {{VALUE}};',
             ],
         ]);
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
-            'name'     => 'excerpt_typography',
-            'label'    => esc_html__('Excerpt Typography', 'musemind-core'),
-            'selector' => '{{WRAPPER}} .feature-blog-excerpt',
+            'name'     => 'meta_text_typography',
+            'label'    => esc_html__('Date & Read Time Typography', 'musemind-core'),
+            'selector' => '{{WRAPPER}} .feature-blog-date, {{WRAPPER}} .blog-read-time',
         ]);
 
         $this->end_controls_section();
@@ -311,6 +277,25 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             'selector' => '{{WRAPPER}} .feature-blog-featured',
         ]);
 
+        $this->add_responsive_control('featured_title_margin', [
+            'label'      => esc_html__('Title Margin', 'musemind-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem'],
+            'default'    => ['top' => 0, 'right' => 0, 'bottom' => 15, 'left' => 0, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('featured_title_padding', [
+            'label'      => esc_html__('Title Padding', 'musemind-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
         $this->end_controls_section();
 
         // -------------------------
@@ -354,23 +339,91 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             'selector' => '{{WRAPPER}} .feature-blog-item',
         ]);
 
-        $this->end_controls_section();
-
-        // -------------------------
-        // Style: Images
-        // -------------------------
-        $this->start_controls_section('section_style_images', [
-            'label' => esc_html__('Images', 'musemind-core'),
-            'tab'   => Controls_Manager::TAB_STYLE,
+        $this->add_control('list_title_color', [
+            'label' => esc_html__('Title Color', 'musemind-core'),
+            'type'  => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .feature-blog-item-title a' => 'color: {{VALUE}};',
+            ],
         ]);
 
-        $this->add_responsive_control('thumb_radius', [
-            'label'      => esc_html__('Border Radius', 'musemind-core'),
+        $this->add_control('list_title_hover_color', [
+            'label' => esc_html__('Title Hover Color', 'musemind-core'),
+            'type'  => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .feature-blog-item-title a:hover' => 'color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'name'     => 'list_title_typography_card',
+            'label'    => esc_html__('Title Typography', 'musemind-core'),
+            'selector' => '{{WRAPPER}} .feature-blog-item-title a',
+        ]);
+
+        $this->add_responsive_control('list_title_margin', [
+            'label'      => esc_html__('Title Margin', 'musemind-core'),
             'type'       => Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%'],
+            'size_units' => ['px', '%', 'em', 'rem'],
+            'default'    => ['top' => 0, 'right' => 0, 'bottom' => 10, 'left' => 0, 'unit' => 'px'],
             'selectors'  => [
-                '{{WRAPPER}} .feature-blog-thumb, {{WRAPPER}} .feature-blog-item-thumb img' =>
-                'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .feature-blog-item-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('list_card_width', [
+            'label'      => esc_html__('Card Width', 'musemind-core'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'vw'],
+            'range'      => [
+                'px' => ['min' => 200, 'max' => 1200],
+                '%'  => ['min' => 50, 'max' => 100],
+                'vw' => ['min' => 50, 'max' => 100],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-item' => 'width: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('list_card_height', [
+            'label'      => esc_html__('Card Height', 'musemind-core'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', 'vh', '%'],
+            'range'      => [
+                'px' => ['min' => 100, 'max' => 800],
+                'vh' => ['min' => 20, 'max' => 100],
+                '%'  => ['min' => 20, 'max' => 100],
+            ],
+            'default'    => ['size' => 100, 'unit' => '%'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-item' => 'height: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('list_thumb_width', [
+            'label'      => esc_html__('Image Width', 'musemind-core'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range'      => [
+                'px' => ['min' => 50, 'max' => 600],
+                '%'  => ['min' => 10, 'max' => 100],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-item-thumb' => 'width: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('list_thumb_height', [
+            'label'      => esc_html__('Image Height', 'musemind-core'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range'      => [
+                'px' => ['min' => 50, 'max' => 600],
+                '%'  => ['min' => 10, 'max' => 100],
+            ],
+            'default'    => ['size' => 100, 'unit' => '%'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-item-thumb img' => 'height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -469,7 +522,8 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                                 <div class="feature-blog-date">
                                     <?php echo get_the_date('', $featured_post->ID); ?>
                                 </div>
-                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($featured_post->ID); ?></div>
+                                <div class="blog-meta-dot"></div>
+                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($featured_post->ID); ?> Min Read</div>
                             </div>
                         </div>
                     </article>
@@ -512,14 +566,16 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                             </h3>
                             <div class="blog-meta">
                                 <?php if (! empty($settings['show_date']) && $settings['show_date'] === 'yes') : ?>
-                                    <div class="feature-blog-item-date">
+                                    <div class="feature-blog-date">
                                         <?php echo get_the_date('', $post_item->ID); ?>
                                     </div>
                                 <?php endif; ?>
-                                <div class="blog-read-time"><?php //echo $this->render_read_time( $post_item->ID ); 
-                                                            ?></div>
+                                <div class="blog-meta-dot"></div>
+                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($featured_post->ID); ?> Min Read</div>
+                                ?>
                             </div>
                         </div>
+
                     </article>
                 <?php
                 }

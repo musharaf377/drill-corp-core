@@ -70,9 +70,17 @@
     /* Feature Blog with list Widget */
     
     .feature-blog-item .feature-blog-item-thumb img {
-        width: 108px;
-        height: 84px;
+        width: 100%;
+        height: auto;
         object-fit: cover;
+    }
+
+    .feature-blog-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    article.feature-blog-item {
+        flex-direction: column;
     }
 
     /* Faq Area */
