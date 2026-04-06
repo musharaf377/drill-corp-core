@@ -48,5 +48,29 @@ return array(
             "show_in_quick_edit" => true,
         )
     ),
+    // Career Category Taxonomy
+    array(
+        'taxonomy' => 'career_cat',
+        'object_type' => 'career',
+        'args' => array(
+            "labels" => array(
+                "name" => esc_html__("Career Category", 'drillcorp-core'),
+                "singular_name" => esc_html__("Career Category", 'drillcorp-core'),
+                "menu_name" => esc_html__("Career Category", 'drillcorp-core'),
+                "all_items" => esc_html__("All Career Category", 'drillcorp-core'),
+                "add_new_item" => esc_html__("Add New Career Category", 'drillcorp-core')
+            ),
+            "public" => true,
+            "hierarchical" => true,
+            "show_ui" => true,
+            "show_in_menu" => true,
+            "show_in_nav_menus" => true,
+            "query_var" => true,
+            "rewrite" => array('slug' => 'career_cat', 'with_front' => true),
+            "show_admin_column" => true,
+            "show_in_rest" => true,
+            "show_in_quick_edit" => true,
+        )
+    ),
 );
 

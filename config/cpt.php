@@ -73,5 +73,43 @@ return array(
             "show_in_rest" => true,
             'query_var' => true
         )
+    ],
+
+    // Career post type
+    [
+        'post_type' => 'career',
+        'args' => array(
+            'label' => esc_html__('Careers', 'drillcorp-core'),
+            'description' => esc_html__('Careers', 'drillcorp-core'),
+            'labels' => array(
+                'name' => esc_html_x('Careers', 'Post Type General Name', 'drillcorp-core'),
+                'singular_name' => esc_html_x('Career', 'Post Type Singular Name', 'drillcorp-core'),
+                'menu_name' => esc_html__('Careers', 'drillcorp-core'),
+                'all_items' => esc_html__('All Careers', 'drillcorp-core'),
+                'view_item' => esc_html__('View Career', 'drillcorp-core'),
+                'add_new_item' => esc_html__('Add New Career', 'drillcorp-core'),
+                'add_new' => esc_html__('Add New Career', 'drillcorp-core'),
+                'edit_item' => esc_html__('Edit Career', 'drillcorp-core'),
+                'update_item' => esc_html__('Update Career', 'drillcorp-core'),
+                'search_items' => esc_html__('Search Careers', 'drillcorp-core'),
+                'not_found' => esc_html__('Not Found', 'drillcorp-core'),
+                'not_found_in_trash' => esc_html__('Not found in Trash', 'drillcorp-core'),
+                'featured_image' => esc_html__('Career Image', 'drillcorp-core'),
+                'remove_featured_image' => esc_html__('Remove Career Image', 'drillcorp-core'),
+                'set_featured_image' => esc_html__('Set Career Image', 'drillcorp-core'),
+            ),
+            'supports' => array('title', 'thumbnail', 'excerpt', 'editor', 'comments'),
+            'taxonomies' => array('post_tag'), // this is IMPORTANT
+            'hierarchical' => false,
+            'public' => true,
+            "publicly_queryable" => true,
+            'show_ui' => true,
+            "rewrite" => array('slug' => 'careers', 'with_front' => true),
+            'can_export' => true,
+            'capability_type' => 'post',
+            "show_in_rest" => true,
+            'query_var' => true
+        )
     ]
+
 );
