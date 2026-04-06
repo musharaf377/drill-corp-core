@@ -636,55 +636,54 @@ class Services_List_Item_Widget extends Widget_Base
 
         $this->end_controls_section();
 
-        // Navigation Style
+        // Service Feature List Controls
         $this->start_controls_section(
-            'navigation_style_section',
+            'feature_list_section',
             [
-                'label' => esc_html__('Navigation Style', 'drillcorp-core'),
+                'label' => esc_html__('Service Feature List', 'drillcorp-core'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'show_feature_list',
+            [
+                'label' => esc_html__('Show Feature List', 'drillcorp-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'drillcorp-core'),
+                'label_off' => esc_html__('No', 'drillcorp-core'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'feature_icon',
+            [
+                'label' => esc_html__('Feature Icon', 'drillcorp-core'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => get_template_directory_uri() . '/assets/img/service-check.png',
+                ],
+                'media_type' => 'image',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Feature List Style
+        $this->start_controls_section(
+            'feature_list_style_section',
+            [
+                'label' => esc_html__('Feature List Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_responsive_control(
-            'nav_size',
+            'feature_list_gap',
             [
-                'label' => esc_html__('Navigation Size', 'drillcorp-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 20,
-                        'max' => 100,
-                        'step' => 5,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 40,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .list-nav-arrow' => 'width: {{SIZE}}{{UNIT}}  ; height: {{SIZE}}{{UNIT}}  ;',
-                    '{{WRAPPER}} .list-nav-arrow svg' => 'width: {{SIZE}}{{UNIT}}  ; height: {{SIZE}}{{UNIT}}  ;',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'nav_padding',
-            [
-                'label' => esc_html__('Navigation Padding', 'drillcorp-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .list-nav-arrow' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'nav_border_radius',
-            [
-                'label' => esc_html__('Border Radius', 'drillcorp-core'),
+                'label' => esc_html__('Feature Gap', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -696,113 +695,78 @@ class Services_List_Item_Widget extends Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 50,
+                    'size' => 8,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .list-nav-arrow' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .service-feature-list' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
-
-        $this->start_controls_tabs('nav_style_tabs');
-
-        // Normal Tab
-        $this->start_controls_tab(
-            'nav_normal',
-            [
-                'label' => esc_html__('Normal', 'drillcorp-core'),
-            ]
-        );
-
-        $this->add_control(
-            'nav_icon_color',
-            [
-                'label' => esc_html__('Icon Color', 'drillcorp-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#333333',
-                'selectors' => [
-                    '{{WRAPPER}} .list-nav-arrow svg path' => 'stroke: {{VALUE}}  ;',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'nav_bg_color',
-            [
-                'label' => esc_html__('Background Color', 'drillcorp-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#f5f5f5',
-                'selectors' => [
-                    '{{WRAPPER}} .list-nav-arrow' => 'background-color: {{VALUE}}  ;',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'nav_border',
-                'label' => esc_html__('Border', 'drillcorp-core'),
-                'selector' => '{{WRAPPER}} .list-nav-arrow',
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        // Hover Tab
-        $this->start_controls_tab(
-            'nav_hover',
-            [
-                'label' => esc_html__('Hover', 'drillcorp-core'),
-            ]
-        );
-
-        $this->add_control(
-            'nav_icon_hover_color',
-            [
-                'label' => esc_html__('Icon Color', 'drillcorp-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#ffffff',
-                'selectors' => [
-                    '{{WRAPPER}} .list-nav-arrow:hover svg path' => 'stroke: {{VALUE}}  ;',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'nav_bg_hover_color',
-            [
-                'label' => esc_html__('Background Hover Color', 'drillcorp-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#333333',
-                'selectors' => [
-                    '{{WRAPPER}} .list-nav-arrow:hover' => 'background-color: {{VALUE}}  ;',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'nav_border_hover',
-                'label' => esc_html__('Border', 'drillcorp-core'),
-                'selector' => '{{WRAPPER}} .list-nav-arrow:hover',
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
 
         $this->add_responsive_control(
-            'nav_margin',
+            'feature_icon_width',
             [
-                'label' => esc_html__('Navigation Margin', 'drillcorp-core'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .list-nav-arrow' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                'label' => esc_html__('Icon Width', 'drillcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 50,
+                        'step' => 1,
+                    ],
                 ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 16,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .service-feature-single .service-feature-icon' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'feature_gap_spacing',
+            [
+                'label' => esc_html__('Icon to Title Gap', 'drillcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 30,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .service-feature-single' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'feature_title_color',
+            [
+                'label' => esc_html__('Title Color', 'drillcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => 'rgba(13, 26, 33, 1)',
+                'selectors' => [
+                    '{{WRAPPER}} .service-feature-single .service-feature-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'feature_title_typography',
+                'label' => esc_html__('Title Typography', 'drillcorp-core'),
+                'selector' => '{{WRAPPER}} .service-feature-single .service-feature-title',
             ]
         );
 
@@ -837,6 +801,24 @@ class Services_List_Item_Widget extends Widget_Base
         if ($query->have_posts()) {
             while ($query->have_posts()) {
                 $query->the_post();
+                $service_id = get_the_ID();
+
+                // Get feature list from post meta
+                $feature_list_meta = get_post_meta($service_id, 'drillcorp_services_options', true);
+                
+                $feature_list = [];
+
+                // The meta is nested: ['services_feature'] contains the repeater array
+                if (!empty($feature_list_meta) && isset($feature_list_meta['services_feature']) && is_array($feature_list_meta['services_feature'])) {
+                    foreach ($feature_list_meta['services_feature'] as $feature) {
+                        if (isset($feature['services_feature_title']) && !empty($feature['services_feature_title'])) {
+                            $feature_list[] = [
+                                'title' => $feature['services_feature_title'],
+                            ];
+                        }
+                    }
+                }
+
                 $services_data[] = [
                     'ID' => get_the_ID(),
                     'title' => get_the_title(),
@@ -844,6 +826,7 @@ class Services_List_Item_Widget extends Widget_Base
                     'excerpt' => get_the_excerpt(),
                     'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
                     'link' => get_permalink(),
+                    'feature_list' => $feature_list,
                 ];
             }
             wp_reset_postdata();
@@ -864,6 +847,22 @@ class Services_List_Item_Widget extends Widget_Base
                             <div class="services-list-content-wrap">
                                 <h3><?php echo esc_html($service['title']); ?></h3>
                                 <p><?php echo esc_html($service['excerpt'] ? $service['excerpt'] : wp_trim_words($service['content'], 30)); ?></p>
+
+                                <?php 
+                                $icon_url = isset($settings['feature_icon']['url']) ? $settings['feature_icon']['url'] : get_template_directory_uri() . '/assets/img/service-check.png';
+                                
+                                if ('yes' === $settings['show_feature_list'] && !empty($service['feature_list'])) : 
+                                ?>
+                                    <div class="service-feature-list">
+                                        <?php foreach ($service['feature_list'] as $feature) : ?>
+                                            <div class="service-feature-single">
+                                                <img class="service-feature-icon" src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($feature['title']); ?>">
+                                                <p class="service-feature-title"><?php echo esc_html($feature['title']); ?></p>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
+                                
                                 <a class="primary-btn" href="<?php echo esc_url($service['link']); ?>">Explore This Service</a>
                             </div>
                         </div>
