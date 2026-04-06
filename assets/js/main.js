@@ -234,10 +234,12 @@
          // Set initial positions and sticky behavior
          serviceCards.forEach((card, i) => {
             card.style.position = 'sticky';
-            card.style.top = '100px'; // All cards start with same top position
+            card.style.top = '0px'; // Use transform for smooth animation
+            card.style.transform = 'translateY(100px)'; // Initial position
             card.style.zIndex = serviceCards.length + i; // First card has highest z-index
             card.style.opacity = '1';
-            card.style.transition = 'opacity 0.35s ease, top 0.35s ease';
+            card.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.willChange = 'opacity, transform'; // GPU acceleration
          });
 
          // Scroll-based opacity and position animation
@@ -272,17 +274,21 @@
                if (cardsAfterCount >= 3) {
                   card.style.opacity = '0';
                   card.style.pointerEvents = 'none';
+                  card.style.transform = 'translateY(100px) scale(0.95)'; // Scale down slightly
                } else {
                   card.style.opacity = '1';
                   card.style.pointerEvents = 'auto';
                   
                   // Adjust position based on how many visible cards are before this one
                   if (visibleCardsBeforeThis === 0) {
-                     card.style.top = '100px'; // First visible card position
+                     card.style.transform = 'translateY(100px)'; // First visible card position
+                     card.style.transitionDelay = '0ms'; // Immediate
                   } else if (visibleCardsBeforeThis === 1) {
-                     card.style.top = '200px'; // Second visible card position
+                     card.style.transform = 'translateY(200px)'; // Second visible card position
+                     card.style.transitionDelay = '80ms'; // Slight delay
                   } else if (visibleCardsBeforeThis === 2) {
-                     card.style.top = '300px'; // Third visible card position
+                     card.style.transform = 'translateY(300px)'; // Third visible card position
+                     card.style.transitionDelay = '160ms'; // More delay
                   }
                }
             });
