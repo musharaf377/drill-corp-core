@@ -2,7 +2,7 @@
 
 /**
  * Theme About Me Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -12,19 +12,19 @@ if (!defined('ABSPATH')) {
 // Control core classes for avoid errors
 if (class_exists('CSF')) {
     // Create a About Widget
-    CSF::createWidget('drilllcorp_about_me_widget', array(
-        'title' => esc_html__('DrilllCorp: About Me', 'drilllcorp-core'),
-        'classname' => 'drilllcorp-about-me-widget',
-        'description' => esc_html__('Display About Me widget', 'drilllcorp-core'),
+    CSF::createWidget('drillcorp_about_me_widget', array(
+        'title' => esc_html__('Drillcorp: About Me', 'drillcorp-core'),
+        'classname' => 'drillcorp-about-me-widget',
+        'description' => esc_html__('Display About Me widget', 'drillcorp-core'),
     ));
 
     // Create a About Widget
 
-    if (!function_exists('drilllcorp_about_me_widget')) {
-        function drilllcorp_about_me_widget($args, $instance)
+    if (!function_exists('drillcorp_about_me_widget')) {
+        function drillcorp_about_me_widget($args, $instance)
         {
             echo $args['before_widget'];
-            $drilllcorp = drilllcorp();
+            $drillcorp = drillcorp();
             $author_id = get_the_author_meta('ID');
 
 
@@ -34,7 +34,7 @@ if (class_exists('CSF')) {
                     alt="">
                 <h3 class="author-title"><?php echo get_the_author_meta('display_name', $author_id); ?></h3>
                 <?php
-                $drilllcorp->posted_on();
+                $drillcorp->posted_on();
                 ?>
             </div>
 <?php

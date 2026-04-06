@@ -2,13 +2,13 @@
 
 /**
  * Elementor Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
 namespace Elementor;
 
-class DrilllCorp_Read_More_Widget extends Widget_Base
+class Drillcorp_Read_More_Widget extends Widget_Base
 {
 
     /**
@@ -23,7 +23,7 @@ class DrilllCorp_Read_More_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'drilllcorp-read-more-widget';
+        return 'drillcorp-read-more-widget';
     }
 
     /**
@@ -38,7 +38,7 @@ class DrilllCorp_Read_More_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Read More Item', 'drilllcorp-core');
+        return esc_html__('Read More Item', 'drillcorp-core');
     }
 
     /**
@@ -68,7 +68,7 @@ class DrilllCorp_Read_More_Widget extends Widget_Base
      */
     public function get_categories()
     {
-        return ['drilllcorp_widgets'];
+        return ['drillcorp_widgets'];
     }
 
     /**
@@ -85,17 +85,17 @@ class DrilllCorp_Read_More_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('General Settings', 'drilllcorp-core'),
+                'label' => esc_html__('General Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'description',
             [
-                'label' => esc_html__('Description', 'drilllcorp-core'),
+                'label' => esc_html__('Description', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('enter  description.', 'drilllcorp-core'),
-                'default' => esc_html__('Top Packages', 'drilllcorp-core'),
+                'description' => esc_html__('enter  description.', 'drillcorp-core'),
+                'default' => esc_html__('Top Packages', 'drillcorp-core'),
             ]
         );
     }
@@ -125,4 +125,4 @@ class DrilllCorp_Read_More_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new DrilllCorp_Read_More_Widget());
+Plugin::instance()->widgets_manager->register_widget_type(new Drillcorp_Read_More_Widget());

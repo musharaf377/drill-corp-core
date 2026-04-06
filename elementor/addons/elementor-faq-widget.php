@@ -505,7 +505,7 @@ class Cubeslimited_Accordion_One extends Widget_Base {
             <h5 class="mb-0">
                 <a class="faq-question" tabindex="0">
                     <?php echo esc_html($item['title']); ?>
-                    <span class="faq-arrow-wrap"><?php echo drilllcorp_get_svg_icon('down_angle'); ?></span>
+                    <span class="faq-arrow-wrap"><?php echo drillcorp_get_svg_icon('down_angle'); ?></span>
                 </a>
             </h5>
         </div>

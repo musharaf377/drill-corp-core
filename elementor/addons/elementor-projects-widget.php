@@ -2,7 +2,7 @@
 
 /**
  * Elementor Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -23,7 +23,7 @@ class Projects_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'drilllcorp-projects-widget';
+        return 'drillcorp-projects-widget';
     }
 
     /**
@@ -38,7 +38,7 @@ class Projects_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Projects List', 'drilllcorp-core');
+        return esc_html__('Projects List', 'drillcorp-core');
     }
 
     public function get_keywords()
@@ -73,7 +73,7 @@ class Projects_Widget extends Widget_Base
      */
     public function get_categories()
     {
-        return ['drilllcorp_widgets'];
+        return ['drillcorp_widgets'];
     }
 
     /**
@@ -89,7 +89,7 @@ class Projects_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('General Settings', 'drilllcorp-core'),
+                'label' => esc_html__('General Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -97,7 +97,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'posts_per_page',
             [
-                'label' => esc_html__('Posts Per Page', 'drilllcorp-core'),
+                'label' => esc_html__('Posts Per Page', 'drillcorp-core'),
                 'type' => Controls_Manager::NUMBER,
                 'default' => 10,
                 'min' => 1,
@@ -108,7 +108,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'order',
             [
-                'label' => esc_html__('Order', 'drilllcorp-core'),
+                'label' => esc_html__('Order', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
                     'ASC' => 'Ascending',
@@ -121,7 +121,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'orderby',
             [
-                'label' => esc_html__('Order By', 'drilllcorp-core'),
+                'label' => esc_html__('Order By', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
                     'date' => 'Date',
@@ -139,7 +139,7 @@ class Projects_Widget extends Widget_Base
         $this->start_controls_section(
             'list_style_section',
             [
-                'label' => esc_html__('List Style', 'drilllcorp-core'),
+                'label' => esc_html__('List Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -147,7 +147,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'list_gap',
             [
-                'label' => esc_html__('Gap Between Items', 'drilllcorp-core'),
+                'label' => esc_html__('Gap Between Items', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -170,7 +170,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'list_padding',
             [
-                'label' => esc_html__('List Padding', 'drilllcorp-core'),
+                'label' => esc_html__('List Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -185,7 +185,7 @@ class Projects_Widget extends Widget_Base
         $this->start_controls_section(
             'card_style_section',
             [
-                'label' => esc_html__('Card Style', 'drilllcorp-core'),
+                'label' => esc_html__('Card Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -193,7 +193,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'card_min_height',
             [
-                'label' => esc_html__('Min Height', 'drilllcorp-core'),
+                'label' => esc_html__('Min Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'vh', '%'],
                 'range' => [
@@ -226,7 +226,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'card_content_gap',
             [
-                'label' => esc_html__('Content Gap', 'drilllcorp-core'),
+                'label' => esc_html__('Content Gap', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -250,7 +250,7 @@ class Projects_Widget extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'card_background_color_element',
-                'label' => esc_html__('Background', 'drilllcorp-core'),
+                'label' => esc_html__('Background', 'drillcorp-core'),
                 'types' => ['classic', 'gradient'],
                 'selector' => '{{WRAPPER}} .project-item',
             ]
@@ -260,7 +260,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => esc_html__('Card Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Card Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -272,7 +272,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'card_border_radius',
             [
-                'label' => esc_html__('Card Border Radius', 'drilllcorp-core'),
+                'label' => esc_html__('Card Border Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -285,7 +285,7 @@ class Projects_Widget extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'card_border',
-                'label' => esc_html__('Card Border', 'drilllcorp-core'),
+                'label' => esc_html__('Card Border', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .project-item',
             ]
         );
@@ -296,7 +296,7 @@ class Projects_Widget extends Widget_Base
         $this->start_controls_section(
             'image_style_section',
             [
-                'label' => esc_html__('Image Style', 'drilllcorp-core'),
+                'label' => esc_html__('Image Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -304,7 +304,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'image_width',
             [
-                'label' => esc_html__('Image Width', 'drilllcorp-core'),
+                'label' => esc_html__('Image Width', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -332,7 +332,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => esc_html__('Image Height', 'drilllcorp-core'),
+                'label' => esc_html__('Image Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -360,7 +360,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'image_border_radius',
             [
-                'label' => esc_html__('Image Border Radius', 'drilllcorp-core'),
+                'label' => esc_html__('Image Border Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -372,7 +372,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'image_margin',
             [
-                'label' => esc_html__('Image Margin', 'drilllcorp-core'),
+                'label' => esc_html__('Image Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -387,7 +387,7 @@ class Projects_Widget extends Widget_Base
         $this->start_controls_section(
             'content_style_section',
             [
-                'label' => esc_html__('Content Style', 'drilllcorp-core'),
+                'label' => esc_html__('Content Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -395,7 +395,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'content_padding',
             [
-                'label' => esc_html__('Content Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Content Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -407,19 +407,19 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'content_alignment',
             [
-                'label' => esc_html__('Alignment', 'drilllcorp-core'),
+                'label' => esc_html__('Alignment', 'drillcorp-core'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'drilllcorp-core'),
+                        'title' => esc_html__('Left', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'drilllcorp-core'),
+                        'title' => esc_html__('Center', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'drilllcorp-core'),
+                        'title' => esc_html__('Right', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -434,7 +434,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'title_style_heading',
             [
-                'label' => esc_html__('Title Style', 'drilllcorp-core'),
+                'label' => esc_html__('Title Style', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -443,7 +443,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label' => esc_html__('Title Color', 'drilllcorp-core'),
+                'label' => esc_html__('Title Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
@@ -456,7 +456,7 @@ class Projects_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => esc_html__('Title Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Title Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .project-content-wrap h3',
             ]
         );
@@ -464,7 +464,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'title_margin',
             [
-                'label' => esc_html__('Title Margin', 'drilllcorp-core'),
+                'label' => esc_html__('Title Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -477,7 +477,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'description_style_heading',
             [
-                'label' => esc_html__('Description Style', 'drilllcorp-core'),
+                'label' => esc_html__('Description Style', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -486,7 +486,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'description_color',
             [
-                'label' => esc_html__('Description Color', 'drilllcorp-core'),
+                'label' => esc_html__('Description Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#666666',
                 'selectors' => [
@@ -499,7 +499,7 @@ class Projects_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'description_typography',
-                'label' => esc_html__('Description Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Description Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .project-content-wrap p',
             ]
         );
@@ -507,7 +507,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'description_margin',
             [
-                'label' => esc_html__('Description Margin', 'drilllcorp-core'),
+                'label' => esc_html__('Description Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -522,7 +522,7 @@ class Projects_Widget extends Widget_Base
         $this->start_controls_section(
             'button_style_section',
             [
-                'label' => esc_html__('Button Style', 'drilllcorp-core'),
+                'label' => esc_html__('Button Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -532,14 +532,14 @@ class Projects_Widget extends Widget_Base
         $this->start_controls_tab(
             'button_normal',
             [
-                'label' => esc_html__('Normal', 'drilllcorp-core'),
+                'label' => esc_html__('Normal', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'button_text_color',
             [
-                'label' => esc_html__('Text Color', 'drilllcorp-core'),
+                'label' => esc_html__('Text Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -551,7 +551,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'button_bg_color',
             [
-                'label' => esc_html__('Background Color', 'drilllcorp-core'),
+                'label' => esc_html__('Background Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#0073e6',
                 'selectors' => [
@@ -563,7 +563,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'button_border_color',
             [
-                'label' => esc_html__('Border Color', 'drilllcorp-core'),
+                'label' => esc_html__('Border Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .project-item .primary-btn' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
@@ -575,7 +575,7 @@ class Projects_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'button_typography',
-                'label' => esc_html__('Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .project-item .primary-btn',
             ]
         );
@@ -583,7 +583,7 @@ class Projects_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_padding',
             [
-                'label' => esc_html__('Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -597,14 +597,14 @@ class Projects_Widget extends Widget_Base
         $this->start_controls_tab(
             'button_hover',
             [
-                'label' => esc_html__('Hover', 'drilllcorp-core'),
+                'label' => esc_html__('Hover', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'button_hover_text_color',
             [
-                'label' => esc_html__('Text Color', 'drilllcorp-core'),
+                'label' => esc_html__('Text Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -616,7 +616,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'button_hover_bg_color',
             [
-                'label' => esc_html__('Background Color', 'drilllcorp-core'),
+                'label' => esc_html__('Background Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#005bb5',
                 'selectors' => [
@@ -628,7 +628,7 @@ class Projects_Widget extends Widget_Base
         $this->add_control(
             'button_border_hover_color',
             [
-                'label' => esc_html__('Border Color', 'drilllcorp-core'),
+                'label' => esc_html__('Border Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .project-item .primary-btn:hover' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
@@ -690,7 +690,7 @@ class Projects_Widget extends Widget_Base
                             
                         </div>
                         <a class="primary-btn" href="<?php echo esc_url(get_permalink()); ?>">
-                            <?php echo esc_html__('View Project', 'drilllcorp-core'); ?>
+                            <?php echo esc_html__('View Project', 'drillcorp-core'); ?>
                         </a>
                     </div>
                 <?php endwhile; ?>

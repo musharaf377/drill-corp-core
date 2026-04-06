@@ -2,7 +2,7 @@
 
 /**
  * Admin Menu Custom Function
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -11,9 +11,9 @@ if (!defined('ABSPATH')) {
 }
 
 
-if (!class_exists('DrilllCorp_Core_Admin_Menu')) {
+if (!class_exists('Drillcorp_Core_Admin_Menu')) {
 
-    class DrilllCorp_Core_Admin_Menu
+    class Drillcorp_Core_Admin_Menu
     {
         /**
          * $instance
@@ -60,12 +60,12 @@ if (!class_exists('DrilllCorp_Core_Admin_Menu')) {
             }
             //add menu page
             add_menu_page(
-                esc_html__('DrilllCorp Page', 'drilllcorp-core'),
-                esc_html__('DrilllCorp', 'drilllcorp-core'),
+                esc_html__('Drillcorp Page', 'drillcorp-core'),
+                esc_html__('Drillcorp', 'drillcorp-core'),
                 'manage_options',
-                'drilllcorp_theme_options',
+                'drillcorp_theme_options',
                 array($this, 'admin_options_fallback_function'),
-                DRILLLCORP_CORE_ADMIN_ASSETS . '/img/icon.png',
+                DRILLCORP_CORE_ADMIN_ASSETS . '/img/icon.png',
                 80
             );
         }
@@ -86,24 +86,24 @@ if (!class_exists('DrilllCorp_Core_Admin_Menu')) {
                 'ar_post' => array(
                     array(
                         'link' => 'edit.php?post_type=ar_post',
-                        'name' => sprintf(esc_html__('%s', 'drilllcorp-core'), 'Ar_Post'),
+                        'name' => sprintf(esc_html__('%s', 'drillcorp-core'), 'Ar_Post'),
                         'id' => 'edit-ar_post'
                     ),
                     array(
                         'link' => 'edit-tags.php?taxonomy=ar_post_cat&post_type=ar_post',
-                        'name' => sprintf(esc_html__('%s Categories', 'drilllcorp-core'), 'Ar_Post'),
+                        'name' => sprintf(esc_html__('%s Categories', 'drillcorp-core'), 'Ar_Post'),
                         'id' => 'edit-ar_post_cat'
                     )
                 ),
                 'job' => array(
                     array(
                         'link' => 'edit.php?post_type=job',
-                        'name' => sprintf(esc_html__('%s', 'drilllcorp-core'), 'Job'),
+                        'name' => sprintf(esc_html__('%s', 'drillcorp-core'), 'Job'),
                         'id' => 'edit-job'
                     ),
                     array(
                         'link' => 'edit-tags.php?taxonomy=job_cat&post_type=job',
-                        'name' => sprintf(esc_html__('%s Categories', 'drilllcorp-core'), 'Job'),
+                        'name' => sprintf(esc_html__('%s Categories', 'drillcorp-core'), 'Job'),
                         'id' => 'edit-job_cat'
                     )
                 ),
@@ -153,7 +153,7 @@ if (!class_exists('DrilllCorp_Core_Admin_Menu')) {
                     var check, page_slugs, mainwrap, i;
                     check = '<?php echo $current_post_type; ?>';
                     page_slugs = <?php echo $pages_type; ?>;
-                    mainwrap = $('#toplevel_page_drilllcorp_theme_options');
+                    mainwrap = $('#toplevel_page_drillcorp_theme_options');
                     for (i = 0; i < page_slugs.length; i++) {
                         if (page_slugs[i] == check) {
                             //remove submenu class
@@ -188,7 +188,7 @@ if (!class_exists('DrilllCorp_Core_Admin_Menu')) {
                     }
                     if (check) {
                         $('.wp-submenu.wp-submenu-wrap')
-                            .find('a[href*="admin.php?page=toplevel_page_drilllcorp_theme_options"]')
+                            .find('a[href*="admin.php?page=toplevel_page_drillcorp_theme_options"]')
                             .removeClass('current')
                             .parent('li')
                             .removeClass('current');
@@ -198,7 +198,7 @@ if (!class_exists('DrilllCorp_Core_Admin_Menu')) {
 <?php
         }
     } //end class
-    if (class_exists('DrilllCorp_Core_Admin_Menu')) {
-        DrilllCorp_Core_Admin_Menu::getInstance();
+    if (class_exists('Drillcorp_Core_Admin_Menu')) {
+        Drillcorp_Core_Admin_Menu::getInstance();
     }
 }//end if

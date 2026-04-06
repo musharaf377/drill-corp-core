@@ -3,18 +3,18 @@
 
     $(document).ready(function () {
         /***********************************
-         drilllcorp Custom widget js
+         drillcorp Custom widget js
          ************************************/
         $(document).on('widget-updated',function (e,widget) {
             var widget_id = $(widget).attr('id');
-            if (widget_id.indexOf('drilllcorp_about_us_widget') != 1){
+            if (widget_id.indexOf('drillcorp_about_us_widget') != 1){
                 prefetch();
             }
         });
 
-        $('body').off('click','.drilllcorp_flogo_uploader');
+        $('body').off('click','.drillcorp_flogo_uploader');
 
-        $('body').on('click','.drilllcorp_flogo_uploader',function (e) {
+        $('body').on('click','.drillcorp_flogo_uploader',function (e) {
             var el = this;
 
             var file_uploder_frame =  wp.media.frames.file_uploder_frame = wp.media({
@@ -30,15 +30,15 @@
                 var data = file_uploder_frame.state().get('selection');
                 var jdata = data.toJSON();
                 var selected_ids = _.pluck(jdata,"id");
-                var img_prev_container = $(el).siblings('.drilllcorp-logo-preview');
+                var img_prev_container = $(el).siblings('.drillcorp-logo-preview');
 
                 if (selected_ids.length > 0){
                     $(el).css({});
                     $(el).val('Change Image');
                 }
 
-                $(el).siblings().children('.drilllcorp_logo_id').val(selected_ids.join(","));
-                $(el).siblings().children('.drilllcorp_logo_id').trigger('change');
+                $(el).siblings().children('.drillcorp_logo_id').val(selected_ids.join(","));
+                $(el).siblings().children('.drillcorp_logo_id').trigger('change');
                 img_prev_container.html('');
                 data.map(function (attachment) {
                     if ( attachment.attributes.subtype == "png" || attachment.attributes.subtype == "jpeg" || attachment.attributes().subtype == "jpg" ){
@@ -54,8 +54,8 @@
 
             file_uploder_frame.on('open',function () {
                 var selection = file_uploder_frame.state().get('selection');
-                console.log($(el).siblings().children('.drilllcorp_logo_id').val());
-                var atts = $(el).siblings().children('.drilllcorp_logo_id').val().split(",");
+                console.log($(el).siblings().children('.drillcorp_logo_id').val());
+                var atts = $(el).siblings().children('.drillcorp_logo_id').val().split(",");
 
                 for (var i=0; i < atts.length; i++){
                     if (atts[i] > 0){
@@ -71,13 +71,13 @@
         });
 
         function prefetch () {
-            $('.drilllcorp_logo_id').each(function () {
+            $('.drillcorp_logo_id').each(function () {
                 var attid = $(this).val();
-                var container = $(this).parent().siblings('.drilllcorp-logo-preview');
+                var container = $(this).parent().siblings('.drillcorp-logo-preview');
                 container.html('');
 
                 if ( attid ){
-                    $(this).parent().parent().find('.drilllcorp_flogo_uploader').val('Change Image');
+                    $(this).parent().parent().find('.drillcorp_flogo_uploader').val('Change Image');
                     var attachment = new wp.media.model.Attachment.get(attid);
                     attachment.fetch({
                         success:function (att) {
@@ -91,7 +91,7 @@
         if (wp.customize != undefined){
             $('.customoize-control').on('expand',function (e) {
                 var widget_id = $(this).attr('id');
-                if(widget_id.indexOf('drilllcorp_about_us_widget')!==-1){
+                if(widget_id.indexOf('drillcorp_about_us_widget')!==-1){
                     prefetch();
                 }
             })

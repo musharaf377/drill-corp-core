@@ -2,7 +2,7 @@
 
 /**
  * Elementor Addons Init
- * @package drilllcorp
+ * @package drillcorp
  * @since 1.0.0
  */
 
@@ -11,9 +11,9 @@ if (! defined('ABSPATH')) {
 }
 
 
-if (! class_exists('DrilllCorp_Elementor_Widget_Init')) {
+if (! class_exists('Drillcorp_Elementor_Widget_Init')) {
 
-	class DrilllCorp_Elementor_Widget_Init
+	class Drillcorp_Elementor_Widget_Init
 	{
 		/**
 		 * $instance
@@ -54,9 +54,9 @@ if (! class_exists('DrilllCorp_Elementor_Widget_Init')) {
 		public function _widget_categories($elements_manager)
 		{
 			$elements_manager->add_category(
-				'drilllcorp_widgets',
+				'drillcorp_widgets',
 				[
-					'title' => esc_html__('DrilllCorp Widgets', 'drilllcorp-core'),
+					'title' => esc_html__('Drillcorp Widgets', 'drillcorp-core'),
 					'icon'  => 'fas fa-plug',
 				]
 			);
@@ -72,14 +72,14 @@ if (! class_exists('DrilllCorp_Elementor_Widget_Init')) {
 				return;
 			}
 
-			$elementor_widgets = require_once DRILLLCORP_CORE_ROOT_PATH . '/config/elementor-widgets.php';
+			$elementor_widgets = require_once DRILLCORP_CORE_ROOT_PATH . '/config/elementor-widgets.php';
 
-			$elementor_widgets = apply_filters('drilllcorp_elementor_widget', $elementor_widgets);
+			$elementor_widgets = apply_filters('drillcorp_elementor_widget', $elementor_widgets);
 			ksort($elementor_widgets);
 			if (is_array($elementor_widgets) && ! empty($elementor_widgets)) {
 				foreach ($elementor_widgets as $widget) {
-					if (file_exists(DRILLLCORP_CORE_ELEMENTOR . '/addons/elementor-' . $widget . '-widget.php')) {
-						require_once DRILLLCORP_CORE_ELEMENTOR . '/addons/elementor-' . $widget . '-widget.php';
+					if (file_exists(DRILLCORP_CORE_ELEMENTOR . '/addons/elementor-' . $widget . '-widget.php')) {
+						require_once DRILLCORP_CORE_ELEMENTOR . '/addons/elementor-' . $widget . '-widget.php';
 					}
 				}
 			}
@@ -92,12 +92,12 @@ if (! class_exists('DrilllCorp_Elementor_Widget_Init')) {
 		 */
 		public function load_assets_for_elementor()
 		{
-			wp_enqueue_style('flaticon', DRILLLCORP_CORE_CSS . '/flaticon.css');
-			wp_enqueue_style('drilllcorp-core-elementor-style', DRILLLCORP_CORE_ADMIN_ASSETS . '/css/elementor-editor.css');
+			wp_enqueue_style('flaticon', DRILLCORP_CORE_CSS . '/flaticon.css');
+			wp_enqueue_style('drillcorp-core-elementor-style', DRILLCORP_CORE_ADMIN_ASSETS . '/css/elementor-editor.css');
 		}
 	}
 
-	if (class_exists('DrilllCorp_Elementor_Widget_Init')) {
-		DrilllCorp_Elementor_Widget_Init::getInstance();
+	if (class_exists('Drillcorp_Elementor_Widget_Init')) {
+		Drillcorp_Elementor_Widget_Init::getInstance();
 	}
 }//end if

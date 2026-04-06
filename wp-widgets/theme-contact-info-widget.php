@@ -2,7 +2,7 @@
 
 /**
  * Theme Contact Info Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -10,15 +10,15 @@ if (!defined('ABSPATH')) {
 	exit(); //exit if access directly
 }
 
-class DrilllCorp_Contact_Info_Widget extends WP_Widget
+class Drillcorp_Contact_Info_Widget extends WP_Widget
 {
 
 	public function __construct()
 	{
 		parent::__construct(
-			'drilllcorp_contact_info',
-			esc_html__('DrilllCorp: Contact Info', 'drilllcorp-core'),
-			array('description' => esc_html__('Display contact info widget', 'drilllcorp-core'))
+			'drillcorp_contact_info',
+			esc_html__('Drillcorp: Contact Info', 'drillcorp-core'),
+			array('description' => esc_html__('Display contact info widget', 'drillcorp-core'))
 		);
 	}
 
@@ -37,18 +37,18 @@ class DrilllCorp_Contact_Info_Widget extends WP_Widget
 		}
 ?>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'drilllcorp-core'); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'drillcorp-core'); ?></label>
 			<input type="text" class="widefat" id="<?php echo esc_attr($this->get_field_id('title')) ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" value="<?php echo esc_attr($title) ?>">
 		</p>
 		<?php foreach ($contact_info as $ci) : ?>
 			<p>
-				<label for="<?php echo esc_attr($this->get_field_id($ci)); ?>"><?php echo esc_html(ucfirst($ci) . " " . esc_html__('Info', 'drilllcorp-core')); ?>
+				<label for="<?php echo esc_attr($this->get_field_id($ci)); ?>"><?php echo esc_html(ucfirst($ci) . " " . esc_html__('Info', 'drillcorp-core')); ?>
 					: </label>
 				<br />
 				<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id($ci)); ?>"
 					name="<?php echo esc_attr($this->get_field_name($ci)); ?>"
 					value="<?php echo esc_attr($instance[$ci]); ?>" />
-				<small><?php echo esc_html__('Leave it blank if you don\'t want to show this info', 'drilllcorp-core') ?></small>
+				<small><?php echo esc_html__('Leave it blank if you don\'t want to show this info', 'drillcorp-core') ?></small>
 			</p>
 
 		<?php endforeach;
@@ -116,10 +116,10 @@ class DrilllCorp_Contact_Info_Widget extends WP_Widget
 	}
 }
 
-if (!function_exists('DrilllCorp_Contact_Info_Widget')) {
-	function DrilllCorp_Contact_Info_Widget()
+if (!function_exists('Drillcorp_Contact_Info_Widget')) {
+	function Drillcorp_Contact_Info_Widget()
 	{
-		register_widget('DrilllCorp_Contact_Info_Widget');
+		register_widget('Drillcorp_Contact_Info_Widget');
 	}
-	add_action('widgets_init', 'DrilllCorp_Contact_Info_Widget');
+	add_action('widgets_init', 'Drillcorp_Contact_Info_Widget');
 }

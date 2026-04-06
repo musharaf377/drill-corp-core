@@ -2,13 +2,13 @@
 
 /**
  * Elementor Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
 namespace Elementor;
 
-class DrilllCorp_Section_Title_One_Widget extends Widget_Base
+class Drillcorp_Section_Title_One_Widget extends Widget_Base
 {
     /**
      * Get widget name.
@@ -22,7 +22,7 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'drilllcorp-theme-heading-title-one-widget';
+        return 'drillcorp-theme-heading-title-one-widget';
     }
 
     /**
@@ -37,12 +37,12 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Heading Title: 01', 'drilllcorp-core');
+        return esc_html__('Heading Title: 01', 'drillcorp-core');
     }
 
     public function get_keywords()
     {
-        return ['Section', 'Heading', 'Title', "ThemeIM", 'DrilllCorp'];
+        return ['Section', 'Heading', 'Title', "ThemeIM", 'Drillcorp'];
     }
 
     /**
@@ -72,7 +72,7 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
      */
     public function get_categories()
     {
-        return ['drilllcorp_widgets'];
+        return ['drillcorp_widgets'];
     }
 
     /**
@@ -89,73 +89,73 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('General Settings', 'drilllcorp-core'),
+                'label' => esc_html__('General Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'white_section_title',
             [
-                'label' => esc_html__('Subtitle Plane Animation', 'drilllcorp-core'),
+                'label' => esc_html__('Subtitle Plane Animation', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'default' => '',
                 'options' => [
-                    'white' => esc_html__('White Style', 'drilllcorp-core'),
-                    '' => esc_html__('Default Style', 'drilllcorp-core'),
+                    'white' => esc_html__('White Style', 'drillcorp-core'),
+                    '' => esc_html__('Default Style', 'drillcorp-core'),
                 ],
             ]
         );
         $this->add_control(
             'subtitle',
             [
-                'label' => esc_html__('Sub Title', 'drilllcorp-core'),
+                'label' => esc_html__('Sub Title', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('About DrilllCorp', 'drilllcorp-core'),
-                'description' => esc_html__('enter title. use {c} color text {/c} for color text', 'drilllcorp-core'),
+                'default' => esc_html__('About Drillcorp', 'drillcorp-core'),
+                'description' => esc_html__('enter title. use {c} color text {/c} for color text', 'drillcorp-core'),
             ]
         );
         $this->add_control(
             'title',
             [
-                'label' => esc_html__('Title', 'drilllcorp-core'),
+                'label' => esc_html__('Title', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('What We Do', 'drilllcorp-core'),
+                'default' => esc_html__('What We Do', 'drillcorp-core'),
             ]
         );
         $this->add_control(
             'description_status',
             [
-                'label' => esc_html__('Description Show/Hide', 'drilllcorp-core'),
+                'label' => esc_html__('Description Show/Hide', 'drillcorp-core'),
                 'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('show/hide description', 'drilllcorp-core'),
+                'description' => esc_html__('show/hide description', 'drillcorp-core'),
             ]
         );
         $this->add_control(
             'description',
             [
-                'label' => esc_html__('Description', 'drilllcorp-core'),
+                'label' => esc_html__('Description', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('enter  description.', 'drilllcorp-core'),
-                'default' => esc_html__('Top Packages', 'drilllcorp-core'),
+                'description' => esc_html__('enter  description.', 'drillcorp-core'),
+                'default' => esc_html__('Top Packages', 'drillcorp-core'),
                 'condition' => ['description_status' => 'yes']
             ]
         );
         $this->add_responsive_control(
             'text_align',
             [
-                'label' => esc_html__('Alignment', 'drilllcorp-core'),
+                'label' => esc_html__('Alignment', 'drillcorp-core'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'drilllcorp-core'),
+                        'title' => esc_html__('Left', 'drillcorp-core'),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'drilllcorp-core'),
+                        'title' => esc_html__('Center', 'drillcorp-core'),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'drilllcorp-core'),
+                        'title' => esc_html__('Right', 'drillcorp-core'),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
@@ -169,14 +169,14 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
         $this->start_controls_section(
             'styling_section',
             [
-                'label' => esc_html__('Styling Settings', 'drilllcorp-core'),
+                'label' => esc_html__('Styling Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'shape_top_space',
             [
-                'label' => esc_html__('Sub Title Margin Bottom', 'drilllcorp-core'),
+                'label' => esc_html__('Sub Title Margin Bottom', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -198,7 +198,7 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
         $this->add_control(
             'title_bottom_space',
             [
-                'label' => esc_html__('Title Bottom Space', 'drilllcorp-core'),
+                'label' => esc_html__('Title Bottom Space', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -218,14 +218,14 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
             ]
         );
         $this->add_control('subtitle_color', [
-            'label' => esc_html__('Sub Title Color', 'drilllcorp-core'),
+            'label' => esc_html__('Sub Title Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .theme-heading-title .subtitle" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('subtitle_bg_color', [
-            'label' => esc_html__('Sub Title Background Color', 'drilllcorp-core'),
+            'label' => esc_html__('Sub Title Background Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .theme-heading-title .subtitle" => "background-color: {{VALUE}}"
@@ -235,14 +235,14 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'border',
-                'label' => esc_html__('Border', 'drilllcorp-core'),
+                'label' => esc_html__('Border', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .theme-heading-title .subtitle',
             ]
         );
         $this->add_control(
             'background_border_radius',
             [
-                'label' => esc_html__('Box Border Radius', 'drilllcorp-core'),
+                'label' => esc_html__('Box Border Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -251,14 +251,14 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
             ]
         );
         $this->add_control('subtitle_extra_color', [
-            'label' => esc_html__('Sub Title Extra Color', 'drilllcorp-core'),
+            'label' => esc_html__('Sub Title Extra Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .theme-heading-title .subtitle span" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('description_color', [
-            'label' => esc_html__('Description Color', 'drilllcorp-core'),
+            'label' => esc_html__('Description Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .theme-heading-title p" => "color: {{VALUE}}"
@@ -266,14 +266,14 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
         ]);
 
         $this->add_control('title_color', [
-            'label' => esc_html__('Title Color', 'drilllcorp-core'),
+            'label' => esc_html__('Title Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .theme-heading-title .title" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('title_extra_color', [
-            'label' => esc_html__('Title Extra Color', 'drilllcorp-core'),
+            'label' => esc_html__('Title Extra Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .theme-heading-title .title span" => "color: {{VALUE}}"
@@ -284,28 +284,28 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
         $this->start_controls_section(
             'styling_typogrpahy_section',
             [
-                'label' => esc_html__('Typography Settings', 'drilllcorp-core'),
+                'label' => esc_html__('Typography Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'sub_title_typography',
-            'label' => esc_html__('Sub Title Typography', 'drilllcorp-core'),
+            'label' => esc_html__('Sub Title Typography', 'drillcorp-core'),
             'selector' => "{{WRAPPER}} .theme-heading-title .subtitle"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_typography',
-            'label' => esc_html__('Title Typography', 'drilllcorp-core'),
+            'label' => esc_html__('Title Typography', 'drillcorp-core'),
             'selector' => "{{WRAPPER}} .theme-heading-title .title"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_extra_typography',
-            'label' => esc_html__('Title Extra Typography', 'drilllcorp-core'),
+            'label' => esc_html__('Title Extra Typography', 'drillcorp-core'),
             'selector' => "{{WRAPPER}} .theme-heading-title .title span"
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'description_typography',
-            'label' => esc_html__('Description Typography', 'drilllcorp-core'),
+            'label' => esc_html__('Description Typography', 'drillcorp-core'),
             'selector' => "{{WRAPPER}} .theme-heading-title p"
         ]);
         $this->end_controls_section();
@@ -329,14 +329,14 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
                 <div class="subtitle">
                     <?php
                     $subtitle = str_replace(['{c}', '{/c}'], ['<span>', '</span>'], $settings['subtitle']);
-                    print wp_kses($subtitle, drilllcorp_core()->kses_allowed_html('all'));
+                    print wp_kses($subtitle, drillcorp_core()->kses_allowed_html('all'));
                     ?>
                 </div>
             <?php endif; ?>
             <h3 class="title">
                 <?php
                 $title = str_replace(['{c}', '{/c}'], ['<span>', '</span>'], $settings['title']);
-                print wp_kses($title, drilllcorp_core()->kses_allowed_html('all'));
+                print wp_kses($title, drillcorp_core()->kses_allowed_html('all'));
                 ?>
             </h3>
             <?php
@@ -349,4 +349,4 @@ class DrilllCorp_Section_Title_One_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new DrilllCorp_Section_Title_One_Widget());
+Plugin::instance()->widgets_manager->register_widget_type(new Drillcorp_Section_Title_One_Widget());

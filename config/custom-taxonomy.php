@@ -6,11 +6,11 @@ return array(
         'object_type' => 'services',
         'args' => array(
             "labels" => array(
-                "name" => esc_html__("Services Category", 'drilllcorp-core'),
-                "singular_name" => esc_html__("Services Category", 'drilllcorp-core'),
-                "menu_name" => esc_html__("Services Category", 'drilllcorp-core'),
-                "all_items" => esc_html__("All Services Category", 'drilllcorp-core'),
-                "add_new_item" => esc_html__("Add New Services Category", 'drilllcorp-core')
+                "name" => esc_html__("Services Category", 'drillcorp-core'),
+                "singular_name" => esc_html__("Services Category", 'drillcorp-core'),
+                "menu_name" => esc_html__("Services Category", 'drillcorp-core'),
+                "all_items" => esc_html__("All Services Category", 'drillcorp-core'),
+                "add_new_item" => esc_html__("Add New Services Category", 'drillcorp-core')
             ),
             "public" => true,
             "hierarchical" => true,
@@ -30,11 +30,11 @@ return array(
         'object_type' => 'projects',
         'args' => array(
             "labels" => array(
-                "name" => esc_html__("Projects Category", 'drilllcorp-core'),
-                "singular_name" => esc_html__("Projects Category", 'drilllcorp-core'),
-                "menu_name" => esc_html__("Projects Category", 'drilllcorp-core'),
-                "all_items" => esc_html__("All Projects Category", 'drilllcorp-core'),
-                "add_new_item" => esc_html__("Add New Projects Category", 'drilllcorp-core')
+                "name" => esc_html__("Projects Category", 'drillcorp-core'),
+                "singular_name" => esc_html__("Projects Category", 'drillcorp-core'),
+                "menu_name" => esc_html__("Projects Category", 'drillcorp-core'),
+                "all_items" => esc_html__("All Projects Category", 'drillcorp-core'),
+                "add_new_item" => esc_html__("Add New Projects Category", 'drillcorp-core')
             ),
             "public" => true,
             "hierarchical" => true,
