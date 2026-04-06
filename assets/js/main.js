@@ -234,8 +234,8 @@
          // Set initial positions and sticky behavior
          serviceCards.forEach((card, i) => {
             card.style.position = 'sticky';
-            card.style.top = '0px'; // Use transform for smooth animation
-            card.style.transform = 'translateY(100px)'; // Initial position
+            card.style.top = '0px';
+            card.style.transform = 'translateY(0px)'; // Start at natural position
             card.style.zIndex = serviceCards.length + i; // First card has highest z-index
             card.style.opacity = '1';
             card.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
