@@ -610,7 +610,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'button_border_color',
             [
-                'label' => esc_html__('Border Color', 'drilllcorp-core'),
+                'label' => esc_html__('Border Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .hero-slider-content .hero-slider-btn' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
@@ -687,7 +687,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'button_hover_border_color',
             [
-                'label' => esc_html__('Border Color', 'drilllcorp-core'),
+                'label' => esc_html__('Border Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .hero-slider-content .hero-slider-btn:hover' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',

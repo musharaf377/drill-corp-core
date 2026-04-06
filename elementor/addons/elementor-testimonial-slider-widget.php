@@ -2,7 +2,7 @@
 
 /**
  * Elementor Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -23,7 +23,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'drilllcorp-testimonial-single-item-widget';
+        return 'drillcorp-testimonial-single-item-widget';
     }
 
     /**
@@ -38,7 +38,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Testimonial Slider', 'drilllcorp-core');
+        return esc_html__('Testimonial Slider', 'drillcorp-core');
     }
 
     public function get_keywords()
@@ -73,7 +73,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
      */
     public function get_categories()
     {
-        return ['drilllcorp_widgets'];
+        return ['drillcorp_widgets'];
     }
 
     /**
@@ -91,7 +91,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('General Settings', 'drilllcorp-core'),
+                'label' => esc_html__('General Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -100,7 +100,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $repeater->add_control(
             'client_logo',
             [
-                'label' => esc_html__('Client Logo', 'drilllcorp-core'),
+                'label' => esc_html__('Client Logo', 'drillcorp-core'),
                 'type' => Controls_Manager::MEDIA,
             ]
         );
@@ -108,24 +108,24 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $repeater->add_control(
             'client_title',
             [
-                'label' => esc_html__('Client Title', 'drilllcorp-core'),
+                'label' => esc_html__('Client Title', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Industry-Leading Fleet Strength', 'drilllcorp-core'),
+                'default' => esc_html__('Industry-Leading Fleet Strength', 'drillcorp-core'),
             ]
         );
 
         $repeater->add_control(
             'client_description',
             [
-                'label' => esc_html__('Client Description', 'drilllcorp-core'),
+                'label' => esc_html__('Client Description', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXT,
-                'description' => esc_html__('enter client description.', 'drilllcorp-core'),
-                'default' => esc_html__('DCS maintains industry-leading fleet strength through 43 owned rigs, high-capacity platforms, and scalable drilling capability nationwide.', 'drilllcorp-core'),
+                'description' => esc_html__('enter client description.', 'drillcorp-core'),
+                'default' => esc_html__('DCS maintains industry-leading fleet strength through 43 owned rigs, high-capacity platforms, and scalable drilling capability nationwide.', 'drillcorp-core'),
             ]
         );
 
         $this->add_control('testimonial_slider_items', [
-            'label' => esc_html__('Testimonial Slider Item', 'drilllcorp-core'),
+            'label' => esc_html__('Testimonial Slider Item', 'drillcorp-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
 
@@ -136,16 +136,16 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'slider_settings_section',
             [
-                'label' => esc_html__('Slider Settings', 'drilllcorp-core'),
+                'label' => esc_html__('Slider Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'items',
             [
-                'label' => esc_html__('slidesToShow', 'drilllcorp-core'),
+                'label' => esc_html__('slidesToShow', 'drillcorp-core'),
                 'type' => Controls_Manager::NUMBER,
-                'description' => esc_html__('you can set how many item show in slider', 'drilllcorp-core'),
+                'description' => esc_html__('you can set how many item show in slider', 'drillcorp-core'),
                 'default' => '3',
             ]
         );
@@ -153,24 +153,24 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'loop',
             [
-                'label' => esc_html__('Loop', 'drilllcorp-core'),
+                'label' => esc_html__('Loop', 'drillcorp-core'),
                 'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'drilllcorp-core'),
+                'description' => esc_html__('you can set yes/no to enable/disable', 'drillcorp-core'),
             ]
         );
         $this->add_control(
             'autoplay',
             [
-                'label' => esc_html__('Autoplay', 'drilllcorp-core'),
+                'label' => esc_html__('Autoplay', 'drillcorp-core'),
                 'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'drilllcorp-core'),
+                'description' => esc_html__('you can set yes/no to enable/disable', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'speed',
             [
-                'label' => esc_html__('Speed', 'drilllcorp-core'),
+                'label' => esc_html__('Speed', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -192,7 +192,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'slider_style_section',
             [
-                'label' => esc_html__('Slider Style', 'drilllcorp-core'),
+                'label' => esc_html__('Slider Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -200,7 +200,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'slider_gap',
             [
-                'label' => esc_html__('Gap Between Slides', 'drilllcorp-core'),
+                'label' => esc_html__('Gap Between Slides', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -223,7 +223,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'slider_padding',
             [
-                'label' => esc_html__('Slider Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Slider Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -238,7 +238,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'logo_style_section',
             [
-                'label' => esc_html__('Logo Style', 'drilllcorp-core'),
+                'label' => esc_html__('Logo Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -246,7 +246,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'logo_width',
             [
-                'label' => esc_html__('Logo Width', 'drilllcorp-core'),
+                'label' => esc_html__('Logo Width', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -274,7 +274,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'logo_height',
             [
-                'label' => esc_html__('Logo Height', 'drilllcorp-core'),
+                'label' => esc_html__('Logo Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -297,7 +297,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'logo_margin',
             [
-                'label' => esc_html__('Logo Margin', 'drilllcorp-core'),
+                'label' => esc_html__('Logo Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -312,7 +312,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'card_style_section',
             [
-                'label' => esc_html__('Card Style', 'drilllcorp-core'),
+                'label' => esc_html__('Card Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -320,7 +320,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'card_height',
             [
-                'label' => esc_html__('Card Height', 'drilllcorp-core'),
+                'label' => esc_html__('Card Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'vh', '%'],
                 'range' => [
@@ -353,7 +353,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'card_content_space',
             [
-                'label' => esc_html__('Content Space', 'drilllcorp-core'),
+                'label' => esc_html__('Content Space', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -376,7 +376,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'card_background_color',
             [
-                'label' => esc_html__('Background Color', 'drilllcorp-core'),
+                'label' => esc_html__('Background Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -389,7 +389,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'card_background',
-                'label' => esc_html__('Background', 'drilllcorp-core'),
+                'label' => esc_html__('Background', 'drillcorp-core'),
                 'types' => ['classic', 'gradient'],
                 'selector' => '{{WRAPPER}} .testimonial-slider-content',
             ]
@@ -398,7 +398,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => esc_html__('Card Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Card Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -410,7 +410,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'card_border_radius',
             [
-                'label' => esc_html__('Card Border Radius', 'drilllcorp-core'),
+                'label' => esc_html__('Card Border Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -423,7 +423,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'card_border',
-                'label' => esc_html__('Card Border', 'drilllcorp-core'),
+                'label' => esc_html__('Card Border', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .testimonial-slider-content',
             ]
         );
@@ -434,7 +434,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'content_style_section',
             [
-                'label' => esc_html__('Content Style', 'drilllcorp-core'),
+                'label' => esc_html__('Content Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -442,7 +442,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'content_padding',
             [
-                'label' => esc_html__('Content Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Content Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -454,19 +454,19 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'content_alignment',
             [
-                'label' => esc_html__('Alignment', 'drilllcorp-core'),
+                'label' => esc_html__('Alignment', 'drillcorp-core'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'drilllcorp-core'),
+                        'title' => esc_html__('Left', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'drilllcorp-core'),
+                        'title' => esc_html__('Center', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'drilllcorp-core'),
+                        'title' => esc_html__('Right', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -481,7 +481,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'title_style_heading',
             [
-                'label' => esc_html__('Title Style', 'drilllcorp-core'),
+                'label' => esc_html__('Title Style', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -490,7 +490,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label' => esc_html__('Title Color', 'drilllcorp-core'),
+                'label' => esc_html__('Title Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
@@ -503,7 +503,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => esc_html__('Title Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Title Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .testimonial-slider-content-wrap h3',
             ]
         );
@@ -511,7 +511,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'title_margin',
             [
-                'label' => esc_html__('Title Margin', 'drilllcorp-core'),
+                'label' => esc_html__('Title Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -524,7 +524,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'description_style_heading',
             [
-                'label' => esc_html__('Description Style', 'drilllcorp-core'),
+                'label' => esc_html__('Description Style', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -533,7 +533,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'description_color',
             [
-                'label' => esc_html__('Description Color', 'drilllcorp-core'),
+                'label' => esc_html__('Description Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#666666',
                 'selectors' => [
@@ -546,7 +546,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'description_typography',
-                'label' => esc_html__('Description Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Description Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .testimonial-slider-content-wrap p',
             ]
         );
@@ -554,7 +554,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'description_margin',
             [
-                'label' => esc_html__('Description Margin', 'drilllcorp-core'),
+                'label' => esc_html__('Description Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -569,7 +569,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'navigation_style_section',
             [
-                'label' => esc_html__('Navigation Style', 'drilllcorp-core'),
+                'label' => esc_html__('Navigation Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -577,7 +577,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'nav_size',
             [
-                'label' => esc_html__('Navigation Size', 'drilllcorp-core'),
+                'label' => esc_html__('Navigation Size', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -601,7 +601,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'nav_padding',
             [
-                'label' => esc_html__('Navigation Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Navigation Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -613,7 +613,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'nav_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'drilllcorp-core'),
+                'label' => esc_html__('Border Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -639,14 +639,14 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_tab(
             'nav_normal',
             [
-                'label' => esc_html__('Normal', 'drilllcorp-core'),
+                'label' => esc_html__('Normal', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'nav_icon_color',
             [
-                'label' => esc_html__('Icon Color', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
@@ -658,7 +658,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'nav_bg_color',
             [
-                'label' => esc_html__('Background Color', 'drilllcorp-core'),
+                'label' => esc_html__('Background Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#f5f5f5',
                 'selectors' => [
@@ -671,7 +671,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'nav_border',
-                'label' => esc_html__('Border', 'drilllcorp-core'),
+                'label' => esc_html__('Border', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .slider-nav-arrow',
             ]
         );
@@ -682,14 +682,14 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->start_controls_tab(
             'nav_hover',
             [
-                'label' => esc_html__('Hover', 'drilllcorp-core'),
+                'label' => esc_html__('Hover', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'nav_icon_hover_color',
             [
-                'label' => esc_html__('Icon Color', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -701,7 +701,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'nav_bg_hover_color',
             [
-                'label' => esc_html__('Background Hover Color', 'drilllcorp-core'),
+                'label' => esc_html__('Background Hover Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
@@ -714,7 +714,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'nav_border_hover',
-                'label' => esc_html__('Border', 'drilllcorp-core'),
+                'label' => esc_html__('Border', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .slider-nav-arrow:hover',
             ]
         );
@@ -726,7 +726,7 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'nav_margin',
             [
-                'label' => esc_html__('Navigation Margin', 'drilllcorp-core'),
+                'label' => esc_html__('Navigation Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -778,10 +778,10 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
 
                 <div class="slider-nav-wrapper">
                     <div class="swiper-button-prev slider-nav-arrow testimonial-nav-prev">
-                        <?php echo drilllcorp_get_svg_icon('left_arrow'); ?>
+                        <?php echo drillcorp_get_svg_icon('left_arrow'); ?>
                     </div>
                     <div class="swiper-button-next slider-nav-arrow testimonial-nav-next">
-                        <?php echo drilllcorp_get_svg_icon('right_arrow'); ?>
+                        <?php echo drillcorp_get_svg_icon('right_arrow'); ?>
                     </div>
                 </div>
             </div>

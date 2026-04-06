@@ -8,4 +8,5 @@ return array(
     'faq',
     'blog-feature-with-list',
     'projects',
+    'services-list',
 );

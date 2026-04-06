@@ -1,7 +1,7 @@
 /***********************************
-    DrilllCorp Custom widget css
+    Drillcorp Custom widget css
 ************************************/
-.drilllcorp_flogo_uploader {
+.drillcorp_flogo_uploader {
   display: block;
   width: 100%;
   background-color: #f2f2f2;
@@ -11,43 +11,43 @@
   color: #515151;
   margin-top: 10px;
 }
-.drilllcorp_flogo_uploader:focus {
+.drillcorp_flogo_uploader:focus {
   outline: none;
 }
-.drilllcorp-logo-preview img {
+.drillcorp-logo-preview img {
   max-width: 100%;
 }
-.drilllcorp-form-control {
+.drillcorp-form-control {
   display: block;
   width: 100%;
   resize: none;
 }
 
-.drilllcorp_sub_title {
+.drillcorp_sub_title {
   background-color: #f2f2f2;
   padding: 10px;
   font-size: 16px;
   font-weight: 600;
   color: #333;
 }
-.drilllcorp_small_text {
+.drillcorp_small_text {
   font-size: 12px;
   font-weight: 600;
   color: #777;
 }
 
-.drilllcorp_small_text span {
+.drillcorp_small_text span {
   background-color: #f2f2f2;
   padding: 2px 5px;
   color: #444;
 }
-.drilllcorp-logo-preview {
+.drillcorp-logo-preview {
   background-color: #f2f2f2;
   display: inline-block;
 }
 
 /*********************************
-    drilllcorp core admin css
+    drillcorp core admin css
 **********************************/
 .ocdi__import-mode-switch {
   display: none !important;
@@ -181,11 +181,11 @@ ul.ThemeIM-important-point li:after {
     overflow-y: auto;
   }
 }
-.toplevel_page_drilllcorp_theme_options.wp-has-current-submenu {
+.toplevel_page_drillcorp_theme_options.wp-has-current-submenu {
   background-color: #fff !important;
   color: #000 !important;
 }
-#adminmenu #toplevel_page_drilllcorp_theme_options img {
+#adminmenu #toplevel_page_drillcorp_theme_options img {
   padding-top: 10px;
   padding-right: 5px;
 }

@@ -1,7 +1,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DrilllCorp Core\n"
+"Project-Id-Version: Drillcorp Core\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-13 04:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.6.1; wp-5.9.3\n"
-"X-Domain: drilllcorp-core"
+"X-Domain: drillcorp-core"
 
 #: wp-widgets/theme-post-category-widget.php:61
 msgid " Oops, there are no category."
@@ -134,7 +134,7 @@ msgstr ""
 
 #: elementor/addons/elementor-accordion-widget.php:108
 #: elementor/addons/elementor-accordion-widget.php:151
-msgid "1. Is drilllcorp Luxury and comfort?"
+msgid "1. Is drillcorp Luxury and comfort?"
 msgstr ""
 
 #: elementor/addons/elementor-countdown-widget.php:92
@@ -166,7 +166,7 @@ msgid "60"
 msgstr ""
 
 #: elementor/addons/elementor-heading-title-widget.php:112
-msgid "About DrilllCorp"
+msgid "About Drillcorp"
 msgstr ""
 
 #: wp-widgets/theme-post-category-widget.php:93
@@ -431,7 +431,7 @@ msgid "Banner Right Shape Image"
 msgstr ""
 
 #: elementor/addons/elementor-header-slider-one-widget.php:147
-msgid "Banner DrilllCorp Image"
+msgid "Banner Drillcorp Image"
 msgstr ""
 
 #: elementor/addons/elementor-header-slider-one-widget.php:201
@@ -2085,7 +2085,7 @@ msgid "Paragraph Typography"
 msgstr ""
 
 #. Description of the plugin
-msgid "Plugin to contain short codes and custom post types of the DrilllCorp theme."
+msgid "Plugin to contain short codes and custom post types of the Drillcorp theme."
 msgstr ""
 
 #: elementor/addons/elementor-price-plan-widget.php:135
@@ -2707,51 +2707,51 @@ msgid "Suspendisse vel nisl sed viverra tindunt. Vivamus et lobortis felis..."
 msgstr ""
 
 #: admin/theme-menu-page.php:64
-msgid "DrilllCorp"
+msgid "Drillcorp"
 msgstr ""
 
 #. Name of the plugin
-msgid "DrilllCorp Core"
+msgid "Drillcorp Core"
 msgstr ""
 
 #: admin/theme-menu-page.php:63
-msgid "DrilllCorp Page"
+msgid "Drillcorp Page"
 msgstr ""
 
 #: elementor/elementor-widget-init.php:57
-msgid "DrilllCorp Widgets"
+msgid "Drillcorp Widgets"
 msgstr ""
 
 #: wp-widgets/theme-post-category-widget.php:17
-msgid "DrilllCorp:  Category"
+msgid "Drillcorp:  Category"
 msgstr ""
 
 #: wp-widgets/theme-about-me-widget.php:17
-msgid "DrilllCorp: About Me"
+msgid "Drillcorp: About Me"
 msgstr ""
 
 #: wp-widgets/theme-about-us-widget.php:17
-msgid "DrilllCorp: About Us"
+msgid "Drillcorp: About Us"
 msgstr ""
 
 #: wp-widgets/theme-contact-info-widget.php:17
-msgid "DrilllCorp: Contact Info"
+msgid "Drillcorp: Contact Info"
 msgstr ""
 
 #: wp-widgets/theme-recent-post-widget.php:22
-msgid "DrilllCorp: Recent Posts with Thumbnails"
+msgid "Drillcorp: Recent Posts with Thumbnails"
 msgstr ""
 
 #: wp-widgets/theme-request-form-widget.php:17
-msgid "DrilllCorp: Request Form"
+msgid "Drillcorp: Request Form"
 msgstr ""
 
 #: wp-widgets/theme-social-share-widget.php:17
-msgid "DrilllCorp: Social Share"
+msgid "Drillcorp: Social Share"
 msgstr ""
 
 #: wp-widgets/theme-post-tags-menu.php:19
-msgid "DrilllCorp: Tags"
+msgid "Drillcorp: Tags"
 msgstr ""
 
 #: elementor/addons/elementor-accordion-widget.php:164
@@ -3174,7 +3174,7 @@ msgid "upload banner right image shape"
 msgstr ""
 
 #: elementor/addons/elementor-header-slider-one-widget.php:150
-msgid "upload banner drilllcorp image"
+msgid "upload banner drillcorp image"
 msgstr ""
 
 #: elementor/addons/elementor-header-slider-one-widget.php:204
@@ -3242,7 +3242,7 @@ msgid "View Training"
 msgstr ""
 
 #: elementor/addons/elementor-header-slider-one-widget.php:171
-msgid "WELCOME TO DRILLLCORP"
+msgid "WELCOME TO DRILLCORP"
 msgstr ""
 
 #: elementor/addons/elementor-heading-title-widget.php:121

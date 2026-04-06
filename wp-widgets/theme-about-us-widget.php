@@ -2,7 +2,7 @@
 
 /**
  * Theme About Us Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -14,37 +14,37 @@ if (class_exists('CSF')) {
 
 
     // Create a About Widget
-    CSF::createWidget('drilllcorp_about_widget', array(
-        'title' => esc_html__('DrilllCorp: About Us', 'drilllcorp-core'),
-        'classname' => 'drilllcorp-widget-about',
-        'description' => esc_html__('Display about us widget', 'drilllcorp-core'),
+    CSF::createWidget('drillcorp_about_widget', array(
+        'title' => esc_html__('Drillcorp: About Us', 'drillcorp-core'),
+        'classname' => 'drillcorp-widget-about',
+        'description' => esc_html__('Display about us widget', 'drillcorp-core'),
         'fields' => array(
             array(
                 'id' => 'logo-area',
                 'type' => 'media',
-                'title' => esc_html__('Upload Your Photo', 'drilllcorp-core'),
+                'title' => esc_html__('Upload Your Photo', 'drillcorp-core'),
             ),
             array(
                 'id' => 'description',
                 'type' => 'textarea',
-                'title' => esc_html__('Description', 'DrilllCorp-core'),
-                'default' => esc_html__('Find Us on', 'drilllcorp-core')
+                'title' => esc_html__('Description', 'Drillcorp-core'),
+                'default' => esc_html__('Find Us on', 'drillcorp-core')
             ),
             array(
-                'id' => 'drilllcorp-footer-download-image-repeater',
+                'id' => 'drillcorp-footer-download-image-repeater',
                 'type' => 'repeater',
-                'title' => esc_html__('Download Image', 'drilllcorp-core'),
+                'title' => esc_html__('Download Image', 'drillcorp-core'),
                 'fields' => array(
                     array(
-                        'id' => 'drilllcorp-footer-download',
+                        'id' => 'drillcorp-footer-download',
                         'type' => 'media',
-                        'title' => esc_html__('Upload Your Download Photo', 'drilllcorp-core'),
+                        'title' => esc_html__('Upload Your Download Photo', 'drillcorp-core'),
                     ),
                     array(
-                        'id' => 'drilllcorp-footer-download-url',
+                        'id' => 'drillcorp-footer-download-url',
                         'type' => 'text',
-                        'title' => esc_html__('Enter Your Url', 'drilllcorp-core'),
-                        'default' => esc_html__('#', 'drilllcorp-core')
+                        'title' => esc_html__('Enter Your Url', 'drillcorp-core'),
+                        'default' => esc_html__('#', 'drillcorp-core')
                     ),
 
                 ),
@@ -53,8 +53,8 @@ if (class_exists('CSF')) {
     ));
 
 
-    if (!function_exists('drilllcorp_about_widget')) {
-        function drilllcorp_about_widget($args, $instance)
+    if (!function_exists('drillcorp_about_widget')) {
+        function drillcorp_about_widget($args, $instance)
         {
 
             echo $args['before_widget'];
@@ -64,7 +64,7 @@ if (class_exists('CSF')) {
             $img_print = $img_id ? wp_get_attachment_image_src($img_id, 'full')[0] : '';
             $alt_text = get_post_meta($img_id, '_wp_attachment_image_alt', true);
             $paragraph = $instance['description'] ?? '';
-            $socialIcon = is_array($instance['drilllcorp-footer-download-image-repeater']) && !empty($instance['drilllcorp-footer-download-image-repeater']) ? $instance['drilllcorp-footer-download-image-repeater'] : [];
+            $socialIcon = is_array($instance['drillcorp-footer-download-image-repeater']) && !empty($instance['drillcorp-footer-download-image-repeater']) ? $instance['drillcorp-footer-download-image-repeater'] : [];
 
 
 ?>
@@ -80,8 +80,8 @@ if (class_exists('CSF')) {
                         <?php
                         foreach ($socialIcon as $icon) {
 
-                            echo '<li class="single-info-item"><a href="' . $icon['drilllcorp-footer-download-url'] . '">
-                              <img src="' . $icon['drilllcorp-footer-download']['url'] . '" alt="' . $icon['drilllcorp-footer-download']['alt'] . '">
+                            echo '<li class="single-info-item"><a href="' . $icon['drillcorp-footer-download-url'] . '">
+                              <img src="' . $icon['drillcorp-footer-download']['url'] . '" alt="' . $icon['drillcorp-footer-download']['alt'] . '">
                         </li>';
                         };
                         ?>

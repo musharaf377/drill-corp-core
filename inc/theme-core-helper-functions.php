@@ -2,7 +2,7 @@
 
 /**
  * Theme Core Helper Functions
- * @package drilllcorp
+ * @package drillcorp
  * @since 1.0.0
  */
 
@@ -10,9 +10,9 @@ if (!defined("ABSPATH")) {
     exit(); //exit if access directly
 }
 
-if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
+if (!class_exists('Drillcorp_Core_Helper_Functions')) {
 
-    class DrilllCorp_Core_Helper_Functions
+    class Drillcorp_Core_Helper_Functions
     {
         /**
          * $instance
@@ -23,7 +23,7 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
         public function __construct()
         {
             add_filter('upload_mimes', array($this, 'theme_mime_types'));
-            add_filter('wp_check_filetype_and_ext', array($this, 'drilllcorp_disable_real_mime_check'), 10, 4);
+            add_filter('wp_check_filetype_and_ext', array($this, 'drillcorp_disable_real_mime_check'), 10, 4);
         }
 
         /**
@@ -53,11 +53,11 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
 
             if (is_singular()) :
 ?>
-                <?php the_post_thumbnail('drilllcorp_classic'); ?>
+                <?php the_post_thumbnail('drillcorp_classic'); ?>
             <?php else : ?>
                 <a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
                     <?php
-                    the_post_thumbnail('drilllcorp_classic', array(
+                    the_post_thumbnail('drillcorp_classic', array(
                         'alt' => the_title_attribute(array(
                             'echo' => false,
                         )),
@@ -154,11 +154,11 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
          * @since 1.0.0
          */
         /**
-         * drilllcorp_disable_real_mime_check
-         * drilllcorp_disable_real_mime_check()
+         * drillcorp_disable_real_mime_check
+         * drillcorp_disable_real_mime_check()
          * @since 1.0.0
          */
-        function drilllcorp_disable_real_mime_check($data, $file, $filename, $mimes)
+        function drillcorp_disable_real_mime_check($data, $file, $filename, $mimes)
         {
             $wp_filetype = wp_check_filetype($filename, $mimes);
 
@@ -171,7 +171,7 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
 
         /**
          * SVG Support
-         * drilllcorp_mime_types()
+         * drillcorp_mime_types()
          * @since 1.0.0
          */
         public function theme_mime_types($mimes)
@@ -200,7 +200,7 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
         {
 
             $defaults = array(
-                'before' => '<div class="wp-link-pages"><span>' . esc_html__('Pages:', 'drilllcorp') . '</span>',
+                'before' => '<div class="wp-link-pages"><span>' . esc_html__('Pages:', 'drillcorp') . '</span>',
                 'after' => '</div>',
                 'link_before' => '',
                 'link_after' => '',
@@ -219,7 +219,7 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
         public function post_pagination($nav_query = NULL)
         {
             global $wp_query;
-            $allowed_html = drilllcorp()->kses_allowed_html('all');
+            $allowed_html = drillcorp()->kses_allowed_html('all');
             $big = 12345678;
             if (NULL == $nav_query) {
                 $page_format = paginate_links(array(
@@ -234,7 +234,7 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
                 if (is_array($page_format)) {
                     $paged = (get_query_var('paged') == 0) ? 1 : get_query_var('paged');
                     echo '<div class="blog-pagination margin-top-60"><ul>';
-                    echo '<li><span>' . esc_html($paged) . esc_html__(' of ', 'drilllcorp') . esc_html($wp_query->max_num_pages) . '</span></li>';
+                    echo '<li><span>' . esc_html($paged) . esc_html__(' of ', 'drillcorp') . esc_html($wp_query->max_num_pages) . '</span></li>';
                     foreach ($page_format as $page) {
                         echo "<li>" . wp_kses($page, $allowed_html) . "</li>";
                     }
@@ -255,7 +255,7 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
                 if (is_array($page_format)) {
                     $paged = (get_query_var('paged') == 0) ? 1 : get_query_var('paged');
                     echo '<div class="blog-pagination margin-top-60"><ul>';
-                    echo '<li><span>' . esc_html($paged) . esc_html__(' of ', 'drilllcorp') . esc_html($nav_query->max_num_pages) . '</span></li>';
+                    echo '<li><span>' . esc_html($paged) . esc_html__(' of ', 'drillcorp') . esc_html($nav_query->max_num_pages) . '</span></li>';
                     foreach ($page_format as $page) {
                         echo "<li>" . wp_kses($page, $allowed_html) . "</li>";
                     }
@@ -278,7 +278,7 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
 
             $posted_on = sprintf(
                 /* translators: %s: post date. */
-                esc_html_x(' %s', 'post date', 'drilllcorp'),
+                esc_html_x(' %s', 'post date', 'drillcorp'),
                 '<a href="' . esc_url(get_permalink()) . '" rel="bookmark"><i class="fas fa-calendar-alt"></i> ' . $time_string . '</a>'
             );
 
@@ -293,8 +293,8 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
         {
             $byline = sprintf(
                 /* translators: %s: post author. */
-                esc_html_x(' %s', 'post author', 'drilllcorp'),
-                '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '"><i class="fas fa-user"></i> ' . esc_html__('By ', 'drilllcorp') . esc_html(get_the_author()) . '</a></span>'
+                esc_html_x(' %s', 'post author', 'drillcorp'),
+                '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '"><i class="fas fa-user"></i> ' . esc_html__('By ', 'drillcorp') . esc_html(get_the_author()) . '</a></span>'
             );
 
             echo '<span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
@@ -308,10 +308,10 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
         public function posted_tag()
         {
             /* translators: used between list items, there is a space after the comma */
-            $tags_list = get_the_tag_list('', esc_html_x(' ', 'list item separator', 'drilllcorp'));
+            $tags_list = get_the_tag_list('', esc_html_x(' ', 'list item separator', 'drillcorp'));
             if ($tags_list) {
                 /* translators: 1: list of tags. */
-                printf('<ul class="tags"><li class="title">' . esc_html__('Tags: ', 'drilllcorp') . '</li><li>' . ' %1$s' . '</li></ul>', $tags_list); // WPCS: XSS OK.
+                printf('<ul class="tags"><li class="title">' . esc_html__('Tags: ', 'drillcorp') . '</li><li>' . ' %1$s' . '</li></ul>', $tags_list); // WPCS: XSS OK.
             }
         }
 
@@ -322,10 +322,10 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
         public function post_navigation()
         {
             the_post_navigation(array(
-                'prev_text' => '<i class="fas fa-angle-double-left"></i>&nbsp;' . esc_html__('Prev Post', 'drilllcorp'),
-                'next_text' => esc_html__('Next Post', 'drilllcorp') . '&nbsp;<i class="fas fa-angle-double-right"></i>',
+                'prev_text' => '<i class="fas fa-angle-double-left"></i>&nbsp;' . esc_html__('Prev Post', 'drillcorp'),
+                'next_text' => esc_html__('Next Post', 'drillcorp') . '&nbsp;<i class="fas fa-angle-double-right"></i>',
             ));
-            echo wp_kses('<div class="clearfix"></div>', drilllcorp()->kses_allowed_html('all'));
+            echo wp_kses('<div class="clearfix"></div>', drillcorp()->kses_allowed_html('all'));
         }
 
         /**
@@ -509,31 +509,31 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
                     $forms_list[$form->ID] = $form->post_title;
                 }
             } else {
-                $forms_list[esc_html__('No contact form found', 'drilllcorp-core')] = 0;
+                $forms_list[esc_html__('No contact form found', 'drillcorp-core')] = 0;
             }
             return $forms_list;
         }
 
 
         /**
-         * Is drilllcorp active
+         * Is drillcorp active
          * @since 1.0.0
          */
-        public function is_drilllcorp_active()
+        public function is_drillcorp_active()
         {
-            $theme_name_array = array('DrilllCorp', 'DrilllCorp Child');
+            $theme_name_array = array('Drillcorp', 'Drillcorp Child');
             $current_theme = wp_get_theme();
             $current_theme_name = $current_theme->get('Name');
             return in_array($current_theme_name, $theme_name_array) ? true : false;
         }
 
         /**
-         * Is drilllcorp core active
+         * Is drillcorp core active
          * @since 1.0.0
          */
-        public function is_drilllcorp_core_active()
+        public function is_drillcorp_core_active()
         {
-            return defined('DRILLLCORP_CORE_SELF_PATH') ? true : false;
+            return defined('DRILLCORP_CORE_SELF_PATH') ? true : false;
         }
 
         /**
@@ -547,9 +547,9 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
             if ($count == '') {
                 delete_post_meta($postID, $count_key);
                 add_post_meta($postID, $count_key, '0');
-                printf(' 0 %s', esc_html__('Views', 'drilllcorp'));
+                printf(' 0 %s', esc_html__('Views', 'drillcorp'));
             }
-            printf($count . ' %s ', esc_html__('Views', 'drilllcorp'));
+            printf($count . ' %s ', esc_html__('Views', 'drillcorp'));
         }
 
         // Post views count
@@ -606,11 +606,11 @@ if (!class_exists('DrilllCorp_Core_Helper_Functions')) {
         public function render_elementor_icons($settings, $attr = [])
         {
             $attr['aria-hidden'] = 'true';
-            return \DrilllCorp\DrilllCorp_elementor_icon_manager::render_icon($settings, $attr);
+            return \Drillcorp\Drillcorp_elementor_icon_manager::render_icon($settings, $attr);
         }
     } //end class
 
-    if (class_exists('DrilllCorp_Core_Helper_Functions')) {
-        DrilllCorp_Core_Helper_Functions::getInstance();
+    if (class_exists('Drillcorp_Core_Helper_Functions')) {
+        Drillcorp_Core_Helper_Functions::getInstance();
     }
 }

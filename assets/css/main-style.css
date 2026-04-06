@@ -10,3 +10,9 @@ ul {
   margin: 0;
 }
 
+/* swiper linear slide css */
+.linear-carusal-slider .swiper-wrapper{
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+}
+

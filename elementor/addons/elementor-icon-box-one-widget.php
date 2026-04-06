@@ -2,13 +2,13 @@
 
 /**
  * Elementor Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
 namespace Elementor;
 
-class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
+class Drillcorp_Icon_Box_One_Widget extends Widget_Base
 {
 
     /**
@@ -23,7 +23,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'drilllcorp-icon-box-item-widget';
+        return 'drillcorp-icon-box-item-widget';
     }
 
     /**
@@ -38,7 +38,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Icon Box: 01', 'drilllcorp-core');
+        return esc_html__('Icon Box: 01', 'drillcorp-core');
     }
 
     /**
@@ -68,7 +68,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
      */
     public function get_categories()
     {
-        return ['drilllcorp_widgets'];
+        return ['drillcorp_widgets'];
     }
 
     /**
@@ -85,37 +85,37 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('General Settings', 'drilllcorp-core'),
+                'label' => esc_html__('General Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'white_section_title',
             [
-                'label' => esc_html__('Subtitle Plane Animation', 'drilllcorp-core'),
+                'label' => esc_html__('Subtitle Plane Animation', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'default' => '',
                 'options' => [
-                    'white' => esc_html__('White Style', 'drilllcorp-core'),
-                    '' => esc_html__('Default Style', 'drilllcorp-core'),
+                    'white' => esc_html__('White Style', 'drillcorp-core'),
+                    '' => esc_html__('Default Style', 'drillcorp-core'),
                 ],
             ]
         );
         $this->add_control(
             'title',
             [
-                'label' => esc_html__('Title', 'drilllcorp-core'),
+                'label' => esc_html__('Title', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('enter title.', 'drilllcorp-core'),
-                'default' => esc_html__('User friendly system added', 'drilllcorp-core'),
+                'description' => esc_html__('enter title.', 'drillcorp-core'),
+                'default' => esc_html__('User friendly system added', 'drillcorp-core'),
             ]
         );
         $this->add_control(
             'link',
             [
-                'label' => esc_html__('Link', 'drilllcorp-core'),
+                'label' => esc_html__('Link', 'drillcorp-core'),
                 'type' => Controls_Manager::URL,
-                'description' => esc_html__('enter url.', 'drilllcorp-core'),
+                'description' => esc_html__('enter url.', 'drillcorp-core'),
                 'default' => [
                     'url' => ''
                 ]
@@ -138,9 +138,9 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'icon',
             [
-                'label' => esc_html__('Icon', 'drilllcorp-core'),
+                'label' => esc_html__('Icon', 'drillcorp-core'),
                 'type' => Controls_Manager::ICONS,
-                'description' => esc_html__('select Icon.', 'drilllcorp-core'),
+                'description' => esc_html__('select Icon.', 'drillcorp-core'),
                 'default' => [
                     'value' => 'fas fa-phone-alt',
                     'library' => 'solid',
@@ -151,17 +151,17 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'text_icon',
             [
-                'label' => esc_html__('Text Icon', 'drilllcorp-core'),
+                'label' => esc_html__('Text Icon', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXT,
-                'description' => esc_html__('enter text.', 'drilllcorp-core'),
-                'default' => esc_html__('1', 'drilllcorp-core'),
+                'description' => esc_html__('enter text.', 'drillcorp-core'),
+                'default' => esc_html__('1', 'drillcorp-core'),
                 'condition' => ['icon_selector' => 'text_icon']
             ]
         );
         $this->add_control(
             'image',
             [
-                'label' => esc_html__('Image', 'drilllcorp-core'),
+                'label' => esc_html__('Image', 'drillcorp-core'),
                 'type' => Controls_Manager::MEDIA,
                 'show_label' => false,
                 'condition' => ['icon_selector' => 'image']
@@ -170,28 +170,28 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'description',
             [
-                'label' => esc_html__('Description', 'drilllcorp-core'),
+                'label' => esc_html__('Description', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('enter text.', 'drilllcorp-core'),
-                'default' => esc_html__('There is a very fast AVANCE L5 system for internet access and it did not disappoint.', 'drilllcorp-core')
+                'description' => esc_html__('enter text.', 'drillcorp-core'),
+                'default' => esc_html__('There is a very fast AVANCE L5 system for internet access and it did not disappoint.', 'drillcorp-core')
             ]
         );
         $this->add_control(
             'text_align',
             [
-                'label' => esc_html__('Alignment', 'drilllcorp-core'),
+                'label' => esc_html__('Alignment', 'drillcorp-core'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'drilllcorp-core'),
+                        'title' => esc_html__('Left', 'drillcorp-core'),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'drilllcorp-core'),
+                        'title' => esc_html__('Center', 'drillcorp-core'),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'drilllcorp-core'),
+                        'title' => esc_html__('Right', 'drillcorp-core'),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
@@ -204,7 +204,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->start_controls_section(
             'styling_settings_section',
             [
-                'label' => esc_html__('Box Styling Settings', 'drilllcorp-core'),
+                'label' => esc_html__('Box Styling Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -215,13 +215,13 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->start_controls_tab(
             'active_hover_style_normal_tab',
             [
-                'label' => esc_html__('Normal', 'drilllcorp-core'),
+                'label' => esc_html__('Normal', 'drillcorp-core'),
             ]
         );
         $this->add_control(
             'item_padding',
             [
-                'label' => esc_html__('Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -234,14 +234,14 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'border',
-                'label' => esc_html__('Border', 'drilllcorp-core'),
+                'label' => esc_html__('Border', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .icon-box-item',
             ]
         );
         $this->add_control(
             'background_border_radius',
             [
-                'label' => esc_html__('Box Border Radius', 'drilllcorp-core'),
+                'label' => esc_html__('Box Border Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -253,7 +253,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'background_color',
-                'label' => esc_html__('Background Image', 'drilllcorp-core'),
+                'label' => esc_html__('Background Image', 'drillcorp-core'),
                 'types' => ['classic', 'gradient', 'video'],
                 'selector' => '{{WRAPPER}} .icon-box-item',
             ]
@@ -262,14 +262,14 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'box_shadow',
-                'label' => esc_html__('Box Shadow', 'drilllcorp-core'),
+                'label' => esc_html__('Box Shadow', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .icon-box-item',
             ]
         );
         $this->add_control(
             'title_margin_bottom',
             [
-                'label' => esc_html__('Title Margin Bottom', 'drilllcorp-core'),
+                'label' => esc_html__('Title Margin Bottom', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range' => [
@@ -289,14 +289,14 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             ]
         );
         $this->add_control('title_color', [
-            'label' => esc_html__('Title Color', 'drilllcorp-core'),
+            'label' => esc_html__('Title Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .icon-box-item .content .title" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('number_color', [
-            'label' => esc_html__('Number Color', 'drilllcorp-core'),
+            'label' => esc_html__('Number Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .icon-box-item .content p" => "color: {{VALUE}}"
@@ -308,11 +308,11 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->start_controls_tab(
             'slider_navigation_style_hover_tab',
             [
-                'label' => esc_html__('Hover', 'drilllcorp-core'),
+                'label' => esc_html__('Hover', 'drillcorp-core'),
             ]
         );
         $this->add_control('background_hover_color', [
-            'label' => esc_html__('Background Color', 'drilllcorp-core'),
+            'label' => esc_html__('Background Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .icon-box-item:hover" => "background-color: {{VALUE}}"
@@ -322,33 +322,33 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'box_shadow_hover',
-                'label' => esc_html__('Box Shadow', 'drilllcorp-core'),
+                'label' => esc_html__('Box Shadow', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .icon-box-item:hover',
             ]
         );
         $this->add_control('icon_bg_hover_color', [
-            'label' => esc_html__('Icon Background Color', 'drilllcorp-core'),
+            'label' => esc_html__('Icon Background Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .icon-box-item:hover .icon" => "background-color: {{VALUE}}"
             ]
         ]);
         $this->add_control('icon_hover_color', [
-            'label' => esc_html__('Icon Color', 'drilllcorp-core'),
+            'label' => esc_html__('Icon Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .icon-box-item:hover .icon" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('title_hover_color', [
-            'label' => esc_html__('Title Color', 'drilllcorp-core'),
+            'label' => esc_html__('Title Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .icon-box-item:hover .content .title" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('paragraph_hover_color', [
-            'label' => esc_html__('Paragraph Color', 'drilllcorp-core'),
+            'label' => esc_html__('Paragraph Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .icon-box-item:hover .content p" => "color: {{VALUE}}"
@@ -362,14 +362,14 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->start_controls_section(
             'icon_styling_settings_section',
             [
-                'label' => esc_html__('Icon Style', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'icon_border_radius',
             [
-                'label' => esc_html__('Icon Border Radius', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Border Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -381,7 +381,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'icon_height',
             [
-                'label' => esc_html__('Icon Height', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range' => [
@@ -404,7 +404,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'icon_width',
             [
-                'label' => esc_html__('Icon Width', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Width', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range' => [
@@ -427,7 +427,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'icon_size',
             [
-                'label' => esc_html__('Icon Size', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Size', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range' => [
@@ -454,7 +454,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'icon_margin_bottom',
             [
-                'label' => esc_html__('Icon Margin Bottom', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Margin Bottom', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'range' => [
@@ -477,7 +477,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'icon_margin_left',
             [
-                'label' => esc_html__('Icon Margin Left', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Margin Left', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'em'],
                 'condition' => ['position' => 'left'],
@@ -502,32 +502,32 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->add_control(
             'position',
             [
-                'label' => esc_html__('Position', 'drilllcorp-core'),
+                'label' => esc_html__('Position', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'top',
                 'options' => [
-                    'top' => esc_html__('Top', 'drilllcorp-core'),
-                    'left' => esc_html__('Left', 'drilllcorp-core'),
-                    'right' => esc_html__('Right', 'drilllcorp-core'),
+                    'top' => esc_html__('Top', 'drillcorp-core'),
+                    'left' => esc_html__('Left', 'drillcorp-core'),
+                    'right' => esc_html__('Right', 'drillcorp-core'),
                 ],
             ]
         );
         $this->add_control(
             'icon_shape_style',
             [
-                'label' => esc_html__('Icon Shape Style', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Shape Style', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'default' => '',
                 'options' => [
-                    '' => esc_html__('Default', 'drilllcorp-core'),
-                    'shape' => esc_html__('Style 01', 'drilllcorp-core'),
-                    'shape_02' => esc_html__('Style 02', 'drilllcorp-core'),
-                    'shape_03' => esc_html__('style 03', 'drilllcorp-core'),
+                    '' => esc_html__('Default', 'drillcorp-core'),
+                    'shape' => esc_html__('Style 01', 'drillcorp-core'),
+                    'shape_02' => esc_html__('Style 02', 'drillcorp-core'),
+                    'shape_03' => esc_html__('style 03', 'drillcorp-core'),
                 ],
             ]
         );
         $this->add_control('icon_color', [
-            'label' => esc_html__('Icon Color', 'drilllcorp-core'),
+            'label' => esc_html__('Icon Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .icon-box-item .icon" => "color: {{VALUE}}",
@@ -538,7 +538,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'icon_bg_color',
-                'label' => esc_html__('Background Image', 'drilllcorp-core'),
+                'label' => esc_html__('Background Image', 'drillcorp-core'),
                 'types' => ['classic', 'gradient', 'video'],
                 'selector' => "{{WRAPPER}} .icon-box-item .icon,
 		                    {{WRAPPER}} .icon-box-item .text-icon"
@@ -550,7 +550,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
         $this->start_controls_section(
             'typography_settings_section',
             [
-                'label' => esc_html__('Typography Settings', 'drilllcorp-core'),
+                'label' => esc_html__('Typography Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -558,7 +558,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => esc_html__('Title Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Title Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .icon-box-item .content .title',
             ]
         );
@@ -566,7 +566,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'text_icon_typography',
-                'label' => esc_html__('Text Icon Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Text Icon Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .icon-box-item .text-icon span',
             ]
         );
@@ -574,7 +574,7 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'description_typography',
-                'label' => esc_html__('Number Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Number Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .icon-box-item .content p',
             ]
         );
@@ -636,4 +636,4 @@ class DrilllCorp_Icon_Box_One_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new DrilllCorp_Icon_Box_One_Widget());
+Plugin::instance()->widgets_manager->register_widget_type(new Drillcorp_Icon_Box_One_Widget());

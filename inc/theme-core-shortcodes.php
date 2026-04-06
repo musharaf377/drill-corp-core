@@ -2,7 +2,7 @@
 
 /**
  * Theme Core Shortcodes Function
- * @package drilllcorp
+ * @package drillcorp
  * @since 1.0.0
  */
 
@@ -11,9 +11,9 @@ if (!defined('ABSPATH')) {
 }
 
 
-if (!class_exists('DrilllCorp_Core_shortcodes')) {
+if (!class_exists('Drillcorp_Core_shortcodes')) {
 
-    class DrilllCorp_Core_shortcodes
+    class Drillcorp_Core_shortcodes
     {
 
         /**
@@ -29,20 +29,20 @@ if (!class_exists('DrilllCorp_Core_shortcodes')) {
         public function __construct()
         {
             //social post share
-            add_shortcode('drilllcorp_post_share', array($this, 'post_share'));
+            add_shortcode('drillcorp_post_share', array($this, 'post_share'));
             //social icon
-            add_shortcode('drilllcorp_social_icon_wrap', array(__CLASS__, 'social_icon_wrap'));
-            add_shortcode('drilllcorp_social_icon', array(__CLASS__, 'social_icons'));
+            add_shortcode('drillcorp_social_icon_wrap', array(__CLASS__, 'social_icon_wrap'));
+            add_shortcode('drillcorp_social_icon', array(__CLASS__, 'social_icons'));
             //top menu
-            add_shortcode('drilllcorp_top_menu_wrap', array(__CLASS__, 'top_menu_wrap'));
-            add_shortcode('drilllcorp_top_menu', array(__CLASS__, 'top_menu'));
+            add_shortcode('drillcorp_top_menu_wrap', array(__CLASS__, 'top_menu_wrap'));
+            add_shortcode('drillcorp_top_menu', array(__CLASS__, 'top_menu'));
             //top menu
-            add_shortcode('drilllcorp_top_menu_wrap_02', array(__CLASS__, 'top_menu_wrap_02'));
-            add_shortcode('drilllcorp_top_menu_02', array(__CLASS__, 'top_menu_02'));
+            add_shortcode('drillcorp_top_menu_wrap_02', array(__CLASS__, 'top_menu_wrap_02'));
+            add_shortcode('drillcorp_top_menu_02', array(__CLASS__, 'top_menu_02'));
             //info_item
-            add_shortcode('drilllcorp_info_item_wrap', array(__CLASS__, 'info_item_wrap'));
-            add_shortcode('drilllcorp_info_link', array(__CLASS__, 'info_link'));
-            add_shortcode('drilllcorp_info_inline_text', array(__CLASS__, 'info_inline_text'));
+            add_shortcode('drillcorp_info_item_wrap', array(__CLASS__, 'info_item_wrap'));
+            add_shortcode('drillcorp_info_link', array(__CLASS__, 'info_link'));
+            add_shortcode('drillcorp_info_inline_text', array(__CLASS__, 'info_inline_text'));
         }
 
 
@@ -75,18 +75,18 @@ if (!class_exists('DrilllCorp_Core_shortcodes')) {
             if (is_singular() || is_home()) {
 
                 //get current page url
-                $drilllcorp_url = urlencode_deep(get_permalink());
+                $drillcorp_url = urlencode_deep(get_permalink());
                 //get current page title
-                $drilllcorp_title = str_replace(' ', '%20', get_the_title($post->ID));
+                $drillcorp_title = str_replace(' ', '%20', get_the_title($post->ID));
                 //get post thumbnail for pinterest
-                $drilllcorp_thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
-                $drilllcorp_thumbnail = !empty($drilllcorp_thumbnail) ? $drilllcorp_thumbnail[0] : '';
+                $drillcorp_thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
+                $drillcorp_thumbnail = !empty($drillcorp_thumbnail) ? $drillcorp_thumbnail[0] : '';
 
                 //all social share link generate
-                $facebook_share_link = 'https://www.facebook.com/sharer/sharer.php?u=' . $drilllcorp_url;
-                $twitter_share_link = 'https://twitter.com/intent/tweet?text=' . $drilllcorp_title . '&amp;url=' . $drilllcorp_url . '&amp;via=' . get_bloginfo('url');
-                $linkedin_share_link = 'https://www.linkedin.com/shareArticle?mini=true&url=' . $drilllcorp_url . '&amp;title=' . $drilllcorp_title;
-                $pinterest_share_link = 'https://pinterest.com/pin/create/button/?url=' . $drilllcorp_url . '&amp;media=' . $drilllcorp_thumbnail . '&amp;description=' . $drilllcorp_title;
+                $facebook_share_link = 'https://www.facebook.com/sharer/sharer.php?u=' . $drillcorp_url;
+                $twitter_share_link = 'https://twitter.com/intent/tweet?text=' . $drillcorp_title . '&amp;url=' . $drillcorp_url . '&amp;via=' . get_bloginfo('url');
+                $linkedin_share_link = 'https://www.linkedin.com/shareArticle?mini=true&url=' . $drillcorp_url . '&amp;title=' . $drillcorp_title;
+                $pinterest_share_link = 'https://pinterest.com/pin/create/button/?url=' . $drillcorp_url . '&amp;media=' . $drillcorp_thumbnail . '&amp;description=' . $drillcorp_title;
 
                 $output .= '<ul class="social-icon">';
                 $output .= '<li><a class="facebook" href="' . esc_url($facebook_share_link) . '"><i class="fab fa-facebook-f"></i></a></li>';
@@ -318,7 +318,7 @@ if (!class_exists('DrilllCorp_Core_shortcodes')) {
         }
     } //end class
 
-    if (class_exists('DrilllCorp_Core_shortcodes')) {
-        DrilllCorp_Core_shortcodes::getInstance();
+    if (class_exists('Drillcorp_Core_shortcodes')) {
+        Drillcorp_Core_shortcodes::getInstance();
     }
 }//end if

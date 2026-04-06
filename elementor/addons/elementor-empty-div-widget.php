@@ -2,7 +2,7 @@
 
 /**
  * Elementor Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -23,7 +23,7 @@ class Empty_Div_One extends Widget_Base
      */
     public function get_name()
     {
-        return 'drilllcorp-empty-dib-widget';
+        return 'drillcorp-empty-dib-widget';
     }
 
     /**
@@ -38,12 +38,12 @@ class Empty_Div_One extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Empty Div', 'drilllcorp-core');
+        return esc_html__('Empty Div', 'drillcorp-core');
     }
 
     public function get_keywords()
     {
-        return ['Animation', 'Circle', 'Effect', "ThemeIM", 'DrilllCorp'];
+        return ['Animation', 'Circle', 'Effect', "ThemeIM", 'Drillcorp'];
     }
 
     /**
@@ -73,7 +73,7 @@ class Empty_Div_One extends Widget_Base
      */
     public function get_categories()
     {
-        return ['drilllcorp_widgets'];
+        return ['drillcorp_widgets'];
     }
 
     /**
@@ -90,7 +90,7 @@ class Empty_Div_One extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('General Settings', 'drilllcorp-core'),
+                'label' => esc_html__('General Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -98,7 +98,7 @@ class Empty_Div_One extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'shape_bg_color',
-                'label' => esc_html__('Background', 'drilllcorp-core'),
+                'label' => esc_html__('Background', 'drillcorp-core'),
                 'types' => ['classic', 'gradient', 'video'],
                 'selector' => "{{WRAPPER}} .shape"
             ]
@@ -106,7 +106,7 @@ class Empty_Div_One extends Widget_Base
         $this->add_control(
             'shape-radius',
             [
-                'label' => esc_html__('Shape Radius', 'drilllcorp-core'),
+                'label' => esc_html__('Shape Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -118,14 +118,14 @@ class Empty_Div_One extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'shape_border',
-                'label' => esc_html__('Shape Border', 'drilllcorp-core'),
+                'label' => esc_html__('Shape Border', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .shape',
             ]
         );
         $this->add_control(
             'shape_height',
             [
-                'label' => esc_html__('Shape Height', 'drilllcorp-core'),
+                'label' => esc_html__('Shape Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -151,7 +151,7 @@ class Empty_Div_One extends Widget_Base
         $this->add_control(
             'shape_width',
             [
-                'label' => esc_html__('Shape Width', 'drilllcorp-core'),
+                'label' => esc_html__('Shape Width', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -177,19 +177,19 @@ class Empty_Div_One extends Widget_Base
         $this->add_control(
             'alignment',
             [
-                'label' => esc_html__('Alignment', 'drilllcorp-core'),
+                'label' => esc_html__('Alignment', 'drillcorp-core'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'drilllcorp-core'),
+                        'title' => esc_html__('Left', 'drillcorp-core'),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'drilllcorp-core'),
+                        'title' => esc_html__('Center', 'drillcorp-core'),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'drilllcorp-core'),
+                        'title' => esc_html__('Right', 'drillcorp-core'),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],

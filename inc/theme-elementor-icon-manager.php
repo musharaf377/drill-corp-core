@@ -1,11 +1,11 @@
 <?php
 
-namespace DrilllCorp;
+namespace Drillcorp;
 
 use Elementor\Core\Files\Assets\Svg\Svg_Handler;
 use Elementor\Utils;
 
-class DrilllCorp_elementor_icon_manager extends \Elementor\Icons_Manager
+class Drillcorp_elementor_icon_manager extends \Elementor\Icons_Manager
 {
 
     private static function render_icon_html($icon, $attributes = [], $tag = 'i')

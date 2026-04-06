@@ -4,23 +4,23 @@ $js_files = array(
     
     array(
         'handle' => 'swiper-js',
-        'src' => DRILLLCORP_CORE_JS . '/swiper.min.js',
+        'src' => DRILLCORP_CORE_JS . '/swiper.min.js',
         'deps' => array('jquery'),
         'in_footer' => true
     ),
 
     array(
         'handle' => 'main',
-        'src' => DRILLLCORP_CORE_JS . '/main.js',
+        'src' => DRILLCORP_CORE_JS . '/main.js',
         'deps' => array('jquery'),
         'in_footer' => true
     ),
 );
 
-if (!drilllcorp_core()->is_drilllcorp_active()) {
+if (!drillcorp_core()->is_drillcorp_active()) {
     $js_files[] = array(
         'handle' => 'bootstrap',
-        'src' => DRILLLCORP_CORE_JS . '/bootstrap.min.js',
+        'src' => DRILLCORP_CORE_JS . '/bootstrap.min.js',
         'deps' => array('jquery'),
         'in_footer' => true
     );

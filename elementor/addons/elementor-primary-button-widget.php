@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Elementor DrilllCorp Button Widget
- * @package DrilllCorp
+ * Elementor Drillcorp Button Widget
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -38,7 +38,7 @@ class Primary_Button_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Primary Button', 'drilllcorp-core');
+        return esc_html__('Primary Button', 'drillcorp-core');
     }
 
     /**
@@ -68,7 +68,7 @@ class Primary_Button_Widget extends Widget_Base
      */
     public function get_categories()
     {
-        return ['drilllcorp_widgets'];
+        return ['drillcorp_widgets'];
     }
 
     /**
@@ -85,7 +85,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__('DrilllCorp Button Content', 'drilllcorp-core'),
+                'label' => esc_html__('Drillcorp Button Content', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -93,19 +93,19 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_control(
             'button_text',
             [
-                'label' => esc_html__('Button Text', 'drilllcorp-core'),
+                'label' => esc_html__('Button Text', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Click Here', 'drilllcorp-core'),
-                'placeholder' => esc_html__('Enter button text', 'drilllcorp-core'),
+                'default' => esc_html__('Click Here', 'drillcorp-core'),
+                'placeholder' => esc_html__('Enter button text', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'button_link',
             [
-                'label' => esc_html__('Button Link', 'drilllcorp-core'),
+                'label' => esc_html__('Button Link', 'drillcorp-core'),
                 'type' => Controls_Manager::URL,
-                'placeholder' => esc_html__('https://your-link.com', 'drilllcorp-core'),
+                'placeholder' => esc_html__('https://your-link.com', 'drillcorp-core'),
                 'default' => [
                     'url' => '',
                     'is_external' => true,
@@ -118,10 +118,10 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'show_icon',
             [
-                'label' => esc_html__('Show Icon', 'drilllcorp-core'),
+                'label' => esc_html__('Show Icon', 'drillcorp-core'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'drilllcorp-core'),
-                'label_off' => esc_html__('No', 'drilllcorp-core'),
+                'label_on' => esc_html__('Yes', 'drillcorp-core'),
+                'label_off' => esc_html__('No', 'drillcorp-core'),
                 'return_value' => 'yes',
                 'default' => 'no',
             ]
@@ -130,7 +130,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_icon',
             [
-                'label' => esc_html__('Button Icon', 'drilllcorp-core'),
+                'label' => esc_html__('Button Icon', 'drillcorp-core'),
                 'type' => Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-arrow-right',
@@ -145,12 +145,12 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_control(
             'icon_position',
             [
-                'label' => esc_html__('Icon Position', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Position', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'right',
                 'options' => [
-                    'left' => esc_html__('Before Text', 'drilllcorp-core'),
-                    'right' => esc_html__('After Text', 'drilllcorp-core'),
+                    'left' => esc_html__('Before Text', 'drillcorp-core'),
+                    'right' => esc_html__('After Text', 'drillcorp-core'),
                 ],
                 'condition' => [
                     'show_icon' => 'yes',
@@ -161,7 +161,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'icon_spacing',
             [
-                'label' => esc_html__('Icon Spacing', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Spacing', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range' => [
@@ -193,23 +193,23 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_align',
             [
-                'label' => esc_html__('Alignment', 'drilllcorp-core'),
+                'label' => esc_html__('Alignment', 'drillcorp-core'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'drilllcorp-core'),
+                        'title' => esc_html__('Left', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'drilllcorp-core'),
+                        'title' => esc_html__('Center', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'drilllcorp-core'),
+                        'title' => esc_html__('Right', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-right',
                     ],
                     'justify' => [
-                        'title' => esc_html__('Justified', 'drilllcorp-core'),
+                        'title' => esc_html__('Justified', 'drillcorp-core'),
                         'icon' => 'eicon-text-align-justify',
                     ],
                 ],
@@ -227,7 +227,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->start_controls_section(
             'style_section',
             [
-                'label' => esc_html__('DrilllCorp Button Style', 'drilllcorp-core'),
+                'label' => esc_html__('Drillcorp Button Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -240,7 +240,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->start_controls_tab(
             'button_normal_tab',
             [
-                'label' => esc_html__('Normal', 'drilllcorp-core'),
+                'label' => esc_html__('Normal', 'drillcorp-core'),
             ]
         );
 
@@ -248,7 +248,7 @@ class Primary_Button_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'button_typography',
-                'label' => esc_html__('Typography', 'drilllcorp-core'),
+                'label' => esc_html__('Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .primary-btn',
             ]
         );
@@ -256,7 +256,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_text_color',
             [
-                'label' => esc_html__('Text Color', 'drilllcorp-core'),
+                'label' => esc_html__('Text Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -273,7 +273,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_icon_color',
             [
-                'label' => esc_html__('Icon Color', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .primary-btn i' => 'color: {{VALUE}};',
@@ -292,7 +292,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_svg_stroke_color',
             [
-                'label' => esc_html__('SVG Stroke Color', 'drilllcorp-core'),
+                'label' => esc_html__('SVG Stroke Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .primary-btn svg' => 'stroke: {{VALUE}};',
@@ -311,7 +311,7 @@ class Primary_Button_Widget extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'button_background',
-                'label' => esc_html__('Background', 'drilllcorp-core'),
+                'label' => esc_html__('Background', 'drillcorp-core'),
                 'types' => ['classic', 'gradient'],
                 'selector' => '{{WRAPPER}} .primary-btn',
                 'exclude' => ['image'],
@@ -321,7 +321,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_control(
             'button_border_color',
             [
-                'label' => esc_html__('Border Color', 'drilllcorp-core'),
+                'label' => esc_html__('Border Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .primary-btn' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
@@ -332,7 +332,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_padding',
             [
-                'label' => esc_html__('Padding', 'drilllcorp-core'),
+                'label' => esc_html__('Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -344,7 +344,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_width',
             [
-                'label' => esc_html__('Width', 'drilllcorp-core'),
+                'label' => esc_html__('Width', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'vw'],
                 'range' => [
@@ -373,7 +373,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_height',
             [
-                'label' => esc_html__('Height', 'drilllcorp-core'),
+                'label' => esc_html__('Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range' => [
@@ -397,7 +397,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => esc_html__('Icon Size', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Size', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'em'],
                 'range' => [
@@ -430,7 +430,7 @@ class Primary_Button_Widget extends Widget_Base
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'button_box_shadow',
-                'label' => esc_html__('Box Shadow', 'drilllcorp-core'),
+                'label' => esc_html__('Box Shadow', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .primary-btn',
             ]
         );
@@ -441,14 +441,14 @@ class Primary_Button_Widget extends Widget_Base
         $this->start_controls_tab(
             'button_hover_tab',
             [
-                'label' => esc_html__('Hover', 'drilllcorp-core'),
+                'label' => esc_html__('Hover', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'button_hover_text_color',
             [
-                'label' => esc_html__('Text Color', 'drilllcorp-core'),
+                'label' => esc_html__('Text Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .primary-btn:hover' => 'color: {{VALUE}};',
@@ -459,7 +459,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_control(
             'button_hover_icon_color',
             [
-                'label' => esc_html__('Icon Color', 'drilllcorp-core'),
+                'label' => esc_html__('Icon Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .primary-btn:hover i' => 'color: {{VALUE}};',
@@ -478,7 +478,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_control(
             'button_hover_svg_stroke_color',
             [
-                'label' => esc_html__('SVG Stroke Color', 'drilllcorp-core'),
+                'label' => esc_html__('SVG Stroke Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .primary-btn:hover svg' => 'stroke: {{VALUE}};',
@@ -497,7 +497,7 @@ class Primary_Button_Widget extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'button_hover_background',
-                'label' => esc_html__('Background', 'drilllcorp-core'),
+                'label' => esc_html__('Background', 'drillcorp-core'),
                 'types' => ['classic', 'gradient'],
                 'selector' => '{{WRAPPER}} .primary-btn:hover',
                 'exclude' => ['image'],
@@ -507,7 +507,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_control(
             'button_hover_border_color',
             [
-                'label' => esc_html__('Border Color', 'drilllcorp-core'),
+                'label' => esc_html__('Border Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .primary-btn:hover' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
@@ -519,7 +519,7 @@ class Primary_Button_Widget extends Widget_Base
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'button_hover_box_shadow',
-                'label' => esc_html__('Box Shadow', 'drilllcorp-core'),
+                'label' => esc_html__('Box Shadow', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .primary-btn:hover',
             ]
         );
@@ -527,7 +527,7 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_control(
             'button_hover_transition',
             [
-                'label' => esc_html__('Transition Duration', 'drilllcorp-core'),
+                'label' => esc_html__('Transition Duration', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['ms', 's'],
                 'range' => [

@@ -2,13 +2,13 @@
 
 /**
  * Elementor Widget
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
 namespace Elementor;
 
-class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
+class Drillcorp_Table_Of_Content_Widget extends Widget_Base
 {
 
     /**
@@ -23,7 +23,7 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
      */
     public function get_name()
     {
-        return 'drilllcorp-table-of-content-widget';
+        return 'drillcorp-table-of-content-widget';
     }
 
     /**
@@ -38,12 +38,12 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Table Of Content', 'drilllcorp-core');
+        return esc_html__('Table Of Content', 'drillcorp-core');
     }
 
     public function get_keywords()
     {
-        return ['ir-tech', 'drilllcorp', 'image box'];
+        return ['ir-tech', 'drillcorp', 'image box'];
     }
 
     /**
@@ -73,7 +73,7 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
      */
     public function get_categories()
     {
-        return ['drilllcorp_widgets'];
+        return ['drillcorp_widgets'];
     }
 
     /**
@@ -90,39 +90,39 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('General Settings', 'drilllcorp-core'),
+                'label' => esc_html__('General Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
             'is_arabic',
             [
-                'label' => esc_html__('Select Arabic Version', 'drilllcorp-core'),
+                'label' => esc_html__('Select Arabic Version', 'drillcorp-core'),
                 'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes to show arabic.', 'drilllcorp-core'),
+                'description' => esc_html__('you can set yes to show arabic.', 'drillcorp-core'),
                 'default' => 'no'
             ]
         );
         $this->add_control('topic_title', [
-            'label' => esc_html__('Topic Title', 'drilllcorp-core'),
+            'label' => esc_html__('Topic Title', 'drillcorp-core'),
             'type' => Controls_Manager::TEXTAREA,
-            'default' => esc_html__('List of topic', 'drilllcorp-core')
+            'default' => esc_html__('List of topic', 'drillcorp-core')
         ]);
         $this->add_control('cash_title', [
-            'label' => esc_html__('Title', 'drilllcorp-core'),
+            'label' => esc_html__('Title', 'drillcorp-core'),
             'type' => Controls_Manager::TEXTAREA,
-            'default' => esc_html__('Acceptance of Terms', 'drilllcorp-core')
+            'default' => esc_html__('Acceptance of Terms', 'drillcorp-core')
         ]);
         $repeater = new Repeater();
         $repeater->add_control('description', [
-            'label' => esc_html__('Description', 'drilllcorp-core'),
+            'label' => esc_html__('Description', 'drillcorp-core'),
             'type' => Controls_Manager::TEXTAREA,
-            'default' => esc_html__('By using the Services, you agree to be bound by these Terms, as well as any additional terms and conditions that may apply to specific features or services provided by Quranuna Inc.. These Terms constitute a legally binding agreement between you and Quranuna Inc..', 'drilllcorp-core')
+            'default' => esc_html__('By using the Services, you agree to be bound by these Terms, as well as any additional terms and conditions that may apply to specific features or services provided by Quranuna Inc.. These Terms constitute a legally binding agreement between you and Quranuna Inc..', 'drillcorp-core')
         ]);
         $this->add_control(
             'case-study-list',
             [
-                'label' => esc_html__('Case Study List', 'drilllcorp-core'),
+                'label' => esc_html__('Case Study List', 'drillcorp-core'),
                 'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'title_field' => '{{{ title }}}',
@@ -134,7 +134,7 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
         $this->start_controls_section(
             'slider_navigation_styling_settings_section',
             [
-                'label' => esc_html__('Slider Nav Styling Settings', 'drilllcorp-core'),
+                'label' => esc_html__('Slider Nav Styling Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -145,11 +145,11 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
         $this->start_controls_tab(
             'active_hover_style_normal_tab',
             [
-                'label' => esc_html__('Active and Hover Style', 'drilllcorp-core'),
+                'label' => esc_html__('Active and Hover Style', 'drillcorp-core'),
             ]
         );
         $this->add_control('case_menu_title_hover_color', [
-            'label' => esc_html__('Menu Title Color', 'drilllcorp-core'),
+            'label' => esc_html__('Menu Title Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .table-of-contents-wrap .toc-navigation .nav-item a.active" => "color: {{VALUE}}",
@@ -161,11 +161,11 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
         $this->start_controls_tab(
             'slider_navigation_style_hover_tab',
             [
-                'label' => esc_html__('Normal', 'drilllcorp-core'),
+                'label' => esc_html__('Normal', 'drillcorp-core'),
             ]
         );
         $this->add_control('case_menu_title_hover_color', [
-            'label' => esc_html__('Menu Title Color', 'drilllcorp-core'),
+            'label' => esc_html__('Menu Title Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .table-of-contents-wrap .toc-navigation .nav-item" => "color: {{VALUE}}",
@@ -173,14 +173,14 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
             ]
         ]);
         $this->add_control('case_description_color', [
-            'label' => esc_html__('Description Color', 'drilllcorp-core'),
+            'label' => esc_html__('Description Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .table-of-contents-wrap .table-of-contents .table-of-content p" => "color: {{VALUE}}"
             ]
         ]);
         $this->add_control('case_content_border_color', [
-            'label' => esc_html__('Content Border Color', 'drilllcorp-core'),
+            'label' => esc_html__('Content Border Color', 'drillcorp-core'),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
                 "{{WRAPPER}} .case-study-tabs .tab-inner" => "border-color: {{VALUE}}"
@@ -198,14 +198,14 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
         $this->start_controls_section(
             'typography_section',
             [
-                'label' => esc_html__('Typography Settings', 'drilllcorp-core'),
+                'label' => esc_html__('Typography Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'title_typography',
-            'label' => esc_html__('Title Typography', 'drilllcorp-core'),
+            'label' => esc_html__('Title Typography', 'drillcorp-core'),
             'selectors' => [
                 "{{WRAPPER}} .table-of-contents-wrap .toc-navigation .nav-item",
                 "{{WRAPPER}} .table-of-contents-wrap .table-of-contents .table-of-content .title"
@@ -213,7 +213,7 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
         ]);
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'description_typography',
-            'label' => esc_html__('Description Typography', 'drilllcorp-core'),
+            'label' => esc_html__('Description Typography', 'drillcorp-core'),
             'selector' => "{{WRAPPER}} .table-of-contents-wrap .table-of-contents .table-of-content p"
         ]);
         $this->end_controls_section();
@@ -274,4 +274,4 @@ class DrilllCorp_Table_Of_Content_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new DrilllCorp_Table_Of_Content_Widget());
+Plugin::instance()->widgets_manager->register_widget_type(new Drillcorp_Table_Of_Content_Widget());

@@ -1,2 +1,2 @@
-# drilllcorp-core
-DrilllCorp Boxing WordPress Plugin
+# drillcorp-core
+Drillcorp Boxing WordPress Plugin

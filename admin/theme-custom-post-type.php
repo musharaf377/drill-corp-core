@@ -2,7 +2,7 @@
 
 /**
  * Theme Custom Post Type(CPTs)
- * @package DrilllCorp
+ * @package Drillcorp
  * @since 1.0.0
  */
 
@@ -10,8 +10,8 @@ if (!defined('ABSPATH')) {
     exit(); //exit if access directly
 }
 
-if (!class_exists('DrilllCorp_Custom_Post_Type')) {
-    class DrilllCorp_Custom_Post_Type
+if (!class_exists('Drillcorp_Custom_Post_Type')) {
+    class Drillcorp_Custom_Post_Type
     {
 
         //$instance variable
@@ -46,7 +46,7 @@ if (!class_exists('DrilllCorp_Custom_Post_Type')) {
                 return;
             }
 
-            $all_post_type = require_once DRILLLCORP_CORE_ROOT_PATH . '/config/cpt.php';
+            $all_post_type = require_once DRILLCORP_CORE_ROOT_PATH . '/config/cpt.php';
 
             if (!empty($all_post_type) && is_array($all_post_type)) {
                 foreach ($all_post_type as $post_type) {
@@ -60,7 +60,7 @@ if (!class_exists('DrilllCorp_Custom_Post_Type')) {
              * @since 1.0.0
              */
 
-            $all_custom_taxonmy = require_once DRILLLCORP_CORE_ROOT_PATH . '/config/custom-taxonomy.php';
+            $all_custom_taxonmy = require_once DRILLCORP_CORE_ROOT_PATH . '/config/custom-taxonomy.php';
 
             if (is_array($all_custom_taxonmy) && !empty($all_custom_taxonmy)) {
                 foreach ($all_custom_taxonmy as $taxonomy) {
@@ -72,7 +72,7 @@ if (!class_exists('DrilllCorp_Custom_Post_Type')) {
         }
     } //end class
 
-    if (class_exists('DrilllCorp_Custom_Post_Type')) {
-        DrilllCorp_Custom_Post_Type::getInstance();
+    if (class_exists('Drillcorp_Custom_Post_Type')) {
+        Drillcorp_Custom_Post_Type::getInstance();
     }
 }
