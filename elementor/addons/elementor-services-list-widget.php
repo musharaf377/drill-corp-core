@@ -135,7 +135,7 @@ class Services_List_Item_Widget extends Widget_Base
 
         $this->end_controls_section();
 
-        
+
 
         // Style Controls
         $this->start_controls_section(
@@ -162,6 +162,9 @@ class Services_List_Item_Widget extends Widget_Base
                 'default' => [
                     'unit' => 'px',
                     'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .services-list' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -213,11 +216,11 @@ class Services_List_Item_Widget extends Widget_Base
                     ],
                 ],
                 'default' => [
-                    'unit' => 'px',
-                    'size' => 300,
+                    'unit' => '%',
+                    'size' => 100,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .services-list .swiper-slide' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .services-list-content' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -251,7 +254,7 @@ class Services_List_Item_Widget extends Widget_Base
                 'name' => 'card_background_color_element',
                 'label' => esc_html__('Background', 'drillcorp-core'),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .services-list .swiper-slide',
+                'selector' => '{{WRAPPER}} .services-list-content',
             ]
         );
 
@@ -263,7 +266,7 @@ class Services_List_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .services-list .swiper-slide' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .services-list-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -275,7 +278,7 @@ class Services_List_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .services-list .swiper-slide' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .services-list-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -285,7 +288,7 @@ class Services_List_Item_Widget extends Widget_Base
             [
                 'name' => 'card_border',
                 'label' => esc_html__('Card Border', 'drillcorp-core'),
-                'selector' => '{{WRAPPER}} .services-list .swiper-slide',
+                'selector' => '{{WRAPPER}} .services-list-content',
             ]
         );
 
@@ -783,9 +786,13 @@ class Services_List_Item_Widget extends Widget_Base
      */
     protected function render()
     {
+        
+        
+
+
         $settings = $this->get_settings_for_display();
         $rand_numb = rand(333, 999999999);
-      
+
         // Query services from CPT
         $query_args = [
             'post_type' => 'services',
@@ -805,7 +812,7 @@ class Services_List_Item_Widget extends Widget_Base
 
                 // Get feature list from post meta
                 $feature_list_meta = get_post_meta($service_id, 'drillcorp_services_options', true);
-                
+
                 $feature_list = [];
 
                 // The meta is nested: ['services_feature'] contains the repeater array
@@ -839,32 +846,30 @@ class Services_List_Item_Widget extends Widget_Base
         <div class="services-list-area">
             <div class="services-list">
                 <?php foreach ($services_data as $service): ?>
-                    <div class="swiper-slide">
-                        <div class="services-list-content">
-                            <?php if (!empty($service['thumbnail'])): ?>
-                                <img class="service-card-thumb" src="<?php echo esc_url($service['thumbnail']); ?>" alt="<?php echo esc_attr($service['title']); ?>">
-                            <?php endif; ?>
-                            <div class="services-list-content-wrap">
-                                <h3><?php echo esc_html($service['title']); ?></h3>
-                                <p><?php echo esc_html($service['excerpt'] ? $service['excerpt'] : wp_trim_words($service['content'], 30)); ?></p>
+                    <div class="services-list-content">
+                        <?php if (!empty($service['thumbnail'])): ?>
+                            <img class="service-card-thumb" src="<?php echo esc_url($service['thumbnail']); ?>" alt="<?php echo esc_attr($service['title']); ?>">
+                        <?php endif; ?>
+                        <div class="services-list-content-wrap">
+                            <h3><?php echo esc_html($service['title']); ?></h3>
+                            <p><?php echo esc_html($service['excerpt'] ? $service['excerpt'] : wp_trim_words($service['content'], 30)); ?></p>
 
-                                <?php 
-                                $icon_url = isset($settings['feature_icon']['url']) ? $settings['feature_icon']['url'] : get_template_directory_uri() . '/assets/img/service-check.png';
-                                
-                                if ('yes' === $settings['show_feature_list'] && !empty($service['feature_list'])) : 
-                                ?>
-                                    <div class="service-feature-list">
-                                        <?php foreach ($service['feature_list'] as $feature) : ?>
-                                            <div class="service-feature-single">
-                                                <img class="service-feature-icon" src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($feature['title']); ?>">
-                                                <p class="service-feature-title"><?php echo esc_html($feature['title']); ?></p>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
-                                
-                                <a class="primary-btn" href="<?php echo esc_url($service['link']); ?>">Explore This Service</a>
-                            </div>
+                            <?php
+                            $icon_url = isset($settings['feature_icon']['url']) ? $settings['feature_icon']['url'] : get_template_directory_uri() . '/assets/img/service-check.png';
+
+                            if ('yes' === $settings['show_feature_list'] && !empty($service['feature_list'])) :
+                            ?>
+                                <div class="service-feature-list">
+                                    <?php foreach ($service['feature_list'] as $feature) : ?>
+                                        <div class="service-feature-single">
+                                            <img class="service-feature-icon" src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($feature['title']); ?>">
+                                            <p class="service-feature-title"><?php echo esc_html($feature['title']); ?></p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <a class="primary-btn" href="<?php echo esc_url($service['link']); ?>">Explore This Service</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

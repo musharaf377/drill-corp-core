@@ -466,15 +466,21 @@ img.feature-blog-thumb {
 /*=======================
    Services list card 
  ======================= */
-.services-list .swiper-slide {
-  background-color: #E2EFF4;
-  padding: 40px;
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
 }
+
 
 .services-list-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
+  background-color: #E2EFF4;
+  padding: 40px;
+  transition: opacity 0.35s ease;
 }
 
 .services-list-content .service-card-thumb {
