@@ -438,7 +438,6 @@ img.feature-blog-thumb {
   width: 100%;
 }
 
-
 /* ============================
   Projects Widget
  ============================== */
@@ -462,4 +461,40 @@ img.feature-blog-thumb {
 .project-item {
   background: #fff;
   padding: 20px;
+}
+
+/*=======================
+   Services list card 
+ ======================= */
+.services-list .swiper-slide {
+  background-color: #E2EFF4;
+  padding: 40px;
+}
+
+.services-list-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.services-list-content .service-card-thumb {
+  width: 100%;
+  height: 100%;
+}
+
+.services-list-content h3 {
+  font-size: 62px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: rgba(13, 26, 33, 1);
+}
+
+.services-list-content p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.services-list.swiper {
+  overflow: visible;
 }
