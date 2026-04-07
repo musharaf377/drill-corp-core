@@ -552,7 +552,6 @@ a.blog-list-item-thumb img {
     width: 100%;
 }
 
-
 .blog-list-item-cats {
   padding: 12px;
   background: rgba(226, 239, 244, 1);
@@ -624,4 +623,67 @@ a.blog-list-item-thumb img {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
+}
+
+/* ============================
+  career List Tab Widget
+ ============================== */
+
+.career-list-tab-nav {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid rgba(13, 26, 33, 0.1);
+    overflow: auto;
+}
+
+.career-list-tab-nav-item {
+    padding: 12px 15px;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.career-list-tab-nav-item a {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.career-list-tab-nav-item.active {
+    background: rgba(172, 255, 47, 1);
+}
+
+.career-list-content-tab {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.career-list-item-meta{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.career-list-item-cats {
+  padding: 12px;
+  background: rgba(226, 239, 244, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.career-list-item-cats a {
+  color: rgba(68, 34, 234, 1);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1em;
+  display: block;
+}
+
+.career-list-item-cat-dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(68, 34, 234, 1);
 }

@@ -356,6 +356,52 @@
          });
       });
 
+      /* ========================
+       *  Career List Tab
+       =========================*/
+      const careerTabWraps = document.querySelectorAll('.career-list-tab-wrap');
+      
+      careerTabWraps.forEach(function(tabWrap) {
+         const tabs = tabWrap.querySelectorAll('.career-list-tab-nav-item');
+         const careerList = tabWrap.querySelector('.career-list');
+         
+         if (!tabs.length || !careerList) return;
+         
+         tabs.forEach(function(tab) {
+            tab.addEventListener('click', function(e) {
+               e.preventDefault();
+               
+               // Remove active class from all tabs
+               tabs.forEach(t => t.classList.remove('active'));
+               
+               // Add active class to clicked tab
+               this.classList.add('active');
+               
+               const selectedCategory = this.getAttribute('data-category');
+               
+               // Filter posts
+               const posts = careerList.querySelectorAll('.career-list-item');
+               
+               posts.forEach(function(post) {
+                  const postCategories = post.getAttribute('data-categories');
+                  
+                  if (!postCategories) {
+                     post.style.display = '';
+                     return;
+                  }
+                  
+                  const categoriesArray = postCategories.split(',');
+                  
+                  if (selectedCategory === 'all' || categoriesArray.includes(selectedCategory)) {
+                     post.style.display = '';
+                  } else {
+                     post.style.display = 'none';
+                  }
+               });
+            });
+         });
+      });
+
 
 
 

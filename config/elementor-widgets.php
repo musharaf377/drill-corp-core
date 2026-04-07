@@ -11,4 +11,5 @@ return array(
     'services-list',
     'blog-list',
     'blog-list-tab',
+    'career-list-tab',
 );
