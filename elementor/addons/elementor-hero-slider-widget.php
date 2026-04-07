@@ -38,7 +38,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Hero Slider', 'musemind-core');
+        return esc_html__('Hero Slider', 'drillcorp-core');
     }
 
     public function get_keywords()
@@ -91,7 +91,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'settings_section',
             [
-                'label' => esc_html__('General Settings', 'musemind-core'),
+                'label' => esc_html__('General Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -100,7 +100,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $repeater->add_control(
             'background_image',
             [
-                'label' => esc_html__('Background Image', 'musemind-core'),
+                'label' => esc_html__('Background Image', 'drillcorp-core'),
                 'type' => Controls_Manager::MEDIA,
             ]
         );
@@ -108,14 +108,14 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $repeater->add_control(
             'video_url',
             [
-                'label' => esc_html__('Desktop Video URL', 'musemind-core'),
+                'label' => esc_html__('Desktop Video URL', 'drillcorp-core'),
                 'type' => Controls_Manager::MEDIA,
             ]
         );
         $repeater->add_control(
             'mobile_video_url',
             [
-                'label' => esc_html__('Mobile Video URL', 'musemind-core'),
+                'label' => esc_html__('Mobile Video URL', 'drillcorp-core'),
                 'type' => Controls_Manager::MEDIA,
             ]
         );
@@ -123,82 +123,82 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $repeater->add_control(
             'subtitle',
             [
-                'label' => esc_html__('Subtitle', 'musemind-core'),
+                'label' => esc_html__('Subtitle', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('enter Subtitle.', 'musemind-core'),
-                'default' => esc_html__('Top Packages', 'musemind-core'),
+                'description' => esc_html__('enter Subtitle.', 'drillcorp-core'),
+                'default' => esc_html__('Top Packages', 'drillcorp-core'),
             ]
         );
 
         $repeater->add_control(
             'subtitle_icon',
             [
-                'label' => esc_html__('Subtitle Icon', 'musemind-core'),
+                'label' => esc_html__('Subtitle Icon', 'drillcorp-core'),
                 'type' => Controls_Manager::MEDIA,
-                'description' => esc_html__('enter Subtitle Icon.', 'musemind-core'),
+                'description' => esc_html__('enter Subtitle Icon.', 'drillcorp-core'),
             ]
         );
 
         $repeater->add_control(
             'title',
             [
-                'label' => esc_html__('Title', 'musemind-core'),
+                'label' => esc_html__('Title', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('What We Do', 'musemind-core'),
+                'default' => esc_html__('What We Do', 'drillcorp-core'),
             ]
         );
 
         $repeater->add_control(
             'hero_description',
             [
-                'label' => esc_html__('Hero Description', 'musemind-core'),
+                'label' => esc_html__('Hero Description', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('Enter Hero Description.', 'musemind-core'),
-                'default' => esc_html__('Hero Description', 'musemind-core'),
+                'description' => esc_html__('Enter Hero Description.', 'drillcorp-core'),
+                'default' => esc_html__('Hero Description', 'drillcorp-core'),
             ]
         );
 
         $repeater->add_control(
             'button_text',
             [
-                'label' => esc_html__('Button Text', 'musemind-core'),
+                'label' => esc_html__('Button Text', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('enter  button text.', 'musemind-core'),
-                'default' => esc_html__('Get Started', 'musemind-core'),
+                'description' => esc_html__('enter  button text.', 'drillcorp-core'),
+                'default' => esc_html__('Get Started', 'drillcorp-core'),
             ]
         );
 
         $repeater->add_control(
             'button_url',
             [
-                'label' => esc_html__('Button URL', 'musemind-core'),
+                'label' => esc_html__('Button URL', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('enter  button url.', 'musemind-core'),
-                'default' => esc_html__('#', 'musemind-core'),
+                'description' => esc_html__('enter  button url.', 'drillcorp-core'),
+                'default' => esc_html__('#', 'drillcorp-core'),
             ]
         );
 
         $repeater->add_control(
             'progress_icon',
             [
-                'label' => esc_html__('Progress Icon', 'musemind-core'),
+                'label' => esc_html__('Progress Icon', 'drillcorp-core'),
                 'type' => Controls_Manager::MEDIA,
-                'description' => esc_html__('Select icon for progress content.', 'musemind-core'),
+                'description' => esc_html__('Select icon for progress content.', 'drillcorp-core'),
             ]
         );
 
         $repeater->add_control(
             'progress_title',
             [
-                'label' => esc_html__('Progress Title', 'musemind-core'),
+                'label' => esc_html__('Progress Title', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXTAREA,
-                'description' => esc_html__('Enter title for progress content.', 'musemind-core'),
-                'default' => esc_html__('Progress Title', 'musemind-core'),
+                'description' => esc_html__('Enter title for progress content.', 'drillcorp-core'),
+                'default' => esc_html__('Progress Title', 'drillcorp-core'),
             ]
         );
 
         $this->add_control('hero_slider_items', [
-            'label' => esc_html__('Hero Slider Item', 'musemind-core'),
+            'label' => esc_html__('Hero Slider Item', 'drillcorp-core'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
 
@@ -210,7 +210,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'slider_settings_section',
             [
-                'label' => esc_html__('Slider Settings', 'musemind-core'),
+                'label' => esc_html__('Slider Settings', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -218,24 +218,24 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'loop',
             [
-                'label' => esc_html__('Loop', 'musemind-core'),
+                'label' => esc_html__('Loop', 'drillcorp-core'),
                 'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'musemind-core'),
+                'description' => esc_html__('you can set yes/no to enable/disable', 'drillcorp-core'),
             ]
         );
         $this->add_control(
             'autoplay',
             [
-                'label' => esc_html__('Autoplay', 'musemind-core'),
+                'label' => esc_html__('Autoplay', 'drillcorp-core'),
                 'type' => Controls_Manager::SWITCHER,
-                'description' => esc_html__('you can set yes/no to enable/disable', 'musemind-core'),
+                'description' => esc_html__('you can set yes/no to enable/disable', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'speed',
             [
-                'label' => esc_html__('Speed', 'musemind-core'),
+                'label' => esc_html__('Speed', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -254,14 +254,14 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'effect',
             [
-                'label' => esc_html__('Effect', 'musemind-core'),
+                'label' => esc_html__('Effect', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'slide' => esc_html__('Slide', 'musemind-core'),
-                    'fade' => esc_html__('Fade', 'musemind-core'),
+                    'slide' => esc_html__('Slide', 'drillcorp-core'),
+                    'fade' => esc_html__('Fade', 'drillcorp-core'),
                 ],
                 'default' => 'slide',
-                'description' => esc_html__('Note: Fade effect works best with 2-3 slides. For more slides, use Slide effect.', 'musemind-core'),
+                'description' => esc_html__('Note: Fade effect works best with 2-3 slides. For more slides, use Slide effect.', 'drillcorp-core'),
             ]
         );
 
@@ -272,7 +272,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'slider_style_section',
             [
-                'label' => esc_html__('Slider Style', 'musemind-core'),
+                'label' => esc_html__('Slider Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -280,7 +280,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'slider_height',
             [
-                'label' => esc_html__('Slider Height', 'musemind-core'),
+                'label' => esc_html__('Slider Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', 'vh', '%'],
                 'range' => [
@@ -313,7 +313,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'overlay_color',
             [
-                'label' => esc_html__('Overlay Color', 'musemind-core'),
+                'label' => esc_html__('Overlay Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,0.5)',
                 'selectors' => [
@@ -325,13 +325,13 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'background_size',
             [
-                'label' => esc_html__('Background Size', 'musemind-core'),
+                'label' => esc_html__('Background Size', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => esc_html__('Cover', 'musemind-core'),
-                    'contain' => esc_html__('Contain', 'musemind-core'),
-                    'auto' => esc_html__('Auto', 'musemind-core'),
+                    'cover' => esc_html__('Cover', 'drillcorp-core'),
+                    'contain' => esc_html__('Contain', 'drillcorp-core'),
+                    'auto' => esc_html__('Auto', 'drillcorp-core'),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .hero-slider-area .swiper-slide' => 'background-size: {{VALUE}};',
@@ -342,19 +342,19 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'background_position',
             [
-                'label' => esc_html__('Background Position', 'musemind-core'),
+                'label' => esc_html__('Background Position', 'drillcorp-core'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'center center',
                 'options' => [
-                    'top left' => esc_html__('Top Left', 'musemind-core'),
-                    'top center' => esc_html__('Top Center', 'musemind-core'),
-                    'top right' => esc_html__('Top Right', 'musemind-core'),
-                    'center left' => esc_html__('Center Left', 'musemind-core'),
-                    'center center' => esc_html__('Center Center', 'musemind-core'),
-                    'center right' => esc_html__('Center Right', 'musemind-core'),
-                    'bottom left' => esc_html__('Bottom Left', 'musemind-core'),
-                    'bottom center' => esc_html__('Bottom Center', 'musemind-core'),
-                    'bottom right' => esc_html__('Bottom Right', 'musemind-core'),
+                    'top left' => esc_html__('Top Left', 'drillcorp-core'),
+                    'top center' => esc_html__('Top Center', 'drillcorp-core'),
+                    'top right' => esc_html__('Top Right', 'drillcorp-core'),
+                    'center left' => esc_html__('Center Left', 'drillcorp-core'),
+                    'center center' => esc_html__('Center Center', 'drillcorp-core'),
+                    'center right' => esc_html__('Center Right', 'drillcorp-core'),
+                    'bottom left' => esc_html__('Bottom Left', 'drillcorp-core'),
+                    'bottom center' => esc_html__('Bottom Center', 'drillcorp-core'),
+                    'bottom right' => esc_html__('Bottom Right', 'drillcorp-core'),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .hero-slider-area .swiper-slide' => 'background-position: {{VALUE}};',
@@ -365,7 +365,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'hero_slider_main_padding',
             [
-                'label' => esc_html__('Slider Padding', 'musemind-core'),
+                'label' => esc_html__('Slider Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -380,7 +380,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'content_style_section',
             [
-                'label' => esc_html__('Content Style', 'musemind-core'),
+                'label' => esc_html__('Content Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -388,7 +388,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'hero_slider_content_padding',
             [
-                'label' => esc_html__('Slider Content Padding', 'musemind-core'),
+                'label' => esc_html__('Slider Content Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -401,7 +401,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'subtitle_style_heading',
             [
-                'label' => esc_html__('Subtitle Style', 'musemind-core'),
+                'label' => esc_html__('Subtitle Style', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -410,7 +410,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'subtitle_color',
             [
-                'label' => esc_html__('Subtitle Color', 'musemind-core'),
+                'label' => esc_html__('Subtitle Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -423,7 +423,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'subtitle_typography',
-                'label' => esc_html__('Subtitle Typography', 'musemind-core'),
+                'label' => esc_html__('Subtitle Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .hero-slider-subtitle',
             ]
         );
@@ -431,7 +431,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'subtitle_padding',
             [
-                'label' => esc_html__('Subtitle padding', 'musemind-core'),
+                'label' => esc_html__('Subtitle padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -443,7 +443,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'subtitle_icon_size',
             [
-                'label' => esc_html__('Subtitle Icon Size', 'musemind-core'),
+                'label' => esc_html__('Subtitle Icon Size', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -470,7 +470,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'title_style_heading',
             [
-                'label' => esc_html__('Title Style', 'musemind-core'),
+                'label' => esc_html__('Title Style', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -479,7 +479,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label' => esc_html__('Title Color', 'musemind-core'),
+                'label' => esc_html__('Title Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -492,7 +492,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => esc_html__('Title Typography', 'musemind-core'),
+                'label' => esc_html__('Title Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .hero-slide-title',
             ]
         );
@@ -500,7 +500,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'title_margin',
             [
-                'label' => esc_html__('Title Margin', 'musemind-core'),
+                'label' => esc_html__('Title Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -513,7 +513,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'description_style_heading',
             [
-                'label' => esc_html__('Description Style', 'musemind-core'),
+                'label' => esc_html__('Description Style', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -522,7 +522,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'description_color',
             [
-                'label' => esc_html__('Description Color', 'musemind-core'),
+                'label' => esc_html__('Description Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -535,7 +535,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'description_typography',
-                'label' => esc_html__('Description Typography', 'musemind-core'),
+                'label' => esc_html__('Description Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .hero-slide-description',
             ]
         );
@@ -543,7 +543,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'description_margin',
             [
-                'label' => esc_html__('Description Margin', 'musemind-core'),
+                'label' => esc_html__('Description Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -556,7 +556,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'button_style_heading',
             [
-                'label' => esc_html__('Button Style', 'musemind-core'),
+                'label' => esc_html__('Button Style', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -567,14 +567,14 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->start_controls_tab(
             'button_normal',
             [
-                'label' => esc_html__('Normal', 'musemind-core'),
+                'label' => esc_html__('Normal', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'button_text_color',
             [
-                'label' => esc_html__('Button Text Color', 'musemind-core'),
+                'label' => esc_html__('Button Text Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -586,7 +586,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'button_icon_color',
             [
-                'label' => esc_html__('Button Icon Color', 'musemind-core'),
+                'label' => esc_html__('Button Icon Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#0d1623',
                 'selectors' => [
@@ -598,7 +598,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'button_bg_color',
             [
-                'label' => esc_html__('Button Background Color', 'musemind-core'),
+                'label' => esc_html__('Button Background Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => 'transparent',
                 'selectors' => [
@@ -621,7 +621,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_padding',
             [
-                'label' => esc_html__('Button Padding', 'musemind-core'),
+                'label' => esc_html__('Button Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -634,7 +634,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'button_typography',
-                'label' => esc_html__('Button Typography', 'musemind-core'),
+                'label' => esc_html__('Button Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .hero-slider-content .hero-slider-btn',
             ]
         );
@@ -644,14 +644,14 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->start_controls_tab(
             'button_hover',
             [
-                'label' => esc_html__('Hover', 'musemind-core'),
+                'label' => esc_html__('Hover', 'drillcorp-core'),
             ]
         );
 
         $this->add_control(
             'button_text_color_hover',
             [
-                'label' => esc_html__('Button Text Color Hover', 'musemind-core'),
+                'label' => esc_html__('Button Text Color Hover', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -663,7 +663,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'button_icon_color_hover',
             [
-                'label' => esc_html__('Button Icon Color Hover', 'musemind-core'),
+                'label' => esc_html__('Button Icon Color Hover', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -675,7 +675,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'button_bg_color_hover',
             [
-                'label' => esc_html__('Button Background Color Hover', 'musemind-core'),
+                'label' => esc_html__('Button Background Color Hover', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ff5252',
                 'selectors' => [
@@ -698,7 +698,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'button_transition',
             [
-                'label' => esc_html__('Transition Duration', 'musemind-core'),
+                'label' => esc_html__('Transition Duration', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -719,7 +719,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'button_margin',
             [
-                'label' => esc_html__('Button Margin', 'musemind-core'),
+                'label' => esc_html__('Button Margin', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -734,7 +734,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->start_controls_section(
             'progress_style_section',
             [
-                'label' => esc_html__('Progress Bar Style', 'musemind-core'),
+                'label' => esc_html__('Progress Bar Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -742,7 +742,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'progress_bar_heading',
             [
-                'label' => esc_html__('Progress Bar', 'musemind-core'),
+                'label' => esc_html__('Progress Bar', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
             ]
         );
@@ -750,7 +750,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'progress_bar_height',
             [
-                'label' => esc_html__('Height', 'musemind-core'),
+                'label' => esc_html__('Height', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -773,7 +773,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'progress_bar_bg_color',
             [
-                'label' => esc_html__('Background Color', 'musemind-core'),
+                'label' => esc_html__('Background Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => 'rgba(178, 178, 178, 1)',
                 'selectors' => [
@@ -785,7 +785,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'progress_bar_active_color',
             [
-                'label' => esc_html__('Active Color', 'musemind-core'),
+                'label' => esc_html__('Active Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => 'rgba(255, 255, 255, 1)',
                 'selectors' => [
@@ -797,7 +797,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'progress_bar_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'musemind-core'),
+                'label' => esc_html__('Border Radius', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -824,7 +824,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'progress_bar_spacing',
             [
-                'label' => esc_html__('Spacing', 'musemind-core'),
+                'label' => esc_html__('Spacing', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -852,7 +852,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'progress_content_heading',
             [
-                'label' => esc_html__('Progress Content', 'musemind-core'),
+                'label' => esc_html__('Progress Content', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -861,7 +861,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'progress_content_padding',
             [
-                'label' => esc_html__('Padding', 'musemind-core'),
+                'label' => esc_html__('Padding', 'drillcorp-core'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -874,7 +874,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'progress_icon_style_heading',
             [
-                'label' => esc_html__('Progress Icon', 'musemind-core'),
+                'label' => esc_html__('Progress Icon', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -883,7 +883,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'progress_icon_size',
             [
-                'label' => esc_html__('Icon Size', 'musemind-core'),
+                'label' => esc_html__('Icon Size', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -907,7 +907,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'progress_title_style_heading',
             [
-                'label' => esc_html__('Progress Title', 'musemind-core'),
+                'label' => esc_html__('Progress Title', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -916,7 +916,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'progress_title_color',
             [
-                'label' => esc_html__('Title Color', 'musemind-core'),
+                'label' => esc_html__('Title Color', 'drillcorp-core'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -929,7 +929,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'progress_title_typography',
-                'label' => esc_html__('Title Typography', 'musemind-core'),
+                'label' => esc_html__('Title Typography', 'drillcorp-core'),
                 'selector' => '{{WRAPPER}} .slider-progress-content p',
             ]
         );
@@ -937,7 +937,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'progress_container_heading',
             [
-                'label' => esc_html__('Progress Container', 'musemind-core'),
+                'label' => esc_html__('Progress Container', 'drillcorp-core'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -946,7 +946,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'progress_container_position_bottom',
             [
-                'label' => esc_html__('Bottom Position', 'musemind-core'),
+                'label' => esc_html__('Bottom Position', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'vh'],
                 'range' => [

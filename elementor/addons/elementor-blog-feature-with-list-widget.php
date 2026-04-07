@@ -20,7 +20,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
     public function get_title()
     {
-        return esc_html__('Blog Feature With List', 'musemind-core');
+        return esc_html__('Blog Feature With List', 'drillcorp-core');
     }
 
     public function get_keywords()
@@ -61,12 +61,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         // Content / Query
         // -------------------------
         $this->start_controls_section('section_content', [
-            'label' => esc_html__('Content', 'musemind-core'),
+            'label' => esc_html__('Content', 'drillcorp-core'),
             'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control('posts_per_page', [
-            'label'   => esc_html__('Posts Per Page', 'musemind-core'),
+            'label'   => esc_html__('Posts Per Page', 'drillcorp-core'),
             'type'    => Controls_Manager::NUMBER,
             'min'     => 2,
             'max'     => 20,
@@ -74,35 +74,35 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_control('orderby', [
-            'label'   => esc_html__('Order By', 'musemind-core'),
+            'label'   => esc_html__('Order By', 'drillcorp-core'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'date',
             'options' => [
-                'date'  => esc_html__('Date', 'musemind-core'),
-                'title' => esc_html__('Title', 'musemind-core'),
-                'rand'  => esc_html__('Random', 'musemind-core'),
+                'date'  => esc_html__('Date', 'drillcorp-core'),
+                'title' => esc_html__('Title', 'drillcorp-core'),
+                'rand'  => esc_html__('Random', 'drillcorp-core'),
             ],
         ]);
 
         $this->add_control('order', [
-            'label'   => esc_html__('Order', 'musemind-core'),
+            'label'   => esc_html__('Order', 'drillcorp-core'),
             'type'    => Controls_Manager::SELECT,
             'default' => 'DESC',
             'options' => [
-                'DESC' => esc_html__('Descending', 'musemind-core'),
-                'ASC'  => esc_html__('Ascending', 'musemind-core'),
+                'DESC' => esc_html__('Descending', 'drillcorp-core'),
+                'ASC'  => esc_html__('Ascending', 'drillcorp-core'),
             ],
         ]);
 
         $this->add_control('show_category', [
-            'label'        => esc_html__('Show Category', 'musemind-core'),
+            'label'        => esc_html__('Show Category', 'drillcorp-core'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('excerpt_length', [
-            'label'     => esc_html__('Excerpt Length', 'musemind-core'),
+            'label'     => esc_html__('Excerpt Length', 'drillcorp-core'),
             'type'      => Controls_Manager::NUMBER,
             'min'       => 5,
             'max'       => 60,
@@ -111,14 +111,14 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_control('show_list_thumb', [
-            'label'        => esc_html__('Show Thumbnail (list)', 'musemind-core'),
+            'label'        => esc_html__('Show Thumbnail (list)', 'drillcorp-core'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'yes',
         ]);
 
         $this->add_control('show_date', [
-            'label'        => esc_html__('Show Date (list)', 'musemind-core'),
+            'label'        => esc_html__('Show Date (list)', 'drillcorp-core'),
             'type'         => Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default'      => 'no',
@@ -130,12 +130,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         // Style: Layout
         // -------------------------
         $this->start_controls_section('section_style_layout', [
-            'label' => esc_html__('Layout', 'musemind-core'),
+            'label' => esc_html__('Layout', 'drillcorp-core'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_responsive_control('columns_gap', [
-            'label' => esc_html__('Columns Gap', 'musemind-core'),
+            'label' => esc_html__('Columns Gap', 'drillcorp-core'),
             'type'  => Controls_Manager::SLIDER,
             'range' => ['px' => ['min' => 0, 'max' => 80]],
             'default' => ['size' => 24],
@@ -145,7 +145,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('list_gap', [
-            'label' => esc_html__('List Items Gap', 'musemind-core'),
+            'label' => esc_html__('List Items Gap', 'drillcorp-core'),
             'type'  => Controls_Manager::SLIDER,
             'range' => ['px' => ['min' => 0, 'max' => 60]],
             'default' => ['size' => 16],
@@ -160,12 +160,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         // Style: Titles
         // -------------------------
         $this->start_controls_section('section_style_title', [
-            'label' => esc_html__('Title', 'musemind-core'),
+            'label' => esc_html__('Title', 'drillcorp-core'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('title_color', [
-            'label' => esc_html__('Featured Title Color', 'musemind-core'),
+            'label' => esc_html__('Featured Title Color', 'drillcorp-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-title a' => 'color: {{VALUE}};',
@@ -173,7 +173,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_control('title_hover_color', [
-            'label' => esc_html__('Featured Title Hover Color', 'musemind-core'),
+            'label' => esc_html__('Featured Title Hover Color', 'drillcorp-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-title a:hover' => 'color: {{VALUE}};',
@@ -182,7 +182,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name'     => 'featured_title_typography',
-            'label'    => esc_html__('Featured Title Typography', 'musemind-core'),
+            'label'    => esc_html__('Featured Title Typography', 'drillcorp-core'),
             'selector' => '{{WRAPPER}} .feature-blog-title a',
         ]);
 
@@ -192,12 +192,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         // Style: Meta + Excerpt
         // -------------------------
         $this->start_controls_section('section_style_meta', [
-            'label' => esc_html__('Meta', 'musemind-core'),
+            'label' => esc_html__('Meta', 'drillcorp-core'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('meta_color', [
-            'label' => esc_html__('Category Color', 'musemind-core'),
+            'label' => esc_html__('Category Color', 'drillcorp-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-cats a' => 'color: {{VALUE}};',
@@ -206,7 +206,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('category_background', [
-            'label'      => esc_html__('Category Background', 'musemind-core'),
+            'label'      => esc_html__('Category Background', 'drillcorp-core'),
             'type'       => Controls_Manager::COLOR,
             'selectors'  => [
                 '{{WRAPPER}} .feature-blog-cats' => 'background-color: {{VALUE}};',
@@ -215,12 +215,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name'     => 'category_typography',
-            'label'    => esc_html__('Category Typography', 'musemind-core'),
+            'label'    => esc_html__('Category Typography', 'drillcorp-core'),
             'selector' => '{{WRAPPER}} .feature-blog-cats a',
         ]);
 
         $this->add_control('meta_text_color', [
-            'label' => esc_html__('Date & Read Time Color', 'musemind-core'),
+            'label' => esc_html__('Date & Read Time Color', 'drillcorp-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-date, {{WRAPPER}} .blog-read-time' => 'color: {{VALUE}};',
@@ -230,7 +230,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name'     => 'meta_text_typography',
-            'label'    => esc_html__('Date & Read Time Typography', 'musemind-core'),
+            'label'    => esc_html__('Date & Read Time Typography', 'drillcorp-core'),
             'selector' => '{{WRAPPER}} .feature-blog-date, {{WRAPPER}} .blog-read-time',
         ]);
 
@@ -240,12 +240,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         // Style: Featured Card
         // -------------------------
         $this->start_controls_section('section_featured_card_style', [
-            'label' => esc_html__('Featured Card Style', 'musemind-core'),
+            'label' => esc_html__('Featured Card Style', 'drillcorp-core'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('featured_card_bg_color', [
-            'label' => esc_html__('Background Color', 'musemind-core'),
+            'label' => esc_html__('Background Color', 'drillcorp-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-featured' => 'background-color: {{VALUE}};',
@@ -253,7 +253,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('featured_card_padding', [
-            'label'      => esc_html__('Content Padding', 'musemind-core'),
+            'label'      => esc_html__('Content Padding', 'drillcorp-core'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em', 'rem'],
             'default'    => ['top' => 30, 'right' => 30, 'bottom' => 30, 'left' => 30, 'unit' => 'px'],
@@ -263,7 +263,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('featured_card_radius', [
-            'label'      => esc_html__('Border Radius', 'musemind-core'),
+            'label'      => esc_html__('Border Radius', 'drillcorp-core'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
@@ -273,12 +273,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
         $this->add_group_control(Group_Control_Border::get_type(), [
             'name'     => 'featured_card_border',
-            'label'    => esc_html__('Border', 'musemind-core'),
+            'label'    => esc_html__('Border', 'drillcorp-core'),
             'selector' => '{{WRAPPER}} .feature-blog-featured',
         ]);
 
         $this->add_responsive_control('featured_title_margin', [
-            'label'      => esc_html__('Title Margin', 'musemind-core'),
+            'label'      => esc_html__('Title Margin', 'drillcorp-core'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em', 'rem'],
             'default'    => ['top' => 0, 'right' => 0, 'bottom' => 15, 'left' => 0, 'unit' => 'px'],
@@ -288,7 +288,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('featured_title_padding', [
-            'label'      => esc_html__('Title Padding', 'musemind-core'),
+            'label'      => esc_html__('Title Padding', 'drillcorp-core'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em', 'rem'],
             'selectors'  => [
@@ -302,12 +302,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         // Style: List Card
         // -------------------------
         $this->start_controls_section('section_list_card_style', [
-            'label' => esc_html__('List Card Style', 'musemind-core'),
+            'label' => esc_html__('List Card Style', 'drillcorp-core'),
             'tab'   => Controls_Manager::TAB_STYLE,
         ]);
 
         $this->add_control('list_card_bg_color', [
-            'label' => esc_html__('Background Color', 'musemind-core'),
+            'label' => esc_html__('Background Color', 'drillcorp-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-item' => 'background-color: {{VALUE}};',
@@ -315,7 +315,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('list_card_padding', [
-            'label'      => esc_html__('Card Padding', 'musemind-core'),
+            'label'      => esc_html__('Card Padding', 'drillcorp-core'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em', 'rem'],
             'default'    => ['top' => 20, 'right' => 20, 'bottom' => 20, 'left' => 20, 'unit' => 'px'],
@@ -325,7 +325,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('list_card_radius', [
-            'label'      => esc_html__('Border Radius', 'musemind-core'),
+            'label'      => esc_html__('Border Radius', 'drillcorp-core'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%'],
             'selectors'  => [
@@ -335,12 +335,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
         $this->add_group_control(Group_Control_Border::get_type(), [
             'name'     => 'list_card_border',
-            'label'    => esc_html__('Border', 'musemind-core'),
+            'label'    => esc_html__('Border', 'drillcorp-core'),
             'selector' => '{{WRAPPER}} .feature-blog-item',
         ]);
 
         $this->add_control('list_title_color', [
-            'label' => esc_html__('Title Color', 'musemind-core'),
+            'label' => esc_html__('Title Color', 'drillcorp-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-item-title a' => 'color: {{VALUE}};',
@@ -348,7 +348,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_control('list_title_hover_color', [
-            'label' => esc_html__('Title Hover Color', 'musemind-core'),
+            'label' => esc_html__('Title Hover Color', 'drillcorp-core'),
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-item-title a:hover' => 'color: {{VALUE}};',
@@ -357,12 +357,12 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name'     => 'list_title_typography_card',
-            'label'    => esc_html__('Title Typography', 'musemind-core'),
+            'label'    => esc_html__('Title Typography', 'drillcorp-core'),
             'selector' => '{{WRAPPER}} .feature-blog-item-title a',
         ]);
 
         $this->add_responsive_control('list_title_margin', [
-            'label'      => esc_html__('Title Margin', 'musemind-core'),
+            'label'      => esc_html__('Title Margin', 'drillcorp-core'),
             'type'       => Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em', 'rem'],
             'default'    => ['top' => 0, 'right' => 0, 'bottom' => 10, 'left' => 0, 'unit' => 'px'],
@@ -372,7 +372,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('list_card_width', [
-            'label'      => esc_html__('Card Width', 'musemind-core'),
+            'label'      => esc_html__('Card Width', 'drillcorp-core'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%', 'vw'],
             'range'      => [
@@ -386,7 +386,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('list_card_height', [
-            'label'      => esc_html__('Card Height', 'musemind-core'),
+            'label'      => esc_html__('Card Height', 'drillcorp-core'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', 'vh', '%'],
             'range'      => [
@@ -401,7 +401,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('list_thumb_width', [
-            'label'      => esc_html__('Image Width', 'musemind-core'),
+            'label'      => esc_html__('Image Width', 'drillcorp-core'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => [
@@ -414,7 +414,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         ]);
 
         $this->add_responsive_control('list_thumb_height', [
-            'label'      => esc_html__('Image Height', 'musemind-core'),
+            'label'      => esc_html__('Image Height', 'drillcorp-core'),
             'type'       => Controls_Manager::SLIDER,
             'size_units' => ['px', '%'],
             'range'      => [
@@ -452,7 +452,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         $query = new \WP_Query($args);
 
         if (! $query->have_posts()) {
-            echo '<p>' . esc_html__('No blog posts found.', 'musemind-core') . '</p>';
+            echo '<p>' . esc_html__('No blog posts found.', 'drillcorp-core') . '</p>';
             return;
         }
 
@@ -483,7 +483,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         wp_reset_postdata();
 
         if (empty($featured_posts) && empty($list_posts)) {
-            echo '<p>' . esc_html__('No blog posts found.', 'musemind-core') . '</p>';
+            echo '<p>' . esc_html__('No blog posts found.', 'drillcorp-core') . '</p>';
             return;
         }
 ?>
@@ -523,7 +523,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                                     <?php echo get_the_date('', $featured_post->ID); ?>
                                 </div>
                                 <div class="blog-meta-dot"></div>
-                                <div class="blog-read-time"><?php //echo drillcorp()->get_reading_time($featured_post->ID); ?> Min Read</div>
+                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($featured_post->ID); ?> Min Read</div>
                             </div>
                         </div>
                     </article>
@@ -569,9 +569,9 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                                     <div class="feature-blog-date">
                                         <?php echo get_the_date('', $post_item->ID); ?>
                                     </div>
+                                    <div class="blog-meta-dot"></div>
+                                    <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($post_item->ID); ?> Min Read</div>
                                 <?php endif; ?>
-                                <div class="blog-meta-dot"></div>
-                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($post_item->ID); ?> Min Read</div>
                               
                             </div>
                         </div>

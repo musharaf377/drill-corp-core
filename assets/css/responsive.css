@@ -110,4 +110,10 @@
         grid-template-columns: 1fr;
     }
 
+    /* Blog List Widget */
+    .blog-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
 }

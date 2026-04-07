@@ -533,3 +533,63 @@ img.feature-blog-thumb {
 .service-feature-title {
     margin: 0px !important;
 }
+
+/* ============================
+  Blog List Widget
+ ============================== */
+.blog-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+a.blog-list-item-thumb {
+    display: block;
+    width: 100%;
+}
+
+a.blog-list-item-thumb img {
+    width: 100%;
+}
+
+
+.blog-list-item-cats {
+  padding: 12px;
+  background: rgba(226, 239, 244, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.blog-list-item-cats a {
+  color: rgba(68, 34, 234, 1);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1em;
+  display: block;
+}
+
+.blog-list-item-cat-dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(68, 34, 234, 1);
+}
+
+.blog-list-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blog-list-meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(13, 26, 33, 1);
+}
+
+.blog-list-item-title a{
+  display: block;
+}

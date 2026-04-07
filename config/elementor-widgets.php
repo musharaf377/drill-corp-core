@@ -9,4 +9,5 @@ return array(
     'blog-feature-with-list',
     'projects',
     'services-list',
+    'blog-list',
 );
