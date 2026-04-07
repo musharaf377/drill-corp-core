@@ -637,6 +637,19 @@ class Services_List_Item_Widget extends Widget_Base
 
         $this->end_controls_tabs();
 
+        // Button Margin
+        $this->add_responsive_control(
+            'button_margin',
+            [
+                'label' => esc_html__('Margin', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .services-list-content-wrap .primary-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Service Feature List Controls
@@ -773,6 +786,92 @@ class Services_List_Item_Widget extends Widget_Base
             ]
         );
 
+        // Feature List Area Style
+        $this->add_control(
+            'feature_list_area_style_heading',
+            [
+                'label' => esc_html__('Feature List Area Style', 'drillcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'feature_list_area_padding',
+            [
+                'label' => esc_html__('Padding', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .service-feature-list-area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'feature_list_area_border',
+                'label' => esc_html__('Border', 'drillcorp-core'),
+                'selector' => '{{WRAPPER}} .service-feature-list-area',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'feature_list_area_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .service-feature-list-area' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Feature Heading Style
+        $this->add_control(
+            'feature_heading_style_heading',
+            [
+                'label' => esc_html__('Feature Heading Style', 'drillcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'feature_heading_color',
+            [
+                'label' => esc_html__('Heading Color', 'drillcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#333333',
+                'selectors' => [
+                    '{{WRAPPER}} .service-feature-heading' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'feature_heading_typography',
+                'label' => esc_html__('Heading Typography', 'drillcorp-core'),
+                'selector' => '{{WRAPPER}} .service-feature-heading',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'feature_heading_margin',
+            [
+                'label' => esc_html__('Heading Margin', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .service-feature-heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
     }
 
@@ -786,8 +885,8 @@ class Services_List_Item_Widget extends Widget_Base
      */
     protected function render()
     {
-        
-        
+
+
 
 
         $settings = $this->get_settings_for_display();
@@ -858,14 +957,16 @@ class Services_List_Item_Widget extends Widget_Base
                             $icon_url = isset($settings['feature_icon']['url']) ? $settings['feature_icon']['url'] : get_template_directory_uri() . '/assets/img/service-check.png';
 
                             if ('yes' === $settings['show_feature_list'] && !empty($service['feature_list'])) :
-                            ?>
-                                <div class="service-feature-list">
-                                    <?php foreach ($service['feature_list'] as $feature) : ?>
-                                        <div class="service-feature-single">
-                                            <img class="service-feature-icon" src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($feature['title']); ?>">
-                                            <p class="service-feature-title"><?php echo esc_html($feature['title']); ?></p>
-                                        </div>
-                                    <?php endforeach; ?>
+                            ?> <div class="service-feature-list-area">
+                                    <h4 class="service-feature-heading">Key Capabilities:</h4>
+                                    <div class="service-feature-list">
+                                        <?php foreach ($service['feature_list'] as $feature) : ?>
+                                            <div class="service-feature-single">
+                                                <img class="service-feature-icon" src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($feature['title']); ?>">
+                                                <p class="service-feature-title"><?php echo esc_html($feature['title']); ?></p>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
                             <?php endif; ?>
 

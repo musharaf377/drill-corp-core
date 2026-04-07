@@ -1,3 +1,11 @@
+@media (max-width: 880px) {
+    .slider-progress-content {
+        display: none;
+    }
+
+}
+
+
 @media (max-width: 768px) {
 
     /* ====================
@@ -24,6 +32,7 @@
         display: block;
     }
 
+     
     /* Faq Area */
     .faq-arrow-wrap {
         margin-top: 8px;
@@ -32,6 +41,16 @@
     /* Projects Area  */
     .projects-list {
         grid-template-columns: 1fr;
+    }
+
+    /* Service list widget */
+    .services-list-content{
+        position: static !important;
+        transform: none !important;
+    }
+
+    .services-list {
+        padding-bottom: 0px;
     }
 }
 
@@ -58,9 +77,7 @@
         margin-bottom: 138px;
     }
 
-    .slider-progress-content {
-        display: none;
-    }
+   
 
     /* Service Slider*/
      .services-slider-content {
@@ -88,5 +105,9 @@
         margin-top: 4px;
     }
 
+    /* Service list widget */
+    .services-list-content {
+        grid-template-columns: 1fr;
+    }
 
 }

@@ -474,7 +474,6 @@ img.feature-blog-thumb {
     padding-bottom: 300px;
 }
 
-
 .services-list-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -529,4 +528,8 @@ img.feature-blog-thumb {
     font-size: 18px;
     font-weight: 600;
     color: rgba(13, 26, 33, 1);
+}
+
+.service-feature-title {
+    margin: 0px !important;
 }
