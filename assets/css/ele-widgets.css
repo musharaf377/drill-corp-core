@@ -593,3 +593,35 @@ a.blog-list-item-thumb img {
 .blog-list-item-title a{
   display: block;
 }
+
+/* ============================
+  Blog List Tab Widget
+ ============================== */
+
+.blog-list-tab-nav {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid rgba(13, 26, 33, 0.1);
+    overflow: auto;
+}
+
+.blog-list-tab-nav-item {
+    padding: 12px 15px;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.blog-list-tab-nav-item a {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.blog-list-tab-nav-item.active {
+    background: rgba(172, 255, 47, 1);
+}
+
+.blog-list-content-tab {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}

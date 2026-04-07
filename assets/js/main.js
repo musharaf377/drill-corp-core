@@ -310,8 +310,56 @@
          updateCardAnimation();
       }
 
+      /* ========================
+       *  Blog List Tab
+       =========================*/
+      const blogTabWraps = document.querySelectorAll('.blog-list-tab-wrap');
+      
+      blogTabWraps.forEach(function(tabWrap) {
+         const tabs = tabWrap.querySelectorAll('.blog-list-tab-nav-item');
+         const blogList = tabWrap.querySelector('.blog-list');
+         
+         if (!tabs.length || !blogList) return;
+         
+         tabs.forEach(function(tab) {
+            tab.addEventListener('click', function(e) {
+               e.preventDefault();
+               
+               // Remove active class from all tabs
+               tabs.forEach(t => t.classList.remove('active'));
+               
+               // Add active class to clicked tab
+               this.classList.add('active');
+               
+               const selectedCategory = this.getAttribute('data-category');
+               
+               // Filter posts
+               const posts = blogList.querySelectorAll('.blog-list-item');
+               
+               posts.forEach(function(post) {
+                  const postCategories = post.getAttribute('data-categories');
+                  
+                  if (!postCategories) {
+                     post.style.display = '';
+                     return;
+                  }
+                  
+                  const categoriesArray = postCategories.split(',');
+                  
+                  if (selectedCategory === 'all' || categoriesArray.includes(selectedCategory)) {
+                     post.style.display = '';
+                  } else {
+                     post.style.display = 'none';
+                  }
+               });
+            });
+         });
+      });
+
+
+
+
+
    });
-
-
 
 })(jQuery);

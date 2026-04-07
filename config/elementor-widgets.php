@@ -10,4 +10,5 @@ return array(
     'projects',
     'services-list',
     'blog-list',
+    'blog-list-tab',
 );

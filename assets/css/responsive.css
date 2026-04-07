@@ -1,3 +1,10 @@
+@media (max-width: 1024px) {
+    /* Blog List with tab Widget */
+    .blog-list-content-tab {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media (max-width: 880px) {
     .slider-progress-content {
         display: none;
@@ -8,6 +15,11 @@
 
 @media (max-width: 768px) {
 
+    /* slider nav wrap */
+    .slider-nav-wrapper{
+        gap: 12px;
+    }
+    
     /* ====================
         Hero slider area 
      ====================== */
@@ -51,6 +63,11 @@
 
     .services-list {
         padding-bottom: 0px;
+    }
+
+    /* Blog List Widget */
+    .blog-list-content-tab {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -112,6 +129,12 @@
 
     /* Blog List Widget */
     .blog-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* Blog List with tab Widget */
+    .blog-list-content-tab {
         grid-template-columns: 1fr;
         gap: 16px;
     }
