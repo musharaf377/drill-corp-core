@@ -386,12 +386,6 @@ FAQ widger Css
     background: rgba(13, 26, 33, 1);
 }
 
-
-
-.feature-blog-content {
-  margin-top: 20px;
-}
-
 .feature-blog-title a {
   font-size: 24px;
   line-height: 1.2em;
@@ -401,7 +395,6 @@ FAQ widger Css
 
 article.feature-blog-item {
   display: flex;
-  gap: 20px;
 }
 
 .feature-blog-item-title a {
@@ -415,7 +408,6 @@ article.feature-blog-item {
 
 article.feature-blog-item {
   display: flex;
-  gap: 20px;
 }
 
 .feature-blog-list {
@@ -429,7 +421,6 @@ article.feature-blog-item {
 }
 
 .feature-blog-item .feature-blog-item-thumb img {
-  width: 180px;
   height: 100px;
   object-fit: cover;
 }
@@ -438,13 +429,20 @@ img.feature-blog-thumb {
   width: 100%;
 }
 
+.feature-blog-item-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* gap: 60px */
+}
+
 /* ============================
   Projects Widget
  ============================== */
 
 .projects-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
 }
 

@@ -140,7 +140,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             'range' => ['px' => ['min' => 0, 'max' => 80]],
             'default' => ['size' => 24],
             'selectors' => [
-                '{{WRAPPER}} .feature-blog-grid' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .feature-blog-wrapper' => 'gap: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -189,11 +189,22 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         $this->end_controls_section();
 
         // -------------------------
-        // Style: Meta + Excerpt
+        // Style: Meta
         // -------------------------
         $this->start_controls_section('section_style_meta', [
             'label' => esc_html__('Meta', 'drillcorp-core'),
             'tab'   => Controls_Manager::TAB_STYLE,
+        ]);
+
+
+        $this->add_responsive_control('meta_card_padding', [
+            'label'      => esc_html__('Padding', 'drillcorp-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem'],
+            'default'    => ['top' => 30, 'right' => 30, 'bottom' => 30, 'left' => 30, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-cats' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
         ]);
 
         $this->add_control('meta_color', [
@@ -321,6 +332,16 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             'default'    => ['top' => 20, 'right' => 20, 'bottom' => 20, 'left' => 20, 'unit' => 'px'],
             'selectors'  => [
                 '{{WRAPPER}} .feature-blog-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('list_card_content_padding', [
+            'label'      => esc_html__('Content Padding', 'drillcorp-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem'],
+            'default'    => ['top' => 20, 'right' => 20, 'bottom' => 20, 'left' => 20, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-item-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ],
         ]);
 
@@ -544,26 +565,26 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                     <article class="feature-blog-item feature-blog-card">
                         <?php if (! empty($settings['show_list_thumb']) && $settings['show_list_thumb'] === 'yes' && has_post_thumbnail($post_item->ID)) : ?>
                             <a class="feature-blog-item-thumb" href="<?php echo esc_url(get_permalink($post_item->ID)); ?>">
-                                <img src="<?php echo esc_url(get_the_post_thumbnail_url($post_item->ID, 'thumbnail')); ?>"
+                                <img src="<?php echo esc_url(get_the_post_thumbnail_url($post_item->ID, 'large')); ?>"
                                     alt="<?php echo esc_attr(get_the_title($post_item->ID)); ?>">
                             </a>
                         <?php endif; ?>
 
                         <div class="feature-blog-item-content feature-blog-card-content">
-                            <?php if (! empty($settings['show_category']) && $settings['show_category'] === 'yes') : ?>
-                                <div class="feature-blog-cats">
-                                    <div class="feature-blog-cat-dot"></div>
-                                    <?php echo wp_kses_post(get_the_category_list(' ', '', $post_item->ID)); ?>
-                                </div>
-                            <?php endif; ?>
+                            <div class="blog-top-content">
+                                <?php if (! empty($settings['show_category']) && $settings['show_category'] === 'yes') : ?>
+                                    <div class="feature-blog-cats">
+                                        <div class="feature-blog-cat-dot"></div>
+                                        <?php echo wp_kses_post(get_the_category_list(' ', '', $post_item->ID)); ?>
+                                    </div>
+                                <?php endif; ?>
 
-
-
-                            <h3 class="feature-blog-item-title">
-                                <a href="<?php echo esc_url(get_permalink($post_item->ID)); ?>">
-                                    <?php echo esc_html(get_the_title($post_item->ID)); ?>
-                                </a>
-                            </h3>
+                                <h3 class="feature-blog-item-title">
+                                    <a href="<?php echo esc_url(get_permalink($post_item->ID)); ?>">
+                                        <?php echo esc_html(get_the_title($post_item->ID)); ?>
+                                    </a>
+                                </h3>
+                            </div>
                             <div class="blog-meta">
                                 <?php if (! empty($settings['show_date']) && $settings['show_date'] === 'yes') : ?>
                                     <div class="feature-blog-date">
@@ -572,7 +593,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                                     <div class="blog-meta-dot"></div>
                                     <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($post_item->ID); ?> Min Read</div>
                                 <?php endif; ?>
-                              
+
                             </div>
                         </div>
 
