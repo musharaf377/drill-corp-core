@@ -67,7 +67,7 @@ html {
 .contact-information {
     width: 100%;
     background: #acff2f;
-    padding-top: 36px;
+    padding-top: 10px;
 }
 
 .contact-information a {
@@ -89,7 +89,7 @@ html {
 .contact-information a svg {
     width: 20px;
     height: 16px;
-    margin-top: 6px;
+    /* margin-top: 6px; */
 }
 
 .contact-information-wrapper {

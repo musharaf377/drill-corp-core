@@ -99,6 +99,13 @@ class Blog_List extends Widget_Base
             'default'      => 'yes',
         ]);
 
+        $this->add_control('show_thumbnail', [
+            'label'        => esc_html__('Show Thumbnail', 'drillcorp-core'),
+            'type'         => Controls_Manager::SWITCHER,
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]);
+
         $this->add_control('excerpt_length', [
             'label'     => esc_html__('Excerpt Length', 'drillcorp-core'),
             'type'      => Controls_Manager::NUMBER,
@@ -125,6 +132,23 @@ class Blog_List extends Widget_Base
             'default' => ['size' => 20],
             'selectors' => [
                 '{{WRAPPER}} .blog-list' => 'gap: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('columns', [
+            'label' => esc_html__('Columns', 'drillcorp-core'),
+            'type' => Controls_Manager::SELECT,
+            'default' => '1',
+            'options' => [
+                '1' => '1',
+                '2' => '2',
+                '3' => '3',
+                '4' => '4',
+            ],
+            'tablet_default' => '2',
+            'mobile_default' => '1',
+            'selectors' => [
+                '{{WRAPPER}} .blog-list' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
             ],
         ]);
 
@@ -444,10 +468,10 @@ class Blog_List extends Widget_Base
             return;
         }
 ?>
-        <div class="blog-list">
+        <div class="blog-list" style="display: grid;">
             <?php while ($query->have_posts()) : $query->the_post(); ?>
                 <article class="blog-list-item">
-                    <?php if (has_post_thumbnail()) : ?>
+                    <?php if ($settings['show_thumbnail'] === 'yes' && has_post_thumbnail()) : ?>
                         <a class="blog-list-item-thumb" href="<?php echo esc_url(get_permalink()); ?>">
                             <?php the_post_thumbnail('large'); ?>
                         </a>

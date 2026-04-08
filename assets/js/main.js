@@ -670,6 +670,26 @@
          updateActiveTocLink();
       });
 
+      /* ========================
+       *  Contact Info Toggle
+       =========================*/
+      $(document).on('click', '.contact-us-link', function (e) {
+         e.preventDefault();
+         
+         const $wrapper = $(this).siblings('.contact-information-wrapper');
+         
+         // Toggle the contact information wrapper with smooth animation
+         if ($wrapper.is(':visible')) {
+            $wrapper.slideUp(300);
+            $(this).find('svg, i').css('transform', 'rotate(0deg)');
+         } else {
+            $wrapper.slideDown(300);
+            $(this).find('svg, i').css('transform', 'rotate(180deg)');
+         }
+      });
+
+      // Initially hide the contact information wrapper
+      $('.contact-information-wrapper').hide();
 
 
    });
