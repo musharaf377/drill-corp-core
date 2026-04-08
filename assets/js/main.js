@@ -392,15 +392,10 @@
                   const totalPosts = parseInt($tabWrapJQ.data('total-posts'));
                   const loadMoreWasClicked = $tabWrapJQ.data('loadMoreWasClicked') || false;
 
-                  console.log('All tab clicked - Load More was clicked:', loadMoreWasClicked, 'Total posts:', totalPosts, 'Posts per page:', postsPerPage);
-
                   // Determine how many posts to load
                   let postsToLoad = postsPerPage; // Default: load only page 1
                   if (loadMoreWasClicked) {
                      postsToLoad = totalPosts; // Load all posts if Load More was clicked
-                     console.log('Load More was clicked before - loading ALL posts');
-                  } else {
-                     console.log('Load More was NOT clicked - loading only page 1');
                   }
 
                   // Reload posts for 'all' tab
@@ -420,13 +415,9 @@
                         careerList.innerHTML = '<p class="loading-message">Loading...</p>';
                      },
                      success: function(response) {
-                        console.log('All tab AJAX response:', response);
-                        
                         if (response.success && response.data.html) {
                            // Replace all posts
                            careerList.innerHTML = response.data.html;
-
-                           console.log('Response hasMore:', response.data.hasMore, 'Next page:', response.data.page);
 
                            // Show/hide load more button based on state
                            if (loadMoreBtn) {
@@ -436,11 +427,9 @@
                                  const $loadMoreBtn = $(loadMoreBtn).find('.career-load-more-btn');
                                  $loadMoreBtn.data('page', 2).attr('data-page', 2);
                                  $loadMoreBtn.data('category', 'all').attr('data-category', 'all');
-                                 console.log('Load more button shown, page set to 2');
                               } else {
                                  // Load More was clicked OR no more posts - hide button
                                  loadMoreBtn.style.display = 'none';
-                                 console.log('Load more button hidden');
                               }
                            }
                         } else {
@@ -451,7 +440,6 @@
                         }
                      },
                      error: function(xhr, status, error) {
-                        console.error('All tab reload error:', error);
                         careerList.innerHTML = '<p>Error loading posts.</p>';
                         if (loadMoreBtn) {
                            loadMoreBtn.style.display = 'none';
@@ -522,8 +510,6 @@
          const orderby = $tabWrap.data('orderby') || 'date';
          const order = $tabWrap.data('order') || 'DESC';
          const nonce = $tabWrap.data('nonce');
-         
-         console.log('Load More clicked - Page:', currentPage, 'Category:', currentCategory, 'Posts per page:', postsPerPage);
 
          // Don't proceed if already loading
          if ($button.hasClass('loading')) {
@@ -555,7 +541,6 @@
 
                   // Mark that Load More was clicked (store on wrapper element)
                   $tabWrap.data('loadMoreWasClicked', true);
-                  console.log('Load More clicked - State saved: loadMoreWasClicked = true');
 
                   // Update page number
                   $button.data('page', response.data.page).attr('data-page', response.data.page);
@@ -574,7 +559,6 @@
                }
             },
             error: function(xhr, status, error) {
-               console.error('Load more error:', error);
                $text.text('Error loading posts');
             },
             complete: function() {
