@@ -387,11 +387,23 @@
                const order = $tabWrapJQ.data('order');
                const nonce = $tabWrapJQ.data('nonce');
 
-               // If it's 'all' tab, reload initial posts with pagination
+               // If it's 'all' tab, check if Load More was previously clicked
                if (selectedCategory === 'all') {
                   const totalPosts = parseInt($tabWrapJQ.data('total-posts'));
-                  
-                  // Reload initial batch of posts for 'all' tab
+                  const loadMoreWasClicked = $tabWrapJQ.data('loadMoreWasClicked') || false;
+
+                  console.log('All tab clicked - Load More was clicked:', loadMoreWasClicked, 'Total posts:', totalPosts, 'Posts per page:', postsPerPage);
+
+                  // Determine how many posts to load
+                  let postsToLoad = postsPerPage; // Default: load only page 1
+                  if (loadMoreWasClicked) {
+                     postsToLoad = totalPosts; // Load all posts if Load More was clicked
+                     console.log('Load More was clicked before - loading ALL posts');
+                  } else {
+                     console.log('Load More was NOT clicked - loading only page 1');
+                  }
+
+                  // Reload posts for 'all' tab
                   $.ajax({
                      url: drillcorpAjax.ajaxurl,
                      type: 'POST',
@@ -399,26 +411,36 @@
                         action: 'load_more_career_posts',
                         nonce: nonce,
                         page: 1,
-                        posts_per_page: postsPerPage,
+                        posts_per_page: postsToLoad,
                         orderby: orderby,
                         order: order,
                         category: 'all'
                      },
+                     beforeSend: function() {
+                        careerList.innerHTML = '<p class="loading-message">Loading...</p>';
+                     },
                      success: function(response) {
+                        console.log('All tab AJAX response:', response);
+                        
                         if (response.success && response.data.html) {
                            // Replace all posts
                            careerList.innerHTML = response.data.html;
 
-                           // Show load more button for 'all' tab if there are more posts
+                           console.log('Response hasMore:', response.data.hasMore, 'Next page:', response.data.page);
+
+                           // Show/hide load more button based on state
                            if (loadMoreBtn) {
-                              if (totalPosts > postsPerPage) {
+                              if (!loadMoreWasClicked && totalPosts > postsPerPage) {
+                                 // Load More was NOT clicked and there are more posts - show button
                                  loadMoreBtn.style.display = '';
-                                 // Reset button page to 2
                                  const $loadMoreBtn = $(loadMoreBtn).find('.career-load-more-btn');
-                                 $loadMoreBtn.data('page', 2);
-                                 $loadMoreBtn.data('category', 'all');
+                                 $loadMoreBtn.data('page', 2).attr('data-page', 2);
+                                 $loadMoreBtn.data('category', 'all').attr('data-category', 'all');
+                                 console.log('Load more button shown, page set to 2');
                               } else {
+                                 // Load More was clicked OR no more posts - hide button
                                  loadMoreBtn.style.display = 'none';
+                                 console.log('Load more button hidden');
                               }
                            }
                         } else {
@@ -429,6 +451,7 @@
                         }
                      },
                      error: function(xhr, status, error) {
+                        console.error('All tab reload error:', error);
                         careerList.innerHTML = '<p>Error loading posts.</p>';
                         if (loadMoreBtn) {
                            loadMoreBtn.style.display = 'none';
@@ -493,12 +516,14 @@
 
          // Get settings from data attributes
          const widgetId = $button.data('widget-id');
-         let currentPage = parseInt($button.data('page'));
-         let currentCategory = $button.data('category');
-         const postsPerPage = parseInt($tabWrap.data('posts-per-page'));
-         const orderby = $tabWrap.data('orderby');
-         const order = $tabWrap.data('order');
+         let currentPage = parseInt($button.data('page')) || 2;
+         let currentCategory = $button.data('category') || 'all';
+         const postsPerPage = parseInt($tabWrap.data('posts-per-page')) || 10;
+         const orderby = $tabWrap.data('orderby') || 'date';
+         const order = $tabWrap.data('order') || 'DESC';
          const nonce = $tabWrap.data('nonce');
+         
+         console.log('Load More clicked - Page:', currentPage, 'Category:', currentCategory, 'Posts per page:', postsPerPage);
 
          // Don't proceed if already loading
          if ($button.hasClass('loading')) {
@@ -528,8 +553,12 @@
                   // Append new posts
                   $careerList.append(response.data.html);
 
+                  // Mark that Load More was clicked (store on wrapper element)
+                  $tabWrap.data('loadMoreWasClicked', true);
+                  console.log('Load More clicked - State saved: loadMoreWasClicked = true');
+
                   // Update page number
-                  $button.data('page', response.data.page);
+                  $button.data('page', response.data.page).attr('data-page', response.data.page);
 
                   // If no more posts, hide button
                   if (!response.data.hasMore) {

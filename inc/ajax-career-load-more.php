@@ -125,6 +125,8 @@ function drillcorp_core_load_more_career_posts() {
             'html'    => $html,
             'hasMore' => $has_more,
             'page'    => $page + 1,
+            'total'   => $query->found_posts,
+            'maxPages' => $query->max_num_pages
         ]);
     } else {
         wp_send_json_success([
