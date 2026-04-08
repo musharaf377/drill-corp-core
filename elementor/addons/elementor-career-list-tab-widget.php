@@ -45,7 +45,7 @@ class Career_List_Tab extends Widget_Base
             'hide_empty' => true,
         ]);
 
-        $options = ['all' => esc_html__('All Media', 'drillcorp-core')];
+        $options = ['all' => esc_html__('All Positions', 'drillcorp-core')];
 
         if (! is_wp_error($terms) && ! empty($terms)) {
             foreach ($terms as $term) {
@@ -554,6 +554,183 @@ class Career_List_Tab extends Widget_Base
         ]);
 
         $this->end_controls_section();
+
+        // -------------------------
+        // Style: Load More Button
+        // -------------------------
+        $this->start_controls_section('section_style_load_more', [
+            'label' => esc_html__('Load More Button', 'drillcorp-core'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]);
+
+        $this->add_control('load_more_container_margin', [
+            'label'      => esc_html__('Container Margin', 'drillcorp-core'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range'      => ['px' => ['min' => 0, 'max' => 100]],
+            'default'    => ['size' => 40, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .career-load-more-container' => 'margin-top: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('load_more_button_width', [
+            'label'      => esc_html__('Button Width', 'drillcorp-core'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range'      => ['px' => ['min' => 100, 'max' => 500]],
+            'default'    => ['size' => 220],
+            'selectors'  => [
+                '{{WRAPPER}} .career-load-more-btn' => 'width: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('load_more_button_padding', [
+            'label'      => esc_html__('Button Padding', 'drillcorp-core'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em'],
+            'default'    => ['top' => 14, 'right' => 40, 'bottom' => 14, 'left' => 40, 'unit' => 'px'],
+            'selectors'  => [
+                '{{WRAPPER}} .career-load-more-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_control('load_more_heading', [
+            'label' => esc_html__('Button States', 'drillcorp-core'),
+            'type' => Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]);
+
+        $this->start_controls_tabs('load_more_button_states');
+
+        // Normal State
+        $this->start_controls_tab('load_more_normal', [
+            'label' => esc_html__('Normal', 'drillcorp-core'),
+        ]);
+
+        $this->add_control('load_more_normal_bg', [
+            'label' => esc_html__('Background Color', 'drillcorp-core'),
+            'type'  => Controls_Manager::COLOR,
+            'default' => '',
+            'selectors' => [
+                '{{WRAPPER}} .career-load-more-btn' => 'background: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_control('load_more_normal_color', [
+            'label' => esc_html__('Text Color', 'drillcorp-core'),
+            'type'  => Controls_Manager::COLOR,
+            'default' => '#0D1A21',
+            'selectors' => [
+                '{{WRAPPER}} .career-load-more-btn' => 'color: {{VALUE}};',
+            ],
+        ]);
+
+         $this->add_control(
+            'button_border_color',
+            [
+                'label' => esc_html__('Border Color', 'drillcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .career-load-more-btn' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
+                ],
+            ]
+        );
+
+        $this->add_group_control(Group_Control_Typography::get_type(), [
+            'name'     => 'load_more_typography',
+            'label'    => esc_html__('Typography', 'drillcorp-core'),
+            'selector' => '{{WRAPPER}} .career-load-more-btn',
+        ]);
+
+        $this->end_controls_tab();
+
+        // Hover State
+        $this->start_controls_tab('load_more_hover', [
+            'label' => esc_html__('Hover', 'drillcorp-core'),
+        ]);
+
+        $this->add_control('load_more_hover_bg', [
+            'label' => esc_html__('Background Color', 'drillcorp-core'),
+            'type'  => Controls_Manager::COLOR,
+            'default' => '#0D1A21',
+            'selectors' => [
+                '{{WRAPPER}} .career-load-more-btn:hover' => 'background: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_control('load_more_hover_color', [
+            'label' => esc_html__('Text Color', 'drillcorp-core'),
+            'type'  => Controls_Manager::COLOR,
+            'default' => '#ffffff',
+            'selectors' => [
+                '{{WRAPPER}} .career-load-more-btn:hover' => 'color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_control(
+            'button_hover_border_color',
+            [
+                'label' => esc_html__('Border Color', 'drillcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .career-load-more-btn:hover' => 'border-image: linear-gradient(135deg, {{VALUE}}, {{VALUE}}) 1 stretch;',
+                ],
+            ]
+        );
+
+        $this->add_group_control(Group_Control_Box_Shadow::get_type(), [
+            'name'     => 'load_more_hover_shadow',
+            'label'    => esc_html__('Box Shadow', 'drillcorp-core'),
+            'selector' => '{{WRAPPER}} .career-load-more-btn:hover',
+        ]);
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_control('load_more_transition_heading', [
+            'label' => esc_html__('Transition', 'drillcorp-core'),
+            'type' => Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]);
+
+        $this->add_control('load_more_transition_duration', [
+            'label' => esc_html__('Transition Duration', 'drillcorp-core'),
+            'type'  => Controls_Manager::SLIDER,
+            'range' => ['px' => ['min' => 0, 'max' => 2, 'step' => 0.1]],
+            'default' => ['size' => 0.3],
+            'selectors' => [
+                '{{WRAPPER}} .career-load-more-btn' => 'transition: all {{SIZE}}s ease;',
+            ],
+        ]);
+
+        $this->add_control('load_more_transform_on_hover', [
+            'label'        => esc_html__('Transform on Hover', 'drillcorp-core'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__('Yes', 'drillcorp-core'),
+            'label_off'    => esc_html__('No', 'drillcorp-core'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]);
+
+        $this->add_control(
+            'load_more_hover_transform',
+            [
+                'label'      => esc_html__('Hover Transform', 'drillcorp-core'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'default'    => ['top' => 2, 'right' => 0, 'bottom' => -2, 'left' => 0, 'unit' => 'px'],
+                'selectors'  => [
+                    '{{WRAPPER}} .career-load-more-btn:hover' => 'transform: translateY({{BOTTOM.SIZE}}{{BOTTOM.UNIT}});',
+                ],
+                'condition'  => [
+                    'load_more_transform_on_hover' => 'yes',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render()
@@ -722,7 +899,7 @@ class Career_List_Tab extends Widget_Base
                             data-widget-id="<?php echo esc_attr($unique_id); ?>"
                             data-page="2"
                             data-category="all">
-                        <span class="load-more-text"><?php echo esc_html__('Load More Positions', 'drillcorp-core'); ?></span>
+                        <span class="load-more-text"><?php echo esc_html__('Load More', 'drillcorp-core'); ?></span>
                         <span class="load-more-spinner" style="display: none;">
                             <svg class="spinner" viewBox="0 0 50 50">
                                 <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
