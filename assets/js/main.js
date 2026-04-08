@@ -365,6 +365,7 @@
          const tabs = tabWrap.querySelectorAll('.career-list-tab-nav-item');
          const careerList = tabWrap.querySelector('.career-list');
          const loadMoreBtn = tabWrap.querySelector('.career-load-more-container');
+         const $tabWrapJQ = $(tabWrap);
 
          if (!tabs.length || !careerList) return;
 
@@ -379,39 +380,99 @@
                this.classList.add('active');
 
                const selectedCategory = this.getAttribute('data-category');
+               const $this = $(this);
+               const categoryTotalPosts = parseInt($this.data('total-posts'));
+               const postsPerPage = parseInt($tabWrapJQ.data('posts-per-page'));
+               const orderby = $tabWrapJQ.data('orderby');
+               const order = $tabWrapJQ.data('order');
+               const nonce = $tabWrapJQ.data('nonce');
 
-               // Filter posts
-               const posts = careerList.querySelectorAll('.career-list-item');
-               let visibleCount = 0;
+               // If it's 'all' tab, reload initial posts with pagination
+               if (selectedCategory === 'all') {
+                  const totalPosts = parseInt($tabWrapJQ.data('total-posts'));
+                  
+                  // Reload initial batch of posts for 'all' tab
+                  $.ajax({
+                     url: drillcorpAjax.ajaxurl,
+                     type: 'POST',
+                     data: {
+                        action: 'load_more_career_posts',
+                        nonce: nonce,
+                        page: 1,
+                        posts_per_page: postsPerPage,
+                        orderby: orderby,
+                        order: order,
+                        category: 'all'
+                     },
+                     success: function(response) {
+                        if (response.success && response.data.html) {
+                           // Replace all posts
+                           careerList.innerHTML = response.data.html;
 
-               posts.forEach(function(post) {
-                  const postCategories = post.getAttribute('data-categories');
+                           // Show load more button for 'all' tab if there are more posts
+                           if (loadMoreBtn) {
+                              if (totalPosts > postsPerPage) {
+                                 loadMoreBtn.style.display = '';
+                                 // Reset button page to 2
+                                 const $loadMoreBtn = $(loadMoreBtn).find('.career-load-more-btn');
+                                 $loadMoreBtn.data('page', 2);
+                                 $loadMoreBtn.data('category', 'all');
+                              } else {
+                                 loadMoreBtn.style.display = 'none';
+                              }
+                           }
+                        } else {
+                           careerList.innerHTML = '<p>No posts found.</p>';
+                           if (loadMoreBtn) {
+                              loadMoreBtn.style.display = 'none';
+                           }
+                        }
+                     },
+                     error: function(xhr, status, error) {
+                        careerList.innerHTML = '<p>Error loading posts.</p>';
+                        if (loadMoreBtn) {
+                           loadMoreBtn.style.display = 'none';
+                        }
+                     }
+                  });
+               } else {
+                  // For category tabs, load all posts via AJAX
+                  $.ajax({
+                     url: drillcorpAjax.ajaxurl,
+                     type: 'POST',
+                     data: {
+                        action: 'load_more_career_posts',
+                        nonce: nonce,
+                        page: 1,
+                        posts_per_page: categoryTotalPosts, // Load all posts for this category
+                        orderby: orderby,
+                        order: order,
+                        category: selectedCategory
+                     },
+                     success: function(response) {
+                        if (response.success && response.data.html) {
+                           // Replace all posts with filtered posts
+                           careerList.innerHTML = response.data.html;
 
-                  if (!postCategories) {
-                     post.style.display = '';
-                     visibleCount++;
-                     return;
-                  }
-
-                  const categoriesArray = postCategories.split(',');
-
-                  if (selectedCategory === 'all' || categoriesArray.includes(selectedCategory)) {
-                     post.style.display = '';
-                     visibleCount++;
-                  } else {
-                     post.style.display = 'none';
-                  }
-               });
-
-               // Show/hide load more button based on selected tab
-               if (loadMoreBtn) {
-                  if (selectedCategory === 'all') {
-                     // Show load more button for 'all' tab
-                     loadMoreBtn.style.display = '';
-                  } else {
-                     // Hide load more button for category tabs
-                     loadMoreBtn.style.display = 'none';
-                  }
+                           // Hide load more button for category tabs
+                           if (loadMoreBtn) {
+                              loadMoreBtn.style.display = 'none';
+                           }
+                        } else {
+                           // No posts found
+                           careerList.innerHTML = '<p>No posts found in this category.</p>';
+                           if (loadMoreBtn) {
+                              loadMoreBtn.style.display = 'none';
+                           }
+                        }
+                     },
+                     error: function(xhr, status, error) {
+                        careerList.innerHTML = '<p>Error loading posts.</p>';
+                        if (loadMoreBtn) {
+                           loadMoreBtn.style.display = 'none';
+                        }
+                     }
+                  });
                }
             });
          });

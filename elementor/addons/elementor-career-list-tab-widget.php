@@ -602,6 +602,29 @@ class Career_List_Tab extends Widget_Base
         // Count total posts for 'all' category
         $total_posts_all = $all_query->post_count;
         $has_more_all = ($total_posts_all > $posts_per_page);
+        
+        // Count posts per category
+        $category_counts = [];
+        foreach ($categories as $cat_id => $cat_name) {
+            if ($cat_id === 'all') {
+                $category_counts[$cat_id] = $total_posts_all;
+            } else {
+                $cat_query = new \WP_Query([
+                    'post_type'      => 'career',
+                    'posts_per_page' => -1,
+                    'post_status'    => 'publish',
+                    'tax_query'      => [
+                        [
+                            'taxonomy' => 'career_cat',
+                            'field'    => 'term_id',
+                            'terms'    => absint($cat_id),
+                        ],
+                    ],
+                ]);
+                $category_counts[$cat_id] = $cat_query->post_count;
+                wp_reset_postdata();
+            }
+        }
 ?>
         <div class="career-list-tab-wrap" 
              data-widget-id="<?php echo esc_attr($unique_id); ?>" 
@@ -609,11 +632,14 @@ class Career_List_Tab extends Widget_Base
              data-orderby="<?php echo esc_attr($orderby); ?>"
              data-order="<?php echo esc_attr($order); ?>"
              data-total-posts="<?php echo esc_attr($total_posts_all); ?>"
-             data-nonce="<?php echo esc_attr(wp_create_nonce('career_load_more_nonce')); ?>">
+             data-nonce="<?php echo esc_attr(wp_create_nonce('career_load_more_nonce')); ?>"
+             data-category-counts='<?php echo esc_attr(json_encode($category_counts)); ?>'>
             <div class="career-list-tab">
                 <ul class="career-list-tab-nav">
                     <?php foreach ($categories as $cat_id => $cat_name) : ?>
-                        <li class="career-list-tab-nav-item <?php echo ($cat_id === 'all') ? 'active' : ''; ?>" data-category="<?php echo esc_attr($cat_id); ?>">
+                        <li class="career-list-tab-nav-item <?php echo ($cat_id === 'all') ? 'active' : ''; ?>" 
+                            data-category="<?php echo esc_attr($cat_id); ?>"
+                            data-total-posts="<?php echo esc_attr($category_counts[$cat_id]); ?>">
                             <a href="#"><?php echo esc_html($cat_name); ?></a>
                         </li>
                     <?php endforeach; ?>
