@@ -122,6 +122,13 @@ if (!class_exists('Drillcorp_Core_Init')) {
                         $plugin_version,
                         $js['in_footer'] // Ensure this is passed to load the script in the footer
                     );
+                    
+                    // Localize AJAX URL for main.js
+                    if ($js['handle'] === 'main') {
+                        wp_localize_script('main', 'drillcorpAjax', array(
+                            'ajaxurl' => admin_url('admin-ajax.php')
+                        ));
+                    }
                 }
             }
         }

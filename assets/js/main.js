@@ -360,45 +360,139 @@
        *  Career List Tab
        =========================*/
       const careerTabWraps = document.querySelectorAll('.career-list-tab-wrap');
-      
+
       careerTabWraps.forEach(function(tabWrap) {
          const tabs = tabWrap.querySelectorAll('.career-list-tab-nav-item');
          const careerList = tabWrap.querySelector('.career-list');
-         
+         const loadMoreBtn = tabWrap.querySelector('.career-load-more-container');
+
          if (!tabs.length || !careerList) return;
-         
+
          tabs.forEach(function(tab) {
             tab.addEventListener('click', function(e) {
                e.preventDefault();
-               
+
                // Remove active class from all tabs
                tabs.forEach(t => t.classList.remove('active'));
-               
+
                // Add active class to clicked tab
                this.classList.add('active');
-               
+
                const selectedCategory = this.getAttribute('data-category');
-               
+
                // Filter posts
                const posts = careerList.querySelectorAll('.career-list-item');
-               
+               let visibleCount = 0;
+
                posts.forEach(function(post) {
                   const postCategories = post.getAttribute('data-categories');
-                  
+
                   if (!postCategories) {
                      post.style.display = '';
+                     visibleCount++;
                      return;
                   }
-                  
+
                   const categoriesArray = postCategories.split(',');
-                  
+
                   if (selectedCategory === 'all' || categoriesArray.includes(selectedCategory)) {
                      post.style.display = '';
+                     visibleCount++;
                   } else {
                      post.style.display = 'none';
                   }
                });
+
+               // Show/hide load more button based on selected tab
+               if (loadMoreBtn) {
+                  if (selectedCategory === 'all') {
+                     // Show load more button for 'all' tab
+                     loadMoreBtn.style.display = '';
+                  } else {
+                     // Hide load more button for category tabs
+                     loadMoreBtn.style.display = 'none';
+                  }
+               }
             });
+         });
+      });
+
+      /* ========================
+       *  Career Load More
+       =========================*/
+      $(document).on('click', '.career-load-more-btn', function(e) {
+         e.preventDefault();
+
+         const $button = $(this);
+         const $spinner = $button.find('.load-more-spinner');
+         const $text = $button.find('.load-more-text');
+         const $tabWrap = $button.closest('.career-list-tab-wrap');
+         const $careerList = $tabWrap.find('.career-list');
+         const loadMoreContainer = $tabWrap.find('.career-load-more-container');
+
+         // Get settings from data attributes
+         const widgetId = $button.data('widget-id');
+         let currentPage = parseInt($button.data('page'));
+         let currentCategory = $button.data('category');
+         const postsPerPage = parseInt($tabWrap.data('posts-per-page'));
+         const orderby = $tabWrap.data('orderby');
+         const order = $tabWrap.data('order');
+         const nonce = $tabWrap.data('nonce');
+
+         // Don't proceed if already loading
+         if ($button.hasClass('loading')) {
+            return;
+         }
+
+         // Show spinner and hide text
+         $button.addClass('loading');
+         $text.hide();
+         $spinner.show();
+
+         // AJAX request
+         $.ajax({
+            url: drillcorpAjax.ajaxurl,
+            type: 'POST',
+            data: {
+               action: 'load_more_career_posts',
+               nonce: nonce,
+               page: currentPage,
+               posts_per_page: postsPerPage,
+               orderby: orderby,
+               order: order,
+               category: currentCategory
+            },
+            success: function(response) {
+               if (response.success && response.data.html) {
+                  // Append new posts
+                  $careerList.append(response.data.html);
+
+                  // Update page number
+                  $button.data('page', response.data.page);
+
+                  // If no more posts, hide button
+                  if (!response.data.hasMore) {
+                     loadMoreContainer.fadeOut(300, function() {
+                        $(this).remove();
+                     });
+                  }
+               } else {
+                  // No more posts
+                  loadMoreContainer.fadeOut(300, function() {
+                     $(this).remove();
+                  });
+               }
+            },
+            error: function(xhr, status, error) {
+               console.error('Load more error:', error);
+               $text.text('Error loading posts');
+            },
+            complete: function() {
+               // Hide spinner and show text
+               $button.removeClass('loading');
+               $spinner.hide();
+               $text.show();
+            }
          });
       });
 

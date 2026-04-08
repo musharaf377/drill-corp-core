@@ -22,6 +22,10 @@ $php_files = array(
         'folder-name' => DRILLCORP_CORE_INC
     ),
     array(
+        'file-name' => 'ajax-career-load-more',
+        'folder-name' => DRILLCORP_CORE_INC
+    ),
+    array(
         'file-name' => 'theme-core-shortcodes',
         'folder-name' => DRILLCORP_CORE_INC
     ),

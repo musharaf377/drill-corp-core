@@ -595,8 +595,21 @@ class Career_List_Tab extends Widget_Base
         }
         
         $unique_id = $this->get_id();
+        $posts_per_page = (int) ($settings['posts_per_page'] ?? 10);
+        $orderby = $settings['orderby'] ?? 'date';
+        $order = $settings['order'] ?? 'DESC';
+        
+        // Count total posts for 'all' category
+        $total_posts_all = $all_query->post_count;
+        $has_more_all = ($total_posts_all > $posts_per_page);
 ?>
-        <div class="career-list-tab-wrap" data-widget-id="<?php echo esc_attr($unique_id); ?>">
+        <div class="career-list-tab-wrap" 
+             data-widget-id="<?php echo esc_attr($unique_id); ?>" 
+             data-posts-per-page="<?php echo esc_attr($posts_per_page); ?>"
+             data-orderby="<?php echo esc_attr($orderby); ?>"
+             data-order="<?php echo esc_attr($order); ?>"
+             data-total-posts="<?php echo esc_attr($total_posts_all); ?>"
+             data-nonce="<?php echo esc_attr(wp_create_nonce('career_load_more_nonce')); ?>">
             <div class="career-list-tab">
                 <ul class="career-list-tab-nav">
                     <?php foreach ($categories as $cat_id => $cat_name) : ?>
@@ -606,16 +619,16 @@ class Career_List_Tab extends Widget_Base
                     <?php endforeach; ?>
                 </ul>
             </div>
-            
+
             <div class="career-list-container">
                 <div class="career-list career-list-content-tab" data-widget-id="<?php echo esc_attr($unique_id); ?>">
                     <?php
                     // Show all posts initially
                     $show_args = [
                         'post_type'           => 'career',
-                        'posts_per_page'      => (int) ($settings['posts_per_page'] ?? 10),
-                        'orderby'             => $settings['orderby'] ?? 'date',
-                        'order'               => $settings['order'] ?? 'DESC',
+                        'posts_per_page'      => $posts_per_page,
+                        'orderby'             => $orderby,
+                        'order'               => $order,
                         'post_status'         => 'publish',
                     ];
 
@@ -676,9 +689,25 @@ class Career_List_Tab extends Widget_Base
                     wp_reset_postdata();
                     ?>
                 </div>
+                
+                <?php if ($has_more_all) : ?>
+                <div class="career-load-more-container">
+                    <button class="career-load-more-btn" 
+                            data-widget-id="<?php echo esc_attr($unique_id); ?>"
+                            data-page="2"
+                            data-category="all">
+                        <span class="load-more-text"><?php echo esc_html__('Load More Positions', 'drillcorp-core'); ?></span>
+                        <span class="load-more-spinner" style="display: none;">
+                            <svg class="spinner" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
-        
+
 <?php
     }
 }

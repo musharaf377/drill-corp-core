@@ -687,3 +687,82 @@ a.blog-list-item-thumb img {
   height: 8px;
   background: rgba(68, 34, 234, 1);
 }
+
+/* ===========================
+  Career Load More Button
+============================== */
+.career-load-more-container {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+.career-load-more-btn {
+  background: transparent;
+  border: 2px solid #0D1A21;
+  color: #0D1A21;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 220px;
+  position: relative;
+}
+
+.career-load-more-btn:hover {
+  background: #0D1A21;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 26, 33, 0.2);
+}
+
+.career-load-more-btn.loading {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.career-load-more-btn.loading:hover {
+  background: transparent;
+  color: #0D1A21;
+  transform: none;
+}
+
+/* Spinner Animation */
+.career-load-more-btn .spinner {
+  width: 20px;
+  height: 20px;
+  animation: rotate 1.5s linear infinite;
+}
+
+.career-load-more-btn .spinner .path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  animation: dash 1.25s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
