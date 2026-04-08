@@ -44,6 +44,10 @@ $php_files = array(
     array(
         'file-name' => 'theme-contact-info-widget',
         'folder-name' => DRILLCORP_CORE_WP_WIDGETS
+    ),
+    array(
+        'file-name' => 'theme-toc-widget',
+        'folder-name' => DRILLCORP_CORE_WP_WIDGETS
     )
 );
 

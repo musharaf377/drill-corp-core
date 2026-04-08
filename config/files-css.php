@@ -20,6 +20,11 @@ $css_files = array(
         'deps' => array(),
     ),
     array(
+        'handle' => 'drillcorp-toc-widget-css',
+        'src' => DRILLCORP_CORE_CSS . '/toc-widget.css',
+        'deps' => array(),
+    ),
+    array(
         'handle' => 'drillcorp-ele-responsive',
         'src' => DRILLCORP_CORE_CSS . '/responsive.css',
         'deps' => array(),

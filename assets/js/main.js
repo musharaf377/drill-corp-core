@@ -229,7 +229,7 @@
        * Services Card Sticky Animation
        ================================ */
       const serviceCards = document.querySelectorAll('.services-list-content');
-      
+
       if (serviceCards.length > 0) {
          // Set initial positions and sticky behavior
          serviceCards.forEach((card, i) => {
@@ -245,13 +245,13 @@
          // Scroll-based opacity and position animation
          function updateCardAnimation() {
             const viewportHeight = window.innerHeight;
-            
+
             serviceCards.forEach((card, i) => {
                const cardRect = card.getBoundingClientRect();
-               
+
                // Count how many cards are currently visible (opacity > 0)
                let visibleCardsBeforeThis = 0;
-               
+
                for (let j = 0; j < i; j++) {
                   const prevCardRect = serviceCards[j].getBoundingClientRect();
                   // Count cards that are still visible (not faded out)
@@ -259,7 +259,7 @@
                      visibleCardsBeforeThis++;
                   }
                }
-               
+
                // Count how many cards have entered viewport after this one
                let cardsAfterCount = 0;
                for (let j = i + 1; j < serviceCards.length; j++) {
@@ -269,7 +269,7 @@
                      cardsAfterCount++;
                   }
                }
-               
+
                // When 3 or more cards come after, this card should fade
                if (cardsAfterCount >= 3) {
                   card.style.opacity = '0';
@@ -278,7 +278,7 @@
                } else {
                   card.style.opacity = '1';
                   card.style.pointerEvents = 'auto';
-                  
+
                   // Adjust position based on how many visible cards are before this one
                   if (visibleCardsBeforeThis === 0) {
                      card.style.transform = 'translateY(100px)'; // First visible card position
@@ -296,9 +296,9 @@
 
          // Throttle scroll event for better performance
          let ticking = false;
-         window.addEventListener('scroll', function() {
+         window.addEventListener('scroll', function () {
             if (!ticking) {
-               window.requestAnimationFrame(function() {
+               window.requestAnimationFrame(function () {
                   updateCardAnimation();
                   ticking = false;
                });
@@ -314,38 +314,38 @@
        *  Blog List Tab
        =========================*/
       const blogTabWraps = document.querySelectorAll('.blog-list-tab-wrap');
-      
-      blogTabWraps.forEach(function(tabWrap) {
+
+      blogTabWraps.forEach(function (tabWrap) {
          const tabs = tabWrap.querySelectorAll('.blog-list-tab-nav-item');
          const blogList = tabWrap.querySelector('.blog-list');
-         
+
          if (!tabs.length || !blogList) return;
-         
-         tabs.forEach(function(tab) {
-            tab.addEventListener('click', function(e) {
+
+         tabs.forEach(function (tab) {
+            tab.addEventListener('click', function (e) {
                e.preventDefault();
-               
+
                // Remove active class from all tabs
                tabs.forEach(t => t.classList.remove('active'));
-               
+
                // Add active class to clicked tab
                this.classList.add('active');
-               
+
                const selectedCategory = this.getAttribute('data-category');
-               
+
                // Filter posts
                const posts = blogList.querySelectorAll('.blog-list-item');
-               
-               posts.forEach(function(post) {
+
+               posts.forEach(function (post) {
                   const postCategories = post.getAttribute('data-categories');
-                  
+
                   if (!postCategories) {
                      post.style.display = '';
                      return;
                   }
-                  
+
                   const categoriesArray = postCategories.split(',');
-                  
+
                   if (selectedCategory === 'all' || categoriesArray.includes(selectedCategory)) {
                      post.style.display = '';
                   } else {
@@ -361,7 +361,7 @@
        =========================*/
       const careerTabWraps = document.querySelectorAll('.career-list-tab-wrap');
 
-      careerTabWraps.forEach(function(tabWrap) {
+      careerTabWraps.forEach(function (tabWrap) {
          const tabs = tabWrap.querySelectorAll('.career-list-tab-nav-item');
          const careerList = tabWrap.querySelector('.career-list');
          const loadMoreBtn = tabWrap.querySelector('.career-load-more-container');
@@ -369,8 +369,8 @@
 
          if (!tabs.length || !careerList) return;
 
-         tabs.forEach(function(tab) {
-            tab.addEventListener('click', function(e) {
+         tabs.forEach(function (tab) {
+            tab.addEventListener('click', function (e) {
                e.preventDefault();
 
                // Remove active class from all tabs
@@ -411,10 +411,10 @@
                         order: order,
                         category: 'all'
                      },
-                     beforeSend: function() {
+                     beforeSend: function () {
                         careerList.innerHTML = '<p class="loading-message">Loading...</p>';
                      },
-                     success: function(response) {
+                     success: function (response) {
                         if (response.success && response.data.html) {
                            // Replace all posts
                            careerList.innerHTML = response.data.html;
@@ -439,7 +439,7 @@
                            }
                         }
                      },
-                     error: function(xhr, status, error) {
+                     error: function (xhr, status, error) {
                         careerList.innerHTML = '<p>Error loading posts.</p>';
                         if (loadMoreBtn) {
                            loadMoreBtn.style.display = 'none';
@@ -460,7 +460,7 @@
                         order: order,
                         category: selectedCategory
                      },
-                     success: function(response) {
+                     success: function (response) {
                         if (response.success && response.data.html) {
                            // Replace all posts with filtered posts
                            careerList.innerHTML = response.data.html;
@@ -477,7 +477,7 @@
                            }
                         }
                      },
-                     error: function(xhr, status, error) {
+                     error: function (xhr, status, error) {
                         careerList.innerHTML = '<p>Error loading posts.</p>';
                         if (loadMoreBtn) {
                            loadMoreBtn.style.display = 'none';
@@ -492,7 +492,7 @@
       /* ========================
        *  Career Load More
        =========================*/
-      $(document).on('click', '.career-load-more-btn', function(e) {
+      $(document).on('click', '.career-load-more-btn', function (e) {
          e.preventDefault();
 
          const $button = $(this);
@@ -534,7 +534,7 @@
                order: order,
                category: currentCategory
             },
-            success: function(response) {
+            success: function (response) {
                if (response.success && response.data.html) {
                   // Append new posts
                   $careerList.append(response.data.html);
@@ -547,21 +547,21 @@
 
                   // If no more posts, hide button
                   if (!response.data.hasMore) {
-                     loadMoreContainer.fadeOut(300, function() {
+                     loadMoreContainer.fadeOut(300, function () {
                         $(this).remove();
                      });
                   }
                } else {
                   // No more posts
-                  loadMoreContainer.fadeOut(300, function() {
+                  loadMoreContainer.fadeOut(300, function () {
                      $(this).remove();
                   });
                }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                $text.text('Error loading posts');
             },
-            complete: function() {
+            complete: function () {
                // Hide spinner and show text
                $button.removeClass('loading');
                $spinner.hide();
@@ -570,7 +570,105 @@
          });
       });
 
+      /**
+       * ----------------------------------------
+       * Table Of Content
+       * ----------------------------------------
+       */
+      function drillcorpGenerateTOC(containerSelector, tocContainerSelector) {
+         const $contentContainer = $(containerSelector);
+         const $tocContainer = $(tocContainerSelector);
 
+         if (!$contentContainer.length || !$tocContainer.length) return;
+
+         // Track used IDs to prevent duplicates
+         const usedIds = {};
+
+         // Find h2 headings only
+         const headings = $contentContainer.find("h2");
+
+         if (!headings.length) return;
+
+         let tocHTML = '<ul class="toc-widget">';
+
+         headings.each(function (i) {
+            const $heading = $(this);
+            let title = $heading.text().trim();
+
+            if (!title) return; // Skip empty headings
+
+            let headingID = title
+               .toLowerCase()
+               .replace(/<\/?(strong|b|br)>/gi, "")
+               .replace(/[^a-z0-9]+/g, "-")
+               .replace(/^-+|-+$/g, "");
+
+            // Prevent duplicate IDs
+            if (usedIds[headingID]) {
+               usedIds[headingID]++;
+               headingID = headingID + "-" + usedIds[headingID];
+            } else {
+               usedIds[headingID] = 1;
+            }
+
+            if (!$heading.attr("id") || $heading.attr("id") === "") {
+               $heading.attr("id", headingID);
+            }
+
+            tocHTML += `<li><a href="#${headingID}" class="arrow-link">${title}</a></li>`;
+         });
+
+         tocHTML += "</ul>";
+
+         $tocContainer.html(tocHTML);
+      }
+
+      // Initialize TOC
+      if ($(".toc-container").length) {
+         if ($(".entry-content").length) {
+            drillcorpGenerateTOC(".entry-content", ".toc-container");
+         } else if ($(".blog-left-content-wrap").length) {
+            drillcorpGenerateTOC(".blog-left-content-wrap", ".toc-container");
+         } else if ($(".drillcorp-post-content").length) {
+            drillcorpGenerateTOC(".drillcorp-post-content", ".toc-container");
+         }
+      }
+
+      /*
+       * TOC link active state
+       */
+      function isInViewport(element) {
+         const elementTop = element.offset().top;
+         const elementBottom = elementTop + element.outerHeight();
+
+         const viewportTop = $(window).scrollTop() + 100; // Offset for better UX
+         const viewportBottom = viewportTop + $(window).height() - 100;
+
+         return elementBottom > viewportTop && elementTop < viewportBottom;
+      }
+
+      function updateActiveTocLink() {
+         let current = "";
+
+         $(".entry-content h2, .blog-left-content-wrap h2, .drillcorp-post-content h2").each(function () {
+            if (isInViewport($(this))) {
+               current = $(this).attr("id");
+               return false; // stop loop on first visible heading
+            }
+         });
+
+         $(".toc-widget a").removeClass("active");
+
+         if (current) {
+            $(".toc-widget a[href='#" + current + "']").addClass("active");
+         }
+      }
+
+      updateActiveTocLink();
+
+      $(window).on("scroll resize", function () {
+         updateActiveTocLink();
+      });
 
 
 

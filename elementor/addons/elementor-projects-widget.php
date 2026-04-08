@@ -425,7 +425,7 @@ class Projects_Widget extends Widget_Base
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .project-content-wrap' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .project-content-wrap a' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -447,7 +447,7 @@ class Projects_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .project-content-wrap h3' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .project-content-wrap h3 a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -457,7 +457,7 @@ class Projects_Widget extends Widget_Base
             [
                 'name' => 'title_typography',
                 'label' => esc_html__('Title Typography', 'drillcorp-core'),
-                'selector' => '{{WRAPPER}} .project-content-wrap h3',
+                'selector' => '{{WRAPPER}} .project-content-wrap h3 a',
             ]
         );
 
@@ -688,10 +688,10 @@ class Projects_Widget extends Widget_Base
                                 <p><?php echo esc_html(wp_trim_words(get_the_content(), 12, '...' )); ?></p>
                             <?php endif; ?>
                             
+                            <a class="primary-btn" href="<?php echo esc_url(get_permalink()); ?>">
+                                <?php echo esc_html__('View The Project', 'drillcorp-core'); ?>
+                            </a>
                         </div>
-                        <a class="primary-btn" href="<?php echo esc_url(get_permalink()); ?>">
-                            <?php echo esc_html__('View Project', 'drillcorp-core'); ?>
-                        </a>
                     </div>
                 <?php endwhile; ?>
             </div>

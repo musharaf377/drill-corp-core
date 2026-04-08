@@ -52,7 +52,7 @@
     
     /* Projects Area  */
     .projects-list {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     /* Service list widget */
@@ -93,8 +93,6 @@
     .slider-left-content {
         margin-bottom: 138px;
     }
-
-   
 
     /* Service Slider*/
      .services-slider-content {
@@ -137,6 +135,16 @@
     .blog-list-content-tab {
         grid-template-columns: 1fr;
         gap: 16px;
+    }
+
+    /* Career with tab */
+    .career-list-content-tab {
+        grid-template-columns: 1fr;
+    }
+
+     /* Projects Area  */
+    .projects-list {
+        grid-template-columns: 1fr;
     }
 
 }
