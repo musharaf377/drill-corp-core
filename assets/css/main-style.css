@@ -11,8 +11,189 @@ ul {
 }
 
 /* swiper linear slide css */
-.linear-carusal-slider .swiper-wrapper{
+.linear-carusal-slider .swiper-wrapper {
   -webkit-transition-timing-function: linear !important;
   transition-timing-function: linear !important;
 }
 
+
+.blur {
+  backdrop-filter: blur(10px);
+  /* Blurs the area behind the element */
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blur-two {
+  backdrop-filter: blur(10px);
+  /* Blurs the area behind the element */
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blur-three {
+  backdrop-filter: blur(10px);
+  /* Blurs the area behind the element */
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@media (max-width: 767px) {
+  .blur {
+    background-color: #4422EA !important;
+  }
+}
+
+
+/* >>> Contact Form Css */
+.form-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+label.form-label {
+  font-family: "Darker Grotesque", Sans serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1em;
+  letter-spacing: 0px;
+  color: #0D1A21;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+input.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required {
+  padding: 11px 12px;
+  border: 1px solid #EAECF0;
+  border-radius: 4px;
+  font-family: "Darker Grotesque", Sans serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1em;
+  letter-spacing: 0px;
+  color: #0D1A2199;
+  width: 100%;
+}
+
+.cf7-field-row {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+}
+
+textarea.wpcf7-form-control.wpcf7-textarea {
+  width: 100%;
+  height: 110px;
+  border: 1px solid #EAECF0;
+  border-radius: 4px;
+  font-family: "Darker Grotesque", Sans serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1em;
+  letter-spacing: 0px;
+  color: #0D1A2199;
+  padding: 11px 12px;
+
+}
+
+input.wpcf7-form-control.wpcf7-submit.has-spinner {
+  padding: 18px 18px 19px 18px;
+  width: 100%;
+  border: 2.5px solid;
+  clip-path: inset(-1px round 9px);
+  border-image: linear-gradient(135deg, #285267, #285267) 1 stretch;
+  background: transparent;
+  font-family: "Darker Grotesque", Sans serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1em;
+  color: #285267;
+  margin-top: 26px;
+
+}
+
+.wpcf7 form .wpcf7-response-output {
+  margin: 0;
+  padding: 0.2em 1em;
+  border: 0;
+}
+
+.wpcf7-response-output {
+  color: red;
+  border: none;
+}
+
+@media (max-width: 767px) {
+  input.wpcf7-form-control.wpcf7-submit.has-spinner {
+    padding: 12px 18px 14px 18px;
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Wrapper span as the visual box */
+.cf7-field-group .wpcf7-form-control-wrap[data-name="cv-resume"] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  padding-left: 12px;
+  padding-right: 12px;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  border: 1px solid #EAECF0;
+  border-radius: 4px;
+  background-color: #ffffff;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Upload icon */
+.cf7-field-group .wpcf7-form-control-wrap[data-name="cv-resume"]::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230D1A21' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='17 8 12 3 7 8'/%3E%3Cline x1='12' y1='3' x2='12' y2='15'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Text label */
+
+.cf7-field-group .wpcf7-form-control-wrap[data-name="cv-resume"]::after {
+  content: "Click to upload or drag and drop (PDF, DOC, DOCX)";
+  font-family: "Darker Grotesque", Sans serif;
+  font-weight: 500;
+  line-height: 1em;
+  font-size: 16px;
+  color: #0D1A2199;
+  pointer-events: none;
+}
+
+/* Actual input covers entire area invisibly */
+.cf7-field-group input[type="file"].wpcf7-file {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 0;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.cf7-field-group .wpcf7-form-control-wrap[data-name="cv-resume"]:hover {
+  border-color: #2e7fc1;
+  background-color: #f0f7ff;
+}

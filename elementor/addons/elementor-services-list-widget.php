@@ -133,8 +133,93 @@ class Services_List_Item_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'layout_type',
+            [
+                'label' => esc_html__('Layout Type', 'drillcorp-core'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'list' => 'List',
+                    'grid' => 'Grid',
+                ],
+                'default' => 'list',
+            ]
+        );
+
+        $this->add_control(
+            'grid_columns',
+            [
+                'label' => esc_html__('Grid Columns', 'drillcorp-core'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    '1' => '1 Columns',
+                    '2' => '2 Columns',
+                    '3' => '3 Columns',
+                    '4' => '4 Columns',
+                ],
+                'default' => '2',
+                'condition' => [
+                    'layout_type' => 'grid',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'grid_columns_tablet',
+            [
+                'label' => esc_html__('Grid Columns (Tablet)', 'drillcorp-core'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    '1' => '1 Column',
+                    '2' => '2 Columns',
+                    '3' => '3 Columns',
+                ],
+                'default' => '2',
+                'condition' => [
+                    'layout_type' => 'grid',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'grid_columns_mobile',
+            [
+                'label' => esc_html__('Grid Columns (Mobile)', 'drillcorp-core'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    '1' => '1 Column',
+                ],
+                'default' => '1',
+                'condition' => [
+                    'layout_type' => 'grid',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
+        // Animation Control
+        $this->start_controls_section(
+            'animation_section',
+            [
+                'label' => esc_html__('Animation', 'drillcorp-core'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'enable_animation',
+            [
+                'label' => esc_html__('Enable Sticky Animation', 'drillcorp-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'drillcorp-core'),
+                'label_off' => esc_html__('No', 'drillcorp-core'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->end_controls_section();
 
 
         // Style Controls
@@ -443,6 +528,18 @@ class Services_List_Item_Widget extends Widget_Base
                 'default' => '#333333',
                 'selectors' => [
                     '{{WRAPPER}} .services-list-content-wrap a' => 'color: {{VALUE}}  ;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'title_hover_color',
+            [
+                'label' => esc_html__('Title Hover Color', 'drillcorp-core'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#333333',
+                'selectors' => [
+                    '{{WRAPPER}} .services-list-content-wrap a:hover' => 'color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -1013,8 +1110,18 @@ class Services_List_Item_Widget extends Widget_Base
         if (empty($services_data)) {
             return;
         }
+
+        $animation_class = ('yes' === $settings['enable_animation']) ? '' : ' no-animation';
+        $layout_class = ('grid' === $settings['layout_type']) ? ' services-grid' : '';
+        
+        // Grid columns
+        $grid_columns = isset($settings['grid_columns']) ? $settings['grid_columns'] : '3';
+        $grid_columns_class = '';
+        if ('grid' === $settings['layout_type']) {
+            $grid_columns_class = ' grid-columns-' . esc_attr($grid_columns);
+        }
 ?>
-        <div class="services-list-area">
+        <div class="services-list-area<?php echo esc_attr($animation_class . $layout_class . $grid_columns_class); ?>">
             <div class="services-list">
                 <?php foreach ($services_data as $service): ?>
                     <div class="services-list-content">

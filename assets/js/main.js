@@ -228,87 +228,102 @@
       /** =============================
        * Services Card Sticky Animation
        ================================ */
-      const serviceCards = document.querySelectorAll('.services-list-content');
+      const serviceLists = document.querySelectorAll('.services-list-area');
 
-      if (serviceCards.length > 0) {
-         // Set initial positions and sticky behavior
-         serviceCards.forEach((card, i) => {
-            card.style.position = 'sticky';
-            card.style.top = '0px';
-            card.style.transform = 'translateY(0px)'; // Start at natural position
-            card.style.zIndex = serviceCards.length + i; // First card has highest z-index
-            card.style.opacity = '1';
-            card.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-            card.style.willChange = 'opacity, transform'; // GPU acceleration
-         });
-
-         // Scroll-based opacity and position animation
-         function updateCardAnimation() {
-            const viewportHeight = window.innerHeight;
-
-            serviceCards.forEach((card, i) => {
-               const cardRect = card.getBoundingClientRect();
-
-               // Count how many cards are currently visible (opacity > 0)
-               let visibleCardsBeforeThis = 0;
-
-               for (let j = 0; j < i; j++) {
-                  const prevCardRect = serviceCards[j].getBoundingClientRect();
-                  // Count cards that are still visible (not faded out)
-                  if (prevCardRect.top < viewportHeight && parseFloat(serviceCards[j].style.opacity) > 0) {
-                     visibleCardsBeforeThis++;
-                  }
-               }
-
-               // Count how many cards have entered viewport after this one
-               let cardsAfterCount = 0;
-               for (let j = i + 1; j < serviceCards.length; j++) {
-                  const nextCardRect = serviceCards[j].getBoundingClientRect();
-                  // If next card has entered viewport
-                  if (nextCardRect.top < viewportHeight) {
-                     cardsAfterCount++;
-                  }
-               }
-
-               // When 3 or more cards come after, this card should fade
-               if (cardsAfterCount >= 3) {
-                  card.style.opacity = '0';
-                  card.style.pointerEvents = 'none';
-                  card.style.transform = 'translateY(100px) scale(0.95)'; // Scale down slightly
-               } else {
-                  card.style.opacity = '1';
-                  card.style.pointerEvents = 'auto';
-
-                  // Adjust position based on how many visible cards are before this one
-                  if (visibleCardsBeforeThis === 0) {
-                     card.style.transform = 'translateY(100px)'; // First visible card position
-                     card.style.transitionDelay = '0ms'; // Immediate
-                  } else if (visibleCardsBeforeThis === 1) {
-                     card.style.transform = 'translateY(200px)'; // Second visible card position
-                     card.style.transitionDelay = '80ms'; // Slight delay
-                  } else if (visibleCardsBeforeThis === 2) {
-                     card.style.transform = 'translateY(300px)'; // Third visible card position
-                     card.style.transitionDelay = '160ms'; // More delay
-                  }
-               }
+      serviceLists.forEach(function(serviceListArea) {
+         // Skip if animation is disabled
+         if (serviceListArea.classList.contains('no-animation')) {
+            const staticCards = serviceListArea.querySelectorAll('.services-list-content');
+            staticCards.forEach(card => {
+               card.style.position = 'static';
+               card.style.transform = 'none';
+               card.style.opacity = '1';
             });
+            return;
          }
 
-         // Throttle scroll event for better performance
-         let ticking = false;
-         window.addEventListener('scroll', function () {
-            if (!ticking) {
-               window.requestAnimationFrame(function () {
-                  updateCardAnimation();
-                  ticking = false;
-               });
-               ticking = true;
-            }
-         });
+         const serviceCards = serviceListArea.querySelectorAll('.services-list-content');
 
-         // Initial call
-         updateCardAnimation();
-      }
+         if (serviceCards.length > 0) {
+            // Set initial positions and sticky behavior
+            serviceCards.forEach((card, i) => {
+               card.style.position = 'sticky';
+               card.style.top = '0px';
+               card.style.transform = 'translateY(0px)'; // Start at natural position
+               card.style.zIndex = serviceCards.length + i; // First card has highest z-index
+               card.style.opacity = '1';
+               card.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+               card.style.willChange = 'opacity, transform'; // GPU acceleration
+            });
+
+            // Scroll-based opacity and position animation
+            function updateCardAnimation() {
+               const viewportHeight = window.innerHeight;
+
+               serviceCards.forEach((card, i) => {
+                  const cardRect = card.getBoundingClientRect();
+
+                  // Count how many cards are currently visible (opacity > 0)
+                  let visibleCardsBeforeThis = 0;
+
+                  for (let j = 0; j < i; j++) {
+                     const prevCardRect = serviceCards[j].getBoundingClientRect();
+                     // Count cards that are still visible (not faded out)
+                     if (prevCardRect.top < viewportHeight && parseFloat(serviceCards[j].style.opacity) > 0) {
+                        visibleCardsBeforeThis++;
+                     }
+                  }
+
+                  // Count how many cards have entered viewport after this one
+                  let cardsAfterCount = 0;
+                  for (let j = i + 1; j < serviceCards.length; j++) {
+                     const nextCardRect = serviceCards[j].getBoundingClientRect();
+                     // If next card has entered viewport
+                     if (nextCardRect.top < viewportHeight) {
+                        cardsAfterCount++;
+                     }
+                  }
+
+                  // When 3 or more cards come after, this card should fade
+                  if (cardsAfterCount >= 3) {
+                     card.style.opacity = '0';
+                     card.style.pointerEvents = 'none';
+                     card.style.transform = 'translateY(100px) scale(0.95)'; // Scale down slightly
+                  } else {
+                     card.style.opacity = '1';
+                     card.style.pointerEvents = 'auto';
+
+                     // Adjust position based on how many visible cards are before this one
+                     if (visibleCardsBeforeThis === 0) {
+                        card.style.transform = 'translateY(100px)'; // First visible card position
+                        card.style.transitionDelay = '0ms'; // Immediate
+                     } else if (visibleCardsBeforeThis === 1) {
+                        card.style.transform = 'translateY(200px)'; // Second visible card position
+                        card.style.transitionDelay = '80ms'; // Slight delay
+                     } else if (visibleCardsBeforeThis === 2) {
+                        card.style.transform = 'translateY(300px)'; // Third visible card position
+                        card.style.transitionDelay = '160ms'; // More delay
+                     }
+                  }
+               });
+            }
+
+            // Throttle scroll event for better performance
+            let ticking = false;
+            window.addEventListener('scroll', function () {
+               if (!ticking) {
+                  window.requestAnimationFrame(function () {
+                     updateCardAnimation();
+                     ticking = false;
+                  });
+                  ticking = true;
+               }
+            });
+
+            // Initial call
+            updateCardAnimation();
+         }
+      });
 
       /* ========================
        *  Blog List Tab
