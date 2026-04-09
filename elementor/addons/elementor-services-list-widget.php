@@ -442,7 +442,7 @@ class Services_List_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '#333333',
                 'selectors' => [
-                    '{{WRAPPER}} .services-list-content-wrap h3' => 'color: {{VALUE}}  ;',
+                    '{{WRAPPER}} .services-list-content-wrap a' => 'color: {{VALUE}}  ;',
                 ],
             ]
         );
@@ -452,7 +452,7 @@ class Services_List_Item_Widget extends Widget_Base
             [
                 'name' => 'title_typography',
                 'label' => esc_html__('Title Typography', 'drillcorp-core'),
-                'selector' => '{{WRAPPER}} .services-list-content-wrap h3',
+                'selector' => '{{WRAPPER}} .services-list-content-wrap a',
             ]
         );
 
@@ -463,7 +463,19 @@ class Services_List_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .services-list-content-wrap h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .services-list-content-wrap a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'title_padding',
+            [
+                'label' => esc_html__('Title Padding', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .services-list-content-wrap a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -662,6 +674,42 @@ class Services_List_Item_Widget extends Widget_Base
         );
 
         $this->add_control(
+            'show_title',
+            [
+                'label' => esc_html__('Show Title', 'drillcorp-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'drillcorp-core'),
+                'label_off' => esc_html__('No', 'drillcorp-core'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_excerpt',
+            [
+                'label' => esc_html__('Show Excerpt', 'drillcorp-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'drillcorp-core'),
+                'label_off' => esc_html__('No', 'drillcorp-core'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_thumbnail',
+            [
+                'label' => esc_html__('Show Thumbnail', 'drillcorp-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'drillcorp-core'),
+                'label_off' => esc_html__('No', 'drillcorp-core'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
             'show_feature_list',
             [
                 'label' => esc_html__('Show Feature List', 'drillcorp-core'),
@@ -670,6 +718,30 @@ class Services_List_Item_Widget extends Widget_Base
                 'label_off' => esc_html__('No', 'drillcorp-core'),
                 'return_value' => 'yes',
                 'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_button',
+            [
+                'label' => esc_html__('Show Button', 'drillcorp-core'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'drillcorp-core'),
+                'label_off' => esc_html__('No', 'drillcorp-core'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'button_text',
+            [
+                'label' => esc_html__('Button Text', 'drillcorp-core'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('Explore This Service', 'drillcorp-core'),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -946,12 +1018,17 @@ class Services_List_Item_Widget extends Widget_Base
             <div class="services-list">
                 <?php foreach ($services_data as $service): ?>
                     <div class="services-list-content">
-                        <?php if (!empty($service['thumbnail'])): ?>
+                        <?php if ('yes' === $settings['show_thumbnail'] && !empty($service['thumbnail'])): ?>
                             <img class="service-card-thumb" src="<?php echo esc_url($service['thumbnail']); ?>" alt="<?php echo esc_attr($service['title']); ?>">
                         <?php endif; ?>
                         <div class="services-list-content-wrap">
-                            <h3><?php echo esc_html($service['title']); ?></h3>
-                            <p><?php echo esc_html($service['excerpt'] ? $service['excerpt'] : wp_trim_words($service['content'], 30)); ?></p>
+                            <?php if ('yes' === $settings['show_title']): ?>
+                                <a href="<?php echo the_permalink(); ?>"><?php echo esc_html($service['title']); ?></a>
+                            <?php endif; ?>
+                            
+                            <?php if ('yes' === $settings['show_excerpt']): ?>
+                                <p><?php echo esc_html($service['excerpt'] ? $service['excerpt'] : wp_trim_words($service['content'], 30)); ?></p>
+                            <?php endif; ?>
 
                             <?php
                             $icon_url = isset($settings['feature_icon']['url']) ? $settings['feature_icon']['url'] : get_template_directory_uri() . '/assets/img/service-check.png';
@@ -970,7 +1047,9 @@ class Services_List_Item_Widget extends Widget_Base
                                 </div>
                             <?php endif; ?>
 
-                            <a class="primary-btn" href="<?php echo esc_url($service['link']); ?>">Explore This Service</a>
+                            <?php if ('yes' === $settings['show_button']): ?>
+                                <a class="primary-btn" href="<?php echo esc_url($service['link']); ?>"><?php echo esc_html($settings['button_text']); ?></a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>

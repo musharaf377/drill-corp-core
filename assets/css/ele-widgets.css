@@ -494,11 +494,12 @@ img.feature-blog-thumb {
   height: 100%;
 }
 
-.services-list-content h3 {
+.services-list-content a {
   font-size: 62px;
   font-weight: 600;
   margin-bottom: 16px;
   color: rgba(13, 26, 33, 1);
+  display: block;
 }
 
 .services-list-content p {
