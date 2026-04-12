@@ -690,16 +690,61 @@
        =========================*/
       $(document).on('click', '.contact-us-link', function (e) {
          e.preventDefault();
-         
-         const $wrapper = $(this).siblings('.contact-information-wrapper');
-         
-         // Toggle the contact information wrapper with smooth animation
+
+         const $link = $(this);
+         const $wrapper = $link.closest('.contact-information').find('.contact-information-wrapper');
+
          if ($wrapper.is(':visible')) {
-            $wrapper.slideUp(300);
-            $(this).find('svg, i').css('transform', 'rotate(0deg)');
+            // Step 1: Hide the wrapper
+            $wrapper.slideUp(400, function () {
+               // Step 2: Smoothly shrink button to natural width
+               $link.find('svg, i').css('transform', 'rotate(0deg)');
+
+               const expandedWidth = $link.outerWidth();
+               $link.css('width', '');
+               const naturalWidth = $link.outerWidth();
+               $link.css('width', expandedWidth + 'px');
+
+               // Use CSS transition for smooth animation
+               $link.css('transition', 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)');
+
+               requestAnimationFrame(function () {
+                  requestAnimationFrame(function () {
+                     $link.css('width', naturalWidth + 'px');
+                  });
+               });
+
+               // Cleanup
+               setTimeout(function () {
+                  $link.css({ width: '', transition: '' });
+               }, 500);
+            });
          } else {
-            $wrapper.slideDown(300);
-            $(this).find('svg, i').css('transform', 'rotate(180deg)');
+            // Get target width from wrapper (temporarily measure without showing)
+            $wrapper.css({ visibility: 'hidden', display: 'block' });
+            const targetWidth = $wrapper.outerWidth();
+            $wrapper.hide().css('visibility', '');
+
+            // Capture current width as starting point
+            const startWidth = $link.outerWidth();
+            $link.css('width', startWidth + 'px');
+
+            // Step 1: Expand button to match wrapper width with smooth transition
+            $link.css('transition', 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)');
+
+            requestAnimationFrame(function () {
+               requestAnimationFrame(function () {
+                  $link.css('width', targetWidth + 'px');
+               });
+            });
+
+            // Step 2: After button reaches full width, reveal the card
+            setTimeout(function () {
+               $link.css('transition', '');
+               $wrapper.slideDown(400);
+            }, 450);
+
+            $link.find('svg, i').css('transform', 'rotate(180deg)');
          }
       });
 

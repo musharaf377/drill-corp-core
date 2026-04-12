@@ -12,4 +12,5 @@ return array(
     'blog-list',
     'blog-list-tab',
     'career-list-tab',
+    'contact-with-info',
 );
