@@ -230,7 +230,7 @@
        ================================ */
       const serviceLists = document.querySelectorAll('.services-list-area');
 
-      serviceLists.forEach(function(serviceListArea) {
+      serviceLists.forEach(function (serviceListArea) {
          // Skip if animation is disabled
          if (serviceListArea.classList.contains('no-animation')) {
             const staticCards = serviceListArea.querySelectorAll('.services-list-content');
@@ -685,6 +685,71 @@
          updateActiveTocLink();
       });
 
+      /* ================================
+       *  Contact Widget Fixed on Scroll
+       =================================*/
+      // Force hide immediately before anything runs
+      const btn = document.querySelector('.fixed-contact-button');
+      if (btn) {
+         btn.style.opacity = '0';
+         btn.style.visibility = 'hidden';
+         btn.style.pointerEvents = 'none';
+         btn.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+      }
+
+      function initObserver() {
+         const contactSection = document.querySelector('.fixed-contact-section');
+         const contactButton = document.querySelector('.fixed-contact-button');
+
+         if (!contactSection || !contactButton) {
+            setTimeout(initObserver, 500);
+            return;
+         }
+
+         contactButton.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+
+         function showButton() {
+            contactButton.style.opacity = '1';
+            contactButton.style.visibility = 'visible';
+            contactButton.style.pointerEvents = 'auto';
+         }
+
+         function hideButton() {
+            contactButton.style.opacity = '0';
+            contactButton.style.visibility = 'hidden';
+            contactButton.style.pointerEvents = 'none';
+         }
+
+         const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+               if (entry.isIntersecting) {
+                  // Section is visible — hide fixed button
+                  hideButton();
+               } else {
+                  // Section is out of view — check if we scrolled PAST it (below it)
+                  const rect = contactSection.getBoundingClientRect();
+                  if (rect.bottom < 0) {
+                     // Scrolled past the section — show button
+                     showButton();
+                  } else {
+                     // Section is below viewport (not yet reached) — hide button
+                     hideButton();
+                  }
+               }
+            });
+         }, { threshold: 0 });
+
+         observer.observe(contactSection);
+      }
+
+      if (document.readyState === 'loading') {
+         document.addEventListener('DOMContentLoaded', initObserver);
+      } else {
+         initObserver();
+      }
+
+
+
       /* ========================
        *  Contact Info Toggle
        =========================*/
@@ -756,74 +821,8 @@
       // Initially hide the contact information wrapper
       $('.contact-information-wrapper').hide();
 
-      /**
-       * Contact Widget Sticky on Scroll
-       */
-      var contactWidgets = [];
 
-      // Store original positions
-      function initContactWidgets() {
-         $('.contact-information').each(function () {
-            var $widget = $(this);
-            contactWidgets.push({
-               $el: $widget,
-               $wrapper: $widget.find('.contact-information-wrapper'),
-               originalOffsetTop: $widget.offset().top,
-               isFixed: false
-            });
-         });
-      }
 
-      initContactWidgets();
-
-      function handleContactWidgetSticky() {
-         var scrollTop = $(window).scrollTop();
-
-         contactWidgets.forEach(function (data) {
-            var $widget = data.$el;
-            var shouldFix = scrollTop >= data.originalOffsetTop;
-
-            if (shouldFix && !data.isFixed) {
-               // Find nearest container for alignment
-               var $container = $widget.closest('.container, .container-fluid');
-               if (!$container.length) {
-                  $container = $widget.closest('.e-con-inner, .elementor-column');
-               }
-
-               var containerWidth = $container.length ? $container.outerWidth() : $widget.outerWidth();
-               var containerOffsetLeft = $container.length ? $container.offset().left : 0;
-               var gap = $(window).width() - containerOffsetLeft - containerWidth;
-
-               data.isFixed = true;
-               $widget.addClass('contact-widget-fixed');
-               $widget.css({
-                  '--container-gap': gap + 'px',
-                  '--container-max': containerWidth + 'px'
-               });
-            } else if (!shouldFix && data.isFixed) {
-               data.isFixed = false;
-               $widget.removeClass('contact-widget-fixed');
-               $widget.css({
-                  position: '',
-                  top: '',
-                  left: '',
-                  width: '',
-                  zIndex: ''
-               });
-            }
-         });
-      }
-
-      $(window).on('scroll', function () {
-         handleContactWidgetSticky();
-      });
-
-      // Recalculate on window resize
-      $(window).on('resize', function () {
-         contactWidgets = [];
-         initContactWidgets();
-         handleContactWidgetSticky();
-      });
 
 
    });
