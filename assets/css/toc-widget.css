@@ -104,6 +104,16 @@ html {
     position: relative;
 }
 
+.contact-widget-fixed {
+    position: fixed !important;
+    top: 0 !important;
+    left: auto !important;
+    right: var(--container-gap, 0) !important;
+    width: auto !important;
+    max-width: var(--container-max, 1140px) !important;
+    z-index: 999 !important;
+}
+
 .contact-information-wrapper{
     position: absolute;
     top: 100%;

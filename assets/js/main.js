@@ -692,7 +692,9 @@
          e.preventDefault();
 
          const $link = $(this);
-         const $wrapper = $link.closest('.contact-information').find('.contact-information-wrapper');
+         const $widget = $link.closest('.contact-information');
+         const $wrapper = $widget.find('.contact-information-wrapper');
+         const isFixed = $widget.hasClass('contact-widget-fixed');
 
          if ($wrapper.is(':visible')) {
             // Step 1: Hide the wrapper
@@ -746,10 +748,82 @@
 
             $link.find('svg, i').css('transform', 'rotate(180deg)');
          }
+
+         // If widget is fixed, the right anchor is already set
+         // Width changes via animation will naturally expand/contract leftward
       });
 
       // Initially hide the contact information wrapper
       $('.contact-information-wrapper').hide();
+
+      /**
+       * Contact Widget Sticky on Scroll
+       */
+      var contactWidgets = [];
+
+      // Store original positions
+      function initContactWidgets() {
+         $('.contact-information').each(function () {
+            var $widget = $(this);
+            contactWidgets.push({
+               $el: $widget,
+               $wrapper: $widget.find('.contact-information-wrapper'),
+               originalOffsetTop: $widget.offset().top,
+               isFixed: false
+            });
+         });
+      }
+
+      initContactWidgets();
+
+      function handleContactWidgetSticky() {
+         var scrollTop = $(window).scrollTop();
+
+         contactWidgets.forEach(function (data) {
+            var $widget = data.$el;
+            var shouldFix = scrollTop >= data.originalOffsetTop;
+
+            if (shouldFix && !data.isFixed) {
+               // Find nearest container for alignment
+               var $container = $widget.closest('.container, .container-fluid');
+               if (!$container.length) {
+                  $container = $widget.closest('.e-con-inner, .elementor-column');
+               }
+
+               var containerWidth = $container.length ? $container.outerWidth() : $widget.outerWidth();
+               var containerOffsetLeft = $container.length ? $container.offset().left : 0;
+               var gap = $(window).width() - containerOffsetLeft - containerWidth;
+
+               data.isFixed = true;
+               $widget.addClass('contact-widget-fixed');
+               $widget.css({
+                  '--container-gap': gap + 'px',
+                  '--container-max': containerWidth + 'px'
+               });
+            } else if (!shouldFix && data.isFixed) {
+               data.isFixed = false;
+               $widget.removeClass('contact-widget-fixed');
+               $widget.css({
+                  position: '',
+                  top: '',
+                  left: '',
+                  width: '',
+                  zIndex: ''
+               });
+            }
+         });
+      }
+
+      $(window).on('scroll', function () {
+         handleContactWidgetSticky();
+      });
+
+      // Recalculate on window resize
+      $(window).on('resize', function () {
+         contactWidgets = [];
+         initContactWidgets();
+         handleContactWidgetSticky();
+      });
 
 
    });
