@@ -260,6 +260,25 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'contact_link_paddings',
+            [
+                'label' => esc_html__('Padding', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-us-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Style Tab - Contact Info Content

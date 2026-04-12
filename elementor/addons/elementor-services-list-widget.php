@@ -1126,11 +1126,13 @@ class Services_List_Item_Widget extends Widget_Base
                 <?php foreach ($services_data as $service): ?>
                     <div class="services-list-content">
                         <?php if ('yes' === $settings['show_thumbnail'] && !empty($service['thumbnail'])): ?>
-                            <img class="service-card-thumb" src="<?php echo esc_url($service['thumbnail']); ?>" alt="<?php echo esc_attr($service['title']); ?>">
+                            <a href="<?php echo esc_url($service['link']); ?>">
+                                <img class="service-card-thumb" src="<?php echo esc_url($service['thumbnail']); ?>" alt="<?php echo esc_attr($service['title']); ?>">
+                            </a>
                         <?php endif; ?>
                         <div class="services-list-content-wrap">
                             <?php if ('yes' === $settings['show_title']): ?>
-                                <a href="<?php echo the_permalink(); ?>"><?php echo esc_html($service['title']); ?></a>
+                                <a href="<?php echo esc_url($service['link']); ?>"><?php echo esc_html($service['title']); ?></a>
                             <?php endif; ?>
                             
                             <?php if ('yes' === $settings['show_excerpt']): ?>
