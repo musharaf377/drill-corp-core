@@ -168,34 +168,26 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
                 'fields' => [
                     [
                         'name' => 'social_icon',
-                        'label' => esc_html__('Social Icon', 'drillcorp-core'),
-                        'type' => Controls_Manager::SELECT,
-                        'options' => [
-                            'linkedin' => esc_html__('LinkedIn', 'drillcorp-core'),
-                            'twitter' => esc_html__('Twitter', 'drillcorp-core'),
-                            'facebook' => esc_html__('Facebook', 'drillcorp-core'),
-                            'instagram' => esc_html__('Instagram', 'drillcorp-core'),
+                        'label' => esc_html__('Social Icon (SVG)', 'drillcorp-core'),
+                        'type' => Controls_Manager::MEDIA,
+                        'media_types' => ['svg'],
+                        'default' => [
+                            'url' => '',
                         ],
-                        'default' => 'linkedin',
                     ],
                     [
                         'name' => 'social_url',
                         'label' => esc_html__('Social URL', 'drillcorp-core'),
-                        'type' => Controls_Manager::TEXT,
-                        'placeholder' => esc_html__('Enter URL', 'drillcorp-core'),
+                        'type' => Controls_Manager::URL,
+                        'placeholder' => esc_html__('https://your-link.com', 'drillcorp-core'),
+                        'default' => [
+                            'url' => '',
+                            'is_external' => false,
+                            'nofollow' => false,
+                        ],
                     ],
                 ],
-                'default' => [
-                    [
-                        'social_icon' => 'linkedin',
-                        'social_url' => '',
-                    ],
-                    [
-                        'social_icon' => 'twitter',
-                        'social_url' => '',
-                    ],
-                ],
-                'title_field' => '{{{ social_icon }}}',
+                'title_field' => 'Social Profile',
             ]
         );
 
@@ -454,6 +446,118 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'heading_content_wrapper',
+            [
+                'label' => esc_html__('Content Wrapper', 'drillcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'contact_info_content_padding',
+            [
+                'label' => esc_html__('Padding', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-info-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'heading_title_margin',
+            [
+                'label' => esc_html__('Title Spacing', 'drillcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'person_name_margin',
+            [
+                'label' => esc_html__('Title Margin', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-info-name' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'heading_designation_margin',
+            [
+                'label' => esc_html__('Designation Spacing', 'drillcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'person_designation_margin',
+            [
+                'label' => esc_html__('Designation Margin', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-info-designation' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'heading_location_margin',
+            [
+                'label' => esc_html__('Location Spacing', 'drillcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'location_margin',
+            [
+                'label' => esc_html__('Location Margin', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-info-location' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Style Tab - Social Icons
@@ -465,34 +569,11 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'social_icon_color',
-            [
-                'label' => esc_html__('Color', 'drillcorp-core'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .contact-info-social a svg' => 'fill: {{VALUE}};',
-                    '{{WRAPPER}} .contact-info-social a img' => 'fill: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'social_icon_hover_color',
-            [
-                'label' => esc_html__('Hover Color', 'drillcorp-core'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .contact-info-social a:hover svg' => 'fill: {{VALUE}};',
-                    '{{WRAPPER}} .contact-info-social a:hover img' => 'fill: {{VALUE}};',
-                ],
-            ]
-        );
-
+        // Icon Size & Spacing
         $this->add_responsive_control(
             'social_icon_size',
             [
-                'label' => esc_html__('Size', 'drillcorp-core'),
+                'label' => esc_html__('Icon Size', 'drillcorp-core'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -502,18 +583,32 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
                         'step' => 1,
                     ],
                 ],
+                'default' => [
+                    'size' => 24,
+                    'unit' => 'px',
+                ],
                 'selectors' => [
-                    '{{WRAPPER}} .contact-info-social a svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .contact-info-social a img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
 
-        $this->add_responsive_control(
-            'social_icons_spacing',
+        // Border & Padding
+        $this->add_control(
+            'heading_social_border',
             [
-                'label' => esc_html__('Spacing Between Icons', 'drillcorp-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
+                'label' => esc_html__('Border & Padding', 'drillcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'social_icon_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
                 'range' => [
                     'px' => [
                         'min' => 0,
@@ -522,7 +617,26 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .contact-info-social a:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .contact-info-social a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'social_icon_padding',
+            [
+                'label' => esc_html__('Padding', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-info-social a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -596,8 +710,24 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
                         <p class="contact-info-location"><?php echo esc_html($location_text); ?></p>
                         <?php if (!empty($social_profiles)) : ?>
                             <div class="contact-info-social">
-                                <?php foreach ($social_profiles as $profile) : ?>
-                                    <a href="<?php echo esc_url($profile['social_url']); ?>"><?php echo drillcorp_get_svg_icon($profile['social_icon']); ?></a>
+                                <?php foreach ($social_profiles as $profile) :
+                                    $social_url = isset($profile['social_url']['url']) ? $profile['social_url']['url'] : '';
+                                    $social_icon_url = $profile['social_icon']['url'] ?? '';
+
+                                    if (empty($social_icon_url)) continue;
+
+                                    $social_link_attrs = [];
+                                    if (!empty($profile['social_url']['is_external'])) {
+                                        $social_link_attrs[] = 'target="_blank"';
+                                    }
+                                    if (!empty($profile['social_url']['nofollow'])) {
+                                        $social_link_attrs[] = 'rel="nofollow"';
+                                    }
+                                    $social_link_attr_string = implode(' ', $social_link_attrs);
+                                ?>
+                                    <a href="<?php echo esc_url($social_url); ?>" <?php echo $social_link_attr_string; ?>>
+                                        <img src="<?php echo esc_url($social_icon_url); ?>" alt="social icon">
+                                    </a>
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>

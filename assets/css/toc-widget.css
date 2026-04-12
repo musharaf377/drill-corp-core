@@ -66,7 +66,6 @@ html {
 
 .contact-information {
     width: 100%;
-    /* background: #acff2f; */
     padding-top: 10px;
 }
 
@@ -77,13 +76,15 @@ html {
     font-size: 28px;
     font-weight: 700;
     gap: 28px;
-    color: #000;
+    color: rgba(13, 26, 33, 1);
     line-height: 1em;
     padding: 24px;
     display: inline-flex;
     align-items: center;
     gap: 10px;
     transition: all 0.3s ease;
+    justify-content: center;
+
 }
 
 .contact-information-content{
@@ -148,6 +149,7 @@ html {
     font-weight: 500;
     font-size: 20px;
     color: rgba(226, 239, 244, 1);
+    text-align: center;
 }
 
 .contact-info-social {
@@ -157,7 +159,7 @@ html {
 }
 
 .contact-info-social a {
-    background: #fff;
+    background: rgba(68, 34, 234, 1);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -167,8 +169,16 @@ html {
     justify-content: center;
 }
 
-.contact-info-social a svg {
-    margin: 0;
+.contact-info-social a:hover {
+    background-color: #fff;
+}
+
+.contact-info-social a img {
+    filter: invert(0);
+}
+
+.contact-info-social a:hover img {
+    filter: invert(1);
 }
 
 p.contact-info-location {
