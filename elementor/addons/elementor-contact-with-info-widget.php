@@ -279,6 +279,80 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'heading_contact_link_icon',
+            [
+                'label' => esc_html__('Icon', 'drillcorp-core'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'contact_link_icon_width',
+            [
+                'label' => esc_html__('Icon Width', 'drillcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 200,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-us-link svg' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'contact_link_icon_height',
+            [
+                'label' => esc_html__('Icon Height', 'drillcorp-core'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 200,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 20,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-us-link svg' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'contact_link_icon_margin',
+            [
+                'label' => esc_html__('Icon Margin', 'drillcorp-core'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => -100,
+                        'max' => 200,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .contact-us-link svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Style Tab - Contact Info Content
