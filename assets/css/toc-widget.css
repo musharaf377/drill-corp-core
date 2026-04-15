@@ -8,7 +8,6 @@
 .table-of-content-list-item {
     background: rgba(172, 255, 47, 1);
     padding: 24px;
-
     padding-bottom: 0px;
 }
 
@@ -40,7 +39,7 @@
     border-bottom: 1px solid rgba(13, 26, 33, 0.2);
     transition: all 0.3s ease;
     line-height: 1.5;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -50,7 +49,7 @@
 
 /* Active TOC Link */
 .toc-widget a.active {
-    color: rgba(68, 34, 234, 1);
+    color: rgba(13, 26, 33, 1);
 }
 
 .blog-sidebar-area{ 
@@ -74,12 +73,12 @@ html {
     background: #acff2f;
 }
 .contact-information a {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     gap: 28px;
     color: rgba(13, 26, 33, 1);
     line-height: 1em;
-    padding: 24px;
+    padding: 24px 24px 24px 30px;
     display: inline-flex;
     align-items: center;
     gap: 10px;
