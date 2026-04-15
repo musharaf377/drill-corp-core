@@ -824,7 +824,42 @@
 
 
 
-
+      /* =================================
+       *  fixed button show/hide on scroll
+       ==================================*/
+      
+      // Single page hero area observer - show fixed button after crossing hero (only on mobile/tablet)
+      if (document.querySelector('.blog-details-hero-area') && window.innerWidth <= 991) {
+         const heroArea = document.querySelector('.blog-details-hero-area');
+         const fixedButton = document.querySelector('.single-post .fixed-contact-button');
+         
+         if (heroArea && fixedButton) {
+            // Initially hide the button
+            fixedButton.style.opacity = '0';
+            fixedButton.style.visibility = 'hidden';
+            fixedButton.style.pointerEvents = 'none';
+            fixedButton.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+            
+            const heroObserver = new IntersectionObserver(function (entries) {
+               entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                     // Hero area is visible - hide button
+                     fixedButton.style.opacity = '0';
+                     fixedButton.style.visibility = 'hidden';
+                     fixedButton.style.pointerEvents = 'none';
+                  } else {
+                     // Hero area is not visible (scrolled past) - show button
+                     fixedButton.style.opacity = '1';
+                     fixedButton.style.visibility = 'visible';
+                     fixedButton.style.pointerEvents = 'auto';
+                  }
+               });
+            }, { threshold: 0 });
+            
+            heroObserver.observe(heroArea);
+         }
+      }
+     
 
    });
 
