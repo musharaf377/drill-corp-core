@@ -106,6 +106,19 @@ class Services_List_Item_Widget extends Widget_Base
         );
 
         $this->add_control(
+            'title_trim_length',
+            [
+                'label' => esc_html__('Title Trim Length', 'drillcorp-core'),
+                'type' => Controls_Manager::NUMBER,
+                'description' => esc_html__('Enter the number of words to display. Leave empty or 0 to show full title.', 'drillcorp-core'),
+                'min' => 0,
+                'max' => 100,
+                'step' => 1,
+                'default' => 0,
+            ]
+        );
+
+        $this->add_control(
             'order',
             [
                 'label' => esc_html__('Order', 'drillcorp-core'),
@@ -1113,17 +1126,29 @@ class Services_List_Item_Widget extends Widget_Base
 
         $animation_class = ('yes' === $settings['enable_animation']) ? '' : ' no-animation';
         $layout_class = ('grid' === $settings['layout_type']) ? ' services-grid' : '';
-        
+
         // Grid columns
         $grid_columns = isset($settings['grid_columns']) ? $settings['grid_columns'] : '3';
         $grid_columns_class = '';
         if ('grid' === $settings['layout_type']) {
             $grid_columns_class = ' grid-columns-' . esc_attr($grid_columns);
         }
+
+        // Title trim length
+        $title_trim_length = isset($settings['title_trim_length']) ? absint($settings['title_trim_length']) : 0;
 ?>
         <div class="services-list-area<?php echo esc_attr($animation_class . $layout_class . $grid_columns_class); ?>">
             <div class="services-list">
-                <?php foreach ($services_data as $service): ?>
+                <?php foreach ($services_data as $service): 
+                    // Trim title if needed
+                    $display_title = $service['title'];
+                    if ($title_trim_length > 0) {
+                        $words = explode(' ', $service['title']);
+                        if (count($words) > $title_trim_length) {
+                            $display_title = implode(' ', array_slice($words, 0, $title_trim_length)) . '...';
+                        }
+                    }
+                ?>
                     <div class="services-list-content">
                         <?php if ('yes' === $settings['show_thumbnail'] && !empty($service['thumbnail'])): ?>
                             <a href="<?php echo esc_url($service['link']); ?>">
@@ -1132,7 +1157,7 @@ class Services_List_Item_Widget extends Widget_Base
                         <?php endif; ?>
                         <div class="services-list-content-wrap">
                             <?php if ('yes' === $settings['show_title']): ?>
-                                <a href="<?php echo esc_url($service['link']); ?>"><?php echo esc_html($service['title']); ?></a>
+                                <a href="<?php echo esc_url($service['link']); ?>"><?php echo esc_html($display_title); ?></a>
                             <?php endif; ?>
                             
                             <?php if ('yes' === $settings['show_excerpt']): ?>

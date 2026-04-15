@@ -194,3 +194,11 @@ p.contact-info-location {
     pointer-events: none ;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
+.single-projects .fixed-contact-section {
+    min-width: 100% !important;
+}
+
+#project-fixed-btn {
+    min-width: auto !important;
+}

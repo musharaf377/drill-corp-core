@@ -110,6 +110,26 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             'condition' => ['show_excerpt' => 'yes'],
         ]);
 
+        $this->add_control('title_trim_length', [
+            'label'   => esc_html__('Title Trim Length', 'drillcorp-core'),
+            'type'    => Controls_Manager::NUMBER,
+            'description' => esc_html__('Enter the number of words to display for list titles. Leave empty or 0 to show full title.', 'drillcorp-core'),
+            'min'     => 0,
+            'max'     => 100,
+            'step'    => 1,
+            'default' => 0,
+        ]);
+
+        $this->add_control('featured_title_trim_length', [
+            'label'   => esc_html__('Featured Title Trim Length', 'drillcorp-core'),
+            'type'    => Controls_Manager::NUMBER,
+            'description' => esc_html__('Enter the number of words to display for featured title. Leave empty or 0 to show full title.', 'drillcorp-core'),
+            'min'     => 0,
+            'max'     => 100,
+            'step'    => 1,
+            'default' => 0,
+        ]);
+
         $this->add_control('show_list_thumb', [
             'label'        => esc_html__('Show Thumbnail (list)', 'drillcorp-core'),
             'type'         => Controls_Manager::SWITCHER,
@@ -260,6 +280,34 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             'type'  => Controls_Manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .feature-blog-featured' => 'background-color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('featured_image_width', [
+            'label'      => esc_html__('Image Width', 'drillcorp-core'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range'      => [
+                'px' => ['min' => 100, 'max' => 1200],
+                '%'  => ['min' => 10, 'max' => 100],
+            ],
+            'default'    => ['size' => 100, 'unit' => '%'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-featured .feature-blog-thumb' => 'width: {{SIZE}}{{UNIT}};',
+            ],
+        ]);
+
+        $this->add_responsive_control('featured_image_height', [
+            'label'      => esc_html__('Image Height', 'drillcorp-core'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%'],
+            'range'      => [
+                'px' => ['min' => 100, 'max' => 800],
+                '%'  => ['min' => 10, 'max' => 100],
+            ],
+            'default'    => ['size' => 100, 'unit' => '%'],
+            'selectors'  => [
+                '{{WRAPPER}} .feature-blog-featured .feature-blog-thumb' => 'height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 
@@ -457,6 +505,22 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
+        // Get title trim length
+        $title_trim_length = isset($settings['title_trim_length']) ? absint($settings['title_trim_length']) : 0;
+        $featured_title_trim_length = isset($settings['featured_title_trim_length']) ? absint($settings['featured_title_trim_length']) : 0;
+
+        // Helper function to trim title
+        $trim_title = function($title, $is_featured = false) use ($title_trim_length, $featured_title_trim_length) {
+            $trim_length = $is_featured ? $featured_title_trim_length : $title_trim_length;
+            if ($trim_length > 0) {
+                $words = explode(' ', $title);
+                if (count($words) > $trim_length) {
+                    return implode(' ', array_slice($words, 0, $trim_length)) . '...';
+                }
+            }
+            return $title;
+        };
+
         // Base query arguments - get ALL posts
         $args = [
             'post_type'           => 'post',
@@ -535,7 +599,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
                             <h2 class="feature-blog-title">
                                 <a href="<?php echo esc_url(get_permalink($featured_post->ID)); ?>">
-                                    <?php echo esc_html(get_the_title($featured_post->ID)); ?>
+                                    <?php echo esc_html($trim_title(get_the_title($featured_post->ID), true)); ?>
                                 </a>
                             </h2>
 
@@ -581,7 +645,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
 
                                 <h3 class="feature-blog-item-title">
                                     <a href="<?php echo esc_url(get_permalink($post_item->ID)); ?>">
-                                        <?php echo esc_html(get_the_title($post_item->ID)); ?>
+                                        <?php echo esc_html($trim_title(get_the_title($post_item->ID))); ?>
                                     </a>
                                 </h3>
                             </div>
