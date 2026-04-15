@@ -857,6 +857,14 @@
             }, { threshold: 0 });
             
             heroObserver.observe(heroArea);
+            
+            // Check initial state - if hero is not in view on page load, show button immediately
+            const initialRect = heroArea.getBoundingClientRect();
+            if (initialRect.bottom < 0) {
+               fixedButton.style.opacity = '1';
+               fixedButton.style.visibility = 'visible';
+               fixedButton.style.pointerEvents = 'auto';
+            }
          }
       }
      

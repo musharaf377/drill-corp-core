@@ -115,6 +115,21 @@ class Primary_Button_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'button_target',
+            [
+                'label' => esc_html__('Link Target', 'drillcorp-core'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    '_self' => esc_html__('Same Window', 'drillcorp-core'),
+                    '_blank' => esc_html__('New Window', 'drillcorp-core'),
+                    '_parent' => esc_html__('Parent Window', 'drillcorp-core'),
+                    '_top' => esc_html__('Top Window', 'drillcorp-core'),
+                ],
+                'default' => '_self',
+            ]
+        );
+
         $this->add_responsive_control(
             'show_icon',
             [
@@ -577,6 +592,7 @@ class Primary_Button_Widget extends Widget_Base
         
         if (!empty($settings['button_link']['url'])) {
             $this->add_link_attributes('button', $settings['button_link']);
+            $this->add_render_attribute('button', 'target', $settings['button_target'] ?? '_self');
         }
 
         $tag = !empty($settings['button_link']['url']) ? 'a' : 'button';
