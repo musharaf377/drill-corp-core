@@ -53,10 +53,11 @@
     color: rgba(68, 34, 234, 1);
 }
 
-.blog-sidebar-area{
+.blog-sidebar-area{ 
     position: sticky;
     top: 20px;
     margin-top: -145px;
+    z-index: 9;
 }
 
 html {
@@ -114,7 +115,7 @@ html {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 9999;
-    height: 385px;
+    height: 440px;
 }
 
 .contact-info-bg{
@@ -141,7 +142,7 @@ html {
     color: #fff;
     font-size: 28px;
     font-weight: 700;
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 
@@ -186,6 +187,8 @@ p.contact-info-location {
     font-weight: 500;
     color: rgba(226, 239, 244, 1);
     margin-bottom: 20px;
+    margin-top: 16px;
+    line-height: 1em;
 }
 
 .fixed-contact-button {
@@ -201,4 +204,10 @@ p.contact-info-location {
 
 #project-fixed-btn {
     min-width: auto !important;
+}
+
+  img.contact-person-thumb {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
 }

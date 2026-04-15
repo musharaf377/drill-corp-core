@@ -755,6 +755,7 @@
        =========================*/
       $(document).on('click', '.contact-us-link', function (e) {
          e.preventDefault();
+         e.stopPropagation();
 
          const $link = $(this);
          const $widget = $link.closest('.contact-information');
