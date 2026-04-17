@@ -24,6 +24,32 @@
 
       // Get all progress bars
       const progressBars = $(".progress-bar");
+      progressBars.css('cursor', 'pointer');
+
+      // Make progress bars clickable and keyboard accessible
+      $(document).on('click', '.progress-container', function (e) {
+         e.preventDefault();
+
+         const targetIndex = parseInt($(this).find('.progress-bar').attr('data-slide-index'));
+         if (isNaN(targetIndex) || typeof heroSlider === 'undefined') {
+            return;
+         }
+
+         if (heroSlider.params.loop && typeof heroSlider.slideToLoop === 'function') {
+            heroSlider.slideToLoop(targetIndex, heroSliderTransitionSpeed, true);
+         } else if (typeof heroSlider.slideTo === 'function') {
+            heroSlider.slideTo(targetIndex, heroSliderTransitionSpeed, true);
+         }
+
+         updateProgressBars(targetIndex, heroSliderAutoplay && heroSlider.autoplay && heroSlider.autoplay.running);
+      });
+
+      $(document).on('keydown', '.progress-container', function (e) {
+         if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            $(this).trigger('click');
+         }
+      });
 
       // Function to update progress bars based on current slide
       function updateProgressBars(realIndex, isAutoplay = true) {

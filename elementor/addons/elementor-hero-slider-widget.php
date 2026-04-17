@@ -1048,7 +1048,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                 <div class="container">
                     <div class="progress-bars-container">
                         <?php foreach ($all_hero_slider_items as $index => $item): ?>
-                            <div class="progress-container">
+                            <div class="progress-container" role="button" tabindex="0" aria-label="<?php echo esc_attr(sprintf('Go to slide %d', $index + 1)); ?>">
                                 <div class="progress-bar" data-slide-index="<?php echo $index; ?>"></div>
                                 <div class="slider-progress-conetnt-wrap">
                                     <div class="slider-progress-content">
