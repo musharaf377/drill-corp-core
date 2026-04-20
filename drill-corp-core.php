@@ -5,7 +5,7 @@ Plugin URI: https://drillcorp.agency
 Description: Plugin to contain short codes and custom post types of the Drillcorp theme.
 Author: Drillcorp
 Author URI: https://drillcorp.agency
-Version: 1.0.0
+Version: 1.0.1
 Text Domain: drillcorp-core
 */
 

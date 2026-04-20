@@ -265,6 +265,22 @@ class Hero_Slider_Item_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'left_shape',
+            [
+                'label'     => esc_html__('Left Shape', 'drillcorp-core'),
+                'type'      => Controls_Manager::MEDIA,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'right_shape',
+            [
+                'label' => esc_html__('Right Shape', 'drillcorp-core'),
+                'type'  => Controls_Manager::MEDIA,
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -274,6 +290,130 @@ class Hero_Slider_Item_Widget extends Widget_Base
             [
                 'label' => esc_html__('Slider Style', 'drillcorp-core'),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'left_shape_heading',
+            [
+                'label'     => esc_html__('Left Shape', 'drillcorp-core'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'left_shape_width',
+            [
+                'label'      => esc_html__('Left Shape Width', 'drillcorp-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'vh'],
+                'range'      => [
+                    'px' => ['min' => 0, 'max' => 2000, 'step' => 1],
+                    '%'  => ['min' => 0, 'max' => 100,  'step' => 1],
+                    'vh' => ['min' => 0, 'max' => 100,  'step' => 1],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .hero-left-shape img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'left_shape_height',
+            [
+                'label'      => esc_html__('Left Shape Height', 'drillcorp-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'vh'],
+                'range'      => [
+                    'px' => ['min' => 0, 'max' => 2000, 'step' => 1],
+                    '%'  => ['min' => 0, 'max' => 100,  'step' => 1],
+                    'vh' => ['min' => 0, 'max' => 100,  'step' => 1],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .hero-left-shape img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'left_shape_object_fit',
+            [
+                'label'   => esc_html__('Left Shape Object Fit', 'drillcorp-core'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'cover'      => esc_html__('Cover', 'drillcorp-core'),
+                    'contain'    => esc_html__('Contain', 'drillcorp-core'),
+                    'fill'       => esc_html__('Fill', 'drillcorp-core'),
+                    'none'       => esc_html__('None', 'drillcorp-core'),
+                    'scale-down' => esc_html__('Scale Down', 'drillcorp-core'),
+                ],
+                'default'   => 'cover',
+                'selectors' => [
+                    '{{WRAPPER}} .hero-left-shape img' => 'object-fit: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'right_shape_heading',
+            [
+                'label'     => esc_html__('Right Shape', 'drillcorp-core'),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'right_shape_width',
+            [
+                'label'      => esc_html__('Right Shape Width', 'drillcorp-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'vh'],
+                'range'      => [
+                    'px' => ['min' => 0, 'max' => 2000, 'step' => 1],
+                    '%'  => ['min' => 0, 'max' => 100,  'step' => 1],
+                    'vh' => ['min' => 0, 'max' => 100,  'step' => 1],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .hero-bottom-shape img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'right_shape_height',
+            [
+                'label'      => esc_html__('Right Shape Height', 'drillcorp-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'vh'],
+                'range'      => [
+                    'px' => ['min' => 0, 'max' => 2000, 'step' => 1],
+                    '%'  => ['min' => 0, 'max' => 100,  'step' => 1],
+                    'vh' => ['min' => 0, 'max' => 100,  'step' => 1],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .hero-bottom-shape img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'right_shape_object_fit',
+            [
+                'label'   => esc_html__('Right Shape Object Fit', 'drillcorp-core'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'cover'      => esc_html__('Cover', 'drillcorp-core'),
+                    'contain'    => esc_html__('Contain', 'drillcorp-core'),
+                    'fill'       => esc_html__('Fill', 'drillcorp-core'),
+                    'none'       => esc_html__('None', 'drillcorp-core'),
+                    'scale-down' => esc_html__('Scale Down', 'drillcorp-core'),
+                ],
+                'default'   => 'cover',
+                'selectors' => [
+                    '{{WRAPPER}} .hero-bottom-shape img' => 'object-fit: {{VALUE}};',
+                ],
             ]
         );
 
@@ -1036,12 +1176,23 @@ class Hero_Slider_Item_Widget extends Widget_Base
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     <?php endforeach; ?>
                 </div>
                 <div class="hero-slider-pagination"></div>
             </div>
-
+            
+            <?php if (!empty($settings['left_shape']['url'])): ?>
+                <div class="hero-left-shape">
+                    <img src="<?php echo esc_url($settings['left_shape']['url']); ?>" alt="">
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($settings['right_shape']['url'])): ?>
+                <div class="hero-bottom-shape">
+                    <img src="<?php echo esc_url($settings['right_shape']['url']); ?>" alt="">
+                </div>
+            <?php endif; ?>
 
             <!-- Multiple Progress Bars - One for each slide -->
             <div class="hero-progress-wrapper">

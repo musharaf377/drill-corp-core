@@ -204,9 +204,35 @@
 .slider-progress-content img {
   margin-top: 2px;
 }
-
-video.hero-mobile-video {
+.hero-mobile-video {
   display: none;
+}
+
+
+.hero-left-shape {
+    position: absolute;
+    left: 0;
+    bottom: 70px;
+    z-index: 3;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bottom-shape {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    z-index: 1;
+}
+
+.hero-bottom-shape img{
+  width: 100%;
+}
+
+.hero-left-shape img{
+  height: 100% !important;
 }
 
 
