@@ -75,7 +75,12 @@
   margin: 0;
   max-width: 100%;
   width: 100%;
-  z-index: 9999;
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
   height: 100vh;
   object-fit: cover;
 }
@@ -87,7 +92,7 @@
 .hero-slider-absoulet-content {
   position: absolute;
   top: 0;
-  z-index: 99;
+  z-index: 9999;
   width: 100%;
 }
 
@@ -154,6 +159,7 @@
   background: linear-gradient(180deg, rgba(1, 8, 26, 0) 38.15%, rgba(1, 6, 19, 0.3) 61.14%, rgba(1, 4, 13, 0.5) 100%);
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 /* slider progress css */
@@ -215,7 +221,7 @@
     bottom: 70px;
     z-index: 3;
     height: 100%;
-    z-index: 1;
+    z-index: 3;
 }
 
 
@@ -225,7 +231,7 @@
     bottom: 0;
     z-index: 3;
     width: 100%;
-    z-index: 1;
+    z-index: 3;
 }
 
 .hero-bottom-shape img{
@@ -233,7 +239,7 @@
 }
 
 .hero-left-shape img{
-  height: 100% !important;
+  height: 102.4% ;
 }
 
 

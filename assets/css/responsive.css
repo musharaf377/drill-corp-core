@@ -44,6 +44,10 @@
         display: block;
     }
 
+    .hero-left-shape,
+    .hero-bottom-shape{
+        display: none;
+    }
      
     /* Faq Area */
     .faq-arrow-wrap {

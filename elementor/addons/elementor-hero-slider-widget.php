@@ -358,7 +358,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'right_shape_heading',
             [
-                'label'     => esc_html__('Right Shape', 'drillcorp-core'),
+                'label'     => esc_html__('Bottom Shape', 'drillcorp-core'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -367,7 +367,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'right_shape_width',
             [
-                'label'      => esc_html__('Right Shape Width', 'drillcorp-core'),
+                'label'      => esc_html__('Bottom Shape Width', 'drillcorp-core'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'vh'],
                 'range'      => [
@@ -384,7 +384,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_responsive_control(
             'right_shape_height',
             [
-                'label'      => esc_html__('Right Shape Height', 'drillcorp-core'),
+                'label'      => esc_html__('Bottom Shape Height', 'drillcorp-core'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%', 'vh'],
                 'range'      => [
@@ -401,7 +401,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $this->add_control(
             'right_shape_object_fit',
             [
-                'label'   => esc_html__('Right Shape Object Fit', 'drillcorp-core'),
+                'label'   => esc_html__('Bottom Shape Object Fit', 'drillcorp-core'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
                     'cover'      => esc_html__('Cover', 'drillcorp-core'),
@@ -451,13 +451,118 @@ class Hero_Slider_Item_Widget extends Widget_Base
         );
 
         $this->add_control(
+            'overlay_color_type',
+            [
+                'label'   => esc_html__('Overlay Color Type', 'drillcorp-core'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'solid'    => esc_html__('Solid', 'drillcorp-core'),
+                    'gradient' => esc_html__('Gradient', 'drillcorp-core'),
+                ],
+                'default' => 'solid',
+            ]
+        );
+
+        $this->add_control(
             'overlay_color',
             [
-                'label' => esc_html__('Overlay Color', 'drillcorp-core'),
-                'type' => Controls_Manager::COLOR,
-                'default' => 'rgba(0,0,0,0.5)',
+                'label'     => esc_html__('Overlay Color', 'drillcorp-core'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => 'rgba(0,0,0,0.5)',
                 'selectors' => [
                     '{{WRAPPER}} .hero-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'overlay_color_type' => 'solid',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'overlay_gradient_color1',
+            [
+                'label'     => esc_html__('Gradient Color 1', 'drillcorp-core'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => 'rgba(0,0,0,0.8)',
+                'condition' => [
+                    'overlay_color_type' => 'gradient',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'overlay_gradient_color1_stop',
+            [
+                'label'      => esc_html__('Color 1 Stop', 'drillcorp-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['%'],
+                'range'      => [
+                    '%' => ['min' => 0, 'max' => 100, 'step' => 1],
+                ],
+                'default'   => ['unit' => '%', 'size' => 0],
+                'condition' => [
+                    'overlay_color_type' => 'gradient',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'overlay_gradient_color2',
+            [
+                'label'     => esc_html__('Gradient Color 2', 'drillcorp-core'),
+                'type'      => Controls_Manager::COLOR,
+                'default'   => 'rgba(0,0,0,0)',
+                'condition' => [
+                    'overlay_color_type' => 'gradient',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'overlay_gradient_color2_stop',
+            [
+                'label'      => esc_html__('Color 2 Stop', 'drillcorp-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['%'],
+                'range'      => [
+                    '%' => ['min' => 0, 'max' => 100, 'step' => 1],
+                ],
+                'default'   => ['unit' => '%', 'size' => 100],
+                'condition' => [
+                    'overlay_color_type' => 'gradient',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'overlay_gradient_type',
+            [
+                'label'   => esc_html__('Gradient Type', 'drillcorp-core'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'linear' => esc_html__('Linear', 'drillcorp-core'),
+                    'radial' => esc_html__('Radial', 'drillcorp-core'),
+                ],
+                'default'   => 'linear',
+                'condition' => [
+                    'overlay_color_type' => 'gradient',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'overlay_gradient_angle',
+            [
+                'label'      => esc_html__('Gradient Angle', 'drillcorp-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['deg'],
+                'range'      => [
+                    'deg' => ['min' => 0, 'max' => 360, 'step' => 1],
+                ],
+                'default'   => ['unit' => 'deg', 'size' => 180],
+                'condition' => [
+                    'overlay_color_type' => 'gradient',
+                    'overlay_gradient_type' => 'linear',
                 ],
             ]
         );
@@ -1129,6 +1234,20 @@ class Hero_Slider_Item_Widget extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $all_hero_slider_items = $settings['hero_slider_items'];
+
+        $overlay_style = '';
+        if ( 'gradient' === $settings['overlay_color_type'] ) {
+            $c1      = $settings['overlay_gradient_color1'] ?: 'rgba(0,0,0,0.8)';
+            $c1_stop = $settings['overlay_gradient_color1_stop']['size'] ?? 0;
+            $c2      = $settings['overlay_gradient_color2'] ?: 'rgba(0,0,0,0)';
+            $c2_stop = $settings['overlay_gradient_color2_stop']['size'] ?? 100;
+            if ( 'radial' === $settings['overlay_gradient_type'] ) {
+                $overlay_style = "background: radial-gradient(circle, {$c1} {$c1_stop}%, {$c2} {$c2_stop}%);";
+            } else {
+                $angle = $settings['overlay_gradient_angle']['size'] ?? 180;
+                $overlay_style = "background: linear-gradient({$angle}deg, {$c1} {$c1_stop}%, {$c2} {$c2_stop}%);";
+            }
+        }
         $rand_numb = rand(333, 999999999);
         //slider settings
 
@@ -1140,6 +1259,8 @@ class Hero_Slider_Item_Widget extends Widget_Base
         ]
 ?>
         <div class="hero-slider-area">
+            
+            
             <div class="swiper hero-slider" data-settings='<?php echo json_encode($slider_settings); ?>'>
                 <div class="swiper-wrapper">
                     <?php foreach ($all_hero_slider_items as $item): ?>
@@ -1155,7 +1276,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                                     <source src="<?php echo $item['mobile_video_url']['url'] ?>" type="video/mp4">
                                 </video>
                             <?php } ?>
-                            <div class="hero-overlay"></div>
+                            <div class="hero-overlay" <?php if ($overlay_style): ?>style="<?php echo esc_attr($overlay_style); ?>"<?php endif; ?>></div>
 
                             <div class="hero-slider-absoulet-content">
                                 <div class="container">
@@ -1176,23 +1297,27 @@ class Hero_Slider_Item_Widget extends Widget_Base
                                     </div>
                                 </div>
                             </div>
+
+                            <?php if (!empty($settings['left_shape']['url'])): ?>
+                                <div class="hero-left-shape">
+                                    <img src="<?php echo esc_url($settings['left_shape']['url']); ?>" alt="">
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($settings['right_shape']['url'])): ?>
+                                <div class="hero-bottom-shape">
+                                    <img src="<?php echo esc_url($settings['right_shape']['url']); ?>" alt="">
+                                </div>
+                            <?php endif; ?>
                             
                         </div>
                     <?php endforeach; ?>
                 </div>
+
+                
                 <div class="hero-slider-pagination"></div>
             </div>
             
-            <?php if (!empty($settings['left_shape']['url'])): ?>
-                <div class="hero-left-shape">
-                    <img src="<?php echo esc_url($settings['left_shape']['url']); ?>" alt="">
-                </div>
-            <?php endif; ?>
-            <?php if (!empty($settings['right_shape']['url'])): ?>
-                <div class="hero-bottom-shape">
-                    <img src="<?php echo esc_url($settings['right_shape']['url']); ?>" alt="">
-                </div>
-            <?php endif; ?>
+            
 
             <!-- Multiple Progress Bars - One for each slide -->
             <div class="hero-progress-wrapper">
