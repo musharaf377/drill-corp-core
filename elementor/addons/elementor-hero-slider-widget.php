@@ -1267,12 +1267,12 @@ class Hero_Slider_Item_Widget extends Widget_Base
                         <div class="swiper-slide" style="<?php if ($item['background_image']['url']) { ?>background-image:url(<?php echo $item['background_image']['url'] ?>);
                             <?php } ?>">
                             <?php if ($item['video_url']['url']) { ?>
-                                <video autoplay loop muted playsinline class="hero-desktop-video">
+                                <video muted playsinline class="hero-desktop-video">
                                     <source src="<?php echo $item['video_url']['url'] ?>" type="video/mp4">
                                 </video>
                             <?php } ?>
                             <?php if ($item['video_url']['url']) { ?>
-                                <video autoplay loop muted playsinline class="hero-mobile-video">
+                                <video muted playsinline class="hero-mobile-video">
                                     <source src="<?php echo $item['mobile_video_url']['url'] ?>" type="video/mp4">
                                 </video>
                             <?php } ?>

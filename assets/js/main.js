@@ -17,7 +17,6 @@
       let heroSliderTransitionSpeed = 500;
       let heroSliderEffect = sliderSettings.effect !== undefined ? sliderSettings.effect : 'slide';
 
-      // Fade effect with loop can cause autoplay issues - disable loop for fade effect
       if (heroSliderEffect === 'fade' && heroSliderLoop) {
          console.warn('Fade effect with loop enabled may cause autoplay issues. Consider using slide effect for more than 3 slides.');
       }
@@ -40,8 +39,7 @@
          } else if (typeof heroSlider.slideTo === 'function') {
             heroSlider.slideTo(targetIndex, heroSliderTransitionSpeed, true);
          }
-
-         updateProgressBars(targetIndex, heroSliderAutoplay && heroSlider.autoplay && heroSlider.autoplay.running);
+         // activateHeroSlide fires via slideChange event
       });
 
       $(document).on('keydown', '.progress-container', function (e) {
@@ -51,32 +49,25 @@
          }
       });
 
-      // Function to update progress bars based on current slide
-      function updateProgressBars(realIndex, isAutoplay = true) {
-         progressBars.each(function (index) {
+      // duration: ms to animate the active progress bar (matches video length or fallback delay)
+      function updateProgressBars(realIndex, isAutoplay, duration) {
+         if (duration === undefined) duration = heroSliderAutoplayDelay;
+         progressBars.each(function () {
             const bar = $(this);
             const slideIndex = parseInt(bar.attr('data-slide-index'));
 
-            // Remove all classes first
             bar.removeClass('active completed');
-            bar.css({
-               'transition': 'none',
-               'width': '0%'
-            });
+            bar.css({ 'transition': 'none', 'width': '0%' });
 
-            // Mark completed slides
             if (slideIndex < realIndex) {
                bar.addClass('completed');
                bar.css('width', '100%');
-            }
-            // Mark active slide
-            else if (slideIndex === realIndex) {
+            } else if (slideIndex === realIndex) {
                bar.addClass('active');
                if (isAutoplay) {
-                  // Animate the active progress bar
                   setTimeout(function () {
                      bar.css({
-                        'transition': 'width ' + heroSliderAutoplayDelay + 'ms linear',
+                        'transition': 'width ' + duration + 'ms linear',
                         'width': '100%'
                      });
                   }, 50);
@@ -85,15 +76,87 @@
          });
       }
 
+      let slideVideoTimer = null;
 
-      // Initialize main hero slider
+      function getActiveSlideVideo(swiper) {
+         const activeSlide = swiper.slides[swiper.activeIndex];
+         if (!activeSlide) return null;
+         const isMobile = window.innerWidth < 768;
+         let video = isMobile
+            ? activeSlide.querySelector('.hero-mobile-video')
+            : activeSlide.querySelector('.hero-desktop-video');
+         if (!video) video = activeSlide.querySelector('video');
+         return video;
+      }
+
+      function stopAllHeroVideos() {
+         document.querySelectorAll('.hero-slider video').forEach(function (v) {
+            v.pause();
+            v.currentTime = 0;
+         });
+      }
+
+      function advanceHeroSlider(swiper) {
+         if (swiper.params.loop) {
+            swiper.slideNext(heroSliderTransitionSpeed);
+         } else if (swiper.isEnd) {
+            swiper.slideTo(0, heroSliderTransitionSpeed);
+         } else {
+            swiper.slideNext(heroSliderTransitionSpeed);
+         }
+      }
+
+      function activateHeroSlide(swiper) {
+         stopAllHeroVideos();
+         clearTimeout(slideVideoTimer);
+
+         const video = getActiveSlideVideo(swiper);
+
+         if (!heroSliderAutoplay) {
+            updateProgressBars(swiper.realIndex, false);
+            return;
+         }
+
+         if (video) {
+            // Show progress bar immediately with fallback duration; update once metadata arrives
+            updateProgressBars(swiper.realIndex, true, heroSliderAutoplayDelay);
+
+            if (video.readyState >= 1 && isFinite(video.duration)) {
+               updateProgressBars(swiper.realIndex, true, video.duration * 1000);
+            } else {
+               video.addEventListener('loadedmetadata', function () {
+                  if (isFinite(video.duration)) {
+                     updateProgressBars(swiper.realIndex, true, video.duration * 1000);
+                  }
+               }, { once: true });
+            }
+
+            // Play immediately — browsers handle play() before metadata is ready
+            video.play().catch(function () {
+               // Autoplay blocked — fall back to configured delay timer
+               slideVideoTimer = setTimeout(function () {
+                  advanceHeroSlider(swiper);
+               }, heroSliderAutoplayDelay);
+            });
+
+            video.addEventListener('ended', function () {
+               advanceHeroSlider(swiper);
+            }, { once: true });
+
+         } else {
+            // No video on this slide — use configured delay
+            updateProgressBars(swiper.realIndex, true, heroSliderAutoplayDelay);
+            slideVideoTimer = setTimeout(function () {
+               advanceHeroSlider(swiper);
+            }, heroSliderAutoplayDelay);
+         }
+      }
+
+      // Initialize main hero slider — timing is driven by video duration, not Swiper autoplay
       var heroSlider = new Swiper(".hero-slider", {
-         loop: heroSliderEffect === 'fade' ? false : heroSliderLoop, // Disable loop for fade effect to prevent autoplay issues
+         loop: heroSliderEffect === 'fade' ? false : heroSliderLoop,
          spaceBetween: 0,
-         autoplay: heroSliderAutoplay ? {
-            delay: heroSliderAutoplayDelay,
-            disableOnInteraction: false,
-         } : false,
+         autoplay: false,
          effect: heroSliderEffect,
          fadeEffect: heroSliderEffect === 'fade' ? {
             crossFade: true
@@ -102,21 +165,11 @@
 
          on: {
             init: function () {
-               updateProgressBars(this.realIndex, heroSliderAutoplay);
+               activateHeroSlide(this);
             },
 
             slideChange: function () {
-               updateProgressBars(this.realIndex, heroSliderAutoplay && this.autoplay.running);
-            },
-
-            autoplayStart: function () {
-               updateProgressBars(this.realIndex, true);
-            },
-
-            autoplayStop: function () {
-               progressBars.each(function () {
-                  $(this).css('transition', 'none');
-               });
+               activateHeroSlide(this);
             }
          }
       });
