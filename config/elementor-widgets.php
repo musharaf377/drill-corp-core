@@ -13,4 +13,5 @@ return array(
     'blog-list-tab',
     'career-list-tab',
     'contact-with-info',
+    'map-with-dot',
 );
