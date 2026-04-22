@@ -131,6 +131,24 @@
                }, { once: true });
             }
 
+            // Freeze progress bar while buffering, resume from current position on playing
+            video.addEventListener('waiting', function () {
+               const bar = progressBars.filter('[data-slide-index="' + swiper.realIndex + '"]');
+               const barEl = bar[0];
+               if (!barEl) return;
+               const currentWidth = barEl.getBoundingClientRect().width;
+               const containerWidth = barEl.closest('.progress-container').getBoundingClientRect().width;
+               const currentPercent = containerWidth > 0 ? (currentWidth / containerWidth * 100) : 0;
+               bar.css({ 'transition': 'none', 'width': currentPercent + '%' });
+            });
+
+            video.addEventListener('playing', function () {
+               const bar = progressBars.filter('[data-slide-index="' + swiper.realIndex + '"]');
+               if (!bar.length || !isFinite(video.duration)) return;
+               const remainingMs = (video.duration - video.currentTime) * 1000;
+               bar.css({ 'transition': 'width ' + remainingMs + 'ms linear', 'width': '100%' });
+            });
+
             // Play immediately — browsers handle play() before metadata is ready
             video.play().catch(function () {
                // Autoplay blocked — fall back to configured delay timer
