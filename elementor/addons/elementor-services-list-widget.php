@@ -424,7 +424,7 @@ class Services_List_Item_Widget extends Widget_Base
                     'size' => '100',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .services-list-content img' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .services-list-content .service-card-thumb-wrap' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -457,7 +457,7 @@ class Services_List_Item_Widget extends Widget_Base
                     'size' => 100,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .services-list-content img' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .services-list-content .service-card-thumb-wrap' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -469,7 +469,7 @@ class Services_List_Item_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .services-list-content img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .services-list-content .service-card-thumb-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1151,7 +1151,7 @@ class Services_List_Item_Widget extends Widget_Base
                 ?>
                     <div class="services-list-content">
                         <?php if ('yes' === $settings['show_thumbnail'] && !empty($service['thumbnail'])): ?>
-                            <a href="<?php echo esc_url($service['link']); ?>">
+                            <a href="<?php echo esc_url($service['link']); ?>" class="service-card-thumb-wrap">
                                 <img class="service-card-thumb" src="<?php echo esc_url($service['thumbnail']); ?>" alt="<?php echo esc_attr($service['title']); ?>">
                             </a>
                         <?php endif; ?>

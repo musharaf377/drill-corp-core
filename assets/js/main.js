@@ -392,13 +392,13 @@
 
                      // Adjust position based on how many visible cards are before this one
                      if (visibleCardsBeforeThis === 0) {
-                        card.style.transform = 'translateY(100px)'; // First visible card position
+                        card.style.transform = 'translateY(60px)'; // First visible card position
                         card.style.transitionDelay = '0ms'; // Immediate
                      } else if (visibleCardsBeforeThis === 1) {
-                        card.style.transform = 'translateY(200px)'; // Second visible card position
+                        card.style.transform = 'translateY(150px)'; // Second visible card position
                         card.style.transitionDelay = '80ms'; // Slight delay
                      } else if (visibleCardsBeforeThis === 2) {
-                        card.style.transform = 'translateY(300px)'; // Third visible card position
+                        card.style.transform = 'translateY(250px)'; // Third visible card position
                         card.style.transitionDelay = '160ms'; // More delay
                      }
                   }

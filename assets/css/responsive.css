@@ -3,6 +3,17 @@
     .blog-list-content-tab {
         grid-template-columns: 1fr 1fr;
     }
+
+    /* Service list widget */
+    .services-list-content{
+        position: static !important;
+        transform: none !important;
+    }
+
+    .services-list {
+        padding-bottom: 0px;
+    }
+
 }
 
 @media (max-width: 880px) {
@@ -59,16 +70,7 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    /* Service list widget */
-    .services-list-content{
-        position: static !important;
-        transform: none !important;
-    }
-
-    .services-list {
-        padding-bottom: 0px;
-    }
-
+    
     /* Blog List Widget */
     .blog-list-content-tab {
         grid-template-columns: 1fr 1fr;
