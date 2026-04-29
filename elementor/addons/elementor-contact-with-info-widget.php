@@ -818,7 +818,7 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
                                     }
                                     $social_link_attr_string = implode(' ', $social_link_attrs);
                                 ?>
-                                    <a href="<?php echo esc_url($social_url); ?>" <?php echo $social_link_attr_string; ?>>
+                                    <a href="<?php echo esc_url($social_url); ?>" target="_blank" <?php echo $social_link_attr_string; ?>>
                                         <img src="<?php echo esc_url($social_icon_url); ?>" alt="social icon">
                                     </a>
                                 <?php endforeach; ?>

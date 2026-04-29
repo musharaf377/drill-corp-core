@@ -1292,7 +1292,7 @@ class Hero_Slider_Item_Widget extends Widget_Base
                                             </p>
                                             <h1 class="hero-slide-title"><?php echo $item['title'] ?></h1>
                                             <p class="hero-slide-description"><?php echo $item['hero_description'] ?></p>
-                                            <a href="<?php echo $item['button_url'] ?>" class="hero-slider-btn"><?php echo $item['button_text'] ?></a>
+                                            <a href="<?php echo $item['button_url'] ?>" target="_blank" class="hero-slider-btn"><?php echo $item['button_text'] ?></a>
                                         </div>
                                     </div>
                                 </div>
