@@ -591,8 +591,21 @@ class Primary_Button_Widget extends Widget_Base
         $this->add_render_attribute('button', 'class', 'primary-btn');
         
         if (!empty($settings['button_link']['url'])) {
-            $this->add_link_attributes('button', $settings['button_link']);
-            $this->add_render_attribute('button', 'target', $settings['button_target'] ?? '_self');
+            $this->add_render_attribute('button', 'href', $settings['button_link']['url']);
+            $target = !empty($settings['button_target']) ? $settings['button_target'] : '_self';
+            $this->add_render_attribute('button', 'target', $target);
+            
+            $rel_parts = [];
+            if (!empty($settings['button_link']['nofollow'])) {
+                $rel_parts[] = 'nofollow';
+            }
+            if ($target === '_blank') {
+                $rel_parts[] = 'noopener';
+                $rel_parts[] = 'noreferrer';
+            }
+            if (!empty($rel_parts)) {
+                $this->add_render_attribute('button', 'rel', implode(' ', $rel_parts));
+            }
         }
 
         $tag = !empty($settings['button_link']['url']) ? 'a' : 'button';
