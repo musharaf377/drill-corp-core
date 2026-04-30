@@ -228,6 +228,60 @@ class Map_With_Dot_Widget extends Widget_Base
             ]
         );
 
+        $repeater->add_control(
+            'arrow_pos_x',
+            [
+                'label'       => esc_html__('Arrow Offset X (px)', 'drillcorp-core'),
+                'type'        => Controls_Manager::SLIDER,
+                'size_units'  => ['px'],
+                'range'       => [
+                    'px' => [
+                        'min'  => -200,
+                        'max'  => 200,
+                        'step' => 1,
+                    ],
+                ],
+                'default'     => [ 'unit' => 'px', 'size' => 0 ],
+                'description' => esc_html__('Shift the arrow start point horizontally from the dot centre.', 'drillcorp-core'),
+            ]
+        );
+
+        $repeater->add_control(
+            'arrow_pos_y',
+            [
+                'label'       => esc_html__('Arrow Offset Y (px)', 'drillcorp-core'),
+                'type'        => Controls_Manager::SLIDER,
+                'size_units'  => ['px'],
+                'range'       => [
+                    'px' => [
+                        'min'  => -200,
+                        'max'  => 200,
+                        'step' => 1,
+                    ],
+                ],
+                'default'     => [ 'unit' => 'px', 'size' => 0 ],
+                'description' => esc_html__('Shift the arrow start point vertically from the dot centre.', 'drillcorp-core'),
+            ]
+        );
+
+        $repeater->add_control(
+            'arrow_rotation',
+            [
+                'label'       => esc_html__('Arrow Rotation (deg)', 'drillcorp-core'),
+                'type'        => Controls_Manager::SLIDER,
+                'size_units'  => ['deg'],
+                'range'       => [
+                    'deg' => [
+                        'min'  => -180,
+                        'max'  => 180,
+                        'step' => 1,
+                    ],
+                ],
+                'default'     => [ 'unit' => 'deg', 'size' => 0 ],
+                'description' => esc_html__('Extra rotation added on top of the auto-calculated angle toward the label.', 'drillcorp-core'),
+            ]
+        );
+
         $this->add_control(
             'map_dots',
             [
@@ -466,6 +520,27 @@ class Map_With_Dot_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'dot_label_blur',
+            [
+                'label'      => esc_html__('Background Blur', 'drillcorp-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 40,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [ 'unit' => 'px', 'size' => 0 ],
+                'separator'  => 'before',
+                'selectors'  => [
+                    '{{WRAPPER}} .map-dot-label' => 'backdrop-filter: blur({{SIZE}}{{UNIT}}); -webkit-backdrop-filter: blur({{SIZE}}{{UNIT}});',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // =====================
@@ -574,6 +649,9 @@ class Map_With_Dot_Widget extends Widget_Base
                     $label_offset_y = isset( $dot['label_offset_y']['size'] ) ? intval( $dot['label_offset_y']['size'] ) : -80;
                     $arrow_img      = ! empty( $dot['arrow_image']['url'] ) ? $dot['arrow_image']['url'] : '';
                     $arrow_width    = isset( $dot['arrow_image_width']['size'] ) ? intval( $dot['arrow_image_width']['size'] ) : 80;
+                    $arrow_pos_x    = isset( $dot['arrow_pos_x']['size'] ) ? intval( $dot['arrow_pos_x']['size'] ) : 0;
+                    $arrow_pos_y    = isset( $dot['arrow_pos_y']['size'] ) ? intval( $dot['arrow_pos_y']['size'] ) : 0;
+                    $arrow_rotation = isset( $dot['arrow_rotation']['size'] ) ? floatval( $dot['arrow_rotation']['size'] ) : 0;
                     $has_arrow_img  = ! empty( $arrow_img );
                 ?>
 
@@ -608,6 +686,9 @@ class Map_With_Dot_Widget extends Widget_Base
                 <?php if ( $has_arrow_img ) : ?>
                 <img class="map-dot-arrow-img"
                      data-dot-index="<?php echo esc_attr( $idx ); ?>"
+                     data-pos-x="<?php echo esc_attr( $arrow_pos_x ); ?>"
+                     data-pos-y="<?php echo esc_attr( $arrow_pos_y ); ?>"
+                     data-rotation="<?php echo esc_attr( $arrow_rotation ); ?>"
                      src="<?php echo esc_url( $arrow_img ); ?>"
                      alt=""
                      aria-hidden="true"
@@ -681,7 +762,11 @@ class Map_With_Dot_Widget extends Widget_Base
                 } );
             }
 
-            /* Position & rotate each custom arrow image at the midpoint between its label and dot */
+            /*
+             * Position each custom arrow image so its LEFT edge starts at the dot centre
+             * (+ optional X/Y offset), then rotate it to point toward the label.
+             * transform-origin: 0% 50%  →  pivot = left-centre of the image = dot centre.
+             */
             function positionArrows( wrapper ) {
                 var wRect = wrapper.getBoundingClientRect();
 
@@ -694,23 +779,34 @@ class Map_With_Dot_Widget extends Widget_Base
                     var dRect = dot.getBoundingClientRect();
                     var lRect = label.getBoundingClientRect();
 
+                    /* Dot centre in wrapper coordinates */
                     var dx = dRect.left + dRect.width  / 2 - wRect.left;
                     var dy = dRect.top  + dRect.height / 2 - wRect.top;
+
+                    /* Label centre in wrapper coordinates */
                     var lx = lRect.left + lRect.width  / 2 - wRect.left;
                     var ly = lRect.top  + lRect.height / 2 - wRect.top;
 
-                    /* Midpoint */
-                    var mx = ( dx + lx ) / 2;
-                    var my = ( dy + ly ) / 2;
+                    /* User-defined offset from dot centre */
+                    var posX = parseFloat( img.dataset.posX ) || 0;
+                    var posY = parseFloat( img.dataset.posY ) || 0;
 
-                    /* Angle so the image points from label toward dot */
-                    var angle = Math.atan2( dy - ly, dx - lx ) * ( 180 / Math.PI );
+                    /* Arrow start point = dot centre + user offset */
+                    var startX = dx + posX;
+                    var startY = dy + posY;
 
-                    img.style.position  = 'absolute';
-                    img.style.left      = mx + 'px';
-                    img.style.top       = my + 'px';
-                    img.style.transform = 'translate(-50%, -50%) rotate(' + angle + 'deg)';
-                    img.style.display   = 'block';
+                    /* Auto-angle from start point toward label + optional manual offset */
+                    var autoAngle   = Math.atan2( ly - startY, lx - startX ) * ( 180 / Math.PI );
+                    var manualAngle = parseFloat( img.dataset.rotation ) || 0;
+                    var angle       = autoAngle + manualAngle;
+
+                    img.style.position        = 'absolute';
+                    img.style.left            = startX + 'px';
+                    img.style.top             = startY + 'px';
+                    /* translateY(-50%) centres the image height on startY; rotate pivots from left edge */
+                    img.style.transformOrigin = '0% 50%';
+                    img.style.transform       = 'translateY(-50%) rotate(' + angle + 'deg)';
+                    img.style.display        = 'block';
                 } );
             }
 

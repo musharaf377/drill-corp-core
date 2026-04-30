@@ -76,7 +76,7 @@
   max-width: 100%;
   width: 100%;
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -210,36 +210,37 @@
 .slider-progress-content img {
   margin-top: 2px;
 }
+
 .hero-mobile-video {
   display: none;
 }
 
 
 .hero-left-shape {
-    position: absolute;
-    left: 0;
-    bottom: 70px;
-    z-index: 3;
-    height: 100%;
-    z-index: 3;
+  position: absolute;
+  left: 0;
+  bottom: 70px;
+  z-index: 3;
+  height: 100%;
+  z-index: 3;
 }
 
 
 .hero-bottom-shape {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 3;
-    width: 100%;
-    z-index: 3;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  z-index: 3;
 }
 
-.hero-bottom-shape img{
+.hero-bottom-shape img {
   width: 100%;
 }
 
-.hero-left-shape img{
-  height: 102.4% ;
+.hero-left-shape img {
+  height: 102.4%;
 }
 
 
@@ -494,11 +495,11 @@ img.feature-blog-thumb {
   padding: 20px;
 }
 
-.project-content-wrap a{
+.project-content-wrap a {
   display: block;
 }
 
-.project-content-wrap a.primary-btn{
+.project-content-wrap a.primary-btn {
   display: inline-block;
 }
 
@@ -528,10 +529,11 @@ img.feature-blog-thumb {
 }
 
 /* Desktop Grid Columns */
-.services-list-area.grid-columns-1 .services-list-content{
+.services-list-area.grid-columns-1 .services-list-content {
   grid-template-columns: repeat(1, 1fr);
 }
-.services-list-area.grid-columns-2 .services-list-content{
+
+.services-list-area.grid-columns-2 .services-list-content {
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -615,11 +617,11 @@ img.feature-blog-thumb {
   margin: 0px !important;
 }
 
-.services-list-content-wrap a{
+.services-list-content-wrap a {
   transition: all .3s ease-in-out;
 }
 
-.services-list-content-wrap a:hover{
+.services-list-content-wrap a:hover {
   color: #333333;
 }
 
@@ -877,10 +879,12 @@ a.blog-list-item-thumb img {
     transform: translate(-50%, -50%) scale(0.5);
     opacity: 0.8;
   }
+
   70% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(0.5);
     opacity: 0;
@@ -910,6 +914,7 @@ a.blog-list-item-thumb img {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
 }
 
 .map-dot-inner {
@@ -992,4 +997,32 @@ a.blog-list-item-thumb img {
   pointer-events: none;
   z-index: 2;
   display: none;
+}
+
+
+/* Career page slider nav arrow exta style.*/
+.swiper-extra-nav .swiper-button-next,
+.swiper-extra-nav .swiper-button-prev {
+  position: inherit;
+}
+
+.swiper-extra-nav .swiper-button-next::after,
+.swiper-extra-nav .swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-extra-nav .swiper-button-next,
+.swiper-extra-nav .swiper-button-prev {
+  background-color: #FFFFFF;
+}
+
+.swiper-extra-nav .swiper-button-next:hover,
+.swiper-extra-nav .swiper-button-prev:hover {
+  background-color: #ACFF2F;
+}
+
+.swiper-extra-nav .swiper-button-next.swiper-button-disabled,
+.swiper-extra-nav .swiper-button-prev.swiper-button-disabled {
+  opacity: 1;
+
 }
