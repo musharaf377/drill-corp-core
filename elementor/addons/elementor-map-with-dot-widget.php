@@ -541,6 +541,16 @@ class Map_With_Dot_Widget extends Widget_Base
             ]
         );
 
+       $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => 'dot_label_border',
+                'label'     => esc_html__('Label Border', 'drillcorp-core'),
+                'selector'  => '{{WRAPPER}} .map-dot-label',
+                'separator' => 'before',
+            ]
+        );
+
         $this->end_controls_section();
 
         // =====================
