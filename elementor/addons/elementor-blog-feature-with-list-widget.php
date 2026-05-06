@@ -572,7 +572,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             return;
         }
 ?>
-        <div class="feature-blog-wrapper">
+        <div class="feature-blog-wrapper<?php echo empty($featured_posts) ? ' no-featured' : ''; ?>">
             <div class="feature-blog-grid">
                 <?php
                 // Display FIRST featured post in the featured section
