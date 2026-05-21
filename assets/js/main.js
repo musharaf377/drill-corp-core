@@ -684,70 +684,9 @@
 
       /**
        * ----------------------------------------
-       * Table Of Content
+       * Table Of Content — active link on scroll
+       * (the TOC list itself is rendered server-side by the widget)
        * ----------------------------------------
-       */
-      function drillcorpGenerateTOC(containerSelector, tocContainerSelector) {
-         const $contentContainer = $(containerSelector);
-         const $tocContainer = $(tocContainerSelector);
-
-         if (!$contentContainer.length || !$tocContainer.length) return;
-
-         // Track used IDs to prevent duplicates
-         const usedIds = {};
-
-         // Find h2 headings only
-         const headings = $contentContainer.find("h2");
-
-         if (!headings.length) return;
-
-         let tocHTML = '<ul class="toc-widget">';
-
-         headings.each(function (i) {
-            const $heading = $(this);
-            let title = $heading.text().trim();
-
-            if (!title) return; // Skip empty headings
-
-            let headingID = title
-               .toLowerCase()
-               .replace(/<\/?(strong|b|br)>/gi, "")
-               .replace(/[^a-z0-9]+/g, "-")
-               .replace(/^-+|-+$/g, "");
-
-            // Prevent duplicate IDs
-            if (usedIds[headingID]) {
-               usedIds[headingID]++;
-               headingID = headingID + "-" + usedIds[headingID];
-            } else {
-               usedIds[headingID] = 1;
-            }
-
-            if (!$heading.attr("id") || $heading.attr("id") === "") {
-               $heading.attr("id", headingID);
-            }
-
-            tocHTML += `<li><a href="#${headingID}" class="arrow-link">${title}</a></li>`;
-         });
-
-         tocHTML += "</ul>";
-
-         $tocContainer.html(tocHTML);
-      }
-
-      // Initialize TOC
-      if ($(".toc-container").length) {
-         if ($(".entry-content").length) {
-            drillcorpGenerateTOC(".entry-content", ".toc-container");
-         } else if ($(".blog-left-content-wrap").length) {
-            drillcorpGenerateTOC(".blog-left-content-wrap", ".toc-container");
-         } else if ($(".drillcorp-post-content").length) {
-            drillcorpGenerateTOC(".drillcorp-post-content", ".toc-container");
-         }
-      }
-
-      /*
-       * TOC link active state
        */
       function isInViewport(element) {
          const elementTop = element.offset().top;
