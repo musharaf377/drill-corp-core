@@ -27,7 +27,7 @@ if (! defined('ABSPATH')) {
 define('DRILLCORP_CORE_ROOT_PATH', plugin_dir_path(__FILE__));
 define('DRILLCORP_CORE_ROOT_URL', plugin_dir_url(__FILE__));
 define('DRILLCORP_CORE_SELF_PATH', 'drillcorp-core/drillcorp-core.php');
-define('DRILLCORP_CORE_VERSION', '2.0.1');
+define('DRILLCORP_CORE_VERSION', '2.0.3');
 define('DRILLCORP_CORE_INC', DRILLCORP_CORE_ROOT_PATH . '/inc');
 define('DRILLCORP_CORE_LIB', DRILLCORP_CORE_ROOT_PATH . '/lib');
 define('DRILLCORP_CORE_CONFIG', DRILLCORP_CORE_ROOT_PATH . '/config');
