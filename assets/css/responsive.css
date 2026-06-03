@@ -121,6 +121,10 @@
         flex-direction: column;
     }
 
+    .feature-blog-wrapper.no-featured .feature-blog-item {
+        flex-direction: column;
+    }
+
     /* Faq Area */
     .faq-arrow-wrap {
         margin-top: 4px;
