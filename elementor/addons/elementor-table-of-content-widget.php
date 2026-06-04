@@ -274,4 +274,4 @@ class Drillcorp_Table_Of_Content_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Drillcorp_Table_Of_Content_Widget());
+Plugin::instance()->widgets_manager->register(new Drillcorp_Table_Of_Content_Widget());

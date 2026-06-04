@@ -29,7 +29,11 @@ if (! class_exists('Drillcorp_Elementor_Widget_Init')) {
 		{
 			add_action('elementor/elements/categories_registered', array($this, '_widget_categories'));
 			//elementor widget registered
-			add_action('elementor/widgets/widgets_registered', array($this, '_widget_registered'));
+			// Use the modern `elementor/widgets/register` hook. The legacy
+			// `elementor/widgets/widgets_registered` hook is deprecated since Elementor 3.5
+			// and, on Elementor 4.x, caused widgets to register twice ("Cannot redeclare
+			// control with same name ...").
+			add_action('elementor/widgets/register', array($this, '_widget_registered'));
 			// elementor editor css
 			add_action('elementor/editor/after_enqueue_scripts', array($this, 'load_assets_for_elementor'));
 		}

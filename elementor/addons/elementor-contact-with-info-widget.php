@@ -832,4 +832,4 @@ class Drillcorp_Contact_With_Info_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Drillcorp_Contact_With_Info_Widget());
+Plugin::instance()->widgets_manager->register(new Drillcorp_Contact_With_Info_Widget());

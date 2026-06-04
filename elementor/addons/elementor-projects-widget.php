@@ -701,4 +701,4 @@ class Projects_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Projects_Widget());
+Plugin::instance()->widgets_manager->register(new Projects_Widget());

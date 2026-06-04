@@ -915,4 +915,4 @@ class Career_List_Tab extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Career_List_Tab());
+Plugin::instance()->widgets_manager->register(new Career_List_Tab());

@@ -682,4 +682,4 @@ class Blog_List_Tab extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Blog_List_Tab());
+Plugin::instance()->widgets_manager->register(new Blog_List_Tab());

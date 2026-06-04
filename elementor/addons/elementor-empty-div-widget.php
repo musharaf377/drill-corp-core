@@ -220,4 +220,4 @@ class Empty_Div_One extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Empty_Div_One());
+Plugin::instance()->widgets_manager->register(new Empty_Div_One());

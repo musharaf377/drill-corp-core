@@ -636,4 +636,4 @@ class Drillcorp_Icon_Box_One_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Drillcorp_Icon_Box_One_Widget());
+Plugin::instance()->widgets_manager->register(new Drillcorp_Icon_Box_One_Widget());

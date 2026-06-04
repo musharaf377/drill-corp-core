@@ -674,4 +674,4 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Musemind_Blog_Feature_With_List());
+Plugin::instance()->widgets_manager->register(new Musemind_Blog_Feature_With_List());

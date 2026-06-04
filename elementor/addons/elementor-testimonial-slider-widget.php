@@ -793,4 +793,4 @@ class Testimonial_Slider_Item_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Testimonial_Slider_Item_Widget());
+Plugin::instance()->widgets_manager->register(new Testimonial_Slider_Item_Widget());

@@ -855,4 +855,4 @@ class Map_With_Dot_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Map_With_Dot_Widget() );
+Plugin::instance()->widgets_manager->register( new Map_With_Dot_Widget() );

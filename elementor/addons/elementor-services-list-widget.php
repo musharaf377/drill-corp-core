@@ -1194,4 +1194,4 @@ class Services_List_Item_Widget extends Widget_Base
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Services_List_Item_Widget());
+Plugin::instance()->widgets_manager->register(new Services_List_Item_Widget());

@@ -519,4 +519,4 @@ class Cubeslimited_Accordion_One extends Widget_Base {
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Cubeslimited_Accordion_One() );
+Plugin::instance()->widgets_manager->register( new Cubeslimited_Accordion_One() );
