@@ -153,6 +153,20 @@ class Services_Slider_Item_Widget extends Widget_Base
         );
 
         $this->add_control(
+            'slider_direction',
+            [
+                'label'   => esc_html__('Slider Direction', 'drillcorp-core'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'ltr' => esc_html__('LTR (Left to Right)', 'drillcorp-core'),
+                    'rtl' => esc_html__('RTL (Right to Left)', 'drillcorp-core'),
+                ],
+                'default'     => 'ltr',
+                'description' => esc_html__('Set RTL for Arabic / right-to-left layouts.', 'drillcorp-core'),
+            ]
+        );
+
+        $this->add_control(
             'loop',
             [
                 'label' => esc_html__('Loop', 'drillcorp-core'),
@@ -876,12 +890,15 @@ class Services_Slider_Item_Widget extends Widget_Base
         $rand_numb = rand(333, 999999999);
         //slider settings
 
+        $slider_direction = !empty($settings['slider_direction']) ? $settings['slider_direction'] : 'ltr';
+
         $slider_settings = [
-            "loop" => esc_attr($settings['loop']),
-            "items" => esc_attr($settings['items'] ?? 1),
-            "autoplay" => esc_attr($settings['autoplay']),
-            "speed" => esc_attr($settings['speed']['size'] ?? 500),
-            "spaceBetween" => esc_attr($settings['slider_gap']['size'] ?? 20)
+            "loop"         => esc_attr($settings['loop']),
+            "items"        => esc_attr($settings['items'] ?? 1),
+            "autoplay"     => esc_attr($settings['autoplay']),
+            "speed"        => esc_attr($settings['speed']['size'] ?? 500),
+            "spaceBetween" => esc_attr($settings['slider_gap']['size'] ?? 20),
+            "dir"          => $slider_direction,
         ];
 
         // Query services from CPT
@@ -916,7 +933,7 @@ class Services_Slider_Item_Widget extends Widget_Base
         }
       ?>
         <div class="services-slider-area" id="services-slider-<?php echo esc_attr($rand_numb); ?>">
-            <div class="swiper services-slider" data-settings='<?php echo json_encode($slider_settings); ?>'>
+            <div class="swiper services-slider" dir="<?php echo esc_attr($slider_direction); ?>" data-settings='<?php echo json_encode($slider_settings); ?>'>
                 <div class="swiper-wrapper">
                     <?php foreach ($services_data as $service): ?>
                         <div class="swiper-slide">
