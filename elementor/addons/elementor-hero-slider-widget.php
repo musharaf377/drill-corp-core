@@ -216,6 +216,20 @@ class Hero_Slider_Item_Widget extends Widget_Base
         );
 
         $this->add_control(
+            'slider_direction',
+            [
+                'label'   => esc_html__('Slider Direction', 'drillcorp-core'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'ltr' => esc_html__('LTR (Left to Right)', 'drillcorp-core'),
+                    'rtl' => esc_html__('RTL (Right to Left)', 'drillcorp-core'),
+                ],
+                'default'     => 'ltr',
+                'description' => esc_html__('Set RTL for Arabic / right-to-left layouts.', 'drillcorp-core'),
+            ]
+        );
+
+        $this->add_control(
             'loop',
             [
                 'label' => esc_html__('Loop', 'drillcorp-core'),
@@ -1251,17 +1265,20 @@ class Hero_Slider_Item_Widget extends Widget_Base
         $rand_numb = rand(333, 999999999);
         //slider settings
 
+        $slider_direction = !empty($settings['slider_direction']) ? $settings['slider_direction'] : 'ltr';
+
         $slider_settings = [
-            "loop" => esc_attr($settings['loop']),
+            "loop"     => esc_attr($settings['loop']),
             "autoplay" => esc_attr($settings['autoplay']),
-            "speed" => esc_attr($settings['speed']['size'] ?? 500),
-            "effect" => esc_attr($settings['effect'] ?? 'slide'),
-        ]
+            "speed"    => esc_attr($settings['speed']['size'] ?? 500),
+            "effect"   => esc_attr($settings['effect'] ?? 'slide'),
+            "dir"      => $slider_direction,
+        ];
 ?>
         <div class="hero-slider-area">
-            
-            
-            <div class="swiper hero-slider" data-settings='<?php echo json_encode($slider_settings); ?>'>
+
+
+            <div class="swiper hero-slider" dir="<?php echo esc_attr($slider_direction); ?>" data-settings='<?php echo json_encode($slider_settings); ?>'>
                 <div class="swiper-wrapper">
                     <?php foreach ($all_hero_slider_items as $item): ?>
                         <div class="swiper-slide" style="<?php if ($item['background_image']['url']) { ?>background-image:url(<?php echo $item['background_image']['url'] ?>);
