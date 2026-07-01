@@ -115,6 +115,7 @@ html {
     background: rgba(0, 0, 0, 0.5);
     z-index: 9999;
     height: 440px;
+    padding: 30px;
 }
 
 .contact-info-bg{
@@ -188,6 +189,7 @@ p.contact-info-location {
     margin-bottom: 20px;
     margin-top: 16px;
     line-height: 1em;
+    text-align: center;
 }
 
 .fixed-contact-button {
