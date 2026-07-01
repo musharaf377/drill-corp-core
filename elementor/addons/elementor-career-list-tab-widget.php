@@ -38,14 +38,14 @@ class Career_List_Tab extends Widget_Base
         return ['drillcorp_widgets', 'career_list_tab'];
     }
 
-    private function get_career_categories()
+    private function get_career_categories($all_label = '')
     {
         $terms = get_terms([
             'taxonomy'   => 'career_cat',
             'hide_empty' => true,
         ]);
 
-        $options = ['all' => esc_html__('All Positions', 'drillcorp-core')];
+        $options = ['all' => ($all_label !== '' ? $all_label : esc_html__('All Positions', 'drillcorp-core'))];
 
         if (! is_wp_error($terms) && ! empty($terms)) {
             foreach ($terms as $term) {
@@ -93,6 +93,26 @@ class Career_List_Tab extends Widget_Base
             'options' => [
                 'DESC' => esc_html__('Descending', 'drillcorp-core'),
                 'ASC'  => esc_html__('Ascending', 'drillcorp-core'),
+            ],
+        ]);
+
+        $this->add_control('all_positions_text', [
+            'label'       => esc_html__('"All" Tab Text', 'drillcorp-core'),
+            'type'        => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default'     => esc_html__('All Positions', 'drillcorp-core'),
+            'dynamic'     => [
+                'active' => true,
+            ],
+        ]);
+
+        $this->add_control('load_more_text', [
+            'label'       => esc_html__('Load More Text', 'drillcorp-core'),
+            'type'        => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default'     => esc_html__('Load More', 'drillcorp-core'),
+            'dynamic'     => [
+                'active' => true,
             ],
         ]);
 
@@ -736,7 +756,7 @@ class Career_List_Tab extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $categories = $this->get_career_categories();
+        $categories = $this->get_career_categories($settings['all_positions_text']);
         
         // Get all posts to organize by category
         $args = [
@@ -899,7 +919,7 @@ class Career_List_Tab extends Widget_Base
                             data-widget-id="<?php echo esc_attr($unique_id); ?>"
                             data-page="2"
                             data-category="all">
-                        <span class="load-more-text"><?php echo esc_html__('Load More', 'drillcorp-core'); ?></span>
+                        <span class="load-more-text"><?php echo esc_html($settings['load_more_text']); ?></span>
                         <span class="load-more-spinner" style="display: none;">
                             <svg class="spinner" viewBox="0 0 50 50">
                                 <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>

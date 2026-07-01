@@ -38,15 +38,15 @@ class Blog_List_Tab extends Widget_Base
         return ['drillcorp_widgets', 'blog_list_tab'];
     }
 
-    private function get_blog_categories()
+    private function get_blog_categories($all_label = '')
     {
         $terms = get_terms([
             'taxonomy'   => 'category',
             'hide_empty' => true,
         ]);
 
-        $options = ['all' => esc_html__('All Media', 'drillcorp-core')];
-        
+        $options = ['all' => ($all_label !== '' ? $all_label : esc_html__('All Media', 'drillcorp-core'))];
+
         if (! is_wp_error($terms) && ! empty($terms)) {
             foreach ($terms as $term) {
                 $options[$term->term_id] = $term->name;
@@ -101,6 +101,26 @@ class Blog_List_Tab extends Widget_Base
             'type'        => Controls_Manager::TEXT,
             'label_block' => true,
             'default'     => esc_html__('No blog posts found.', 'drillcorp-core'),
+            'dynamic'     => [
+                'active' => true,
+            ],
+        ]);
+
+        $this->add_control('read_time_text', [
+            'label'       => esc_html__('Read Time Text', 'drillcorp-core'),
+            'type'        => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default'     => esc_html__('Min Read', 'drillcorp-core'),
+            'dynamic'     => [
+                'active' => true,
+            ],
+        ]);
+
+        $this->add_control('all_media_text', [
+            'label'       => esc_html__('"All" Tab Text', 'drillcorp-core'),
+            'type'        => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default'     => esc_html__('All Media', 'drillcorp-core'),
             'dynamic'     => [
                 'active' => true,
             ],
@@ -586,7 +606,7 @@ class Blog_List_Tab extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $categories = $this->get_blog_categories();
+        $categories = $this->get_blog_categories($settings['all_media_text']);
         
         // Get all posts to organize by category
         $args = [
@@ -675,7 +695,7 @@ class Blog_List_Tab extends Widget_Base
                                         <?php echo get_the_date(); ?>
                                     </div>
                                     <div class="blog-list-meta-dot"></div>
-                                    <div class="blog-read-time"><?php echo drillcorp()->get_reading_time(get_the_ID()); ?> Min Read</div>
+                                    <div class="blog-read-time"><?php echo drillcorp()->get_reading_time(get_the_ID()); ?> <?php echo esc_html($settings['read_time_text']); ?></div>
                                 </div>
                             </div>
                         </article>

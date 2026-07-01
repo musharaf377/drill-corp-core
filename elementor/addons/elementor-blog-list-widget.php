@@ -125,6 +125,17 @@ class Blog_List extends Widget_Base
             ],
         ]);
 
+        $this->add_control('read_time_text', [
+            'label'       => esc_html__('Read Time Text', 'drillcorp-core'),
+            'type'        => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default'     => esc_html__('Min Read', 'drillcorp-core'),
+            'condition'   => ['show_date' => 'yes'],
+            'dynamic'     => [
+                'active' => true,
+            ],
+        ]);
+
         $this->end_controls_section();
 
         // -------------------------
@@ -508,7 +519,7 @@ class Blog_List extends Widget_Base
                                         <?php echo get_the_date(); ?>
                                     </div>
                                     <div class="blog-list-meta-dot"></div>
-                                    <div class="blog-read-time"><?php echo drillcorp()->get_reading_time(get_the_ID()); ?> Min Read</div>
+                                    <div class="blog-read-time"><?php echo drillcorp()->get_reading_time(get_the_ID()); ?> <?php echo esc_html($settings['read_time_text']); ?></div>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>

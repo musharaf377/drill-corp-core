@@ -154,6 +154,16 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             ],
         ]);
 
+        $this->add_control('read_time_text', [
+            'label'       => esc_html__('Read Time Text', 'drillcorp-core'),
+            'type'        => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default'     => esc_html__('Min Read', 'drillcorp-core'),
+            'dynamic'     => [
+                'active' => true,
+            ],
+        ]);
+
         $this->end_controls_section();
 
         // -------------------------
@@ -618,7 +628,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                                     <?php echo get_the_date('', $featured_post->ID); ?>
                                 </div>
                                 <div class="blog-meta-dot"></div>
-                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($featured_post->ID); ?> Min Read</div>
+                                <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($featured_post->ID); ?> <?php echo esc_html($settings['read_time_text']); ?></div>
                             </div>
                         </div>
                     </article>
@@ -665,7 +675,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
                                         <?php echo get_the_date('', $post_item->ID); ?>
                                     </div>
                                     <div class="blog-meta-dot"></div>
-                                    <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($post_item->ID); ?> Min Read</div>
+                                    <div class="blog-read-time"><?php echo drillcorp()->get_reading_time($post_item->ID); ?> <?php echo esc_html($settings['read_time_text']); ?></div>
                                 <?php endif; ?>
 
                             </div>
