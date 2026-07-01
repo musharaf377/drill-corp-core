@@ -644,6 +644,55 @@ class Hero_Slider_Item_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+			'content_align',
+			[
+				'label' => esc_html__( 'Alignment', 'drillcorp-core' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'drillcorp-core' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'drillcorp-core' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'drillcorp-core' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .slider-left-content' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+
+        $this->add_responsive_control(
+			'content_width',
+			[
+				'label' => esc_html__( 'Width', 'drillcorp-core' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .slider-left-content' => 'max-width: {{SIZE}}{{UNIT}}; width: 100%'    ,
+				],
+			]
+		);
+
         $this->add_responsive_control(
             'hero_slider_content_padding',
             [

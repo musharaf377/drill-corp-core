@@ -435,9 +435,8 @@ class Projects_Widget extends Widget_Base
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
-                'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .project-content-wrap a' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .project-content-wrap' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
