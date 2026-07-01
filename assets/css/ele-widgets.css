@@ -229,6 +229,11 @@
   z-index: 3;
 }
 
+body.rtl .hero-left-shape {
+  left: unset;
+  right: 0;
+}
+
 
 .hero-bottom-shape {
   position: absolute;
@@ -237,6 +242,11 @@
   z-index: 3;
   width: 100%;
   z-index: 3;
+}
+
+body.rtl .hero-bottom-shape {
+  left: unset;
+  right: 0;
 }
 
 .hero-bottom-shape img {
