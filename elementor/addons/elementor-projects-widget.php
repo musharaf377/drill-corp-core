@@ -133,6 +133,18 @@ class Projects_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'button_text',
+            [
+                'label' => esc_html__('Button Text', 'drillcorp-core'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('View The Project', 'drillcorp-core'),
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Style Controls
@@ -689,7 +701,7 @@ class Projects_Widget extends Widget_Base
                             <?php endif; ?>
                             
                             <a class="primary-btn" href="<?php echo esc_url(get_permalink()); ?>">
-                                <?php echo esc_html__('View The Project', 'drillcorp-core'); ?>
+                                <?php echo esc_html($settings['button_text']); ?>
                             </a>
                         </div>
                     </div>
