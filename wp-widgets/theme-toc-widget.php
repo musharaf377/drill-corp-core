@@ -19,6 +19,14 @@ add_action('widgets_init', function () {
         'title' => esc_html__('Drillcorp: Table Of Content', 'drillcorp-core'),
         'classname' => 'drillcorp-toc-widget',
         'description' => esc_html__('Display Table Of Content widget', 'drillcorp-core'),
+        'fields' => array(
+            array(
+                'id'      => 'title',
+                'type'    => 'text',
+                'title'   => esc_html__('Widget Title', 'drillcorp-core'),
+                'default' => esc_html__('Article Content', 'drillcorp-core'),
+            ),
+        ),
     )));
 });
 
@@ -132,11 +140,14 @@ if (!function_exists('drillcorp_toc_widget')) {
         $processed = drillcorp_toc_process_content($rendered, $post_id);
         $headings = $processed['headings'];
 
+        $widget_title = !empty($instance['title']) ? $instance['title'] : esc_html__('Article Content', 'drillcorp-core');
+        $widget_title = apply_filters('widget_title', $widget_title, $instance, 'drillcorp_toc_widget');
+
         echo $args['before_widget'];
         ?>
         <div class="table-of-content-list-item">
             <div class="title wp-block-search__label">
-                <?php esc_html_e('Article Content', 'drillcorp-core'); ?>
+                <?php echo esc_html($widget_title); ?>
             </div>
 
             <div class="toc-container">
