@@ -133,6 +133,18 @@ class Services_Slider_Item_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'button_text',
+            [
+                'label' => esc_html__('Button Text', 'drillcorp-core'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('Explore This Service', 'drillcorp-core'),
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -944,7 +956,7 @@ class Services_Slider_Item_Widget extends Widget_Base
                                 <div class="services-slider-content-wrap">
                                     <h3><?php echo esc_html($service['title']); ?></h3>
                                     <p><?php echo esc_html($service['excerpt'] ? $service['excerpt'] : wp_trim_words($service['content'], 30)); ?></p>
-                                    <a class="primary-btn" href="<?php echo esc_url($service['link']); ?>">Explore This Service</a>
+                                    <a class="primary-btn" href="<?php echo esc_url($service['link']); ?>"><?php echo esc_html($settings['button_text']); ?></a>
                                 </div>
                             </div>
                         </div>
