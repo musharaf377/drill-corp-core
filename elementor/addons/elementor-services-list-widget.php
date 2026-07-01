@@ -848,7 +848,24 @@ class Services_List_Item_Widget extends Widget_Base
             [
                 'label' => esc_html__('Button Text', 'drillcorp-core'),
                 'type' => Controls_Manager::TEXT,
+                'label_block' => true,
                 'default' => esc_html__('Explore This Service', 'drillcorp-core'),
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'feature_heading_text',
+            [
+                'label' => esc_html__('Feature Heading Text', 'drillcorp-core'),
+                'type' => Controls_Manager::TEXT,
+                'label_block' => true,
+                'default' => esc_html__('Key Capabilities:', 'drillcorp-core'),
+                'condition' => [
+                    'show_feature_list' => 'yes',
+                ],
                 'dynamic' => [
                     'active' => true,
                 ],
@@ -1169,7 +1186,7 @@ class Services_List_Item_Widget extends Widget_Base
 
                             if ('yes' === $settings['show_feature_list'] && !empty($service['feature_list'])) :
                             ?> <div class="service-feature-list-area">
-                                    <h4 class="service-feature-heading">Key Capabilities:</h4>
+                                    <h4 class="service-feature-heading"><?php echo esc_html($settings['feature_heading_text']); ?></h4>
                                     <div class="service-feature-list">
                                         <?php foreach ($service['feature_list'] as $feature) : ?>
                                             <div class="service-feature-single">
