@@ -9,25 +9,20 @@ if (!defined('ABSPATH')) {
     exit(); //exit if access directly
 }
 
-// Create a Table Of Content Widget.
-// Deferred to the `init` action because this file is included on `plugin_loaded`
-// (which fires before `init`). Calling esc_html__() at include time requested the
-// 'drillcorp-core' translations too early and triggered the
-// _load_textdomain_just_in_time notice (WP 6.7+). Priority 5 ensures the widget
-// args are stored before CSF::setup() consumes them on `init` (priority 10).
-add_action('init', function () {
-    CSF::createWidget('drillcorp_toc_widget', array(
+
+add_action('widgets_init', function () {
+    if (!class_exists('CSF_Widget')) {
+        return;
+    }
+
+    register_widget(CSF_Widget::instance('drillcorp_toc_widget', array(
         'title' => esc_html__('Drillcorp: Table Of Content', 'drillcorp-core'),
         'classname' => 'drillcorp-toc-widget',
         'description' => esc_html__('Display Table Of Content widget', 'drillcorp-core'),
-    ));
-}, 5);
+    )));
+});
 
-/**
- * Parse the rendered post content for <h2> tags, inject unique ids into them,
- * and return both the modified content and a heading list keyed by id => text.
- * Cached per post id so we only parse once per request.
- */
+
 if (!function_exists('drillcorp_toc_process_content')) {
     function drillcorp_toc_process_content($content, $post_id)
     {
