@@ -96,6 +96,16 @@ class Blog_List_Tab extends Widget_Base
             ],
         ]);
 
+        $this->add_control('no_posts_text', [
+            'label'       => esc_html__('No Posts Found Text', 'drillcorp-core'),
+            'type'        => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default'     => esc_html__('No blog posts found.', 'drillcorp-core'),
+            'dynamic'     => [
+                'active' => true,
+            ],
+        ]);
+
         $this->end_controls_section();
 
         // -------------------------
@@ -607,7 +617,7 @@ class Blog_List_Tab extends Widget_Base
         }
 
         if (empty($categories) || $all_query->post_count === 0) {
-            echo '<p>' . esc_html__('No blog posts found.', 'drillcorp-core') . '</p>';
+            echo '<p>' . esc_html($settings['no_posts_text']) . '</p>';
             return;
         }
         

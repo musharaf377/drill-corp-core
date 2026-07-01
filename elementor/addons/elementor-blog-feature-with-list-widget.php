@@ -144,6 +144,16 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
             'default'      => 'no',
         ]);
 
+        $this->add_control('no_posts_text', [
+            'label'       => esc_html__('No Posts Found Text', 'drillcorp-core'),
+            'type'        => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default'     => esc_html__('No blog posts found.', 'drillcorp-core'),
+            'dynamic'     => [
+                'active' => true,
+            ],
+        ]);
+
         $this->end_controls_section();
 
         // -------------------------
@@ -537,7 +547,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         $query = new \WP_Query($args);
 
         if (! $query->have_posts()) {
-            echo '<p>' . esc_html__('No blog posts found.', 'drillcorp-core') . '</p>';
+            echo '<p>' . esc_html($settings['no_posts_text']) . '</p>';
             return;
         }
 
@@ -568,7 +578,7 @@ class Musemind_Blog_Feature_With_List extends Widget_Base
         wp_reset_postdata();
 
         if (empty($featured_posts) && empty($list_posts)) {
-            echo '<p>' . esc_html__('No blog posts found.', 'drillcorp-core') . '</p>';
+            echo '<p>' . esc_html($settings['no_posts_text']) . '</p>';
             return;
         }
 ?>

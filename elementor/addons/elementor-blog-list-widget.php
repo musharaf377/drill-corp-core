@@ -115,6 +115,16 @@ class Blog_List extends Widget_Base
             'condition' => ['show_excerpt' => 'yes'],
         ]);
 
+        $this->add_control('no_posts_text', [
+            'label'   => esc_html__('No Posts Found Text', 'drillcorp-core'),
+            'type'    => Controls_Manager::TEXT,
+            'label_block' => true,
+            'default' => esc_html__('No blog posts found.', 'drillcorp-core'),
+            'dynamic' => [
+                'active' => true,
+            ],
+        ]);
+
         $this->end_controls_section();
 
         // -------------------------
@@ -464,7 +474,7 @@ class Blog_List extends Widget_Base
         $query = new \WP_Query($args);
 
         if (! $query->have_posts()) {
-            echo '<p>' . esc_html__('No blog posts found.', 'drillcorp-core') . '</p>';
+            echo '<p>' . esc_html($settings['no_posts_text']) . '</p>';
             return;
         }
 ?>
